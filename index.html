@@ -1,1047 +1,665 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:image" content="https://i.ibb.co/fpsptwz/My-project-1.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Balavenkatesh Profile</title>
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-    <meta name="description" content="Balavenkatesh Profile"/>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/aos.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-  </head>
-  <body id="top">
-    <header>
-      <div class="profile-page sidebar-collapse">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
-          <div class="container">
-            <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip">Bala Venkatesh Profile</a>
-              <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bala Venkatesh | Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Timeline line style */
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -1px; /* Center the dot on the line */
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 4px solid #eff6ff;
+            z-index: 10;
+        }
+        .modal-timeline-item:before {
+             content: '';
+            position: absolute;
+            left: -30px; /* Adjust for modal layout */
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 3px solid #eff6ff;
+            z-index: 10;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+        .skill-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .timeline-item:before {
+                left: -29px;
+            }
+        }
+        /* Project card hover effect */
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Modal styling */
+        .modal {
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-content {
+            width: 100%;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        /* Reference card styling */
+        .reference-card {
+            transition: all 0.3s ease;
+        }
+        .reference-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="gradient-bg text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">Bala Venkatesh</div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-blue-200 transition">About</a>
+                <a href="#experience" class="hover:text-blue-200 transition">Experience</a>
+                <a href="#projects" class="hover:text-blue-200 transition">Projects</a>
+                <a href="#skills" class="hover:text-blue-200 transition">Skills</a>
+                <a href="#education" class="hover:text-blue-200 transition">Education</a>
+                <a href="#awards" class="hover:text-blue-200 transition">Awards</a>
+                <a href="#references" class="hover:text-blue-200 transition">References</a>
+                <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
+            </nav>
+            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-blue-900 w-full px-4 py-2" id="mobile-menu">
+            <div class="flex flex-col space-y-3">
+                <a href="#about" class="hover:text-blue-200 transition py-1">About</a>
+                <a href="#experience" class="hover:text-blue-200 transition py-1">Experience</a>
+                <a href="#projects" class="hover:text-blue-200 transition py-1">Projects</a>
+                <a href="#skills" class="hover:text-blue-200 transition py-1">Skills</a>
+                <a href="#education" class="hover:text-blue-200 transition py-1">Education</a>
+                <a href="#awards" class="hover:text-blue-200 transition py-1">Awards</a>
+                <a href="#references" class="hover:text-blue-200 transition py-1">References</a>
+                <a href="#contact" class="hover:text-blue-200 transition py-1">Contact</a>
             </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation">
-              <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Skills</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#book">Books</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" target="_blank" href="https://balavenkatesh.medium.com/" >Blogs</a></li>
-                <!-- <li class="nav-item"><a class="nav-link smooth-scroll" href="#contribution">Contribution</a></li>
- -->                <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
+        </div>
     </header>
-    <div class="page-content">
-    <div>
-<div class="profile-page">
-  <div class="wrapper">
-    <div class="page-header page-header-small" filter-color="green">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('images/cc-bg-1.jpg');"></div>
-      <div class="container">
-        <div class="content-center">
-          <div class="cc-profile-image"><a href="#"><img src="images/bv.jpeg" alt="Image"/></a></div>
-          <div class="h2 title">Bala Venkatesh</div>
-          <p class="category text-white">Data Scientist</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary" target="_blank" href="https://drive.google.com/file/d/1eD4QGy4pwv5GzGuT9j6TCX_1TF2Oe1xR/view?usp=sharing" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="button-container"><a class="btn btn-default btn-round btn-lg btn-icon" target="_blank" href="https://www.linkedin.com/in/bala-venkatesh-67964247/" rel="tooltip" title="Follow me on Linkedin"><i class="fa fa-linkedin"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" target="_blank" href="https://www.reddit.com/user/Bala_venkatesh" rel="tooltip" title="Follow me on Reddit"><i class="fa fa-reddit"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" target="_blank" href="https://github.com/balavenkatesh3322" rel="tooltip" title="Follow me on Github"><i class="fa fa-github"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" target="_blank" href="https://www.facebook.com/venkateshpnk22" rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" target="_blank" href="https://twitter.com/balavenkatesh22" rel="tooltip" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a><a class="btn btn-default btn-round btn-lg btn-icon" target="_blank" href="https://www.instagram.com/bv_bala_venkatesh/" rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="section" id="about">
-  <div class="container">
-    <div class="card" data-aos="fade-up" data-aos-offset="10">
-      <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <div class="card-body">
-            <div class="h4 mt-0 title">About</div>
-            <p>My work has revolved around leading teams and architecting end-to-end ML-driven solutions in products/platforms and getting them live into production. I have a deep understanding of the OpenCV library and deep learning to build a Computer vision application.</p>
-              <p>Also, I am doing research works based on client inputs and I will give end solutions to build ML products. I had experience in web application development as a full stack developer.</p>
-              <p>I am a author of towards data science and KDnuggets. I love to write code and solve real world problems.</p>
-            <p><strong class="text-uppercase">        * Aspire to Inspire before I expire *         </strong></p>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-12">
-          <div class="card-body">
-            <div class="h4 mt-0 title">Basic Information</div>
-            <div class="row">
-              <div class="col-sm-4"><strong class="text-uppercase">Full Name:</strong></div>
-              <div class="col-sm-8">Bala Venkatesh Sundar Rajan</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Date of Birth:</strong></div>
-              <div class="col-sm-8">20-07-1993</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-              <div class="col-sm-8">venkateshpnk22@gmail.com</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-              <div class="col-sm-8">+91 9003912808</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-              <div class="col-sm-8">Chennai, India</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
-              <div class="col-sm-8">English, Tamil</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="embed-responsive embed-responsive-21by9">
-        <iframe src="https://giphy.com/embed/cIhjYPQoZLQZbSVTkV" width="480" height="259" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-      <!-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9xxm27iGLhg"></iframe> -->
-    </div>
-  </div>
-</div>
-<div class="section" id="skill">
-  <div class="container">
-    <div class="h4 text-center mb-4 title">Professional Skills (Playing friends)</div>
-    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Python</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div><span class="progress-value">95%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Generative AI</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Scikit-Learn</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Tensorflow</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Keras</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Azure ADO</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">OpenCV</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">NLP</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Django Rest Framework</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Postgresql</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">AWS Medical Comprehend</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">AWS Transcribe</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">AWS S3</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div><span class="progress-value">50%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Docker</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div><span class="progress-value">40%</span>
-              </div>
-            </div>
-          </div>
-        </div> 
-          </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="section" id="book">
-   <div class="h4 text-center mb-4 title">Books</div>
-  <div class="container">
-    <div class="card" data-aos="fade-up" data-aos-offset="10">
-      <div class="row">        
-        <div class="col-lg-6 col-md-12">
-          <div class="card-body">
-            <div class="view overlay">
-      <img class="card-img-top" src="images/book front.jpeg"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-12">
-          <div class="card-body">
-            <div class="h4 mt-0 title">About</div>
-            <p>I have participated with 23 great data scientists from around the world to teach you how to think about how to profit and manage your data better. It was a nice experience for me because this is the first book I have participated in and published on <a target="_blank" href="https://www.amazon.com/dp/B08BPB2KKK" rel="tooltip">amazon</a></p>
-            <ul>
-            <li> Eric Siegel, Predictive Analytics World, USA</li>
-            <li> Bill Inmon, The Father of Datawarehouse, Forest Rim Technology, USA </li>
-            <li> Bram Nauts, ABN AMRO Bank, Netherlands</li>
-            <li> Jim Sterne, Digital Analytics Association, USA</li>
-            <li> Terry Miller, Siemens, USA</li>
-            <li> Shivanku Misra, Hilton Hotels, USA</li>
-            <li> Caner Canak, Turkcell, Turkey</li>
-            <li> Dr. Kirk Borne, Booz Allen Hamilton, USA </li>
-            <li> Dr. Bülent Kızıltan, Harvard University, USA  </li>
-            <li> Kate Strachnyi, Story by Data, USA</li>
-            <li> Kristen Kehrer, Data Moves Me, USA</li>
-            <li> Marie Wallace, IBM Watson Health, Ireland</li>
-            <li> Timothy Kooi, DHL, Singapore</li>
-            <li> Jesse Anderson, Big Data Institute, USA</li>
-            <li> Charles Givre, JPMorgan Chase & Co, USA</li>
-            <li> Anne Buff, Centene Corporation, USA</li>
-            <li><strong>Bala Venkatesh, AIBOTS,  Malaysia</strong></li>
-            <li> Mauro Damo, Hitachi Vantara, USA</li>
-            <li> Dr. Rajkumar Bondugula, Equifax, USA</li>
-            <li> Waldinei Guimaraes, Experian, Brazil</li>
-            <li> Michael Ferrari, Atlas Research Innovations, USA</li>
-            <li> Dr.  Aviv Gruber, Tel-Aviv University, Israel</li>
-            <li> Amit Agarwal, NVIDIA, India</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-</div>
-
-
-<div class="section" id="skill">
-  <div class="container">
-    <div class="h4 text-center mb-4 title">Medium Blogs</div>
-
-
-
-<div class="card-deck">
-
-  <div class="card mb-4">
-
-    <div class="view overlay">
-      <img class="card-img-top" src="images/object.png"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
-    <div class="card-body">
-
-      <h4 class="card-title">TensorFlow object detection with custom objects</h4>
-      <p class="card-text">We are creating a model that can identify hardware tools using by TensorFlow.</p>
-      <a href="https://medium.com/@venkateshpnk22/tensorflow-object-detection-with-custom-objects-34a2710c6de5" target="_blank" class="btn btn-light-blue btn-md" role="button">Read more</a>
-
-    </div>
-
-  </div>
-
-  <div class="card mb-4">
-
-    <div class="view overlay">
-      <img class="card-img-top" src="images/js.jpeg"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
-    <div class="card-body">
-
-      <h4 class="card-title">Three lines of code to implement a computer vision application using Tensorflow.js</h4>
-      <p class="card-text">Let’s see an easy way to implement a computer vision application using tensorflow.js!!!</p>
-      <a href="https://towardsdatascience.com/three-lines-code-to-implement-computer-vision-application-using-tensorflow-js-5a3a5e91f74a" target="_blank" class="btn btn-light-blue btn-md" role="button">Read more</a>
-    </div>
-
-  </div>
-
-  <div class="card mb-4">
-
-    <div class="view overlay">
-      <img class="card-img-top" src="images/upload.gif"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
-    <div class="card-body">
-      <h4 class="card-title">How to upload 50 OpenCV frames into cloud storage within 1 second???</h4>
-      <p class="card-text">How to read RTSP/Video frames and upload them into cloud storage in an asynchronous way!!</p>
-      <a href="https://medium.com/analytics-vidhya/how-to-upload-50-opencv-frames-into-cloud-storage-within-1-second-653ee73d7711" target="_blank" class="btn btn-light-blue btn-md" role="button">Read more</a>
-
-    </div>
-
-  </div>
-
-</div>
-</div>
-    </div>
-
-
-
-<div class="section" id="skill">
-  <div class="container">
-    <div class="h4 text-center mb-4 title">KDnuggest & Other Blogs</div>
-
-
-
-<div class="card-deck">
-
-   <div class="card mb-4">
-
-    <div class="view overlay">
-      <img class="card-img-top" src="images/kdnuggest.png"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
-    <div class="card-body">
-      <h4 class="card-title">6 Easy Steps to Implement a Computer Vision Application Using Tensorflow.js</h4>
-      <p class="card-text">we are going to see how we can implement computer vision applications using tensorflow.js models.</p>
-      <a href="https://www.kdnuggets.com/2020/06/6-easy-steps-implement-computer-vision-application-tensorflow-js.html" target="_blank" class="btn btn-light-blue btn-md" role="button">Read more</a>
-
-    </div>
-
-  </div>
-
-  <div class="card mb-4">
-
-    <div class="view overlay">
-      <img class="card-img-top" src="images/topcoder.jpg"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
-    <div class="card-body">
-
-      <h4 class="card-title">IS DATA SCIENCE JUST A REBRANDING OF STATISTICS?</h4>
-      <p class="card-text">Both Data Scientists and Statisticians ingest data and extract information. Some would argue that there are differences in terms of their usage. However, when data science and statistics are used together they form a powerful partnership.</p>
-      <a href="https://www.topcoder.com/thrive/articles/is-data-science-just-a-rebranding-of-statistics" target="_blank" class="btn btn-light-blue btn-md" role="button">Read more</a>
-    </div>
-
-  </div>
-
-  <div class="card mb-4">
-
-    <div class="view overlay">
-      <img class="card-img-top" src="images/aibots.png"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-
-    <div class="card-body">
-
-      <h4 class="card-title">Machine learning environment setup within 10min</h4>
-      <p class="card-text">One of the main problems of the machine learning part is installing software because we need to research algorithms, frameworks, and software libraries for identifying suitable technology for our application</p>
-      <a href="https://aibots.my/officialBlog/machine-learning-environment-setup-within-10min/" target="_blank" class="btn btn-light-blue btn-md" role="button">Read more</a>
-    </div>
-
-  </div>
-
-</div>
-</div>
-    </div>
-
-
-
-<!-- <div class="section" id="contribution">
-    <div class="container">
-       <div class="h4 text-center mb-4 title">Contribution</div>
-      <div class="row">
-       
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-                        
-              <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                        
-            <div class="title">
-              <h4>Q Blocks</h4>
-            </div>
-                        
-            <div class="text">
-              <span>Face Unlock using OpenCV on Ubuntu.</span>
-            </div>
-                        
-            <a target="_blank" href="https://www.qblocks.cloud/creators/face-unlock-using-opencv-ubuntu">Learn More</a>
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-              
-            <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                    
-            <div class="title">
-              <h4>Thrive Submit</h4>
-            </div>
-                        
-            <div class="text">
-              <span>Is Data science just a rebranding of statistics?</span>
-            </div>
-                        
-            <a target="_blank" href="https://github.com/topcoder-platform/thrive-submit/issues/291">Learn More</a>
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-                        
-            <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                        
-            <div class="title">
-              <h4>Github</h4>
-            </div>
-                        
-            <div class="text">
-              <span>whenever I move my face while watching the video that video frames also will move as per my face movement.</span>
-            </div>
-                        
-            <a target="_blank" href="https://github.com/balavenkatesh3322/tensorflowjs-demo">Learn More</a>
-                        
-           </div>
-        </div>    -->
-        
-       <!--  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-                        
-                        <i class="fa fa-pinterest-p fa-3x" aria-hidden="true"></i>
-                        
-            <div class="title">
-              <h4>Pinterest</h4>
-            </div>
-                        
-            <div class="text">
-              <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-            </div>
-                        
-            <a href="#">Learn More</a>
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-              
-              <i class="fa fa-google-plus fa-3x" aria-hidden="true"></i>
-                    
-            <div class="title">
-              <h4>Google</h4>
-            </div>
-                        
-            <div class="text">
-              <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-            </div>
-                        
-            <a href="#">Learn More</a>
-                        
-           </div>
-        </div>   
-        
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-          <div class="box-part text-center">
-                        
-            <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                        
-            <div class="title">
-              <h4>Github</h4>
-            </div>
-                        
-            <div class="text">
-              <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-            </div>
-                        
-            <a href="#">Learn More</a>
-                        
-           </div>
-        </div>
-     -->
-    </div>    
-    </div>
-</div>
-
-
-
-
-
-<div class="section" id="skill">
-  <div class="container">
-    <div class="h4 text-center mb-4 title">Demo Videos</div>
-    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ni-k3aqKuCg" allowfullscreen></iframe>
-            </div>
-          </div>
-          <!-- <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/GGEpxnD3YpU" allowfullscreen></iframe>
-          </div>
-          </div> -->
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/djSRxOou7us" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_KRirgP5M1g" allowfullscreen></iframe>
-          </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KhPaWCRs5ug" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ddgKaLPu8Ag" allowfullscreen></iframe>
-          </div>
-          </div>
-        </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-<div class="section" id="portfolio">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
-        <div class="h4 text-center mb-4 title">Portfolio</div>
-        <div class="nav-align-center">
-          <ul class="nav nav-pills nav-pills-primary" role="tablist">            
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#web-development" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="tab-content gallery mt-5">
-      <div class="tab-pane" id="web-development">
-        <div class="ml-auto mr-auto">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Our data scientist expert <a href="https://twitter.com/balavenkatesh22?ref_src=twsrc%5Etfw">@balavenkatesh22</a> wrote one blog about the <a href="https://twitter.com/hashtag/machinelearning?src=hash&amp;ref_src=twsrc%5Etfw">#machinelearning</a> setup within 10 min!!<br><br>Check it out:- <a href="https://t.co/rVno6dHPrw">https://t.co/rVno6dHPrw</a><a href="https://twitter.com/hashtag/keras?src=hash&amp;ref_src=twsrc%5Etfw">#keras</a> <a href="https://twitter.com/hashtag/docker?src=hash&amp;ref_src=twsrc%5Etfw">#docker</a> <a href="https://twitter.com/hashtag/deeplearning?src=hash&amp;ref_src=twsrc%5Etfw">#deeplearning</a> <a href="https://twitter.com/hashtag/deeplearningai?src=hash&amp;ref_src=twsrc%5Etfw">#deeplearningai</a> <a href="https://twitter.com/hashtag/beginner?src=hash&amp;ref_src=twsrc%5Etfw">#beginner</a> <a href="https://twitter.com/hashtag/blogarticle?src=hash&amp;ref_src=twsrc%5Etfw">#blogarticle</a> <a href="https://twitter.com/hashtag/fridayfacts?src=hash&amp;ref_src=twsrc%5Etfw">#fridayfacts</a> <a href="https://twitter.com/hashtag/DataScientist?src=hash&amp;ref_src=twsrc%5Etfw">#DataScientist</a> <a href="https://twitter.com/hashtag/aibotsmy?src=hash&amp;ref_src=twsrc%5Etfw">#aibotsmy</a> <a href="https://twitter.com/hashtag/beyondfuture?src=hash&amp;ref_src=twsrc%5Etfw">#beyondfuture</a> <a href="https://t.co/xSa9gcKdTy">pic.twitter.com/xSa9gcKdTy</a></p>&mdash; AibotsMY (@AibotsMY) <a href="https://twitter.com/AibotsMY/status/1271368952254361600?ref_src=twsrc%5Etfw">June 12, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-             <!--  <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="images/project-2.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Startup Project</div>
-                      <p>Tools monitoring</p>
-                    </figcaption>
-                  </figure></a></div> -->
-            </div>
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Need to know how can you detect objects using Tensor flow Machine Learning. Here is the blog by our Data Scientist, <a href="https://twitter.com/balavenkatesh22?ref_src=twsrc%5Etfw">@balavenkatesh22</a> .<a href="https://t.co/i0ovajpiAm">https://t.co/i0ovajpiAm</a><a href="https://twitter.com/hashtag/spritle?src=hash&amp;ref_src=twsrc%5Etfw">#spritle</a> <a href="https://twitter.com/hashtag/spritlesoftware?src=hash&amp;ref_src=twsrc%5Etfw">#spritlesoftware</a> <a href="https://twitter.com/hashtag/machinelearning?src=hash&amp;ref_src=twsrc%5Etfw">#machinelearning</a> <a href="https://twitter.com/hashtag/tensorflow?src=hash&amp;ref_src=twsrc%5Etfw">#tensorflow</a> <a href="https://twitter.com/hashtag/objectdetection?src=hash&amp;ref_src=twsrc%5Etfw">#objectdetection</a><br>Visit us: <a href="https://t.co/DtOYYssXIk">https://t.co/DtOYYssXIk</a> <a href="https://t.co/TeC0JnD99Y">pic.twitter.com/TeC0JnD99Y</a></p>&mdash; Spritle Software (@spritlesoftware) <a href="https://twitter.com/spritlesoftware/status/1196688105496965120?ref_src=twsrc%5Etfw">November 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-             <!--  <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="images/project-4.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Human resource Project</div>
-                      <p>Attendance Management</p>
-                    </figcaption>
-                  </figure></a></div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-pane active" id="graphic-design" role="tabpanel">
-        <div class="ml-auto mr-auto">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                  <figure class="cc-effect"><img src="images/bv2.jpeg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Work Mode</div>
-                      <p>At Spritle Office</p>
-                    </figcaption>
-                  </figure></a></div>
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                  <figure class="cc-effect"><img src="images/bv3.jpeg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Troubleshooting Mode</div>
-                      <p>At Aibots Office</p>
-                    </figcaption>
-                  </figure></a></div>
-            </div>
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                  <figure class="cc-effect"><img src="images/bv1.jpeg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">PhotoShoot Mode</div>
-                      <p>At Kerala</p>
-                    </figcaption>
-                  </figure></a></div>
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#graphic-design">
-                  <figure class="cc-effect"><img src="images/bv4.jpeg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Working Mode</div>
-                      <p>At Aibots Office</p>
-                    </figcaption>
-                  </figure></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section" id="experience">
-  <div class="container cc-experience">
-    <div class="h4 text-center mb-4 title">Work Experience</div>
-        <div class="card">
-       <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Sep 2023 - Present</p>
-            <div class="h5">Standard Charted Global Business </div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Software Security Engineer</div>
-            <p>MSBR is a way of ensuring that our IT System and sub systems are securely configured throughout their lifecycle. The purpose of MSBR is to provide a minimum level of security configurations that the bank must meet in their system to protect sensitive information.</p>
-          </div>
-        </div>
-    </div>
-  </div>
-    <div class="card">
-       <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Mar 2022 - Mar 2023</p>
-            <div class="h5">Bighaat Pvt Ltd</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Data Scientist</div>
-            <p>Crop Disease Detection application used for agricultural domain. Farmers
-will take crop images and upload them into our mobile application. We
-will analyze images using deep learning technology to detect diseases of
-user uploaded images and let the former know what is the disease name
-and where exactly it happened in the plant.</p>
-          </div>
-        </div>
-    </div>
-  </div>
-    <div class="card">
-       <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Oct 2020 - Jul 2021</p>
-            <div class="h5">AIBOTS SDN BHD</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Data Scientist</div>
-            <p>We have developed a healthcare application that will help the doctor to prepare notes from the conversation. Patients can book an appointment through the mobile application. To implement the medical extraction model we gathered all the data and trained the NLP model.</p>
-          </div>
-        </div>
-    </div>
-  </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Jan 2020 - Oct 2020</p>
-            <div class="h5">AIBOTS SDN BHD</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Data Scientist</div>
-            <p>We have analysed seismic data to detect anomalies. Seismic data is a dominant source of information for the sub-surface and it is widely used to great effect in the hydrocarbon industry. This project is used by petrol companies. They have a huge amount of video of seismic data. We extracted all frames from those videos and detected anomaly pictures.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Dec 2018 - Dec 2019</p>
-            <div class="h5">SPRITLE SOFTWARE</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Data Scientist</div>
-            <p>The project name is Phraze which is transforming the way physicians interact with the Electronic Medical Record . Using our automated clinical documentation technology, Phraze is disrupting the traditional clinic data collection model by providing frictionless voice interface and an AI note writing scribe. Our AI scribe solution frees doctors to more thoroughly engage with their patients while improving the quality and quantity of clinical data collected.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Jul 2018 - Nov 2018</p>
-            <div class="h5">SPRITLE SOFTWARE</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Data Scientist</div>
-            <p>The project name is Tools Monitoring.This system will automatically detect object name which is used in Singapore prison whenever the carpenter or other workers before going to prison, the system will detect that tools name and save it so after completing their work at prison then it will verify those tools are
-            back from prison.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Jan 2018 - Jun 2018</p>
-            <div class="h5">SPRITLE SOFTWARE</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Senior Software Developer</div>
-            <p>The project name is Moddo which is the world leader in electronic commerce for professionals and companies of the footwear, component and accessory industry. The priced subscription provides access to trade offers, company reports, trade fairs calendar, information on fashion trends and products, news and 'Moddo Newsletter', and Internet services</p>
-          </div>
-        </div>
-      </div>
-    </div>    
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Oct 2016 - Dec 2017</p>
-            <div class="h5">SOLVERMINDS SOLUTION PVT LTD</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Software Developer</div>
-            <p>Project Name is Mack-Lite which is to maintain the shipping records which will be useful to take safety precaution in the future before the ship would meet accident and ship inspection report. The main thing is to communicate the form details filled in the ship to the Shore and Finally the form process end in the Shore.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Apr 2016 - Sep 2016</p>
-            <div class="h5">VERTACE CONSULTANCY</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Intern</div>
-            <p>The project name is the Attendance management system Which is used in the Singapore construction company. It will maintain employee attendance details. This system automatically notifies the manager and HR department of employee attendance details. The system automatically generates the working days and payment details.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>Oct 2015 - Mar 2016</p>
-            <div class="h5">GEETHAM SOFTWARE PVT LTD</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Intern</div>
-            <p>The project name is the Time transport system. The focus of this project is to automate the operations of the transport system. Tracking of vehicles and employees details becomes easier by using narrow search concepts. This software application is designed in such a manner that it can suitably meet the needs of all the transport companies. We can provide additional space for spare parts for all types of vehicles.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="container cc-education">
-    <div class="h4 text-center mb-4 title">Education</div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-education-header">
-            <p>2021- 2022</p>
-            <div class="h5">Master of Science</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Applied Data Science</div>
-            <p class="category">Teesside University</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-education-header">
-            <p>2011 - 2015</p>
-            <div class="h5">Bachelor's Degree</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Bachelor of Computer Science</div>
-            <p class="category">SRI RAM ENGINEERING COLLEGE</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-education-header">
-            <p>2010 - 2011</p>
-            <div class="h5">High School(HSC)</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Computer Science</div>
-            <p class="category">School of Secondary board</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-  </div>
-</div>
-<div class="section" id="reference">
-  <div class="container cc-reference">
-    <div class="h4 mb-4 text-center title">References</div>
-    <div class="card" data-aos="zoom-in">
-      <div class="carousel slide" id="cc-Indicators" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li class="active" data-target="#cc-Indicators" data-slide-to="0"></li>
-          <li data-target="#cc-Indicators" data-slide-to="1"></li>
-          <li data-target="#cc-Indicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-1.jpg" alt="Image"/>
-                <div class="h5 pt-2">Mahathir Muhammad Rafie </div>
-                <p class="category">CEO / AIBOTS SDN BHD</p>
-              </div>
-              <div class="col-lg-10 col-md-9">
-                <p> Bala is very passionate about applying AI and Machine Learning in real problem. He is life time learner that keep challenging himself to explore new technologies.</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-3.jpg" alt="Image"/>
-                <div class="h5 pt-2">Brandon McCutcheon</div>
-                <p class="category">CO-Founder / Phraze</p>
-              </div>
-              <div class="col-lg-10 col-md-9">
-                <p> Bala was responsible for backend development on Phraze. He is a great communicator and quick learner: he easily understands project requirements and the core business model, and takes great initiative in solving problems. He is capable to lead a team. His ML skills are impressive. He is very passionate to learn new things and solve real-world problems. I really enjoyed working with Bala.</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-2.jpg" alt="Image"/>
-                <div class="h5 pt-2">ArunVivek</div>
-                <p class="category">Head Cloud Security  / Standard Chartered Bank</p>
-              </div>
-              <div class="col-lg-10 col-md-9">
-                <p> I have known Bala Venkatesh for 2 Years at Solverminds. Bala has the ability to take complex technical issues and build solutions at scale. His knowledge of programming fused with his ability to think creatively made him an excellent asset to our team. He has contributed thoughtful ideas and always has a friendly face excited to geek out ideas over the latest technology. I wish he pursues his dreams and accomplish great achievements in his career.</p>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section" id="contact">
-  <div class="cc-contact-information" style="background-image: url('images/staticmap.png');">
-    <div class="container">
-      <div class="cc-contact">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="card mb-0" data-aos="zoom-in">
-              <div class="h4 text-center title">Contact Me</div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="card-body">
-                    <form action="https://formspree.io/xknrpqkj" method="POST">
-                      <div class="p pb-3"><strong>Feel free to contact me </strong></div>
-                      <div class="row mb-3">
-                        <div class="col">
-                          <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                            <input class="form-control" type="text" name="name" placeholder="Name" required="required"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col">
-                          <div class="input-group"><span class="input-group-addon"><i class="fa fa-file-text"></i></span>
-                            <input class="form-control" type="text" name="Subject" placeholder="Subject" required="required"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col">
-                          <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input class="form-control" type="email" name="_replyto" placeholder="E-mail" required="required"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col">
-                          <div class="form-group">
-                            <textarea class="form-control" name="message" placeholder="Your Message" required="required"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <button class="btn btn-primary" value="Send" type="submit">Send</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Bala Venkatesh</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-blue-200">Data Scientist | AI Engineer</h2>
+                <p class="text-lg mb-8">Building intelligent solutions that drive business growth and efficiency.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-100 transition">Get In Touch</a>
+                    <a href="#projects" class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View Projects</a>
                 </div>
-                <div class="col-md-6">
-                  <div class="card-body">
-                    <p class="mb-0"><strong>Address </strong></p>
-                    <p class="pb-2">6, chennai,India</p>
-                    <p class="mb-0"><strong>Phone</strong></p>
-                    <p class="pb-2">+91 9003812808</p>
-                    <p class="mb-0"><strong>Email</strong></p>
-                    <p>venkateshpnk22@gmail.com</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-700 flex items-center justify-center overflow-hidden border-4 border-white shadow-xl">
+                    <img src="https://placehold.co/300x300/1e40af/ffffff?text=Bala" alt="Bala Venkatesh" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x300/1e40af/ffffff?text=Bala';">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-    </div>
-    <footer class="footer">
-      <div class="container text-center"><a class="cc-medium btn btn-link" target="_blank" href="https://balavenkatesh.medium.com/"><i class="fa fa-medium fa-2x " aria-hidden="true"></i></a><a class="cc-linkedin btn btn-link" target="_blank" href="https://www.linkedin.com/in/bala-venkatesh-67964247/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a><a class="cc-facebook btn btn-link" target="_blank" href="https://www.facebook.com/venkateshpnk22"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a><a class="cc-twitter btn btn-link " target="_blank" href="https://twitter.com/balavenkatesh22"><i class="fa fa-twitter fa-2x " aria-hidden="true"></i></a><a class="cc-instagram btn btn-link" target="_blank" href="https://www.instagram.com/bv_bala_venkatesh/"><i class="fa fa-instagram fa-2x " aria-hidden="true"></i></a></div>
-      <div class="text-center text-muted">
-        <p>&copy; Bala Venkatesh. All rights reserved.</p>
-         <a href='http://www.freevisitorcounters.com'>at www.freevisitorcounters.com</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=45aa4aa571df0b720fef4436a603a6dc67ace449'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/715926/t/11"></script>
-      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Professional Profile</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center">
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        I am a Data Scientist and AI Engineer who translates complex technical capabilities into tangible business value. My expertise lies in aligning AI solutions with core objectives, ensuring technology investments directly drive growth, efficiency, and innovation from concept to deployment.
+                    </p>
+                </div>
+                
+                <div class="bg-blue-50 p-8 rounded-xl border border-blue-200">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-900 text-center">Why Collaborate With Me?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-4"></i>
+                            <span class="text-lg leading-relaxed text-gray-800"><strong>Business-First AI Solutions:</strong> I engineer solutions that directly address your business challenges and drive measurable ROI.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-4"></i>
+                            <span class="text-lg leading-relaxed text-gray-800"><strong>Full Lifecycle Expertise:</strong> From concept and data strategy to deployment and optimization, I cover the entire AI project lifecycle.</span>
+                        </li>
+                         <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-4"></i>
+                            <span class="text-lg leading-relaxed text-gray-800"><strong>Effective Communication:</strong> I excel at bridging the gap between complex technical details and clear business outcomes.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-4"></i>
+                            <span class="text-lg leading-relaxed text-gray-800"><strong>Leadership & Mentorship:</strong> I build and foster high-performing AI teams, promoting best practices and continuous learning.</span>
+                        </li>
+                    </ul>
+                     <p class="text-lg leading-relaxed mt-6 text-center">
+                        Explore my <a href="https://medium.com/@venkateshpnk22" target="_blank" class="text-blue-600 hover:underline font-semibold">Medium articles</a> for more insights.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Career Highlights</h2>
+            
+            <div class="max-w-4xl mx-auto relative pl-5">
+                <!-- Timeline line -->
+                <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-blue-200"></div>
+                
+                <!-- Timeline items (showing first 3 by default) -->
+                <div class="space-y-12">
+                    <!-- Standard Chartered Bank -->
+                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item">
+                        <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Sep 2023 - Present</span>
+                            <h3 class="text-xl font-bold mt-2">Standard Chartered Bank</h3>
+                            <p class="text-gray-600 font-semibold">ML Security Engineer</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-lg font-bold mb-2">Automated Pipeline Security</h4>
+                                <p class="mb-4 text-sm">Pioneered a solution using Retrieval-Augmented Generation (RAG) to automate misconfiguration detection and remediation in Azure DevOps pipelines, drastically improving security posture and earning the "Best Performer of the Year 2024" award.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bighaat PVT LTD -->
+                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item">
+                        <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Mar 2022 - Mar 2023</span>
+                            <h3 class="text-xl font-bold mt-2">Bighaat PVT LTD</h3>
+                            <p class="text-gray-600 font-semibold">Lead Data Scientist</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-lg font-bold mb-2">AI-Powered Crop Doctor</h4>
+                                <p class="mb-4 text-sm">Led the creation of an AI mobile app to help farmers identify plant diseases from images, deploying deep learning models to provide actionable, real-time insights and improve crop health across the region.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AIBOTS Sdn Bhd - Medosys -->
+                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item">
+                        <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Oct 2020 - Jul 2021</span>
+                            <h3 class="text-xl font-bold mt-2">AIBOTS Sdn Bhd</h3>
+                            <p class="text-gray-600 font-semibold">Data Scientist</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h4 class="text-lg font-bold mb-2">Healthcare NLP Application</h4>
+                                <p class="mb-4 text-sm">Developed a healthcare application using NLP to generate clinical notes from patient conversations, streamlining physician workflows and significantly improving documentation efficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="view-full-experience" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">View Full Career Path</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: TIP Automation -->
+                <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 bg-blue-700 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">TIP Automation (SCB)</h3>
+                        <p class="text-gray-600 mb-4">Automated security pipeline validation using RAG and LLMs.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">LangChain</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">Generative AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Crop Doctor -->
+                <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 bg-green-700 flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Crop Doctor (Bighaat)</h3>
+                        <p class="text-gray-600 mb-4">AI mobile app for farmers to detect plant diseases from images.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">Computer Vision</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: Medosys -->
+                <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 bg-purple-700 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Medosys (AIBOTS)</h3>
+                        <p class="text-gray-600 mb-4">NLP app to assist doctors in preparing notes from conversations.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">NLP</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">Healthcare</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="view-all-projects" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">View All Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Technical Skills</h2>
+            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Python</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Java</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Generative AI</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Langchain</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">LangGraph</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Agents (CrewAI/Autogen)</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Ollama</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Prompt Engineering</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">NLP</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Computer Vision</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">PyTorch</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Azure Cloud</span>
+                 <span class="skill-pill bg-white text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm">Docker</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Education</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md text-center">
+                    <div class="text-blue-700 text-4xl mb-4"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="text-xl font-bold mb-1">M.Sc. Applied Data Science</h3>
+                    <p class="font-semibold text-gray-700 mb-1">Teesside University, UK</p>
+                    <p class="text-gray-500">2021 – 2022</p>
+                </div>
+                <!-- Education 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md text-center">
+                    <div class="text-blue-700 text-4xl mb-4"><i class="fas fa-university"></i></div>
+                    <h3 class="text-xl font-bold mb-1">B.E. Computer Science</h3>
+                    <p class="font-semibold text-gray-700 mb-1">Sri Ram Engineering College, India</p>
+                    <p class="text-gray-500">2011 - 2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Awards & Achievements</h2>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-md">
+                <div class="flex items-center">
+                    <div class="text-yellow-500 text-4xl mr-6">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Best Performer of the Year 2024</h3>
+                        <p class="text-gray-600 mt-1">Recognized by SCB Bank for outstanding contributions and excellence in automating security pipelines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">What My Collaborators Say</h2>
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Reference 1 -->
+                <div class="reference-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm border border-gray-200">
+                    <img src="images/reference-image-1.jpg" alt="Mahathir Muhammad Rafie" class="w-24 h-24 rounded-full border-4 border-white shadow-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/100x100/cccccc/333333?text=MR';">
+                    <blockquote class="text-gray-600 leading-relaxed mb-4">
+                        <p>"Bala is very passionate about applying AI and Machine Learning in real problem. He is life time learner that keep challenging himself to explore new technologies."</p>
+                    </blockquote>
+                    <div class="font-bold text-gray-800">Mahathir Muhammad Rafie</div>
+                    <p class="text-sm text-gray-500">CEO / AIBOTS SDN BHD</p>
+                </div>
+                <!-- Reference 2 -->
+                <div class="reference-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm border border-gray-200">
+                    <img src="images/reference-image-3.jpg" alt="Brandon McCutcheon" class="w-24 h-24 rounded-full border-4 border-white shadow-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/100x100/cccccc/333333?text=BM';">
+                    <blockquote class="text-gray-600 leading-relaxed mb-4">
+                        <p>"Bala is a great communicator and quick learner... he easily understands project requirements and the core business model, and takes great initiative in solving problems. His ML skills are impressive."</p>
+                    </blockquote>
+                    <div class="font-bold text-gray-800">Brandon McCutcheon</div>
+                    <p class="text-sm text-gray-500">Co-Founder / Phraze</p>
+                </div>
+                <!-- Reference 3 -->
+                <div class="reference-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center shadow-sm border border-gray-200">
+                     <img src="images/reference-image-2.jpg"  alt="ArunVivek" class="w-24 h-24 rounded-full border-4 border-white shadow-lg mb-4" onerror="this.onerror=null;this.src='https://placehold.co/100x100/cccccc/333333?text=AV';">
+                    <blockquote class="text-gray-600 leading-relaxed mb-4">
+                        <p>"Bala has the ability to take complex technical issues and build solutions at scale. His knowledge of programming fused with his ability to think creatively made him an excellent asset to our team."</p>
+                    </blockquote>
+                    <div class="font-bold text-gray-800">ArunVivek</div>
+                    <p class="text-sm text-gray-500">Head Cloud Security / Standard Chartered Bank</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Let's Build the Future, Together.</h2>
+            <p class="text-lg leading-relaxed text-center max-w-2xl mx-auto mb-10 text-blue-200">
+                Ready to revolutionize your operations with advanced AI? Let's connect and explore how my leadership and technical prowess can accelerate your goals.
+            </p>
+            <div class="text-center">
+                 <a href="mailto:venkateshpnk22@gmail.com" class="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-blue-100 transition inline-block">
+                    <i class="fas fa-envelope mr-2"></i> venkateshpnk22@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-950 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.linkedin.com/in/bala-venkatesh-67964247/" class="text-xl hover:text-blue-300 transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/balavenkatesh3322" class="text-xl hover:text-blue-300 transition"><i class="fab fa-github"></i></a>
+                <a href="https://medium.com/@venkateshpnk22" target="_blank" class="text-xl hover:text-blue-300 transition"><i class="fab fa-medium"></i></a>
+            </div>
+            <p class="text-blue-300">© 2025 Bala Venkatesh. Designed with ❤️</p>
+        </div>
     </footer>
-    <script src="js/core/jquery.3.2.1.min.js"></script>
-    <script src="js/core/popper.min.js"></script>
-    <script src="js/core/bootstrap.min.js"></script>
-    <script src="js/now-ui-kit.js?v=1.1.0"></script>
-    <script src="js/aos.js"></script>
-    <script src="scripts/main.js"></script>
-  </body>
+
+    <!-- Full Experience Modal -->
+    <div id="experience-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden modal">
+        <div class="bg-white rounded-lg w-full max-w-4xl modal-content">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-2xl font-bold text-blue-900">Full Professional Experience</h3>
+                    <button id="close-experience-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                 <div class="relative pl-8 border-l-2 border-blue-200 space-y-12">
+                    <!-- Standard Chartered Bank -->
+                    <div class="relative modal-timeline-item">
+                         <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Sep 2023 - Present</span>
+                            <h3 class="text-xl font-bold mt-2">Standard Chartered Bank</h3>
+                            <p class="text-gray-600">ML Security Engineer</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold mb-2">TIP Project</h4>
+                            <p class="mb-4">Automated misconfiguration detection and remediation in Azure DevOps pipelines using Retrieval-Augmented Generation (RAG) to enhance security and efficiency, earning the Best Performer of the Year 2024 award.</p>
+                        </div>
+                    </div>
+                    <!-- Bighaat PVT LTD -->
+                    <div class="relative modal-timeline-item">
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Mar 2022 - Mar 2023</span>
+                            <h3 class="text-xl font-bold mt-2">Bighaat PVT LTD</h3>
+                            <p class="text-gray-600">Lead Data Scientist</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                             <h4 class="text-lg font-bold mb-2">Crop Doctor</h4>
+                            <p class="mb-4">Led development of an AI-driven mobile app for farmers to identify plant diseases via image analysis, fine-tuning deep learning models to provide accurate, actionable insights and improve crop health.</p>
+                        </div>
+                    </div>
+                     <!-- AIBOTS Sdn Bhd - Medosys -->
+                    <div class="relative modal-timeline-item">
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Oct 2020 - Jul 2021</span>
+                            <h3 class="text-xl font-bold mt-2">AIBOTS Sdn Bhd</h3>
+                            <p class="text-gray-600">Data Scientist</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                             <h4 class="text-lg font-bold mb-2">Medosys</h4>
+                            <p class="mb-4">Developed a healthcare app using NLP to generate clinical notes from conversations, streamlining physician workflows. Organized the team and managed client deliverables.</p>
+                        </div>
+                    </div>
+                    <!-- AIBOTS Sdn Bhd - Seismic AI -->
+                    <div class="relative modal-timeline-item">
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Jan 2020 - Oct 2020</span>
+                            <h3 class="text-xl font-bold mt-2">AIBOTS Sdn Bhd</h3>
+                            <p class="text-gray-600">Data Scientist</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold mb-2">Seismic AI</h4>
+                            <p class="mb-4">Analyzed seismic video data to detect anomalies for the hydrocarbon industry. Built and optimized models for anomaly detection from video frames.</p>
+                        </div>
+                    </div>
+                     <!-- Spritle Software Pvt Ltd - Phraze -->
+                    <div class="relative modal-timeline-item">
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Dec 2018 - Jan 2020</span>
+                            <h3 class="text-xl font-bold mt-2">Spritle Software Pvt Ltd</h3>
+                            <p class="text-gray-600">Data Scientist</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold mb-2">Phraze</h4>
+                            <p class="mb-4">Developed an AI-powered scribe with a frictionless voice interface to automate clinical documentation, freeing physicians to engage more with patients.</p>
+                        </div>
+                    </div>
+                    <!-- Solverminds -->
+                     <div class="relative modal-timeline-item">
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Oct 2016 - Dec 2017</span>
+                            <h3 class="text-xl font-bold mt-2">Solverminds Technologies</h3>
+                            <p class="text-gray-600">Software Developer</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-bold mb-2">Shipping & Transport Solutions</h4>
+                            <p class="mb-4">Designed and developed responsive web applications for the shipping and transport industries, including a system for maintaining vessel records and safety reports (Mack Lite) and a fleet operations management system (Time Transport).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Projects Modal -->
+    <div id="projects-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden modal">
+        <div class="bg-white rounded-lg w-full max-w-5xl modal-content">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="text-2xl font-bold text-blue-900">All Projects</h3>
+                    <button id="close-projects-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-blue-700 flex items-center justify-center"><i class="fas fa-shield-alt text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">TIP Automation</h3>
+                            <p class="text-gray-600">Automated security pipeline validation using RAG and LLMs.</p>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-green-700 flex items-center justify-center"><i class="fas fa-leaf text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Crop Doctor</h3>
+                            <p class="text-gray-600">AI mobile app for farmers to detect plant diseases from images.</p>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-purple-700 flex items-center justify-center"><i class="fas fa-heartbeat text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Medosys</h3>
+                            <p class="text-gray-600">NLP app to assist doctors in preparing notes from conversations.</p>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-red-700 flex items-center justify-center"><i class="fas fa-chart-line text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Seismic AI</h3>
+                            <p class="text-gray-600">Analyzed seismic data to detect anomalies for the oil & gas industry.</p>
+                        </div>
+                    </div>
+                    <!-- Project 5 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-orange-700 flex items-center justify-center"><i class="fas fa-notes-medical text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Phraze</h3>
+                            <p class="text-gray-600">AI note-writing scribe for physicians, transforming clinical documentation.</p>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-teal-700 flex items-center justify-center"><i class="fas fa-tools text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Tools Monitoring</h3>
+                            <p class="text-gray-600">System to automatically detect and monitor tools in a secure facility.</p>
+                        </div>
+                    </div>
+                     <!-- Project 7 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-indigo-700 flex items-center justify-center"><i class="fas fa-shoe-prints text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Moddo</h3>
+                            <p class="text-gray-600">B2B e-commerce platform for the footwear and accessories industry.</p>
+                        </div>
+                    </div>
+                    <!-- Project 8 -->
+                     <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-cyan-700 flex items-center justify-center"><i class="fas fa-ship text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Mack Lite</h3>
+                            <p class="text-gray-600">Maintained shipping records and inspection reports to enhance maritime safety.</p>
+                        </div>
+                    </div>
+                     <!-- Project 9 -->
+                    <div class="project-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-lime-700 flex items-center justify-center"><i class="fas fa-truck text-white text-6xl"></i></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Time Transport System</h3>
+                            <p class="text-gray-600">Automated transport operations with vehicle and employee tracking.</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Modal Handling ---
+        function setupModal(openBtnId, closeBtnId, modalId) {
+            const openBtn = document.getElementById(openBtnId);
+            const closeBtn = document.getElementById(closeBtnId);
+            const modal = document.getElementById(modalId);
+
+            if (!openBtn || !closeBtn || !modal) return;
+
+            const openModal = () => {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            };
+
+            openBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // --- Setup All Modals on Document Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            setupModal('view-full-experience', 'close-experience-modal', 'experience-modal');
+            setupModal('view-all-projects', 'close-projects-modal', 'projects-modal');
+        });
+
+        // --- Mobile Menu Toggle ---
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // --- Smooth Scrolling for Anchor Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Adjust for fixed header height
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
 </html>
