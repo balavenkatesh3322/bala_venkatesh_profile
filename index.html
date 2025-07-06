@@ -39,11 +39,80 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom Font */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        :root {
+            --text-color: #374151;
+            --background-color: #f9fafb;
+            --card-background: #ffffff;
+            --gradient-start: #1e3a8a;
+            --gradient-end: #1e40af;
+            --blue-900: #1e3a8a;
+            --blue-200: #bfdbfe;
+            --blue-100: #dbeafe;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+            --blue-800: #1e40af;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --blue-950: #172554;
+        }
+
+        .dark-mode {
+            --text-color: #e5e7eb;
+            --background-color: #1f2937;
+            --card-background: #374151;
+            --gradient-start: #111827;
+            --gradient-end: #1f2937;
+            --blue-900: #bfdbfe;
+            --blue-200: #1e40af;
+            --blue-100: #1d4ed8;
+            --blue-600: #60a5fa;
+            --blue-700: #3b82f6;
+            --blue-800: #2563eb;
+            --gray-50: #111827;
+            --gray-100: #1f2937;
+            --gray-200: #374151;
+            --gray-700: #d1d5db;
+            --gray-800: #e5e7eb;
+            --gray-900: #f9fafb;
+            --blue-950: #0f172a;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+        }
+
+        /* Existing styles updated to use variables */
+        .text-blue-900 { color: var(--blue-900); }
+        .text-blue-200 { color: var(--blue-200); }
+        .bg-gray-50 { background-color: var(--gray-50); }
+        .bg-white { background-color: var(--card-background); }
+        .text-gray-800 { color: var(--text-color); }
+        .text-gray-600 { color: var(--gray-700); }
+        .bg-blue-900 { background-color: var(--blue-900); }
+        .bg-blue-950 { background-color: var(--blue-950); }
+        .bg-blue-700 { background-color: var(--blue-700); }
+        .hover\:bg-blue-800:hover { background-color: var(--blue-800); }
+        .bg-blue-100 { background-color: var(--blue-100); }
+        .text-blue-800 { color: var(--blue-800); }
+        .hover\:bg-blue-100:hover { background-color: var(--blue-100); }
+        .bg-gray-700 { background-color: var(--gray-700); }
+        .hover\:bg-gray-800:hover { background-color: var(--gray-800); }
+        .bg-gray-100 { background-color: var(--gray-100); }
+        .text-gray-700 { color: var(--gray-700); }
+        .bg-blue-50 { background-color: var(--gray-50); }
+        .text-blue-600 { color: var(--blue-600); }
+        .bg-blue-600 { background-color: var(--blue-600); }
+
         /* Timeline line style */
         .timeline-item:before {
             content: '';
@@ -53,8 +122,8 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #3b82f6;
-            border: 4px solid #eff6ff;
+            background: var(--blue-600);
+            border: 4px solid var(--blue-100);
             z-index: 10;
         }
         .modal-timeline-item:before {
@@ -65,22 +134,11 @@
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: #3b82f6;
-            border: 3px solid #eff6ff;
+            background: var(--blue-600);
+            border: 3px solid var(--blue-100);
             z-index: 10;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-        }
-        .skill-pill:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        @media (max-width: 768px) {
-            .timeline-item:before {
-                left: -29px;
-            }
-        }
+        
         /* Project card hover effect */
         .project-card:hover {
             transform: translateY(-5px);
@@ -100,6 +158,8 @@
             max-height: 90vh;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            background-color: var(--card-background);
+            color: var(--text-color);
         }
         /* Reference card styling */
         .reference-card {
@@ -136,7 +196,7 @@
             left: 0;
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #bfdbfe, #93c5fd);
+            background: linear-gradient(90deg, var(--blue-100), var(--blue-200));
             z-index: -1;
             transition: width 0.5s ease-out;
         }
@@ -151,7 +211,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #1e40af;
+            color: var(--blue-800);
             font-weight: bold;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -200,7 +260,8 @@
             position: absolute;
             bottom: 5rem; /* Adjust based on icon size */
             right: 0;
-            background-color: #fff;
+            background-color: var(--card-background);
+            color: var(--text-color);
             transform: translateY(20px);
             opacity: 0;
             transition: transform 0.3s ease-out, opacity 0.3s ease-out;
@@ -215,7 +276,7 @@
             flex-grow: 1;
             padding: 1rem;
             overflow-y: auto;
-            background-color: #f9fafb;
+            background-color: var(--background-color);
         }
 
         .message-bubble {
@@ -227,25 +288,27 @@
         }
 
         .user-message {
-            background-color: #dbeafe; /* blue-100 */
-            color: #1e40af; /* blue-800 */
+            background-color: var(--blue-100);
+            color: var(--blue-800);
             align-self: flex-end;
             margin-left: auto;
         }
 
         .bot-message {
-            background-color: #e5e7eb; /* gray-200 */
-            color: #374151; /* gray-700 */
+            background-color: var(--gray-200);
+            color: var(--gray-700);
             align-self: flex-start;
             margin-right: auto;
         }
 
         #chat-input {
-            border: 1px solid #d1d5db;
+            border: 1px solid var(--gray-200);
             border-radius: 0.5rem;
             padding: 0.75rem;
             flex-grow: 1;
             margin-right: 0.5rem;
+            background-color: var(--card-background);
+            color: var(--text-color);
         }
 
         #send-chat {
@@ -260,17 +323,17 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--gray-100);
             border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #888;
+            background: var(--gray-700);
             border-radius: 10px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: var(--gray-800);
         }
     </style>
 </head>
@@ -291,6 +354,9 @@
                 <a href="#awards" class="hover:text-blue-200 transition">Awards</a>
                 <a href="#references" class="hover:text-blue-200 transition">References</a>
                 <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
+                <button id="theme-toggle" class="text-white focus:outline-none ml-4">
+                    <i class="fas fa-moon text-xl"></i>
+                </button>
             </nav>
             <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
                 <i class="fas fa-bars text-2xl"></i>
@@ -1115,6 +1181,30 @@
         if (skillsSection) {
             skillsObserver.observe(skillsSection);
         }
+
+        // --- Dark Mode Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Apply saved theme on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        } else {
+            themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+            }
+        });
 
         // --- Chatbot Logic ---
         const chatbotIcon = document.getElementById('chatbot-icon');
