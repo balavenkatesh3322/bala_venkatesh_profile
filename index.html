@@ -170,6 +170,108 @@
         .animated-section {
             animation: slideInUp 1s ease-out;
         }
+
+        /* Chatbot Specific Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+        }
+
+        #chatbot-icon {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #chatbot-window {
+            width: 22rem;
+            height: 30rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: absolute;
+            bottom: 5rem; /* Adjust based on icon size */
+            right: 0;
+            background-color: #fff;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        #chatbot-window.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #f9fafb;
+        }
+
+        .message-bubble {
+            padding: 0.6rem 0.8rem;
+            border-radius: 0.75rem;
+            margin-bottom: 0.5rem;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #dbeafe; /* blue-100 */
+            color: #1e40af; /* blue-800 */
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background-color: #e5e7eb; /* gray-200 */
+            color: #374151; /* gray-700 */
+            align-self: flex-start;
+            margin-right: auto;
+        }
+
+        #chat-input {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            flex-grow: 1;
+            margin-right: 0.5rem;
+        }
+
+        #send-chat {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Custom Scrollbar for Chat Messages */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -1012,6 +1114,84 @@
 
         if (skillsSection) {
             skillsObserver.observe(skillsSection);
+        }
+
+        // --- Chatbot Logic ---
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const closeChatbotBtn = document.getElementById('close-chatbot');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendChatBtn = document.getElementById('send-chat');
+
+        chatbotIcon.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('hidden');
+            chatbotWindow.classList.toggle('open');
+            if (!chatbotWindow.classList.contains('hidden')) {
+                chatInput.focus();
+            }
+        });
+
+        closeChatbotBtn.addEventListener('click', () => {
+            chatbotWindow.classList.add('hidden');
+            chatbotWindow.classList.remove('open');
+        });
+
+        sendChatBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const userText = chatInput.value.trim();
+            if (userText === '') return;
+
+            appendMessage(userText, 'user');
+            chatInput.value = '';
+            setTimeout(() => respondToUser(userText), 500);
+        }
+
+        function appendMessage(text, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('flex', 'mb-2');
+            if (sender === 'user') {
+                messageElement.classList.add('justify-end');
+            } else {
+                messageElement.classList.add('justify-start');
+            }
+            const bubbleElement = document.createElement('div');
+            bubbleElement.classList.add('message-bubble', `${sender}-message`);
+            bubbleElement.textContent = text;
+            messageElement.appendChild(bubbleElement);
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function respondToUser(userText) {
+            let botResponse = "I'm sorry, I don't have information on that. Please try asking something else about Bala's profile, projects, or skills.";
+            const lowerCaseText = userText.toLowerCase();
+
+            if (lowerCaseText.includes('hello') || lowerCaseText.includes('hi')) {
+                botResponse = "Hello there! How can I assist you today regarding Bala's profile?";
+            } else if (lowerCaseText.includes('bala's experience') || lowerCaseText.includes('experience') || lowerCaseText.includes('work history')) {
+                botResponse = "Bala has extensive experience as an ML Security Engineer at Standard Chartered Bank, Lead Data Scientist at Bighaat PVT LTD, and Data Scientist at AIBOTS Sdn Bhd. You can find more details in the 'Experience' section.";
+            } else if (lowerCaseText.includes('bala's projects') || lowerCaseText.includes('projects') || lowerCaseText.includes('what has bala built')) {
+                botResponse = "Bala has worked on exciting projects like TIP Automation, Crop Doctor, Medosys, and several open-source contributions. Check out the 'Projects' and 'Open Source' sections for more!";
+            } else if (lowerCaseText.includes('bala's skills') || lowerCaseText.includes('skills') || lowerCaseText.includes('what technologies does bala know')) {
+                botResponse = "Bala's key skills include Python, Generative AI, NLP, Computer Vision, Langchain, LangGraph, FastAPI, RAG, Vector Databases, Azure Cloud, and Docker. Visit the 'Skills' section for a detailed list.";
+            } else if (lowerCaseText.includes('contact bala') || lowerCaseText.includes('get in touch') || lowerCaseText.includes('hire bala')) {
+                botResponse = "You can contact Bala directly via email at venkateshpnk22@gmail.com or connect with him on LinkedIn. There's a 'Contact' section at the bottom of the page with more details.";
+            } else if (lowerCaseText.includes('awards') || lowerCaseText.includes('achievements')) {
+                botResponse = "Bala was recognized as the 'Best Performer of the Year 2024' at SCB Bank for his contributions to automating security pipelines. See the 'Awards' section for more.";
+            } else if (lowerCaseText.includes('education') || lowerCaseText.includes('degrees')) {
+                botResponse = "Bala holds an M.Sc. in Applied Data Science from Teesside University, UK, and a B.E. in Computer Science from Sri Ram Engineering College, India. Details are in the 'Education' section.";
+            } else if (lowerCaseText.includes('open source') || lowerCaseText.includes('github')) {
+                botResponse = "Bala has several open-source projects on GitHub, including Technical Knowledge Assistant, E-commerce Analytics, Free AI Certification, Document RAG, Face Unlock, and AI Experiment Hub. You can find them in the 'Open Source Contributions' section.";
+            }
+
+            appendMessage(botResponse, 'bot');
         }
     </script>
 </body>
