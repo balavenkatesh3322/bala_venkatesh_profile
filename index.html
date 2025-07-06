@@ -220,122 +220,44 @@
         .skill-pill:hover::after {
             opacity: 1;
         }
-
-        /* Section-level animation */
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        /* --- NEW: Professional Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .animated-section {
-            animation: slideInUp 1s ease-out;
+        @keyframes skillPopIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        /* Chatbot Specific Styles */
-        #chatbot-container {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 1000;
-        }
-
-        #chatbot-icon {
-            width: 4rem;
-            height: 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        #chatbot-window {
-            width: 22rem;
-            height: 30rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: absolute;
-            bottom: 5rem; /* Adjust based on icon size */
-            right: 0;
-            background-color: var(--card-background);
-            color: var(--text-color);
-            transform: translateY(20px);
+        .animate-on-scroll {
             opacity: 0;
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
 
-        #chatbot-window.open {
-            transform: translateY(0);
-            opacity: 1;
+        .animate-on-scroll.is-visible {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .skill-pill.animate-on-scroll.is-visible {
+             animation: skillPopIn 0.5s ease-out forwards;
         }
 
-        #chat-messages {
-            flex-grow: 1;
-            padding: 1rem;
-            overflow-y: auto;
-            background-color: var(--background-color);
-        }
 
-        .message-bubble {
-            padding: 0.6rem 0.8rem;
-            border-radius: 0.75rem;
-            margin-bottom: 0.5rem;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-
-        .user-message {
-            background-color: var(--blue-100);
-            color: var(--blue-800);
-            align-self: flex-end;
-            margin-left: auto;
-        }
-
-        .bot-message {
-            background-color: var(--gray-200);
-            color: var(--gray-700);
-            align-self: flex-start;
-            margin-right: auto;
-        }
-
-        #chat-input {
-            border: 1px solid var(--gray-200);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            flex-grow: 1;
-            margin-right: 0.5rem;
-            background-color: var(--card-background);
-            color: var(--text-color);
-        }
-
-        #send-chat {
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        /* Custom Scrollbar for Chat Messages */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: var(--gray-100);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: var(--gray-700);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: var(--gray-800);
-        }
-    </style>
+        </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
     <!-- Header/Navigation -->
@@ -431,9 +353,9 @@
     <!-- About Section -->
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Professional Profile</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll">Professional Profile</h2>
             <div class="max-w-4xl mx-auto space-y-8">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center animate-on-scroll">
                     <p class="text-xl leading-relaxed text-gray-700">
                         I am a Data Scientist and AI Engineer who translates complex technical capabilities into tangible business value. My expertise lies in aligning AI solutions with core objectives, ensuring technology investments directly drive growth, efficiency, and innovation from concept to deployment.
                     </p>
@@ -731,24 +653,24 @@
     <!-- Skills Section -->
     <section id="skills" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Technical Skills</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll">Technical Skills</h2>
             <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="95">Python</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="80">Java</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="90">Generative AI</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="85">Langchain</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="80">LangGraph</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="75">Agents (CrewAI/Autogen)</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="70">Ollama</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="90">Prompt Engineering</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="85">NLP</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="80">Computer Vision</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="75">PyTorch</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="85">Azure Cloud</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="80">Docker</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="70">FastAPI</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="90">RAG</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm" data-proficiency="85">Vector Database</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="95">Python</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">Java</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="90">Generative AI</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">Langchain</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">LangGraph</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="75">Agents (CrewAI/Autogen)</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="70">Ollama</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="90">Prompt Engineering</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">NLP</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">Computer Vision</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="75">PyTorch</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">Azure Cloud</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">Docker</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="70">FastAPI</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="90">RAG</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">Vector Database</span>
             </div>
         </div>
     </section>
@@ -762,7 +684,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-md text-center">
                     <div class="text-blue-700 text-4xl mb-4"><i class="fas fa-graduation-cap"></i></div>
                     <h3 class="text-xl font-bold mb-1">M.Sc. Applied Data Science</h3>
-                    <p class="font-semibold text-gray-700 mb-1">Teesside University, UK</p>
+                    <p class="font-semibold text-gray-700 mb-1">Teesside University, London</p>
                     <p class="text-gray-500">2021 – 2022</p>
                 </div>
                 <!-- Education 2 -->
@@ -1042,247 +964,167 @@
     </div>
 
     <script>
-        // --- Modal Handling ---
-        function setupModal(openBtnId, closeBtnId, modalId) {
-            const openBtn = document.getElementById(openBtnId);
-            const closeBtn = document.getElementById(closeBtnId);
-            const modal = document.getElementById(modalId);
-
-            if (!openBtn || !closeBtn || !modal) return;
-
-            const openModal = () => {
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            };
-
-            const closeModal = () => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            };
-
-            openBtn.addEventListener('click', openModal);
-            closeBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-        }
-        
-        // --- Animated Counter ---
-        function animateCounters() {
-            const counters = document.querySelectorAll('#stats [data-target]');
-            const speed = 200; // The lower the number, the faster the count
-
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                let count = 0;
-                
-                const updateCount = () => {
-                    const increment = target / speed;
-                    count += increment;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count);
-                        setTimeout(updateCount, 1);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
-        }
-
-        // --- Intersection Observer for Counters ---
-        const statsSection = document.getElementById('stats');
-        let hasAnimated = false;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !hasAnimated) {
-                    animateCounters();
-                    hasAnimated = true;
-                }
-            });
-        }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
-
-        if (statsSection) {
-            observer.observe(statsSection);
-        }
-
-        // --- Setup All Modals on Document Load ---
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Modal Handling Function ---
+            function setupModal(openBtnId, closeBtnId, modalId) {
+                const openBtn = document.getElementById(openBtnId);
+                const closeBtn = document.getElementById(closeBtnId);
+                const modal = document.getElementById(modalId);
+
+                if (!openBtn || !closeBtn || !modal) {
+                    console.error(`Modal setup failed for: ${modalId}. An element was not found.`);
+                    return;
+                }
+
+                const openModal = () => {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                const closeModal = () => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                };
+
+                openBtn.addEventListener('click', openModal);
+                closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+            
+            // --- Setup All Modals ---
             setupModal('view-full-experience', 'close-experience-modal', 'experience-modal');
             setupModal('view-all-projects', 'close-projects-modal', 'projects-modal');
-        });
 
-        // --- Mobile Menu Toggle ---
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // --- Smooth Scrolling for Anchor Links ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70, // Adjust for fixed header height
-                        behavior: 'smooth'
+            // --- Stats Counter Animation ---
+            const statsSection = document.getElementById('stats');
+            if (statsSection) {
+                const statsCounters = statsSection.querySelectorAll('p[data-target]');
+                const statsObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            statsCounters.forEach(counter => {
+                                const target = +counter.getAttribute('data-target');
+                                counter.innerText = '0';
+                                const updateCounter = () => {
+                                    const value = +counter.innerText;
+                                    const increment = Math.max(1, target / 100);
+                                    if (value < target) {
+                                        counter.innerText = `${Math.min(target, Math.ceil(value + increment))}`;
+                                        setTimeout(updateCounter, 20);
+                                    } else {
+                                        counter.innerText = target;
+                                    }
+                                };
+                                updateCounter();
+                            });
+                            observer.disconnect();
+                        }
                     });
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+                }, { threshold: 0.1 });
+                statsObserver.observe(statsSection);
+            }
+
+            // --- Mobile Menu Toggle ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // --- Smooth Scrolling for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
                     }
+                });
+            });
+
+            // --- Experience Section Read More/Show Less ---
+            document.querySelectorAll('.read-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const details = this.previousElementSibling;
+                    const summary = details.previousElementSibling;
+                    if (details.classList.contains('hidden')) {
+                        details.classList.remove('hidden');
+                        summary.classList.add('hidden');
+                        this.textContent = 'Show Less';
+                    } else {
+                        details.classList.add('hidden');
+                        summary.classList.remove('hidden');
+                        this.textContent = 'Read More';
+                    }
+                });
+            });
+
+            // --- Skill Pill Proficiency Animation ---
+            document.querySelectorAll('.skill-pill').forEach(pill => {
+                const proficiency = pill.getAttribute('data-proficiency');
+                if (proficiency) {
+                    pill.style.setProperty('--proficiency-width', proficiency + '%');
                 }
             });
-        });
+            
+            // --- NEW: Animate Elements on Scroll ---
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add a delay based on the element's index for a staggered effect
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 100); // 100ms delay between each item
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        // --- Experience Section Read More/Show Less ---
-        document.querySelectorAll('.read-more-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const details = this.previousElementSibling;
-                const summary = this.previousElementSibling.previousElementSibling;
-                if (details.classList.contains('hidden')) {
-                    details.classList.remove('hidden');
-                    summary.classList.add('hidden');
-                    this.textContent = 'Show Less';
+            // Observe all elements with the 'animate-on-scroll' class
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                scrollObserver.observe(el);
+            });
+
+
+            // --- Dark Mode Toggle ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            if (themeToggle && body) {
+                const savedTheme = localStorage.getItem('theme');
+                const icon = themeToggle.querySelector('i');
+                if (savedTheme === 'dark') {
+                    body.classList.add('dark-mode');
+                    icon.classList.replace('fa-moon', 'fa-sun');
                 } else {
-                    details.classList.add('hidden');
-                    summary.classList.remove('hidden');
-                    this.textContent = 'Read More';
+                    icon.classList.replace('fa-sun', 'fa-moon');
                 }
-            });
-        });
 
-        // --- Skill Pill Proficiency Animation ---
-        const skillPills = document.querySelectorAll('.skill-pill');
-        skillPills.forEach(pill => {
-            const proficiency = pill.getAttribute('data-proficiency');
-            pill.style.setProperty('--proficiency-width', proficiency + '%');
-        });
-
-        // --- Skills Section Animation on Scroll ---
-        const skillsSection = document.getElementById('skills');
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    skillsSection.classList.add('animated-section');
-                    skillsObserver.unobserve(skillsSection);
-                }
-            });
-        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
-
-        if (skillsSection) {
-            skillsObserver.observe(skillsSection);
-        }
-
-        // --- Dark Mode Toggle ---
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        // Apply saved theme on load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-        } else {
-            themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+                themeToggle.addEventListener('click', () => {
+                    body.classList.toggle('dark-mode');
+                    const isDarkMode = body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                    if (isDarkMode) {
+                        icon.classList.replace('fa-moon', 'fa-sun');
+                    } else {
+                        icon.classList.replace('fa-sun', 'fa-moon');
+                    }
+                });
             }
         });
-
-        // --- Chatbot Logic ---
-        const chatbotIcon = document.getElementById('chatbot-icon');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const closeChatbotBtn = document.getElementById('close-chatbot');
-        const chatMessages = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const sendChatBtn = document.getElementById('send-chat');
-
-        chatbotIcon.addEventListener('click', () => {
-            chatbotWindow.classList.toggle('hidden');
-            chatbotWindow.classList.toggle('open');
-            if (!chatbotWindow.classList.contains('hidden')) {
-                chatInput.focus();
-            }
-        });
-
-        closeChatbotBtn.addEventListener('click', () => {
-            chatbotWindow.classList.add('hidden');
-            chatbotWindow.classList.remove('open');
-        });
-
-        sendChatBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        function sendMessage() {
-            const userText = chatInput.value.trim();
-            if (userText === '') return;
-
-            appendMessage(userText, 'user');
-            chatInput.value = '';
-            setTimeout(() => respondToUser(userText), 500);
-        }
-
-        function appendMessage(text, sender) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('flex', 'mb-2');
-            if (sender === 'user') {
-                messageElement.classList.add('justify-end');
-            } else {
-                messageElement.classList.add('justify-start');
-            }
-            const bubbleElement = document.createElement('div');
-            bubbleElement.classList.add('message-bubble', `${sender}-message`);
-            bubbleElement.textContent = text;
-            messageElement.appendChild(bubbleElement);
-            chatMessages.appendChild(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function respondToUser(userText) {
-            let botResponse = "I'm sorry, I don't have information on that. Please try asking something else about Bala's profile, projects, or skills.";
-            const lowerCaseText = userText.toLowerCase();
-
-            if (lowerCaseText.includes('hello') || lowerCaseText.includes('hi')) {
-                botResponse = "Hello there! How can I assist you today regarding Bala's profile?";
-            } else if (lowerCaseText.includes('bala's experience') || lowerCaseText.includes('experience') || lowerCaseText.includes('work history')) {
-                botResponse = "Bala has extensive experience as an ML Security Engineer at Standard Chartered Bank, Lead Data Scientist at Bighaat PVT LTD, and Data Scientist at AIBOTS Sdn Bhd. You can find more details in the 'Experience' section.";
-            } else if (lowerCaseText.includes('bala's projects') || lowerCaseText.includes('projects') || lowerCaseText.includes('what has bala built')) {
-                botResponse = "Bala has worked on exciting projects like TIP Automation, Crop Doctor, Medosys, and several open-source contributions. Check out the 'Projects' and 'Open Source' sections for more!";
-            } else if (lowerCaseText.includes('bala's skills') || lowerCaseText.includes('skills') || lowerCaseText.includes('what technologies does bala know')) {
-                botResponse = "Bala's key skills include Python, Generative AI, NLP, Computer Vision, Langchain, LangGraph, FastAPI, RAG, Vector Databases, Azure Cloud, and Docker. Visit the 'Skills' section for a detailed list.";
-            } else if (lowerCaseText.includes('contact bala') || lowerCaseText.includes('get in touch') || lowerCaseText.includes('hire bala')) {
-                botResponse = "You can contact Bala directly via email at venkateshpnk22@gmail.com or connect with him on LinkedIn. There's a 'Contact' section at the bottom of the page with more details.";
-            } else if (lowerCaseText.includes('awards') || lowerCaseText.includes('achievements')) {
-                botResponse = "Bala was recognized as the 'Best Performer of the Year 2024' at SCB Bank for his contributions to automating security pipelines. See the 'Awards' section for more.";
-            } else if (lowerCaseText.includes('education') || lowerCaseText.includes('degrees')) {
-                botResponse = "Bala holds an M.Sc. in Applied Data Science from Teesside University, UK, and a B.E. in Computer Science from Sri Ram Engineering College, India. Details are in the 'Education' section.";
-            } else if (lowerCaseText.includes('open source') || lowerCaseText.includes('github')) {
-                botResponse = "Bala has several open-source projects on GitHub, including Technical Knowledge Assistant, E-commerce Analytics, Free AI Certification, Document RAG, Face Unlock, and AI Experiment Hub. You can find them in the 'Open Source Contributions' section.";
-            }
-
-            appendMessage(botResponse, 'bot');
-        }
-    </script>
+        </script>
 </body>
 </html>
