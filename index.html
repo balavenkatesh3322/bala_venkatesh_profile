@@ -223,39 +223,41 @@
         
         /* --- NEW: Professional Animations --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes skillPopIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .animate-on-scroll {
             opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .animate-on-scroll.is-visible {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        
-        .skill-pill.animate-on-scroll.is-visible {
-             animation: skillPopIn 0.5s ease-out forwards;
+            opacity: 1;
+            transform: none;
         }
 
+        .animate-on-scroll.fade-in-up {
+            transform: translateY(30px);
+        }
+        
+        .animate-on-scroll.pop-in {
+             transform: scale(0.8);
+        }
+
+        .animate-on-scroll.zoom-in {
+             transform: scale(0.9);
+        }
 
         </style>
 </head>
@@ -353,9 +355,9 @@
     <!-- About Section -->
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll">Professional Profile</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Professional Profile</h2>
             <div class="max-w-4xl mx-auto space-y-8">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center animate-on-scroll">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center animate-on-scroll fade-in-up" data-delay="100">
                     <p class="text-xl leading-relaxed text-gray-700">
                         I am a Data Scientist and AI Engineer who translates complex technical capabilities into tangible business value. My expertise lies in aligning AI solutions with core objectives, ensuring technology investments directly drive growth, efficiency, and innovation from concept to deployment.
                     </p>
@@ -376,28 +378,28 @@
     <!-- How I Can Help You Section -->
     <section id="services" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">How I Can Help You</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">How I Can Help You</h2>
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up">
                     <i class="fas fa-lightbulb text-blue-600 text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">AI Strategy & Consulting</h3>
                     <p class="text-gray-600">Identifying and planning high-impact AI opportunities for your business.</p>
                 </div>
                 <!-- Service 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up" data-delay="100">
                     <i class="fas fa-cogs text-blue-600 text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Custom Model Development</h3>
                     <p class="text-gray-600">Building bespoke ML models (NLP, CV, GenAI) tailored to your data.</p>
                 </div>
                 <!-- Service 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up" data-delay="200">
                     <i class="fas fa-users text-blue-600 text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">AI Team Leadership</h3>
                     <p class="text-gray-600">Guiding and mentoring technical teams to deliver projects effectively.</p>
                 </div>
                  <!-- Service 4 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up" data-delay="300">
                     <i class="fas fa-pen-alt text-blue-600 text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Technical Writing</h3>
                     <p class="text-gray-600">Authoring clear and concise articles on complex AI topics. <a href="https://balavenkatesh.medium.com/" target="_blank" class="text-blue-600 hover:underline">Read my blog</a>.</p>
@@ -412,7 +414,7 @@
     <!-- Experience Section -->
     <section id="experience" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Career Highlights</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Career Highlights</h2>
             
             <div class="max-w-4xl mx-auto relative pl-5">
                 <!-- Timeline line -->
@@ -421,7 +423,7 @@
                 <!-- Timeline items (showing first 3 by default) -->
                 <div class="space-y-12">
                     <!-- Standard Chartered Bank -->
-                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item">
+                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item animate-on-scroll fade-in-up">
                         <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
                             <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Sep 2023 - Present</span>
                             <h3 class="text-xl font-bold mt-2">Standard Chartered Bank</h3>
@@ -440,7 +442,7 @@
                     </div>
                     
                     <!-- Bighaat PVT LTD -->
-                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item">
+                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item animate-on-scroll fade-in-up" data-delay="100">
                         <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
                             <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Mar 2022 - Mar 2023</span>
                             <h3 class="text-xl font-bold mt-2">Bighaat PVT LTD</h3>
@@ -459,7 +461,7 @@
                     </div>
 
                     <!-- AIBOTS Sdn Bhd - Medosys -->
-                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item">
+                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item animate-on-scroll fade-in-up" data-delay="200">
                         <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
                             <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Oct 2020 - Jul 2021</span>
                             <h3 class="text-xl font-bold mt-2">AIBOTS Sdn Bhd</h3>
@@ -653,28 +655,29 @@
     <!-- Skills Section -->
     <section id="skills" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll">Technical Skills</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Technical Skills</h2>
             <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="95">Python</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">Java</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="90">Generative AI</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">Langchain</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">LangGraph</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="75">Agents (CrewAI/Autogen)</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="70">Ollama</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="90">Prompt Engineering</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">NLP</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">Computer Vision</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="75">PyTorch</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">Azure Cloud</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="80">Docker</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="70">FastAPI</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="90">RAG</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll" data-proficiency="85">Vector Database</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="95">Python</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="50">Java</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="90" data-delay="100">Generative AI</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="150">Langchain</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="200">LangGraph</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="75" data-delay="250">Agents (CrewAI/Autogen)</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="70" data-delay="300">Ollama</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="90" data-delay="350">Prompt Engineering</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="400">NLP</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="450">Computer Vision</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="75" data-delay="500">PyTorch</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="550">Azure Cloud</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="600">Docker</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="70" data-delay="650">FastAPI</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="90" data-delay="700">RAG</span>
+                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="750">Vector Database</span>
             </div>
         </div>
     </section>
 
+   
     <!-- Education Section -->
     <section id="education" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -701,10 +704,11 @@
     <!-- Awards Section -->
     <section id="awards" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900">Awards & Achievements</h2>
-            <div class="max-w-2xl mx-auto bg-gray-50 p-8 rounded-xl shadow-md award-highlight">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Awards & Achievements</h2>
+            <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-8 award-highlight">
+                <img src="images/award.jpg" alt="Award Image" class="w-full md:w-1/2 h-auto rounded-lg shadow-md animate-on-scroll zoom-in" onerror="this.onerror=null;this.src='https://placehold.co/400x300/eab308/ffffff?text=Award';">
                 <div class="flex items-center">
-                    <div class="text-yellow-500 text-4xl mr-6">
+                    <div class="text-yellow-500 text-4xl mr-6 hidden md:block">
                         <i class="fas fa-trophy"></i>
                     </div>
                     <div>
@@ -1083,12 +1087,12 @@
             
             // --- NEW: Animate Elements on Scroll ---
             const scrollObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry, index) => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Add a delay based on the element's index for a staggered effect
+                        const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
                         setTimeout(() => {
                             entry.target.classList.add('is-visible');
-                        }, index * 100); // 100ms delay between each item
+                        }, delay);
                         observer.unobserve(entry.target);
                     }
                 });
