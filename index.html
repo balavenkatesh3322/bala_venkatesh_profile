@@ -930,18 +930,21 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-blue-900 text-white">
-        <div class="container mx-auto px-4 animate-on-scroll fade-in-up">
-            <h2 class="text-3xl font-bold mb-6 text-center">Ready to Elevate Your Business with AI?</h2>
-            <p class="text-lg leading-relaxed text-center max-w-2xl mx-auto mb-10 text-blue-200">
-                Whether you're looking to innovate with Generative AI, optimize operations with data science, or need expert guidance for your AI team, I'm here to help. Reach out today to discuss your unique challenges and how we can build intelligent solutions together.
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Let's Connect</h2>
+            <p class="text-lg text-center max-w-2xl mx-auto mb-10 text-blue-200">
+                Feel free to reach out directly at <a href="mailto:venkateshpnk22@gmail.com" class="underline">venkateshpnk22@gmail.com</a> or call me at <a href="tel:9003812808" class="underline">9003812808</a> without any hesitation.
             </p>
-            <div class="text-center flex flex-col items-center space-y-4">
-                 <a href="mailto:venkateshpnk22@gmail.com" class="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-blue-100 transition inline-block text-lg animate-on-scroll pop-in" data-delay="200">
-                    <i class="fas fa-envelope mr-2"></i>venkateshpnk22@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/bala-venkatesh-67964247/" target="_blank" class="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-blue-100 transition inline-block text-lg animate-on-scroll pop-in" data-delay="300">
-                    <i class="fab fa-linkedin mr-2"></i>Connect on LinkedIn
-                </a>
+            <div class="max-w-2xl mx-auto bg-white text-gray-800 rounded-lg shadow-lg p-8">
+                <form id="contact-form" action="https://formspree.io/f/xknrpqkj" method="POST">
+                    <div id="chat-container" class="space-y-4 h-64 overflow-y-auto">
+                        <!-- Chat messages will be appended here -->
+                    </div>
+                    <div class="mt-6 flex">
+                        <input type="text" id="chat-input" name="message" class="w-full px-4 py-2 rounded-l-lg border text-black" placeholder="Type your answer...">
+                        <button id="chat-send" type="submit" class="bg-blue-700 text-white px-4 py-2 rounded-r-lg font-bold hover:bg-blue-800 transition">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -1395,6 +1398,162 @@
                     });
                 });
             }
+            // --- Conversational Contact Form ---
+            const chatContainer = document.getElementById('chat-container');
+            const chatInput = document.getElementById('chat-input');
+            const chatSend = document.getElementById('chat-send');
+            const contactForm = document.getElementById('contact-form');
+
+            const questions = [
+                "Hello! What's your name?",
+                "Thanks, {name}! What's your email address?",
+                "Got it. What's your phone number?",
+                "Great. Lastly, how can I help you today?"
+            ];
+
+            let currentQuestion = 0;
+            const answers = {};
+
+            function addBotMessage(message) {
+                const messageElement = document.createElement('div');
+                messageElement.className = 'flex items-start justify-start space-x-3 my-4';
+                messageElement.innerHTML = `
+                    <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                    <div class="bg-gray-200 text-gray-800 rounded-lg p-3 max-w-xs">
+                        ${message}
+                    </div>`;
+                chatContainer.appendChild(messageElement);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function addUserMessage(message) {
+                const messageElement = document.createElement('div');
+                messageElement.className = 'flex items-start justify-end space-x-3 my-4';
+                messageElement.innerHTML = `
+                    <div class="bg-blue-700 text-white rounded-lg p-3 max-w-xs">
+                        ${message}
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user text-gray-600 text-xl"></i>
+                    </div>`;
+                chatContainer.appendChild(messageElement);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function addConversationStartedMarker() {
+                const markerElement = document.createElement('div');
+                markerElement.className = 'text-center text-xs text-gray-500 my-2 flex items-center justify-center';
+                markerElement.innerHTML = `
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    Conversation Started
+                `;
+                chatContainer.appendChild(markerElement);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function addConversationEndedMarker() {
+                const markerElement = document.createElement('div');
+                markerElement.className = 'text-center text-xs text-gray-500 my-2 flex items-center justify-center';
+                markerElement.innerHTML = `
+                    <i class="fas fa-check-double text-blue-500 mr-2"></i>
+                    Conversation Ended
+                `;
+                chatContainer.appendChild(markerElement);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function askQuestion() {
+                let question = questions[currentQuestion];
+                if (answers.name) {
+                    question = question.replace('{name}', answers.name);
+                }
+                addBotMessage(question);
+            }
+
+            function handleUserInput() {
+                const userInput = chatInput.value.trim();
+                if (userInput === '') return;
+
+                addUserMessage(userInput);
+
+                if (currentQuestion === 0) {
+                    addConversationStartedMarker();
+                }
+
+                switch (currentQuestion) {
+                    case 0:
+                        answers.name = userInput;
+                        break;
+                    case 1:
+                        if (!/\S+@\S+\.\S+/.test(userInput)) {
+                            addBotMessage("That doesn't look like a valid email. Please try again.");
+                            return;
+                        }
+                        answers.email = userInput;
+                        break;
+                    case 2:
+                        if (!/^[\d\s\-\+()]{7,}$/.test(userInput)) {
+                            addBotMessage("That doesn't look like a valid phone number. Please try again.");
+                            return;
+                        }
+                        answers.phone = userInput;
+                        break;
+                    case 3:
+                        answers.needs = userInput;
+                        break;
+                }
+
+                chatInput.value = '';
+                currentQuestion++;
+
+                if (currentQuestion < questions.length) {
+                    askQuestion();
+                } else {
+                    submitForm();
+                }
+            }
+
+            async function submitForm() {
+                const formData = new FormData();
+                formData.append('name', answers.name);
+                formData.append('email', answers.email);
+                formData.append('phone', answers.phone);
+                formData.append('message', answers.needs);
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        addBotMessage("Great! Your email has been sent. I'll get back to you shortly. Relax and take a rest, Bala will take care of it now.");
+                        addConversationEndedMarker();
+                        chatSend.textContent = 'Sent';
+                        chatSend.classList.remove('bg-blue-700', 'hover:bg-blue-800');
+                        chatSend.classList.add('bg-green-500');
+                    } else {
+                        addBotMessage("Oops! Something went wrong. Please try again later.");
+                    }
+                } catch (error) {
+                    addBotMessage("Oops! Something went wrong. Please try again later.");
+                }
+
+                chatInput.disabled = true;
+                chatSend.disabled = true;
+            }
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleUserInput();
+            });
+
+            askQuestion();
         });
         </script>
 </body>
