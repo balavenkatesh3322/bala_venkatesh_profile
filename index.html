@@ -325,7 +325,30 @@
             transition: box-shadow 0.5s ease-in-out;
         }
 
+        .perspective-container {
+            perspective: 1000px;
+        }
 
+        .flipper {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+        }
+
+        .back {
+            background-color: var(--blue-700);
+            transform: rotateY(180deg);
+        }
+        
         </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z230E9QPE0"></script>
@@ -392,18 +415,24 @@
     <section id="home" class="gradient-bg text-white pt-20 pb-10">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 animate-on-scroll fade-in-up">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Bala Venkatesh</h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4"><span id="name-flipper">Bala</span> Venkatesh</h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-blue-200" id="role-text">Data Scientist | AI Engineer</h2>
                 <p class="text-lg mb-8">Building intelligent solutions that drive business growth and efficiency.</p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#contact" class="bg-white text-blue-800 px-8 py-4 rounded-lg font-bold hover:bg-blue-100 transition text-lg">Let's Collaborate</a>
-                    <a href="#projects" class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">View Projects</a>
                     <a href="Bala Venkatesh Resume.pdf" download class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"><i class="fas fa-download mr-2"></i>Download Resume</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center animate-on-scroll zoom-in" data-delay="200">
-                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-700 flex items-center justify-center overflow-hidden border-4 border-white shadow-xl">
-                    <img src="https://media.licdn.com/dms/image/D5603AQEUf_p_3rU5lQ/profile-displayphoto-shrink_400_400/0/1699981448698?e=1724284800&v=beta&t=M8X3hWjU2B6rV8vG_a-M0emw_fMhWfXo_u8uCq7hJ7g" alt="Bala Venkatesh" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x300/1e40af/ffffff?text=Bala';">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-700 flex items-center justify-center overflow-hidden border-4 border-white shadow-xl relative">
+                    <div id="flipper-container" class="w-full h-full">
+                        <div id="flipper-bala" class="absolute inset-0 flex items-center justify-center text-5xl font-bold text-white transition-opacity duration-500 opacity-100">
+                            Bala
+                        </div>
+                        <div id="flipper-bv" class="absolute inset-0 flex items-center justify-center text-5xl font-bold text-white transition-opacity duration-500 opacity-0">
+                            BV
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -438,11 +467,11 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
+    <section id="about" class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">My Professional Story</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">My Story</h2>
             <div class="max-w-4xl mx-auto space-y-8">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center animate-on-scroll fade-in-up" data-delay="100">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center animate-on-scroll fade-in-up" data-delay="100">
                     <p class="text-xl leading-relaxed text-gray-700">
                         I am a Data Scientist and AI Engineer who translates complex technical capabilities into tangible business value. My expertise lies in aligning AI solutions with core objectives, ensuring technology investments directly drive growth, efficiency, and innovation from concept to deployment.
                     </p>
@@ -451,10 +480,43 @@
         </div>
     </section>
 
+    <!-- Domain Experience Section -->
+    <section id="domain-experience" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Domain Expertise</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Banking -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up">
+                    <i class="fas fa-university text-blue-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Banking</h3>
+                    <p class="text-gray-600">Secure and efficient financial solutions.</p>
+                </div>
+                <!-- Healthcare -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up" data-delay="100">
+                    <i class="fas fa-heartbeat text-blue-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Healthcare</h3>
+                    <p class="text-gray-600">Improving patient outcomes with AI.</p>
+                </div>
+                <!-- Agriculture -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up" data-delay="200">
+                    <i class="fas fa-leaf text-blue-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Agriculture</h3>
+                    <p class="text-gray-600">Data-driven farming solutions.</p>
+                </div>
+                <!-- E-commerce -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition animate-on-scroll fade-in-up" data-delay="300">
+                    <i class="fas fa-shopping-cart text-blue-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">E-commerce</h3>
+                    <p class="text-gray-600">Optimizing the online retail experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- AI Learning Resources Section -->
     <section id="ai-learning" class="py-12 bg-blue-50 text-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-blue-900 animate-on-scroll fade-in-up">Want to Learn AI with Me?</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900 animate-on-scroll fade-in-up">Learn AI With Me</h2>
             <p class="text-lg text-gray-700 mb-8 animate-on-scroll fade-in-up" data-delay="100">Explore my curated resources and guides to kickstart your AI learning journey and earn free certifications.</p>
             <div class="mt-8 flex justify-center">
                 <a href="https://balavenkatesh3322.github.io/free-ai-certification/" target="_blank" class="bg-blue-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-800 transition text-lg animate-on-scroll pop-in" data-delay="200"><i class="fas fa-graduation-cap mr-2"></i>Start Learning AI Now</a>
@@ -1212,6 +1274,25 @@
                 scrollObserver.observe(el);
             });
 
+            // Creative flipping animation
+            const flipperBala = document.getElementById('flipper-bala');
+            const flipperBv = document.getElementById('flipper-bv');
+            let isBalaVisible = true;
+
+            setInterval(() => {
+                if (isBalaVisible) {
+                    flipperBala.classList.remove('opacity-100');
+                    flipperBala.classList.add('opacity-0');
+                    flipperBv.classList.remove('opacity-0');
+                    flipperBv.classList.add('opacity-100');
+                } else {
+                    flipperBv.classList.remove('opacity-100');
+                    flipperBv.classList.add('opacity-0');
+                    flipperBala.classList.remove('opacity-0');
+                    flipperBala.classList.add('opacity-100');
+                }
+                isBalaVisible = !isBalaVisible;
+            }, 2000);
 
             // --- Dark Mode Toggle ---
             const themeToggle = document.getElementById('theme-toggle');
