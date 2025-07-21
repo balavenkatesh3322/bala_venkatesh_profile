@@ -349,6 +349,262 @@
             transform: rotateY(180deg);
         }
         
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .embed-container iframe,
+        .embed-container object,
+        .embed-container embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px; /* Adjust as needed */
+            object-fit: cover;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .timeline-card {
+            background-color: var(--card-background);
+            border-left: 3px solid var(--blue-600);
+            padding: 2rem;
+            margin-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--blue-600);
+            border: 3px solid var(--background-color);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-card-v2 {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card-v2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .project-card-v2:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-card-v2 .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .project-card-v2:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .skill-pill-v2 {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: var(--blue-100);
+            color: var(--blue-800);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .skill-pill-v2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--blue-600);
+            transform: translateX(-100%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .skill-pill-v2:hover::before {
+            transform: translateX(0);
+        }
+
+        .skill-pill-v2:hover {
+            color: white;
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .lightbox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox .prev, .lightbox .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .lightbox .prev { left: 2rem; }
+        .lightbox .next { right: 2rem; }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255,255,255,0.5);
+            opacity: 0;
+            border-radius: 50%;
+            transform: scale(1, 1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+
+        #back-to-top {
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(20px);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--blue-600);
+            border-radius: 20px;
+            border: 3px solid var(--background-color);
+        }
+        
         </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z230E9QPE0"></script>
@@ -372,17 +628,35 @@
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold">Bala Venkatesh</div>
             <nav class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:text-blue-200 transition">About</a>
-                 <a href="#ai-learning" class="hover:text-blue-200 transition">Learn AI</a>
-                 <a href="#services" class="hover:text-blue-200 transition">Services</a>
-                <a href="#experience" class="hover:text-blue-200 transition">Experience</a>
-                <a href="#projects" class="hover:text-blue-200 transition">Projects</a>
-                <a href="#open-source-projects" class="hover:text-blue-200 transition">Open Source</a>
-                <a href="#skills" class="hover:text-blue-200 transition">Skills</a>
-                <a href="#education" class="hover:text-blue-200 transition">Education</a>
-                <a href="#certifications" class="hover:text-blue-200 transition">Certifications</a>
-                <a href="#awards" class="hover:text-blue-200 transition">Awards</a>
-                <a href="#references" class="hover:text-blue-200 transition">References</a>
+                <div class="relative group">
+                    <button class="hover:text-blue-200 transition">About Me</button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2">
+                        <a href="#about" class="block px-4 py-2 hover:bg-gray-100">Story</a>
+                        <a href="#skills" class="block px-4 py-2 hover:bg-gray-100">Skills</a>
+                        <a href="#education" class="block px-4 py-2 hover:bg-gray-100">Education</a>
+                        <a href="#certifications" class="block px-4 py-2 hover:bg-gray-100">Certifications</a>
+                        <a href="#awards" class="block px-4 py-2 hover:bg-gray-100">Awards</a>
+                        <a href="#references" class="block px-4 py-2 hover:bg-gray-100">References</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-blue-200 transition">My Work</button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2">
+                        <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Services</a>
+                        <a href="#experience" class="block px-4 py-2 hover:bg-gray-100">Experience</a>
+                        <a href="#projects" class="block px-4 py-2 hover:bg-gray-100">Projects</a>
+                        <a href="#open-source-projects" class="block px-4 py-2 hover:bg-gray-100">Open Source</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-blue-200 transition">Media</button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2">
+                        <a href="#demo-videos" class="block px-4 py-2 hover:bg-gray-100">Demo Videos</a>
+                        <a href="#book" class="block px-4 py-2 hover:bg-gray-100">Book</a>
+                        <a href="#gallery" class="block px-4 py-2 hover:bg-gray-100">Gallery</a>
+                    </div>
+                </div>
+                <a href="#ai-learning" class="hover:text-blue-200 transition">Learn AI</a>
                 <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
                 <button id="theme-toggle" class="text-white focus:outline-none ml-4">
                     <i class="fas fa-moon text-xl"></i>
@@ -395,32 +669,50 @@
         <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-blue-900 w-full px-4 py-2" id="mobile-menu">
             <div class="flex flex-col space-y-3">
-                 <a href="#about" class="hover:text-blue-200 transition py-1">About</a>
+                <div class="relative group">
+                    <button class="hover:text-blue-200 transition">About Me</button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2">
+                        <a href="#about" class="block px-4 py-2 hover:bg-gray-100">Story</a>
+                        <a href="#skills" class="block px-4 py-2 hover:bg-gray-100">Skills</a>
+                        <a href="#education" class="block px-4 py-2 hover:bg-gray-100">Education</a>
+                        <a href="#certifications" class="block px-4 py-2 hover:bg-gray-100">Certifications</a>
+                        <a href="#awards" class="block px-4 py-2 hover:bg-gray-100">Awards</a>
+                        <a href="#references" class="block px-4 py-2 hover:bg-gray-100">References</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-blue-200 transition">My Work</button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2">
+                        <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Services</a>
+                        <a href="#experience" class="block px-4 py-2 hover:bg-gray-100">Experience</a>
+                        <a href="#projects" class="block px-4 py-2 hover:bg-gray-100">Projects</a>
+                        <a href="#open-source-projects" class="block px-4 py-2 hover:bg-gray-100">Open Source</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-blue-200 transition">Media</button>
+                    <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg py-2">
+                        <a href="#demo-videos" class="block px-4 py-2 hover:bg-gray-100">Demo Videos</a>
+                        <a href="#book" class="block px-4 py-2 hover:bg-gray-100">Book</a>
+                        <a href="#gallery" class="block px-4 py-2 hover:bg-gray-100">Gallery</a>
+                    </div>
+                </div>
                 <a href="#ai-learning" class="hover:text-blue-200 transition py-1">Learn AI</a>
-                <a href="#services" class="hover:text-blue-200 transition py-1">Services</a>
-                <a href="#experience" class="hover:text-blue-200 transition py-1">Experience</a>
-                <a href="#projects" class="hover:text-blue-200 transition py-1">Projects</a>
-                <a href="#open-source-projects" class="hover:text-blue-200 transition py-1">Open Source</a>
-                <a href="#skills" class="hover:text-blue-200 transition py-1">Skills</a>
-                <a href="#education" class="hover:text-blue-200 transition py-1">Education</a>
-                <a href="#certifications" class="hover:text-blue-200 transition py-1">Certifications</a>
-                <a href="#awards" class="hover:text-blue-200 transition py-1">Awards</a>
-                <a href="#references" class="hover:text-blue-200 transition py-1">References</a>
                 <a href="#contact" class="hover:text-blue-200 transition py-1">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg text-white pt-20 pb-10">
+    <section id="home" class="gradient-bg text-white pt-20 pb-10 parallax" style="background-image: url('images/cc-bg-1.jpg');">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 animate-on-scroll fade-in-up">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-4"><span id="name-flipper">Bala</span> Venkatesh</h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-blue-200" id="role-text">Data Scientist | AI Engineer</h2>
                 <p class="text-lg mb-8">Building intelligent solutions that drive business growth and efficiency.</p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="bg-white text-blue-800 px-8 py-4 rounded-lg font-bold hover:bg-blue-100 transition text-lg">Let's Collaborate</a>
-                    <a href="Bala Venkatesh Resume.pdf" download class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"><i class="fas fa-download mr-2"></i>Download Resume</a>
+                    <a href="#contact" class="bg-white text-blue-800 px-8 py-4 rounded-lg font-bold hover:bg-blue-100 transition text-lg btn">Let's Collaborate</a>
+                    <a href="Bala Venkatesh Resume.pdf" download class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition btn"><i class="fas fa-download mr-2"></i>Download Resume</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center animate-on-scroll zoom-in" data-delay="200">
@@ -565,73 +857,49 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">My Professional Journey</h2>
             
-            <div class="max-w-4xl mx-auto relative pl-5">
+            <div class="max-w-4xl mx-auto relative">
                 <!-- Timeline line -->
-                <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-blue-200"></div>
+                <div class="absolute left-0 h-full w-0.5 bg-blue-200 ml-4"></div>
                 
-                <!-- Timeline items (showing first 3 by default) -->
+                <!-- Timeline items -->
                 <div class="space-y-12">
                     <!-- Standard Chartered Bank -->
-                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item animate-on-scroll fade-in-up">
-                        <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
-                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Sep 2023 - Present</span>
-                            <h3 class="text-xl font-bold mt-2">Standard Chartered Bank</h3>
-                            <p class="text-gray-600 font-semibold">ML Security Engineer</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md">
-                                <h4 class="text-lg font-bold mb-2">Automated Pipeline Security</h4>
-                                <p class="mb-4 text-sm experience-summary">Pioneered a solution using Retrieval-Augmented Generation (RAG) to automate misconfiguration detection and remediation in Azure DevOps pipelines, drastically improving security posture and earning the "Best Performer of the Year 2024" award.</p>
-                                <div class="experience-details hidden">
-                                    <p class="mb-4 text-sm">This involved designing and implementing a robust RAG-based system that could analyze complex Azure DevOps pipeline configurations, identify potential security vulnerabilities and misconfigurations, and suggest automated remediation steps. The project significantly reduced manual security review efforts and enhanced the overall security posture of the bank's CI/CD pipelines.</p>
-                                </div>
-                                <button class="text-blue-600 hover:underline text-sm read-more-btn">Read More</button>
-                            </div>
+                    <div class="timeline-card animate-on-scroll fade-in-up">
+                        <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Sep 2023 - Present</span>
+                        <h3 class="text-xl font-bold mt-2">Standard Chartered Bank</h3>
+                        <p class="text-gray-600 font-semibold">ML Security Engineer</p>
+                        <div class="mt-4">
+                            <h4 class="text-lg font-bold mb-2">Automated Pipeline Security</h4>
+                            <p class="mb-4 text-sm">Pioneered a solution using Retrieval-Augmented Generation (RAG) to automate misconfiguration detection and remediation in Azure DevOps pipelines, drastically improving security posture and earning the "Best Performer of the Year 2024" award.</p>
                         </div>
                     </div>
                     
                     <!-- Bighaat PVT LTD -->
-                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item animate-on-scroll fade-in-up" data-delay="100">
-                        <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
-                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Mar 2022 - Mar 2023</span>
-                            <h3 class="text-xl font-bold mt-2">Bighaat PVT LTD</h3>
-                            <p class="text-gray-600 font-semibold">Lead Data Scientist</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md">
-                                <h4 class="text-lg font-bold mb-2">AI-Powered Crop Doctor</h4>
-                                <p class="mb-4 text-sm experience-summary">Led the creation of an AI mobile app to help farmers identify plant diseases from images, deploying deep learning models to provide actionable, real-time insights and improve crop health across the region.</p>
-                                <div class="experience-details hidden">
-                                    <p class="mb-4 text-sm">This initiative involved extensive research into plant pathology and image recognition, followed by the development and fine-tuning of deep learning models capable of accurately identifying various crop diseases from user-submitted images. The app provided real-time diagnoses and recommended solutions, significantly aiding farmers in disease management and improving agricultural productivity.</p>
-                                </div>
-                                <button class="text-blue-600 hover:underline text-sm read-more-btn">Read More</button>
-                            </div>
+                    <div class="timeline-card animate-on-scroll fade-in-up" data-delay="100">
+                        <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Mar 2022 - Mar 2023</span>
+                        <h3 class="text-xl font-bold mt-2">Bighaat PVT LTD</h3>
+                        <p class="text-gray-600 font-semibold">Lead Data Scientist</p>
+                        <div class="mt-4">
+                            <h4 class="text-lg font-bold mb-2">AI-Powered Crop Doctor</h4>
+                            <p class="mb-4 text-sm">Led the creation of an AI mobile app to help farmers identify plant diseases from images, deploying deep learning models to provide actionable, real-time insights and improve crop health across the region.</p>
                         </div>
                     </div>
 
                     <!-- AIBOTS Sdn Bhd - Medosys -->
-                    <div class="relative pl-8 md:pl-0 md:flex items-start timeline-item animate-on-scroll fade-in-up" data-delay="200">
-                        <div class="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
-                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Oct 2020 - Jul 2021</span>
-                            <h3 class="text-xl font-bold mt-2">AIBOTS Sdn Bhd</h3>
-                            <p class="text-gray-600 font-semibold">Data Scientist</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md">
-                                <h4 class="text-lg font-bold mb-2">Healthcare NLP Application</h4>
-                                <p class="mb-4 text-sm experience-summary">Developed a healthcare application using NLP to generate clinical notes from patient conversations, streamlining physician workflows and significantly improving documentation efficiency.</p>
-                                <div class="experience-details hidden">
-                                    <p class="mb-4 text-sm">This project focused on leveraging Natural Language Processing to automatically transcribe and summarize patient-physician conversations into structured clinical notes. The solution aimed to reduce the administrative burden on healthcare professionals, allowing them to focus more on patient care. It involved developing custom NLP models for medical terminology and integrating them into a user-friendly application.</p>
-                                </div>
-                                <button class="text-blue-600 hover:underline text-sm read-more-btn">Read More</button>
-                            </div>
+                    <div class="timeline-card animate-on-scroll fade-in-up" data-delay="200">
+                        <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Oct 2020 - Jul 2021</span>
+                        <h3 class="text-xl font-bold mt-2">AIBOTS Sdn Bhd</h3>
+                        <p class="text-gray-600 font-semibold">Data Scientist</p>
+                        <div class="mt-4">
+                            <h4 class="text-lg font-bold mb-2">Healthcare NLP Application</h4>
+                            <p class="mb-4 text-sm">Developed a healthcare application using NLP to generate clinical notes from patient conversations, streamlining physician workflows and significantly improving documentation efficiency.</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-12">
-                <button id="view-full-experience" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">View Full Career Path</button>
+                <button id="view-full-experience" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition btn">View Full Career Path</button>
             </div>
         </div>
     </section>
@@ -643,54 +911,35 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1: TIP Automation -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in">
-                    <div class="h-48 bg-blue-700 flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
+                <div class="project-card-v2 animate-on-scroll zoom-in">
+                    <img src="images/project-1.jpg" alt="TIP Automation">
+                    <div class="overlay">
                         <h3 class="text-xl font-bold mb-2">TIP Automation (SCB)</h3>
-                        <p class="text-gray-600 mb-4">Automated security pipeline validation using RAG and LLMs.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">Python</span>
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">LangChain</span>
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">Generative AI</span>
-                        </div>
+                        <p class="text-gray-300 mb-4">Automated security pipeline validation using RAG and LLMs.</p>
                     </div>
                 </div>
                 
                 <!-- Project 2: Crop Doctor -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="100">
-                    <div class="h-48 bg-green-700 flex items-center justify-center">
-                        <i class="fas fa-leaf text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
+                <div class="project-card-v2 animate-on-scroll zoom-in" data-delay="100">
+                    <img src="images/project-2.jpg" alt="Crop Doctor">
+                    <div class="overlay">
                         <h3 class="text-xl font-bold mb-2">Crop Doctor (Bighaat)</h3>
-                        <p class="text-gray-600 mb-4">AI mobile app for farmers to detect plant diseases from images.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">Computer Vision</span>
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">Deep Learning</span>
-                        </div>
+                        <p class="text-gray-300 mb-4">AI mobile app for farmers to detect plant diseases from images.</p>
                     </div>
                 </div>
                 
                 <!-- Project 3: Medosys -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="200">
-                    <div class="h-48 bg-purple-700 flex items-center justify-center">
-                        <i class="fas fa-heartbeat text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
+                <div class="project-card-v2 animate-on-scroll zoom-in" data-delay="200">
+                    <img src="images/project-3.jpg" alt="Medosys">
+                    <div class="overlay">
                         <h3 class="text-xl font-bold mb-2">Medosys (AIBOTS)</h3>
-                        <p class="text-gray-600 mb-4">NLP app to assist doctors in preparing notes from conversations.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">NLP</span>
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">Healthcare</span>
-                        </div>
+                        <p class="text-gray-300 mb-4">NLP app to assist doctors in preparing notes from conversations.</p>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-12">
-                <button id="view-all-projects" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">View All Projects</button>
+                <button id="view-all-projects" class="inline-block bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition btn">View All Projects</button>
             </div>
         </div>
     </section>
@@ -806,22 +1055,22 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">My Toolkit</h2>
             <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="95">Python</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="50">Java</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="90" data-delay="100">Generative AI</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="150">Langchain</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="200">LangGraph</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="75" data-delay="250">Agents (CrewAI/Autogen)</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="70" data-delay="300">Ollama</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="90" data-delay="350">Prompt Engineering</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="400">NLP</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="450">Computer Vision</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="75" data-delay="500">PyTorch</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="550">Azure Cloud</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="80" data-delay="600">Docker</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="70" data-delay="650">FastAPI</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="90" data-delay="700">RAG</span>
-                 <span class="skill-pill bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold shadow-sm animate-on-scroll pop-in" data-proficiency="85" data-delay="750">Vector Database</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in">Python</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="50">Java</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="100">Generative AI</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="150">Langchain</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="200">LangGraph</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="250">Agents (CrewAI/Autogen)</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="300">Ollama</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="350">Prompt Engineering</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="400">NLP</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="450">Computer Vision</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="500">PyTorch</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="550">Azure Cloud</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="600">Docker</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="650">FastAPI</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="700">RAG</span>
+                 <span class="skill-pill-v2 animate-on-scroll pop-in" data-delay="750">Vector Database</span>
             </div>
         </div>
     </section>
@@ -892,6 +1141,110 @@
         </div>
     </section>
 
+    <!-- Demo Videos Section -->
+    <section id="demo-videos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Demo Videos</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in">
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/Ni-k3aqKuCg" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="100">
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/djSRxOou7us" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="200">
+                    <div class="embed-container">
+                        <iframe src="https://www.youtube.com/embed/_KRirgP5M1g" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="300">
+                    <div class="embed-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7sbofF_EaFQ?si=cmAZioO8tROHpiuN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Section -->
+    <section id="book" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">My Published Book</h2>
+            <div class="max-w-5xl mx-auto bg-gray-50 p-8 rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 animate-on-scroll zoom-in">
+                    <a href="https://www.amazon.com/dp/B08BPB2KKK" target="_blank">
+                        <img src="images/book front.jpeg" alt="Book Cover" class="rounded-lg shadow-md hover:shadow-xl transition">
+                    </a>
+                </div>
+                <div class="md:w-2/3 animate-on-scroll fade-in-up" data-delay="100">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Data-Driven Business</h3>
+                    <p class="text-gray-600 mb-4">I had the privilege of co-authoring a chapter in this book, collaborating with 23 other data science experts from around the globe. We share insights on how to effectively profit from and manage your data. This was a significant milestone for me as my first published work on <a href="https://www.amazon.com/dp/B08BPB2KKK" target="_blank" class="text-blue-600 hover:underline">Amazon</a>.</p>
+                    <p class="text-sm text-gray-500">Co-authored with industry leaders from companies like <strong>IBM, Siemens, and Hilton Hotels</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-900 animate-on-scroll fade-in-up">Gallery</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 gallery">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in">
+                    <a href="images/bv2.jpeg" class="gallery-item">
+                        <img src="images/bv2.jpeg" alt="Work Mode At Spritle Office" class="gallery-image">
+                    </a>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold">Work Mode</h4>
+                        <p class="text-sm text-gray-600">At Spritle Office</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="100">
+                    <a href="images/bv3.jpeg" class="gallery-item">
+                        <img src="images/bv3.jpeg" alt="Troubleshooting Mode At Aibots Office" class="gallery-image">
+                    </a>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold">Troubleshooting Mode</h4>
+                        <p class="text-sm text-gray-600">At Aibots Office</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="200">
+                    <a href="images/bv1.jpeg" class="gallery-item">
+                        <img src="images/bv1.jpeg" alt="Photoshoot at Kerala" class="gallery-image">
+                    </a>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold">PhotoShoot Mode</h4>
+                        <p class="text-sm text-gray-600">At Kerala</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md animate-on-scroll zoom-in" data-delay="300">
+                    <a href="images/bv4.jpeg" class="gallery-item">
+                        <img src="images/bv4.jpeg" alt="Working Mode At Aibots Office" class="gallery-image">
+                    </a>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold">Working Mode</h4>
+                        <p class="text-sm text-gray-600">At Aibots Office</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox">
+        <span class="close">&times;</span>
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <a href="#home" id="back-to-top" class="fixed bottom-8 right-8 bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-50">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- References Section -->
     <section id="references" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -942,7 +1295,10 @@
                     </div>
                     <div class="mt-6 flex">
                         <input type="text" id="chat-input" name="message" class="w-full px-4 py-2 rounded-l-lg border text-black" placeholder="Type your answer...">
-                        <button id="chat-send" type="submit" class="bg-blue-700 text-white px-4 py-2 rounded-r-lg font-bold hover:bg-blue-800 transition">Send</button>
+                        <button id="chat-send" type="submit" class="bg-blue-700 text-white px-4 py-2 rounded-r-lg font-bold hover:bg-blue-800 transition btn">
+                            <span class="btn-text">Send</span>
+                            <div class="loader"></div>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -950,13 +1306,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-950 text-white py-8">
-        <div class="container mx-auto px-4 text-center animate-on-scroll fade-in-up">
+    <footer class="bg-blue-950 text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('images/object.png'); background-size: cover; background-position: center;"></div>
+        <div class="container mx-auto px-4 text-center animate-on-scroll fade-in-up relative z-10">
+            <h3 class="text-3xl font-bold mb-6">Ready to build something amazing?</h3>
+            <p class="text-lg text-blue-300 mb-8">Let's create innovative AI solutions that drive real impact.</p>
             <div class="flex justify-center space-x-6 mb-6">
                 <a href="https://www.linkedin.com/in/bala-venkatesh-67964247/" target="_blank" class="text-xl hover:text-blue-300 transition"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/balavenkatesh3322" target="_blank" class="text-xl hover:text-blue-300 transition"><i class="fab fa-github"></i></a>
                 <a href="https://balavenkatesh.medium.com/" target="_blank" class="text-xl hover:text-blue-300 transition"><i class="fab fa-medium"></i></a>
-                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"><i class="fas fa-handshake mr-2"></i>Hire Me</a>
+                <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition btn"><i class="fas fa-handshake mr-2"></i>Hire Me</a>
             </div>
             <p class="text-blue-300">© 2025 Bala Venkatesh. Designed with ❤️</p>
         </div>
@@ -1516,6 +1875,13 @@
             }
 
             async function submitForm() {
+                const sendButton = document.getElementById('chat-send');
+                const buttonText = sendButton.querySelector('.btn-text');
+                const loader = sendButton.querySelector('.loader');
+
+                buttonText.style.display = 'none';
+                loader.style.display = 'block';
+
                 const formData = new FormData();
                 formData.append('name', answers.name);
                 formData.append('email', answers.email);
@@ -1534,18 +1900,20 @@
                     if (response.ok) {
                         addBotMessage("Great! Your email has been sent. I'll get back to you shortly. Relax and take a rest, Bala will take care of it now.");
                         addConversationEndedMarker();
-                        chatSend.textContent = 'Sent';
-                        chatSend.classList.remove('bg-blue-700', 'hover:bg-blue-800');
-                        chatSend.classList.add('bg-green-500');
+                        sendButton.classList.remove('bg-blue-700', 'hover:bg-blue-800');
+                        sendButton.classList.add('bg-green-500');
+                        buttonText.textContent = 'Sent';
                     } else {
                         addBotMessage("Oops! Something went wrong. Please try again later.");
                     }
                 } catch (error) {
                     addBotMessage("Oops! Something went wrong. Please try again later.");
+                } finally {
+                    buttonText.style.display = 'block';
+                    loader.style.display = 'none';
+                    chatInput.disabled = true;
+                    sendButton.disabled = true;
                 }
-
-                chatInput.disabled = true;
-                chatSend.disabled = true;
             }
 
             contactForm.addEventListener('submit', (e) => {
@@ -1554,6 +1922,66 @@
             });
 
             askQuestion();
+        });
+
+        // Parallax effect
+        const parallax = document.querySelector('.parallax');
+        window.addEventListener('scroll', () => {
+            let offset = window.pageYOffset;
+            parallax.style.backgroundPositionY = offset * 0.7 + 'px';
+        });
+
+        // Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox .close');
+        const prevBtn = document.querySelector('.lightbox .prev');
+        const nextBtn = document.querySelector('.lightbox .next');
+        let currentIndex = 0;
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentIndex = index;
+                showLightbox();
+            });
+        });
+
+        function showLightbox() {
+            const imgSrc = galleryItems[currentIndex].getAttribute('href');
+            lightboxImg.setAttribute('src', imgSrc);
+            lightbox.classList.add('show');
+        }
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('show');
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            showLightbox();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            showLightbox();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('show');
+            }
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
         });
         </script>
 </body>
