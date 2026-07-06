@@ -35,7 +35,7 @@ export default function Book() {
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 relative z-10 pointer-events-none"></div>
 
               <img
-                src="https://balavenkatesh3322.github.io/bala_venkatesh_profile/images/book%20front.jpeg"
+                src="images/book front.jpeg"
                 alt="Data-Driven Business Cover"
                 className="w-full h-full object-cover relative z-0"
                 referrerPolicy="no-referrer"

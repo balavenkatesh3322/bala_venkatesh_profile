@@ -31,7 +31,7 @@ export default function About() {
             {/* Main Image */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
               <img
-                src="https://balavenkatesh3322.github.io/bala_venkatesh_profile/images/bv2.jpeg"
+                src="images/bv2.jpeg"
                 alt="Bala Venkatesh at work"
                 className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 hover:brightness-100 transition-all duration-700"
                 referrerPolicy="no-referrer"
@@ -88,7 +88,7 @@ export default function About() {
                 return (
                   <div
                     key={dom.label}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold ${dom.color} transition-all duration-300 hover:scale-105`}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold glass-panel ${dom.color} transition-all duration-300 hover:scale-105`}
                   >
                     <IconComponent className="w-3.5 h-3.5" />
                     {dom.label}
@@ -105,7 +105,7 @@ export default function About() {
               download="Bala_Venkatesh_Resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
+              className="px-5 py-3 glass-panel glass-panel-hover rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
             >
               <Download className="w-4 h-4 text-cyan-400" /> Download Resume
             </a>
@@ -113,7 +113,7 @@ export default function About() {
               href="https://balavenkatesh.medium.com/"
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
+              className="px-5 py-3 glass-panel glass-panel-hover rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
             >
               <BookOpen className="w-4 h-4 text-indigo-400" /> Read My Blog
             </a>

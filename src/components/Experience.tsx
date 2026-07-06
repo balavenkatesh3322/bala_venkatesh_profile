@@ -40,8 +40,8 @@ export default function Experience() {
                 onClick={() => setActiveTab(exp.id)}
                 className={`snap-center flex items-center gap-3 px-4 py-3.5 rounded-xl font-medium text-xs sm:text-sm text-left whitespace-nowrap transition-all duration-300 ${
                   activeTab === exp.id
-                    ? 'bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 text-cyan-400 border border-cyan-500/20 lg:border-l-2 lg:border-l-cyan-400'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent'
+                    ? 'glass-panel text-cyan-400 border border-cyan-500/20 lg:border-l-2 lg:border-l-cyan-400'
+                    : 'text-slate-400 hover:text-slate-200 hover:glass-panel border border-transparent'
                 }`}
               >
                 <span
@@ -63,7 +63,7 @@ export default function Experience() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-xl text-left flex flex-col gap-5"
+                className="p-6 sm:p-8 rounded-3xl glass-panel text-left flex flex-col gap-5"
               >
                 {/* Role & Company Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-4">
@@ -76,7 +76,7 @@ export default function Experience() {
                       {activeExp.company}
                     </div>
                   </div>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5 h-fit w-fit">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 glass-panel h-fit w-fit">
                     <Calendar className="w-3.5 h-3.5 text-slate-500" />
                     {activeExp.date}
                   </div>
@@ -95,7 +95,7 @@ export default function Experience() {
                           .replace(/15 minutes to under 2 minutes/g, '<span class="text-rose-400 font-bold">15 minutes to under 2 minutes</span>')
                           .replace(/Best Performer of the Year 2024/g, '<span class="text-amber-400 font-bold">Best Performer of the Year 2024</span>')
                           .replace(/Crop Doctor/g, '<span class="text-cyan-400 font-semibold">Crop Doctor</span>')
-                          .replace(/TFLite/g, '<span class="text-cyan-400 font-mono text-xs px-1.5 py-0.5 rounded bg-white/5 border border-white/10">TFLite</span>')
+                          .replace(/TFLite/g, '<span class="text-cyan-400 font-mono text-xs px-1.5 py-0.5 rounded glass-panel">TFLite</span>')
                           .replace(/RAG-based system/g, '<span class="text-cyan-400 font-semibold">RAG-based system</span>')
                       }} />
                     </li>
@@ -107,7 +107,7 @@ export default function Experience() {
                   {activeExp.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] sm:text-xs font-mono text-slate-400"
+                      className="px-3 py-1 rounded-lg glass-panel text-[10px] sm:text-xs font-mono text-slate-400"
                     >
                       {tag}
                     </span>

@@ -244,7 +244,7 @@ export default function AIDemoSandbox() {
         </div>
 
         {/* GAME CONTAINER CARDS */}
-        <div className="w-full bg-slate-900/60 backdrop-blur-2xl border border-white/5 rounded-3xl overflow-hidden shadow-2xl min-h-[580px] flex flex-col">
+        <div className="w-full glass-panel rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] min-h-[580px] flex flex-col">
           
           <AnimatePresence mode="wait">
             
@@ -270,7 +270,7 @@ export default function AIDemoSandbox() {
                 </div>
 
                 {/* Meet the expert banner */}
-                <div className="w-full p-4 rounded-2xl bg-slate-950/60 border border-white/5 flex gap-4 items-center text-left">
+                <div className="w-full p-4 rounded-2xl glass-panel flex gap-4 items-center text-left">
                   <div className="w-10 h-10 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0">
                     <Award className="w-5 h-5 text-indigo-400" />
                   </div>
@@ -303,21 +303,21 @@ export default function AIDemoSandbox() {
                 <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col gap-6 text-left border-b lg:border-b-0 lg:border-r border-white/5">
                   
                   {/* Stats Bar */}
-                  <div className="grid grid-cols-3 gap-3 bg-slate-950/50 p-4 rounded-2xl border border-white/5">
+                  <div className="grid grid-cols-3 gap-3 glass-panel p-4 rounded-2xl">
                     <div className="flex flex-col">
                       <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Manual Backlog</span>
                       <span className={`text-lg font-black ${backlog > 100 ? 'text-rose-400' : backlog > 40 ? 'text-amber-400' : 'text-emerald-400'}`}>
                         {backlog} hrs/wk
                       </span>
                     </div>
-                    <div className="flex flex-col border-l border-white/5 pl-3">
+                    <div className="flex flex-col border-l border-white/10 pl-3">
                       <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Business Growth</span>
                       <span className="text-lg font-black text-cyan-400 flex items-center gap-1">
                         <TrendingUp className="w-4 h-4" />
                         {growth}%
                       </span>
                     </div>
-                    <div className="flex flex-col border-l border-white/5 pl-3">
+                    <div className="flex flex-col border-l border-white/10 pl-3">
                       <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wider">Tech Budget</span>
                       <span className="text-lg font-black text-emerald-400">
                         ${capital.toLocaleString()}
@@ -331,7 +331,7 @@ export default function AIDemoSandbox() {
                       <span className="text-[9px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Round {round} of 4</span>
                       <h3 className="text-base font-extrabold text-white">Deploy Bala's Custom Agents</h3>
                     </div>
-                    <span className="px-2.5 py-1 rounded bg-white/5 border border-white/15 text-[10px] font-mono font-bold text-slate-400">
+                    <span className="px-2.5 py-1 rounded glass-panel text-[10px] font-mono font-bold text-slate-400">
                       Credits per round: +$12,000
                     </span>
                   </div>
@@ -347,8 +347,8 @@ export default function AIDemoSandbox() {
                           key={agent.id}
                           className={`p-4 rounded-2xl border transition-all relative flex flex-col justify-between ${
                             isDeployed 
-                              ? 'bg-cyan-500/5 border-cyan-500/30 shadow-md shadow-cyan-500/5' 
-                              : 'bg-white/5 border-white/15 hover:border-white/20'
+                              ? 'bg-cyan-500/10 border-cyan-500/40 shadow-md shadow-[0_0_20px_rgba(6,182,212,0.15)]' 
+                              : 'glass-panel glass-panel-hover'
                           }`}
                         >
                           {isDeployed && (
@@ -422,10 +422,10 @@ export default function AIDemoSandbox() {
                 </div>
 
                 {/* Right Side: Bala's Advice & Active Terminal (lg:col-span-5) */}
-                <div className="lg:col-span-5 p-6 sm:p-8 bg-slate-950/45 flex flex-col justify-between gap-6">
+                <div className="lg:col-span-5 p-6 sm:p-8 bg-slate-950/10 backdrop-blur-md flex flex-col justify-between gap-6">
                   
                   {/* Advisor Card (Bala Venkatesh Avatar) */}
-                  <div className="p-4 rounded-3xl bg-white/5 border border-indigo-500/10 text-left relative overflow-hidden flex flex-col gap-3">
+                  <div className="p-4 rounded-3xl glass-panel border border-indigo-500/20 text-left relative overflow-hidden flex flex-col gap-3">
                     <div className="absolute top-0 right-0 p-2.5 bg-indigo-500/10 text-indigo-400 font-mono text-[8px] uppercase tracking-wider font-extrabold">
                       Active Advisor
                     </div>
@@ -443,7 +443,7 @@ export default function AIDemoSandbox() {
                       </div>
                     </div>
 
-                    <div className="p-3 bg-slate-950/80 rounded-2xl border border-white/5">
+                    <div className="p-3 bg-slate-950/40 backdrop-blur-sm rounded-2xl border border-white/5">
                       <p className="text-[11px] text-slate-300 font-medium leading-relaxed italic">
                         "{adviceBox}"
                       </p>
@@ -451,7 +451,7 @@ export default function AIDemoSandbox() {
                   </div>
 
                   {/* Terminal Orchestration Viewer */}
-                  <div className="flex-1 bg-slate-950 border border-white/10 rounded-3xl p-4 font-mono text-[10px] leading-relaxed text-left flex flex-col justify-between min-h-[220px]">
+                  <div className="flex-1 glass-panel rounded-3xl p-4 font-mono text-[10px] leading-relaxed text-left flex flex-col justify-between min-h-[220px]">
                     <div className="flex items-center justify-between mb-3 border-b border-white/5 pb-2">
                       <div className="flex items-center gap-2">
                         <Terminal className="w-3.5 h-3.5 text-cyan-400" />

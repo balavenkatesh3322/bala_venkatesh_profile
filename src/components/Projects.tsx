@@ -27,7 +27,7 @@ export default function Projects() {
             href="https://github.com/balavenkatesh3322"
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
+            className="w-full sm:w-auto px-5 py-3 glass-panel glass-panel-hover rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
           >
             <Github className="w-4 h-4 text-cyan-400" /> All on GitHub
           </a>
@@ -42,10 +42,10 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               key={project.id}
-              className="group rounded-2.5xl bg-white/5 border border-white/10 overflow-hidden flex flex-col hover:border-cyan-500/30 shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left"
+              className="group rounded-2.5xl glass-panel glass-panel-hover overflow-hidden flex flex-col text-left"
             >
               {/* Card visual thumb */}
-              <div className={`h-40 bg-gradient-to-br ${project.bgGradient} border-b border-white/5 flex items-center justify-center text-5xl relative overflow-hidden shrink-0 group-hover:scale-102 transition-transform duration-500`}>
+              <div className={`h-40 bg-gradient-to-br ${project.bgGradient} border-b border-white/5 flex items-center justify-center text-5xl relative overflow-hidden shrink-0 transition-transform duration-500`}>
                 {/* Visual glow on thumbnail hover */}
                 <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10 filter drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300">
@@ -59,7 +59,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono font-bold text-cyan-400 tracking-wider uppercase"
+                      className="px-2 py-0.5 rounded-full glass-panel text-[9px] font-mono font-bold text-cyan-400 tracking-wider uppercase"
                     >
                       {tag}
                     </span>

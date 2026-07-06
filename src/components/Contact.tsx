@@ -54,7 +54,6 @@ export default function Contact() {
     { name: 'LinkedIn', icon: Linkedin, link: 'https://www.linkedin.com/in/bala-venkatesh-67964247/', color: 'hover:bg-[#0077b5] text-[#0077b5] hover:text-white' },
     { name: 'GitHub', icon: Github, link: 'https://github.com/balavenkatesh3322', color: 'hover:bg-[#24292e] text-[#24292e] hover:text-white' },
     { name: 'Medium', icon: BookOpen, link: 'https://balavenkatesh.medium.com/', color: 'hover:bg-[#00ab6c] text-[#00ab6c] hover:text-white' },
-    { name: 'YouTube', icon: Youtube, link: 'https://www.youtube.com/@balavenkatesh3322', color: 'hover:bg-[#ff0000] text-[#ff0000] hover:text-white' },
   ];
 
   return (
@@ -153,6 +152,8 @@ export default function Contact() {
               })}
             </div>
           </div>
+
+
         </div>
 
         {/* Right Side: Form */}
@@ -162,7 +163,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-xl text-left"
+            className="p-6 sm:p-8 rounded-3xl glass-panel text-left"
           >
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

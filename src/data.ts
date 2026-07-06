@@ -295,7 +295,7 @@ export const testimonialsData: TestimonialItem[] = [
     quote: 'Bala is extremely passionate about applying AI and Machine Learning to solve real business challenges. He is a life-long learner who continuously pushes himself to master cutting-edge paradigms.',
     name: 'Mahathir Muhammad Rafie',
     role: 'CEO, AIBOTS Sdn Bhd',
-    avatarUrl: 'https://balavenkatesh3322.github.io/bala_venkatesh_profile/images/reference-image-1.jpg',
+    avatarUrl: 'images/reference-image-1.jpg',
     avatarPlaceholder: 'MR'
   },
   {
@@ -304,7 +304,7 @@ export const testimonialsData: TestimonialItem[] = [
     quote: 'Bala is an excellent communicator and a remarkably fast learner. He rapidly conceptualizes client requirements and takes incredible initiative to solve technical blocks. His deep learning skills are stellar.',
     name: 'Brandon McCutcheon',
     role: 'Co-Founder, Phraze',
-    avatarUrl: 'https://balavenkatesh3322.github.io/bala_venkatesh_profile/images/reference-image-3.jpg',
+    avatarUrl: 'images/reference-image-3.jpg',
     avatarPlaceholder: 'BM'
   },
   {
@@ -313,7 +313,7 @@ export const testimonialsData: TestimonialItem[] = [
     quote: 'Bala exhibits an outstanding ability to break down highly complex mathematical and structural AI blocks and deploy them securely at scale. His expertise was an exceptional asset to our DevOps security pipeline efforts.',
     name: 'ArunVivek',
     role: 'Head of Cloud Security, Standard Chartered Bank',
-    avatarUrl: 'https://balavenkatesh3322.github.io/bala_venkatesh_profile/images/reference-image-2.jpg',
+    avatarUrl: 'images/reference-image-2.jpg',
     avatarPlaceholder: 'AV'
   }
 ];

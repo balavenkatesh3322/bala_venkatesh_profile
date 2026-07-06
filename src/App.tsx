@@ -10,17 +10,23 @@ import Marquee from './components/Marquee';
 import About from './components/About';
 import Services from './components/Services';
 import Experience from './components/Experience';
-import Projects from './components/Projects';
-import AIDemoSandbox from './components/AIDemoSandbox';
+// import Projects from './components/Projects';
+import AIWorkflowAcademy from './components/AIWorkflowAcademy';
+import BusinessImprover from './components/BusinessImprover';
+// import AIDemoSandbox from './components/AIDemoSandbox';
 import OpenSource from './components/OpenSource';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Recognition from './components/Recognition';
 import Testimonials from './components/Testimonials';
 import Book from './components/Book';
+import Philosophy from './components/Philosophy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppWidget from './components/WhatsAppWidget';
+import ScrollCelebration from './components/ScrollCelebration';
+import AIBalaBot from './components/AIBalaBot';
+import BalaLessons from './components/BalaLessons';
 
 function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -124,8 +130,33 @@ function CustomCursor() {
 }
 
 export default function App() {
+  const [currentPath, setCurrentPath] = React.useState<string>(window.location.hash || '#home');
+
+  useEffect(() => {
+    document.title = "Bala Venkatesh | Lead AI Engineer & Data Scientist";
+
+    const handleHashChange = () => {
+      setCurrentPath(window.location.hash || '#home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const isLessonsView = currentPath.startsWith('#lessons');
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 overflow-x-hidden antialiased">
+    <div className="relative min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 overflow-x-hidden antialiased">
+      {/* Floating Glassmorphic Ambient Background Orbs */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[3%] left-[10%] w-[35vw] h-[35vw] max-w-[450px] max-h-[450px] rounded-full ambient-glow-cyan animate-pulse-glow" />
+        <div className="absolute top-[18%] right-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full ambient-glow-purple animate-pulse-glow-delayed" />
+        <div className="absolute top-[38%] left-[2%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full ambient-glow-cyan animate-pulse-glow" />
+        <div className="absolute top-[58%] right-[8%] w-[35vw] h-[35vw] max-w-[480px] max-h-[480px] rounded-full ambient-glow-pink animate-pulse-glow-delayed" />
+        <div className="absolute top-[78%] left-[8%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full ambient-glow-purple animate-pulse-glow animate-pulse-glow-delayed" />
+        <div className="absolute top-[92%] right-[12%] w-[35vw] h-[35vw] max-w-[450px] max-h-[450px] rounded-full ambient-glow-cyan animate-pulse-glow-delayed animate-pulse-glow" />
+      </div>
+
       {/* Custom follower cursor */}
       <CustomCursor />
 
@@ -134,20 +165,28 @@ export default function App() {
 
       {/* Main Sections */}
       <main>
-        <Hero />
-        <Marquee />
-        <About />
-        <Services />
-        <Experience />
-        <Projects />
-        <AIDemoSandbox />
-        <OpenSource />
-        <Skills />
-        <Education />
-        <Recognition />
-        <Testimonials />
-        <Book />
-        <Contact />
+        {isLessonsView ? (
+          <BalaLessons />
+        ) : (
+          <>
+            <Hero />
+            <Marquee />
+            <About />
+            <Services />
+            <AIWorkflowAcademy />
+            <Experience />
+            <BusinessImprover />
+            {/* <AIDemoSandbox /> */}
+            <OpenSource />
+            <Skills />
+            <Education />
+            <Recognition />
+            <Testimonials />
+            <Book />
+            <Philosophy />
+            <Contact />
+          </>
+        )}
       </main>
 
       {/* Footer */}
@@ -155,6 +194,12 @@ export default function App() {
 
       {/* WhatsApp Floating Chat Widget for CEOs & Founders */}
       <WhatsAppWidget />
+
+      {/* Interactive Dopamine celebration triggered at page-bottom */}
+      <ScrollCelebration />
+
+      {/* AI Bot Welcome Assistant representing Bala */}
+      <AIBalaBot />
     </div>
   );
 }

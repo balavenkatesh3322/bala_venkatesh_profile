@@ -18,7 +18,13 @@ export default function Services() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col gap-12">
         {/* Header */}
-        <div className="text-center flex flex-col items-center gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: -25, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center flex flex-col items-center gap-3"
+        >
           <div className="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400">
             What I Do
           </div>
@@ -28,7 +34,7 @@ export default function Services() {
               AI Innovation
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -41,7 +47,7 @@ export default function Services() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 key={srv.id}
-                className="group p-6 rounded-2.5xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 shadow-xl flex flex-col gap-5 transition-all duration-300 hover:-translate-y-2 text-left"
+                className="group p-6 rounded-2.5xl glass-panel glass-panel-hover flex flex-col gap-5 text-left"
               >
                 <div className="flex justify-between items-center">
                   <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors duration-300">
@@ -74,7 +80,7 @@ export default function Services() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-cyan-500 hover:text-slate-950 border border-white/10 hover:border-cyan-400 rounded-xl text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 glass-panel glass-panel-hover rounded-xl text-xs sm:text-sm font-bold text-white"
           >
             Start a Conversation <ArrowRight className="w-4 h-4" />
           </a>

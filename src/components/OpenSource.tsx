@@ -25,9 +25,9 @@ export default function OpenSource() {
             Community
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100">
-            Building with the{' '}
+            Bala Build{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
-              Community
+              Open Source Projects
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl">
