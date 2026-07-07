@@ -647,16 +647,7 @@ export default function BalaLessons() {
                     </span>
                   </h1>
 
-                  {/* Author Header */}
-                  <div className={`flex items-center gap-3 border-b pb-8 mb-8 transition-colors duration-300 ${currentStyles.headerBorder}`}>
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-500 flex items-center justify-center font-bold font-mono text-white text-sm shadow-md shadow-cyan-500/10">
-                      BV
-                    </div>
-                    <div className="text-left">
-                      <div className={`text-sm font-black transition-colors duration-300 ${currentStyles.textTitle}`}>Bala Venkatesh</div>
-                      <div className={`text-xs transition-colors duration-300 ${currentStyles.textMuted}`}>Lead AI Engineer & Data Scientist</div>
-                    </div>
-                  </div>
+
 
                   {/* Blog Body Content */}
                   <div className={`text-left transition-colors duration-300 ${fontClass} ${sizeClass} ${widthClass} ${
