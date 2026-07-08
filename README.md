@@ -8,7 +8,7 @@
 
 Experience Bala’s virtual workspace, interactive AI simulators, and live chatbot twin firsthand:
 
-👉 **[Launch Bala's Live Portfolio Website](https://balavenkatesh3322.github.io/bala_venkatesh_profile)** *(Or explore the active deployment: [Live App Preview](https://ais-pre-otjsrd2btskkoyefznopne-738737382418.asia-southeast1.run.app))*
+👉 **[Launch Bala's Live Portfolio Website](https://balavenkatesh3322.github.io/bala_venkatesh_profile)**
 
 ---
 
@@ -47,6 +47,7 @@ An interactive module tailored for business executives. It allows leaders to ide
 Every pixel of the interface has been fine-tuned to feel warm, responsive, and welcoming. From the **Custom Lerping Magnetic Cursor** to the gentle **Scroll Celebration Canvas Effects**, the website is designed to be an aesthetic, comfortable space to learn and explore.
 
 ---
+
 
 ## ✉️ Let's Connect
 

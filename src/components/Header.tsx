@@ -55,7 +55,7 @@ export default function Header() {
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'AI Playbook', href: '#workflow-academy' },
-    { label: "Bala's Lessons", href: '#lessons', isNew: true },
+    { label: 'Build with Bala', href: '#lessons', isNew: true },
     { label: 'Experience', href: '#experience' },
     { label: 'Skills', href: '#skills' },
     { label: 'Education', href: '#education' },

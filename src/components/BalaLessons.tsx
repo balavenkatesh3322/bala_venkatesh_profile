@@ -28,31 +28,220 @@ import {
   Heart
 } from 'lucide-react';
 
+interface Series {
+  id: string;
+  title: string;
+  emoji: string;
+  description: string;
+  color: string;
+}
+
 interface BlogPost {
   slug: string;
   title: string;
+  seriesId: string;
   category: string;
   readTime: string;
   date: string;
   excerpt: string;
   author: string;
   tags: string[];
+  comingSoon?: boolean;
 }
 
+const SERIES_LIST: Series[] = [
+  {
+    id: 'how-bala-thinks',
+    title: 'How Bala Thinks',
+    emoji: '🧠',
+    description: 'Mental models, evaluation structures, and architectural trade-offs behind enterprise AI solutions.',
+    color: 'from-cyan-500/20 to-blue-500/10 border-cyan-500/20 hover:border-cyan-500/45 text-cyan-400'
+  },
+  {
+    id: 'production-ai',
+    title: 'Production AI',
+    emoji: '🏗️',
+    description: 'Deep dives into engineering scalable, secure, and cost-optimized pipelines in production environments.',
+    color: 'from-indigo-500/20 to-purple-500/10 border-indigo-500/20 hover:border-indigo-500/45 text-indigo-400'
+  }
+];
+
 const BLOG_POSTS: BlogPost[] = [
+  // Series 1: How Bala Thinks
   {
     slug: 'llm-right-tool',
-    title: 'Stop Asking "How LLMs Work." Start Asking "When LLMs Are the Right Tool."',
+    title: 'How I Choose an LLM',
+    seriesId: 'how-bala-thinks',
     category: 'AI Architecture',
     readTime: '5 min read',
     date: 'July 6, 2026',
     excerpt: 'Every week a new flagship LLM drops, but model switching is usually the wrong debate. Shift your engineering mindset to system-level architecture.',
     author: 'Bala Venkatesh',
-    tags: ['LLM Architecture', 'Decision Frameworks', 'Enterprise AI']
+    tags: ['LLM Architecture', 'Decision Frameworks', 'Enterprise AI'],
+    comingSoon: false
+  },
+  {
+    slug: 'why-prefer-rag',
+    title: 'Why I Prefer RAG Here',
+    seriesId: 'how-bala-thinks',
+    category: 'Information Retrieval',
+    readTime: '4 min read',
+    date: 'Coming Soon',
+    excerpt: 'Fine-tuning updates a model’s behavior, but RAG updates its memory. Explore why RAG is the default choice for dynamic facts.',
+    author: 'Bala Venkatesh',
+    tags: ['RAG', 'Vector Search', 'Fine-Tuning'],
+    comingSoon: true
+  },
+  {
+    slug: 'dont-use-agents',
+    title: "When I Don't Use AI Agents",
+    seriesId: 'how-bala-thinks',
+    category: 'Orchestration',
+    readTime: '6 min read',
+    date: 'Coming Soon',
+    excerpt: 'Agents add high latency and non-deterministic paths. A guide to when straight state machines are superior.',
+    author: 'Bala Venkatesh',
+    tags: ['AI Agents', 'State Machines', 'Orchestration'],
+    comingSoon: true
+  },
+  {
+    slug: 'system-design-process',
+    title: 'My System Design Process',
+    seriesId: 'how-bala-thinks',
+    category: 'System Design',
+    readTime: '5 min read',
+    date: 'Coming Soon',
+    excerpt: 'Step-by-step from client problem statement to robust multi-agent orchestration blueprints.',
+    author: 'Bala Venkatesh',
+    tags: ['System Design', 'Enterprise Integration'],
+    comingSoon: true
+  },
+  {
+    slug: 'production-lessons',
+    title: 'Lessons from Production',
+    seriesId: 'how-bala-thinks',
+    category: 'Operations',
+    readTime: '8 min read',
+    date: 'Coming Soon',
+    excerpt: 'The true costs of running models in production. Guardrails, scaling limitations, and real-world failure modes.',
+    author: 'Bala Venkatesh',
+    tags: ['Ops', 'Failure Modes', 'Scaling'],
+    comingSoon: true
+  },
+
+  // Series 2: Production AI
+  {
+    slug: 'llm-fundamentals',
+    title: 'LLM Fundamentals',
+    seriesId: 'production-ai',
+    category: 'Foundations',
+    readTime: '6 min read',
+    date: 'Coming Soon',
+    excerpt: 'Under the hood of modern transformer architectures. Context windows, tokenization, and temperature settings.',
+    author: 'Bala Venkatesh',
+    tags: ['LLMs', 'Transformer', 'Tokenization'],
+    comingSoon: true
+  },
+  {
+    slug: 'rag-deep-dive',
+    title: 'RAG',
+    seriesId: 'production-ai',
+    category: 'Retrieval',
+    readTime: '7 min read',
+    date: 'Coming Soon',
+    excerpt: 'Advanced retrieval techniques: parent-child retrieval, query rewriting, and cross-encoder reranking.',
+    author: 'Bala Venkatesh',
+    tags: ['RAG', 'Embeddings', 'Reranking'],
+    comingSoon: true
+  },
+  {
+    slug: 'ai-agents-deep',
+    title: 'AI Agents',
+    seriesId: 'production-ai',
+    category: 'Orchestration',
+    readTime: '8 min read',
+    date: 'Coming Soon',
+    excerpt: 'Designing autonomous agents that can plan, reflect, use tools, and collaborate to achieve complex objectives.',
+    author: 'Bala Venkatesh',
+    tags: ['Agents', 'Tool Use', 'Planning'],
+    comingSoon: true
+  },
+  {
+    slug: 'memory-management',
+    title: 'Memory',
+    seriesId: 'production-ai',
+    category: 'State Management',
+    readTime: '5 min read',
+    date: 'Coming Soon',
+    excerpt: 'Session memory, persistent user history, and summaries. Keeping context high and token costs low.',
+    author: 'Bala Venkatesh',
+    tags: ['Memory', 'State', 'Context Window'],
+    comingSoon: true
+  },
+  {
+    slug: 'evaluation-frameworks',
+    title: 'Evaluation',
+    seriesId: 'production-ai',
+    category: 'Quality Assurance',
+    readTime: '6 min read',
+    date: 'Coming Soon',
+    excerpt: 'How to grade non-deterministic outputs. Ragas, LLM-as-a-Judge, and unit-testing prompt templates.',
+    author: 'Bala Venkatesh',
+    tags: ['Evaluation', 'Ragas', 'Quality'],
+    comingSoon: true
+  },
+  {
+    slug: 'guardrails-security',
+    title: 'Guardrails',
+    seriesId: 'production-ai',
+    category: 'Security',
+    readTime: '5 min read',
+    date: 'Coming Soon',
+    excerpt: 'Prompt injection mitigation, PII filtering, and output validation with Guardrails.ai and LlamaGuard.',
+    author: 'Bala Venkatesh',
+    tags: ['Security', 'Guardrails', 'Compliance'],
+    comingSoon: true
+  },
+  {
+    slug: 'monitoring-analytics',
+    title: 'Monitoring',
+    seriesId: 'production-ai',
+    category: 'Operations',
+    readTime: '5 min read',
+    date: 'Coming Soon',
+    excerpt: 'Tracing model calls, cost attribution, analytics monitoring, and drift detection in production pipelines.',
+    author: 'Bala Venkatesh',
+    tags: ['Monitoring', 'Tracing', 'LangSmith'],
+    comingSoon: true
+  },
+  {
+    slug: 'cost-optimization-prod',
+    title: 'Cost Optimization',
+    seriesId: 'production-ai',
+    category: 'FinOps',
+    readTime: '6 min read',
+    date: 'Coming Soon',
+    excerpt: 'Caching strategies, smaller specialized models, semantic routing, and prompt compression techniques.',
+    author: 'Bala Venkatesh',
+    tags: ['Cost', 'FinOps', 'Caching'],
+    comingSoon: true
+  },
+  {
+    slug: 'scaling-ai-systems',
+    title: 'Scaling AI Systems',
+    seriesId: 'production-ai',
+    category: 'Architecture',
+    readTime: '7 min read',
+    date: 'Coming Soon',
+    excerpt: 'Deploying high-throughput endpoints. GPU concurrency, load balancing, and offline batch prediction.',
+    author: 'Bala Venkatesh',
+    tags: ['Scaling', 'High Throughput', 'Infrastructure'],
+    comingSoon: true
   }
 ];
 
 export default function BalaLessons() {
+  const [currentSeries, setCurrentSeries] = useState<string | null>(null);
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   const [readerTheme, setReaderTheme] = useState<'paper' | 'white' | 'dark'>('paper');
   const [readerFont, setReaderFont] = useState<'serif' | 'sans'>('serif');
@@ -135,14 +324,34 @@ export default function BalaLessons() {
   useEffect(() => {
     const handleHashCheck = () => {
       const hash = window.location.hash;
-      if (hash === '#lessons') {
+      if (hash === '#lessons' || !hash.startsWith('#lessons')) {
         setSelectedPost(null);
+        setCurrentSeries(null);
+      } else if (hash.startsWith('#lessons/series/')) {
+        const seriesId = hash.replace('#lessons/series/', '');
+        setCurrentSeries(seriesId || null);
+        setSelectedPost(null);
+      } else if (hash.startsWith('#lessons/post/')) {
+        const slug = hash.replace('#lessons/post/', '');
+        setSelectedPost(slug || null);
+        const post = BLOG_POSTS.find(p => p.slug === slug);
+        if (post) {
+          setCurrentSeries(post.seriesId);
+        }
       } else if (hash.startsWith('#lessons/')) {
         const slug = hash.replace('#lessons/', '');
         setSelectedPost(slug || null);
+        const post = BLOG_POSTS.find(p => p.slug === slug);
+        if (post) {
+          setCurrentSeries(post.seriesId);
+        }
       } else if (hash.startsWith('#lessons-')) {
         const slug = hash.replace('#lessons-', '');
         setSelectedPost(slug || null);
+        const post = BLOG_POSTS.find(p => p.slug === slug);
+        if (post) {
+          setCurrentSeries(post.seriesId);
+        }
       }
     };
 
@@ -296,16 +505,22 @@ export default function BalaLessons() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 text-xs font-mono text-cyan-400 uppercase tracking-widest"
+              className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 text-xs font-mono text-cyan-400 uppercase tracking-widest animate-pulse"
             >
-              Lessons Learned in the Field
+              {currentSeries ? "Series Playbook" : "Build with Bala"}
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white"
             >
-              Bala's <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Lessons</span>
+              {currentSeries ? (
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+                  {SERIES_LIST.find(s => s.id === currentSeries)?.emoji} {SERIES_LIST.find(s => s.id === currentSeries)?.title}
+                </span>
+              ) : (
+                <span>Build with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Bala</span></span>
+              )}
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
@@ -313,7 +528,9 @@ export default function BalaLessons() {
               transition={{ delay: 0.1 }}
               className="text-slate-400 max-w-2xl text-base sm:text-lg text-center"
             >
-              Real-world engineering challenges, trade-offs, and battle-tested lessons from building systems in the field.
+              {currentSeries 
+                ? SERIES_LIST.find(s => s.id === currentSeries)?.description 
+                : "Step inside my workspace. Select an engineering series to explore tactical AI frameworks, production architectural blueprints, and deep mental models."}
             </motion.p>
           </div>
         ) : null}
@@ -325,56 +542,143 @@ export default function BalaLessons() {
             
             <AnimatePresence mode="wait">
               {!selectedPost ? (
-                // Index View
-                <motion.div 
-                  key="index"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  className="flex flex-col gap-6"
-                >
-                  {BLOG_POSTS.map((post) => (
-                    <div 
-                      key={post.slug}
-                      onClick={() => {
-                        window.location.hash = `#lessons/${post.slug}`;
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                      className="group rounded-3xl p-6 sm:p-8 glass-panel border border-white/5 hover:border-cyan-500/20 hover:bg-white/[0.02] transition-all duration-300 text-left flex flex-col justify-between gap-6 relative overflow-hidden cursor-pointer shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]"
-                    >
-                      <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-cyan-500/5 blur-3xl group-hover:bg-cyan-500/10 transition-colors duration-300" />
-                      
-                      <div className="flex flex-col gap-4">
-                        <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
-                          <span className="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 border border-white/10">{post.category}</span>
-                          <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {post.readTime}</span>
-                          <span>{post.date}</span>
+                // Index / List View
+                !currentSeries ? (
+                  // View 1: Series Landing Page
+                  <motion.div
+                    key="series-landing"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
+                  >
+                    {SERIES_LIST.map((series) => (
+                      <div
+                        key={series.id}
+                        onClick={() => {
+                          window.location.hash = `#lessons/series/${series.id}`;
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="group rounded-3xl p-8 glass-panel border border-white/5 hover:border-cyan-500/20 hover:bg-white/[0.02] transition-all duration-300 text-left flex flex-col justify-between gap-6 relative overflow-hidden cursor-pointer shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]"
+                      >
+                        <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-cyan-500/5 blur-3xl group-hover:bg-cyan-500/10 transition-colors duration-300" />
+                        
+                        <div className="flex flex-col gap-4">
+                          <div className="text-4xl">{series.emoji}</div>
+                          <h3 className="text-2xl sm:text-3xl font-black text-white group-hover:text-cyan-400 transition-colors tracking-tight flex items-center gap-2">
+                            {series.title}
+                            <ArrowRight className="w-5 h-5 text-cyan-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300" />
+                          </h3>
+                          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                            {series.description}
+                          </p>
                         </div>
-                        
-                        <h3 className="text-2xl sm:text-3xl font-black text-white group-hover:text-cyan-400 transition-colors tracking-tight">
-                          {post.title}
-                        </h3>
-                        
-                        <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-                          {post.excerpt}
-                        </p>
-                      </div>
 
-                      <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-2">
-                        <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 to-indigo-500 flex items-center justify-center font-bold font-mono text-white text-[10px]">
-                            BV
-                          </div>
-                          <span className="text-xs font-semibold text-slate-300">{post.author}</span>
+                        <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-2">
+                          <span className="text-xs font-mono font-bold text-slate-500">
+                            {series.id === 'how-bala-thinks' ? '5 Chapters • 1 Live' : '9 Chapters • Coming Soon'}
+                          </span>
+                          <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1">
+                            Explore Series <ArrowRight className="w-3.5 h-3.5" />
+                          </span>
                         </div>
-                        
-                        <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1 group-hover:translate-x-1.5 transition-transform">
-                          Read Lesson <ArrowRight className="w-3.5 h-3.5" />
-                        </span>
                       </div>
+                    ))}
+                  </motion.div>
+                ) : (
+                  // View 2: Series Detail (Blog titles selection)
+                  <motion.div
+                    key="series-detail"
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    className="flex flex-col gap-6 w-full text-left"
+                  >
+                    {/* Back Button */}
+                    <div className="flex justify-start mb-4">
+                      <button
+                        onClick={() => {
+                          window.location.hash = '#lessons';
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="flex items-center gap-2 text-sm font-mono text-slate-400 hover:text-cyan-400 transition-colors group cursor-pointer"
+                      >
+                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Back to Series Selection
+                      </button>
                     </div>
-                  ))}
-                </motion.div>
+
+                    {/* Series Header Card */}
+                    <div className="rounded-3xl p-6 sm:p-8 bg-white/[0.01] border border-white/5 text-left mb-4 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-indigo-500/5 blur-3xl" />
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-3xl">{SERIES_LIST.find(s => s.id === currentSeries)?.emoji}</span>
+                        <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                          {SERIES_LIST.find(s => s.id === currentSeries)?.title}
+                        </h2>
+                      </div>
+                      <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        {SERIES_LIST.find(s => s.id === currentSeries)?.description}
+                      </p>
+                    </div>
+
+                    {/* Blog posts list */}
+                    <div className="flex flex-col gap-4">
+                      {BLOG_POSTS.filter(p => p.seriesId === currentSeries).map((post) => {
+                        if (post.comingSoon) {
+                          return (
+                            <div
+                              key={post.slug}
+                              className="rounded-2xl p-5 border border-white/5 bg-white/[0.01] opacity-60 text-left flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative overflow-hidden select-none"
+                            >
+                              <div className="flex flex-col gap-1.5 max-w-xl">
+                                <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+                                  <span>{post.category}</span>
+                                  <span>•</span>
+                                  <span>{post.readTime}</span>
+                                </div>
+                                <h4 className="text-lg font-bold text-slate-400 flex items-center gap-2">
+                                  {post.title}
+                                </h4>
+                                <p className="text-slate-500 text-xs sm:text-sm line-clamp-1">{post.excerpt}</p>
+                              </div>
+                              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-slate-400 font-bold tracking-widest uppercase">
+                                Coming Soon
+                              </span>
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <div
+                            key={post.slug}
+                            onClick={() => {
+                              window.location.hash = `#lessons/post/${post.slug}`;
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                            className="group rounded-2xl p-5 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-cyan-500/20 transition-all duration-300 text-left flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 cursor-pointer relative overflow-hidden"
+                          >
+                            <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-cyan-500/[0.01] blur-2xl group-hover:bg-cyan-500/[0.03] transition-colors duration-300" />
+                            <div className="flex flex-col gap-1.5 max-w-xl relative z-10">
+                              <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                                <span className="text-cyan-400 font-semibold">{post.category}</span>
+                                <span>•</span>
+                                <span>{post.readTime}</span>
+                              </div>
+                              <h4 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                {post.title}
+                              </h4>
+                              <p className="text-slate-400 text-xs sm:text-sm line-clamp-1">{post.excerpt}</p>
+                            </div>
+                            <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform self-end sm:self-auto relative z-10">
+                              Read Lesson <ArrowRight className="w-3.5 h-3.5" />
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )
               ) : (
                 // Article Detail View
                 <motion.article 
@@ -388,7 +692,7 @@ export default function BalaLessons() {
                   {/* Sticky Reading Progress Bar (Kindle/Medium Style) */}
                   <div className="fixed top-0 left-0 right-0 h-1 bg-slate-200/20 z-50 pointer-events-none">
                     <motion.div 
-                      className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500"
+                       className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500"
                       style={{ width: `${scrollProgress}%` }}
                     />
                   </div>
@@ -403,7 +707,7 @@ export default function BalaLessons() {
                     {/* Back button */}
                     <button
                       onClick={() => {
-                        window.location.hash = '#lessons';
+                        window.location.hash = currentSeries ? `#lessons/series/${currentSeries}` : '#lessons';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       className={`flex items-center gap-2 text-sm font-mono transition-colors group cursor-pointer ${
@@ -411,7 +715,7 @@ export default function BalaLessons() {
                       }`}
                     >
                       <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                      Back to Lessons Index
+                      Back to Series Details
                     </button>
 
                     {/* Sliding Theme Toggle (3 options) */}
@@ -639,11 +943,10 @@ export default function BalaLessons() {
 
                   {/* Title */}
                   <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-8 text-left transition-colors duration-300 ${currentStyles.textTitle}`}>
-                    Stop Asking "How LLMs Work." <br className="hidden sm:inline"/>
                     <span className={`text-transparent bg-clip-text bg-gradient-to-r transition-all duration-300 ${
                       readerTheme !== 'dark' ? 'from-cyan-600 to-indigo-600' : 'from-cyan-400 to-indigo-400'
                     }`}>
-                      Start Asking "When LLMs Are the Right Tool."
+                      {BLOG_POSTS.find(p => p.slug === selectedPost)?.title || "How I Choose an LLM"}
                     </span>
                   </h1>
 

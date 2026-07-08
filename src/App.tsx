@@ -27,6 +27,7 @@ import WhatsAppWidget from './components/WhatsAppWidget';
 import ScrollCelebration from './components/ScrollCelebration';
 import AIBalaBot from './components/AIBalaBot';
 import BalaLessons from './components/BalaLessons';
+import Analytics from './components/Analytics';
 
 function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -200,6 +201,9 @@ export default function App() {
 
       {/* AI Bot Welcome Assistant representing Bala */}
       <AIBalaBot />
+
+      {/* Dynamic Free Web Analytics Tracker (Tracks pages, hashes & session timing) */}
+      <Analytics />
     </div>
   );
 }
