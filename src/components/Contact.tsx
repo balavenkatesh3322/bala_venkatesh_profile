@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Linkedin, Github, Youtube, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
 
+const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -52,6 +58,7 @@ export default function Contact() {
 
   const socials = [
     { name: 'LinkedIn', icon: Linkedin, link: 'https://www.linkedin.com/in/bala-venkatesh-67964247/', color: 'hover:bg-[#0077b5] text-[#0077b5] hover:text-white' },
+    { name: 'X (Twitter)', icon: XIcon, link: 'https://x.com/balavenkatesh22', color: 'hover:bg-slate-900 text-slate-300 hover:text-white' },
     { name: 'GitHub', icon: Github, link: 'https://github.com/balavenkatesh3322', color: 'hover:bg-[#24292e] text-[#24292e] hover:text-white' },
     { name: 'Medium', icon: BookOpen, link: 'https://balavenkatesh.medium.com/', color: 'hover:bg-[#00ab6c] text-[#00ab6c] hover:text-white' },
   ];

@@ -54,5 +54,6 @@ Every pixel of the interface has been fine-tuned to feel warm, responsive, and w
 Bala is always open to discussing custom AI strategy, RAG architectures, model fine-tuning, or team leadership opportunities. 
 
 * 💼 **Portfolio:** [balavenkatesh3322.github.io/bala_venkatesh_profile](https://balavenkatesh3322.github.io/bala_venkatesh_profile)
+* 🐦 **X (Twitter):** [@balavenkatesh22](https://x.com/balavenkatesh22)
 * ✉️ **Email:** [venkateshpnk22@gmail.com](mailto:venkateshpnk22@gmail.com)
 * 💬 **Virtual Twin:** Open the chat widget on the bottom-right of the portfolio website to speak with AI-Bala!
