@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, ShieldCheck, Zap, Terminal, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { statsData } from '../data';
+import AIProfileScanner from './AIProfileScanner';
 
 export default function Hero() {
   // Simple elegant counter effects using react hooks
@@ -57,6 +58,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-28 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden bg-slate-950 text-white">
+
       {/* Background Decorative Blurs */}
       <div className="absolute top-[-10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-indigo-600/15 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none animate-pulse-glow"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-cyan-600/10 rounded-full blur-[120px] sm:blur-[140px] pointer-events-none animate-pulse-glow-delayed"></div>
@@ -94,16 +96,6 @@ export default function Hero() {
                 </div>
               </motion.div>
             </div>
-            
-            {/* Inspirational Slogan Banner */}
-            <motion.div
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.05 }}
-              className="text-xs sm:text-sm font-mono text-cyan-400/90 border-l-2 border-cyan-400/50 pl-3.5 italic tracking-wide"
-            >
-              "Technology becomes valuable only when solving a business problem"
-            </motion.div>
           </div>
 
           <motion.h1
@@ -136,26 +128,6 @@ export default function Hero() {
               <span className="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
               Get AI Solution Now
             </a>
-            <a
-              href="#workflow-academy"
-              className="w-full sm:w-auto px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold hover:scale-102 transition-all flex items-center justify-center gap-2 text-sm text-slate-200 cursor-pointer"
-            >
-              View My Work
-            </a>
-          </motion.div>
-
-          {/* Guarantees Row */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45, duration: 0.5 }}
-            className="flex flex-wrap items-center gap-x-5 gap-y-2.5 mt-5 text-[11px] text-slate-400 font-mono font-medium"
-          >
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-cyan-400" /> NDA &amp; IP Compliant</span>
-            <span className="hidden sm:inline text-slate-700">•</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-cyan-400" /> Fast Weekly Deliverables</span>
-            <span className="hidden sm:inline text-slate-700">•</span>
-            <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-cyan-400" /> Fixed Price Quotes</span>
           </motion.div>
 
           {/* Stats Counters */}
@@ -188,30 +160,9 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: Modern Mockup & Floating Cards */}
-        <div className="lg:col-span-5 relative flex items-center justify-center mt-8 lg:mt-0">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[3/4] rounded-3xl overflow-visible"
-          >
-            {/* Morphing ambient shape behind profile */}
-            <div className="absolute inset-[-12px] bg-gradient-to-tr from-cyan-500/20 to-indigo-500/10 rounded-[36px] blur-md"></div>
-
-            {/* Profile image container */}
-            <div className="relative w-full h-full rounded-2.5xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
-              <img
-                src="images/Bala_profile_pic.jpg"
-                alt="Bala Venkatesh"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                referrerPolicy="no-referrer"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://placehold.co/400x533/0c1129/ffffff?text=BV';
-                }}
-              />
-            </div>
-          </motion.div>
+        {/* Right: Interactive AI Profile Scanner & Floating Visual Matrix */}
+        <div className="lg:col-span-5 relative flex items-center justify-center mt-8 lg:mt-0 w-full max-w-[340px] sm:max-w-[380px] aspect-[3/4] mx-auto lg:mx-0">
+          <AIProfileScanner />
         </div>
       </div>
 

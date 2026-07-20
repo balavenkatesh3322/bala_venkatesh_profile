@@ -7,11 +7,18 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-slate-950 border-t border-white/5 py-10 px-6 md:px-12 lg:px-24 z-20">
+    <footer className="relative bg-slate-950 border-t border-white/5 py-12 px-6 md:px-12 lg:px-24 z-20">
       {/* Decorative subtle ambient radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.06),transparent_60%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10 relative z-10">
+        {/* Quote Section at bottom page */}
+        <div className="flex flex-col items-center text-center pb-8 border-b border-white/5">
+          <p className="text-sm sm:text-base font-mono text-cyan-400/90 italic tracking-wide max-w-2xl px-4">
+            "Technology becomes valuable only when solving a business problem"
+          </p>
+        </div>
+
         {/* Bottom Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2 text-xs font-mono text-slate-500">
           {/* Copyright */}
