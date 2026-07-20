@@ -766,68 +766,6 @@ export default function BalaLessons() {
                       <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                       Back to Series Details
                     </button>
-
-                    {/* Sliding Theme Toggle (3 options) */}
-                    <div className={`p-1 rounded-xl flex flex-wrap items-center gap-1 self-start sm:self-auto border transition-colors duration-300 ${
-                      readerTheme !== 'dark' ? 'bg-slate-100/80 border-slate-200' : 'bg-slate-950/80 border-white/10'
-                    }`}>
-                      <button
-                        onClick={() => setReaderTheme('white')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold flex items-center gap-1.5 transition-all relative cursor-pointer ${
-                          readerTheme === 'white' 
-                            ? 'text-slate-900 z-10 font-black' 
-                            : 'text-slate-400 hover:text-slate-600'
-                        }`}
-                      >
-                        {readerTheme === 'white' && (
-                          <motion.div 
-                            layoutId="activeReaderTab"
-                            className="absolute inset-0 rounded-lg bg-white shadow border border-slate-200/50 -z-10"
-                            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                          />
-                        )}
-                        <span className="w-2 h-2 rounded-full bg-white border border-slate-300 shadow-xs" />
-                        <span>Pure White</span>
-                      </button>
-
-                      <button
-                        onClick={() => setReaderTheme('paper')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold flex items-center gap-1.5 transition-all relative cursor-pointer ${
-                          readerTheme === 'paper' 
-                            ? 'text-stone-950 z-10 font-black' 
-                            : 'text-stone-500 hover:text-stone-700'
-                        }`}
-                      >
-                        {readerTheme === 'paper' && (
-                          <motion.div 
-                            layoutId="activeReaderTab"
-                            className="absolute inset-0 rounded-lg bg-[#FAF4E5] shadow border border-stone-200/30 -z-10"
-                            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                          />
-                        )}
-                        <span className="w-2 h-2 rounded-full bg-[#FAF6EC] border border-stone-400/40" />
-                        <span>Warm Paper</span>
-                      </button>
-
-                      <button
-                        onClick={() => setReaderTheme('dark')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold flex items-center gap-1.5 transition-all relative cursor-pointer ${
-                          readerTheme === 'dark' 
-                            ? 'text-white z-10 font-black' 
-                            : 'text-slate-500 hover:text-slate-300'
-                        }`}
-                      >
-                        {readerTheme === 'dark' && (
-                          <motion.div 
-                            layoutId="activeReaderTab"
-                            className="absolute inset-0 rounded-lg bg-slate-900 -z-10"
-                            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                          />
-                        )}
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-xs shadow-cyan-400/40" />
-                        <span>Slate Night</span>
-                      </button>
-                    </div>
                   </div>
 
                   {/* Kindle/Medium Floating preferences and social reactions deck */}

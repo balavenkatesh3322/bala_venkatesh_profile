@@ -25,7 +25,18 @@ This log documents the architecture, key modifications, and deployment considera
 
 ---
 
+### 4. Global Dark Theme Enforcement & Blog-Specific Warm Paper Mode
+- **Aesthetic Solution**: Enforced dark theme as the strict default for the entire website to prevent mobile browser visual flashing/flickering.
+- **Implementation**:
+  - Removed `<ThemeToggle />` globally from desktop/mobile headers.
+  - Commented out `html.light` CSS rules in `src/index.css`.
+  - Added programmatic safeguard in `src/App.tsx` on-mount to explicitly clear the `.light` class from the root.
+  - Locked the blog reader (`src/components/BalaLessons.tsx`) to the beautiful **Warm Paper** theme as the sole dedicated option, removing other sub-theme controls (Pure White / Slate Night) to guarantee a highly polished and consistent medium-style reading interface.
+
+---
+
 ## Technical Details (July 2026)
 - **Framework**: React 18, Vite, Tailwind CSS.
 - **Animations**: `motion/react` for smooth transitions.
 - **Routing**: Client-side window `hashchange` listeners.
+- **Theme Controls**: Programmatic root class cleanup, lock-to-paper mode for reading articles.

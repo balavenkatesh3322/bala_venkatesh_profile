@@ -135,6 +135,7 @@ export default function App() {
 
   useEffect(() => {
     document.title = "Bala Venkatesh | Lead AI Engineer & Data Scientist";
+    document.documentElement.classList.remove('light');
 
     const handleHashChange = () => {
       setCurrentPath(window.location.hash || '#home');

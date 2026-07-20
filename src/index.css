@@ -52,33 +52,30 @@ html {
   cursor: none;
 }
 
-/* Professional White Color Theme (Light Mode) Styling Overrides */
+/* Professional White Color Theme (Light Mode) Styling Overrides (Commented out to enforce dark mode overall)
 html.light {
-  /* Redefine Tailwind v4 slate colors dynamically */
-  --color-slate-950: #f8fafc; /* Page Background: Slate-50 */
-  --color-slate-900: #ffffff; /* Card Background: White */
-  --color-slate-850: #f1f5f9; /* Mid card background */
-  --color-slate-800: #f1f5f9; /* Intermediate: slate-100 */
-  --color-slate-700: #e2e8f0; /* Borders: slate-200 */
-  --color-slate-600: #cbd5e1; /* slate-300 */
-  --color-slate-500: #64748b; /* slate-500 */
-  --color-slate-400: #475569; /* Descriptions: slate-600 */
-  --color-slate-300: #334155; /* Texts: slate-700 */
-  --color-slate-200: #1e293b; /* Primary dark text: slate-800 */
-  --color-slate-100: #0f172a; /* Main text: slate-900 */
-  --color-slate-50: #020617;  /* High contrast: slate-950 */
+  --color-slate-950: #f8fafc;
+  --color-slate-900: #ffffff;
+  --color-slate-850: #f1f5f9;
+  --color-slate-800: #f1f5f9;
+  --color-slate-700: #e2e8f0;
+  --color-slate-600: #cbd5e1;
+  --color-slate-500: #64748b;
+  --color-slate-400: #475569;
+  --color-slate-300: #334155;
+  --color-slate-200: #1e293b;
+  --color-slate-100: #0f172a;
+  --color-slate-50: #020617;
 
   color-scheme: light;
   background-color: #f8fafc;
 }
 
-/* Apply light theme color base to html and body */
 html.light, html.light body {
   background-color: #f8fafc !important;
   color: #0f172a !important;
 }
 
-/* Webkit Scrollbar overrides for light mode */
 html.light::-webkit-scrollbar-track {
   background: #f8fafc !important;
 }
@@ -89,7 +86,6 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: rgba(15, 23, 42, 0.25) !important;
 }
 
-/* Glassmorphism Cards adjustments for Light Mode */
 html.light .bg-white\/\[0\.01\],
 html.light .bg-white\/\[0\.02\],
 html.light .bg-white\/\[0\.03\],
@@ -101,7 +97,6 @@ html.light .bg-white\/10 {
   box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.01) !important;
 }
 
-/* Solid slate colors or dark-gradients should remain vibrant or flip elegantly */
 html.light .from-slate-950,
 html.light .from-slate-900 {
   --tw-gradient-from: #f8fafc !important;
@@ -111,12 +106,10 @@ html.light .to-slate-900 {
   --tw-gradient-to: #ffffff !important;
 }
 
-/* High contrast text overrides */
 html.light .text-white {
   color: #0f172a !important;
 }
 
-/* Exceptions: elements that must retain contrast on solid background colors (buttons, badges) */
 html.light .bg-cyan-500 .text-white,
 html.light .bg-indigo-600 .text-white,
 html.light .bg-indigo-500 .text-white,
@@ -139,17 +132,14 @@ html.light .bg-sky-500\/10 .text-sky-400,
 html.light .bg-fuchsia-500\/10 .text-fuchsia-400,
 html.light .bg-orange-500\/10 .text-orange-400,
 html.light .text-transparent.bg-clip-text {
-  /* Preserve original styles for color-contrast design */
   color: inherit;
 }
 
-/* Explicit text color overrides inside specific backgrounds to keep perfect readability */
 html.light .bg-gradient-to-tr .text-white,
 html.light .bg-gradient-to-r .text-white {
   color: #ffffff !important;
 }
 
-/* Glass outline borders in Light Mode */
 html.light .border-white\/5,
 html.light .border-white\/10,
 html.light .border-white\/15,
@@ -160,7 +150,6 @@ html.light .border-b-white\/5 {
   border-color: rgba(15, 23, 42, 0.08) !important;
 }
 
-/* Soft shadows for cards to replace glowing effect in Light Mode */
 html.light .group.relative.p-6,
 html.light .group.relative.p-5,
 html.light .relative.inline-flex,
@@ -169,7 +158,6 @@ html.light .bg-slate-900\/40 {
   border-color: rgba(15, 23, 42, 0.06) !important;
 }
 
-/* Navigation bar background and scroll adjustments */
 html.light nav#navbar {
   border-bottom: 1px solid rgba(15, 23, 42, 0.05) !important;
 }
@@ -179,7 +167,6 @@ html.light nav#navbar.bg-slate-950\/40 {
   box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.05) !important;
 }
 
-/* Navigation text colors */
 html.light nav#navbar .text-slate-300,
 html.light nav#navbar .text-slate-200 {
   color: #475569 !important;
@@ -192,12 +179,10 @@ html.light nav#navbar .text-white {
   color: #0f172a !important;
 }
 
-/* Mobile drawer close & open icons */
 html.light .lg\:hidden .text-slate-300 {
   color: #475569 !important;
 }
 
-/* Contact form labels and focus states */
 html.light label {
   color: #475569 !important;
 }
@@ -213,7 +198,6 @@ html.light textarea:focus {
   border-color: #06b6d4 !important;
 }
 
-/* Sandbox and demo element readabilities */
 html.light .grid-cols-3.gap-3.bg-slate-950\/50,
 html.light .p-6.sm\:p-8.bg-slate-950\/45,
 html.light .bg-slate-950\/60,
@@ -226,7 +210,6 @@ html.light .flex-1.bg-slate-950.border {
   border-color: rgba(15, 23, 42, 0.1) !important;
 }
 
-/* Custom follower cursor adjustments */
 html.light .custom-cursor {
   background-color: #06b6d4 !important;
   mix-blend-mode: multiply !important;
@@ -234,6 +217,7 @@ html.light .custom-cursor {
 html.light .custom-cursor-glow {
   background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%) !important;
 }
+*/
 
 /* ==========================================
    Ultimate Premium Glassmorphism UI Utilities
@@ -262,7 +246,7 @@ html.light .custom-cursor-glow {
   transform: translateY(-5px);
 }
 
-/* Light Mode Glassmorphism Overrides */
+/* Commented out Light Mode Glassmorphism Overrides
 html.light .glass-panel {
   background: rgba(255, 255, 255, 0.82) !important;
   backdrop-filter: blur(18px) saturate(140%) !important;
@@ -283,6 +267,7 @@ html.light .glass-panel-hover:hover {
     inset 0 1px 0px rgba(255, 255, 255, 0.9) !important;
   transform: translateY(-5px);
 }
+*/
 
 /* Glowing background ambient spots */
 .ambient-glow-cyan {
