@@ -12,7 +12,8 @@ import Services from './components/Services';
 import Experience from './components/Experience';
 // import Projects from './components/Projects';
 import AIWorkflowAcademy from './components/AIWorkflowAcademy';
-import BusinessImprover from './components/BusinessImprover';
+// import BusinessImprover from './components/BusinessImprover';
+import BuildWithBalaPromo from './components/BuildWithBalaPromo';
 // import AIDemoSandbox from './components/AIDemoSandbox';
 import OpenSource from './components/OpenSource';
 import Skills from './components/Skills';
@@ -135,7 +136,6 @@ export default function App() {
 
   useEffect(() => {
     document.title = "Bala Venkatesh | Lead AI Engineer & Data Scientist";
-    document.documentElement.classList.remove('light');
 
     const handleHashChange = () => {
       setCurrentPath(window.location.hash || '#home');
@@ -177,10 +177,11 @@ export default function App() {
             <Services />
             <AIWorkflowAcademy />
             <Experience />
-            <BusinessImprover />
+            {/* <BusinessImprover /> */}
+            <BuildWithBalaPromo />
             {/* <AIDemoSandbox /> */}
             <OpenSource />
-            <Skills />
+            {/* <Skills /> */}
             <Education />
             <Recognition />
             <Testimonials />

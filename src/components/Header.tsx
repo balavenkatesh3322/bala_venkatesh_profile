@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function Header() {
       }
 
       // Smooth navigation link tracking based on current viewport
-      const sections = ['about', 'services', 'workflow-academy', 'experience', 'skills', 'education'];
+      const sections = ['about', 'services', 'workflow-academy', 'experience', 'education'];
       let currentActive = 'about';
 
       for (const sectionId of sections) {
@@ -56,7 +57,6 @@ export default function Header() {
     { label: 'AI Playbook', href: '#workflow-academy' },
     { label: 'Build with Bala', href: '#lessons', isNew: true },
     { label: 'Experience', href: '#experience' },
-    { label: 'Skills', href: '#skills' },
     { label: 'Education', href: '#education' },
   ];
 
@@ -113,8 +113,9 @@ export default function Header() {
           })}
         </div>
 
-        {/* CTA */}
-        <div className="hidden lg:flex items-center gap-4">
+        {/* CTA & Theme Toggle */}
+        <div className="hidden lg:flex items-center gap-3">
+          <ThemeToggle />
           <a
             href="#contact"
             className="px-5 py-2.5 bg-white/5 hover:bg-cyan-500 hover:text-slate-950 border border-white/10 hover:border-cyan-400 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 group text-white shadow-inner"
@@ -124,8 +125,9 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu button & Theme Toggle */}
         <div className="flex items-center gap-3 lg:hidden">
+          <ThemeToggle />
           <button
             onClick={() => setIsOpen(true)}
             className="p-2 text-slate-300 hover:text-white bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors"

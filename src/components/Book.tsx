@@ -1,10 +1,12 @@
 import React from 'react';
 import { BookOpen, ShoppingBag, Award } from 'lucide-react';
 import { motion } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Book() {
   return (
     <section id="book" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="top-right" color="purple" />
       {/* Decorative Blob */}
       <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 

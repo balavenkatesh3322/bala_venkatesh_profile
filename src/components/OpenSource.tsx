@@ -2,6 +2,7 @@ import React from 'react';
 import { Bot, LineChart, Award, ScanFace, FlaskConical, FileText, Github, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ossReposData } from '../data';
+import WaterWaveEffect from './WaterWaveEffect';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Bot: Bot,
@@ -15,6 +16,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 export default function OpenSource() {
   return (
     <section id="open-source" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="top-right" color="cyan" />
       {/* Decorative Blob */}
       <div className="absolute bottom-[20%] right-[-10%] w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none"></div>
 

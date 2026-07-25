@@ -1,6 +1,7 @@
 import React from 'react';
 import { Download, BookOpen, Landmark, HeartPulse, Leaf, ShoppingCart, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function About() {
   const domains = [
@@ -13,6 +14,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="top-right" color="indigo" />
       <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
       
       <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">

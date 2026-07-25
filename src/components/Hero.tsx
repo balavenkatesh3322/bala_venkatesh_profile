@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, ShieldCheck, Zap, Terminal, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { statsData } from '../data';
 import AIProfileScanner from './AIProfileScanner';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Hero() {
   // Simple elegant counter effects using react hooks
   const [counts, setCounts] = useState({ clients: 0, projects: 0, experience: 0 });
-  const [activeStatusIdx, setActiveStatusIdx] = useState(0);
-
-  const systemStatuses = [
-    "Brainstorming custom GenAI agents... 🤖",
-    "Converting complex tech into 10x business ROI 📈",
-    "Testing interactive AI sandboxes & code ⚡",
-    "Optimizing enterprise RAG pipelines 🎯",
-    "Writing Chapter 4 of my upcoming AI Book 📖",
-    "Developing scalable full-stack applications 🚀",
-    "Refining custom LLM prompt strategies 💻",
-    "Mentoring builders & designing architecture 🏛️",
-    "Available for custom enterprise AI projects 🤝"
-  ];
-
-  useEffect(() => {
-    const statusInterval = setInterval(() => {
-      setActiveStatusIdx((prev) => (prev + 1) % systemStatuses.length);
-    }, 2800);
-    return () => clearInterval(statusInterval);
-  }, []);
 
   useEffect(() => {
     const clientsTarget = 42;
@@ -58,6 +39,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-28 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden bg-slate-950 text-white">
+      {/* Round Ambient Water Wave Effect */}
+      <WaterWaveEffect variant="dual" color="cyan" />
 
       {/* Background Decorative Blurs */}
       <div className="absolute top-[-10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-indigo-600/15 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none animate-pulse-glow"></div>
@@ -67,37 +50,6 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left: Text & Actions */}
         <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-slate-900/60 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider font-mono shadow-[0_0_15px_rgba(6,182,212,0.1)] hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 w-full sm:w-auto overflow-hidden"
-              >
-                <span className="relative flex h-2 w-2 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-                </span>
-                <span className="text-slate-400 text-[9px] sm:text-[10px] tracking-widest uppercase shrink-0">Bala Status:</span>
-                <div className="h-4 overflow-hidden relative flex-1 sm:w-64 md:w-80 min-w-[110px] flex items-center">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={activeStatusIdx}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute text-cyan-300 font-bold tracking-normal text-[10px] sm:text-xs whitespace-nowrap truncate max-w-full"
-                    >
-                      {systemStatuses[activeStatusIdx]}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}

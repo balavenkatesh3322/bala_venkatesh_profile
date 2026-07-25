@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 import { 
   ArrowLeft, 
   BookOpen, 
@@ -541,7 +542,8 @@ export default function BalaLessons() {
   };
 
   return (
-    <section id="lessons" className="relative min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section id="lessons" className="relative min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
+      <WaterWaveEffect variant="dual" color="cyan" />
       <div className="max-w-7xl mx-auto">
         
         {/* Header Introduction */}

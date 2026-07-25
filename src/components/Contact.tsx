@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Linkedin, Github, Youtube, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 
 const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -65,6 +66,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="dual" color="cyan" />
       {/* Decorative Blur */}
       <div className="absolute bottom-[-10%] left-[-10%] w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 

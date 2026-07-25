@@ -2,6 +2,7 @@ import React from 'react';
 import { Lightbulb, Brain, Code, Users, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { servicesData } from '../data';
+import WaterWaveEffect from './WaterWaveEffect';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Lightbulb: Lightbulb,
@@ -13,6 +14,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 export default function Services() {
   return (
     <section id="services" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="bottom-left" color="cyan" />
       {/* Decorative Blur */}
       <div className="absolute bottom-[-10%] left-[-10%] w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 

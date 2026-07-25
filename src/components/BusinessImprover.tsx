@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 import { 
   TrendingUp, 
   Cpu, 
@@ -115,6 +116,7 @@ export default function BusinessImprover() {
 
   return (
     <section id="business-improver" className="relative py-24 px-6 md:px-12 lg:px-24 bg-slate-950 text-white overflow-hidden border-b border-white/5 z-20">
+      <WaterWaveEffect variant="dual" color="emerald" />
       
       {/* Decorative premium floating ambient blur vectors */}
       <div className="absolute top-[10%] right-[-5%] w-[450px] h-[450px] bg-indigo-500/[0.04] rounded-full blur-[130px] pointer-events-none" />

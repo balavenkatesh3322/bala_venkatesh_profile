@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Calendar, ArrowRight, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { experienceData } from '../data';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState(experienceData[0].id);
@@ -10,6 +11,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="top-right" color="indigo" />
       {/* Decorative Blur */}
       <div className="absolute top-[30%] right-[-10%] w-[350px] h-[350px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
 

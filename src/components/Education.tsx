@@ -2,10 +2,12 @@ import React from 'react';
 import { GraduationCap, School, ArrowUpRight, ShieldCheck, Award } from 'lucide-react';
 import { motion } from 'motion/react';
 import { eduData, certificationsData } from '../data';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Education() {
   return (
     <section id="education" className="relative py-24 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="bottom-left" color="cyan" />
       {/* Decorative Blur */}
       <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 

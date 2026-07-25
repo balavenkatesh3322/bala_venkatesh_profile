@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 import { 
   Brain, 
   Database, 
@@ -622,6 +623,7 @@ export default function AIWorkflowAcademy() {
 
   return (
     <section id="workflow-academy" className="relative py-24 px-6 md:px-12 lg:px-24 bg-slate-950 text-white overflow-hidden border-t border-white/5 z-20">
+      <WaterWaveEffect variant="center" color="purple" />
       
       {/* Decorative ambient background spots */}
       <div className="absolute top-[10%] left-[-10%] w-[450px] h-[450px] bg-cyan-500/[0.04] rounded-full blur-[140px] pointer-events-none" />

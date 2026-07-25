@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import WaterWaveEffect from './WaterWaveEffect';
 import {
   Code,
   Brain,
@@ -95,6 +96,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="dual" color="cyan" />
       {/* Premium Background Glow Nodes */}
       <div className="absolute top-[10%] left-[-10%] w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[130px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[-10%] w-[350px] h-[350px] bg-emerald-500/5 rounded-full blur-[130px] pointer-events-none" />

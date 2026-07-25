@@ -2,10 +2,12 @@ import React from 'react';
 import { Star, MessageSquareQuote } from 'lucide-react';
 import { motion } from 'motion/react';
 import { testimonialsData } from '../data';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Testimonials() {
   return (
     <section id="testimonials" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="dual" color="cyan" />
       {/* Decorative Blur */}
       <div className="absolute bottom-[10%] left-[-10%] w-[350px] h-[350px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 

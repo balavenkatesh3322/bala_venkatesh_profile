@@ -1,10 +1,12 @@
 import React from 'react';
 import { Award, Star } from 'lucide-react';
 import { motion } from 'motion/react';
+import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Recognition() {
   return (
     <section id="recognition" className="relative py-20 px-6 md:px-12 lg:px-24 bg-slate-950 overflow-hidden text-white border-b border-white/5">
+      <WaterWaveEffect variant="top-right" color="indigo" />
       {/* Decorative Blob */}
       <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-yellow-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
