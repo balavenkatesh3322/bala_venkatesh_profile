@@ -32,6 +32,7 @@ export default function Footer() {
             <a href="#services" className="hover:text-cyan-400 transition-colors">Services</a>
             <a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a>
             <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
+            <a href="https://balavenkatesh3322.github.io/awesome-developer-porfolio/" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1">Awesome Portfolios (2000+)</a>
             <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
           </div>
 

@@ -178,6 +178,15 @@ export const projectsData: ProjectItem[] = [
 
 export const ossReposData: OSSRepo[] = [
   {
+    id: 'oss-portfolio',
+    name: 'Awesome Developer Portfolio',
+    desc: 'Curated collection of 2000+ world-class developer portfolio designs to inspire engineers and showcase your portfolio to the world.',
+    tech: 'Web · Inspiration · Portfolio Showcase',
+    iconName: 'Globe',
+    bgHex: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400',
+    githubLink: 'https://balavenkatesh3322.github.io/awesome-developer-porfolio/'
+  },
+  {
     id: 'oss-1',
     name: 'Technical Knowledge Assistant',
     desc: 'AI assistant for technical knowledge retrieval and QA powered by NLP and custom vector models.',
@@ -194,15 +203,6 @@ export const ossReposData: OSSRepo[] = [
     iconName: 'LineChart',
     bgHex: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
     githubLink: 'https://github.com/balavenkatesh3322/ecommerce-analytics'
-  },
-  {
-    id: 'oss-3',
-    name: 'Free AI Certification Guide',
-    desc: 'A meticulously curated study guide and resource repository to achieve major fully accredited AI certifications.',
-    tech: 'Education · AI · MLOps',
-    iconName: 'Award',
-    bgHex: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
-    githubLink: 'https://github.com/balavenkatesh3322/free-ai-certification'
   },
   {
     id: 'oss-4',

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Bot, LineChart, Award, ScanFace, FlaskConical, FileText, Github, ArrowUpRight } from 'lucide-react';
+import { Bot, LineChart, Award, ScanFace, FlaskConical, FileText, Github, ArrowUpRight, Globe, Sparkles, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ossReposData } from '../data';
 import WaterWaveEffect from './WaterWaveEffect';
+import SlideToOpenRepo from './SlideToOpenRepo';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Globe: Globe,
   Bot: Bot,
   LineChart: LineChart,
   Award: Award,
@@ -24,7 +26,7 @@ export default function OpenSource() {
         {/* Header */}
         <div className="text-left flex flex-col gap-3">
           <div className="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400">
-            Community
+            Community & Inspiration
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100">
             Bala Build{' '}
@@ -33,50 +35,108 @@ export default function OpenSource() {
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl">
-            Open-source projects with hundreds of GitHub stars, shared freely with developers around the globe.
+            Open-source projects and developer resources shared freely with developers around the globe.
           </p>
         </div>
+
+        {/* Featured Showcase Banner: Awesome Developer Portfolio */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="p-6 sm:p-8 rounded-3xl glass-panel bg-gradient-to-r from-cyan-950/50 via-slate-900/80 to-indigo-950/50 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6 text-left shadow-2xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex items-start gap-4 relative z-10">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shrink-0 shadow-lg">
+              <Globe className="w-6 h-6 text-cyan-300 animate-pulse" />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-[10px] font-mono font-bold uppercase tracking-wider">
+                  <Sparkles className="w-3 h-3 text-cyan-400" /> Featured Showcase
+                </span>
+                <span className="text-slate-400 text-xs font-mono">2,000+ Portfolios</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-black text-white">
+                Awesome Developer Portfolio
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+                Browse 2,000+ world-class developer portfolio designs curated to inspire engineers. Add your own portfolio to showcase your work to the world!
+              </p>
+            </div>
+          </div>
+
+          <a
+            href="https://balavenkatesh3322.github.io/awesome-developer-porfolio/"
+            target="_blank"
+            rel="noreferrer"
+            className="px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-slate-950 font-black rounded-2xl text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-cyan-500/25 flex items-center gap-2.5 shrink-0 group cursor-pointer hover:scale-[1.02] relative z-10"
+          >
+            <span>Browse 2000+ Portfolios</span>
+            <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
+        </motion.div>
 
         {/* OSS Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ossReposData.map((repo, idx) => {
             const IconComp = iconMap[repo.iconName] || FileText;
             return (
-              <motion.a
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 key={repo.id}
-                href={repo.githubLink}
-                target="_blank"
-                rel="noreferrer"
-                className="group p-6 rounded-2.5xl bg-white/5 border border-white/10 hover:border-cyan-500/30 flex flex-col gap-4 shadow-xl hover:-translate-y-1.5 hover:shadow-black/60 transition-all duration-300 text-left"
+                className="group p-6 rounded-2.5xl bg-white/5 border border-white/10 hover:border-cyan-500/30 flex flex-col justify-between gap-5 shadow-xl hover:-translate-y-1.5 hover:shadow-black/60 transition-all duration-300 text-left"
               >
-                {/* Repo Icon */}
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${repo.bgHex}`}>
-                  <IconComp className="w-5 h-5" />
-                </div>
-
-                {/* Info */}
-                <div className="flex flex-col gap-1.5 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-base font-bold text-slate-100 group-hover:text-cyan-400 transition-colors">
-                      {repo.name}
-                    </h3>
-                    <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <div className="flex flex-col gap-4">
+                  {/* Repo Header & Icon */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${repo.bgHex}`}>
+                      <IconComp className="w-5 h-5" />
+                    </div>
+                    <a
+                      href={repo.githubLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-2 rounded-xl bg-white/5 hover:bg-cyan-500/20 text-slate-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/30 transition-all cursor-pointer"
+                      title="Open in new tab"
+                    >
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    </a>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                    {repo.desc}
-                  </p>
+
+                  {/* Info */}
+                  <div className="flex flex-col gap-1.5">
+                    <h3 className="text-base font-bold text-slate-100 group-hover:text-cyan-400 transition-colors">
+                      <a href={repo.githubLink} target="_blank" rel="noreferrer" className="hover:underline">
+                        {repo.name}
+                      </a>
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      {repo.desc}
+                    </p>
+                  </div>
+
+                  {/* Tech stack badge */}
+                  <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono font-semibold text-slate-500 pt-1">
+                    <Github className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
+                    <span>{repo.tech}</span>
+                  </div>
                 </div>
 
-                {/* Footer details */}
-                <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono font-semibold text-slate-500 mt-2 border-t border-white/5 pt-3">
-                  <Github className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
-                  <span>{repo.tech}</span>
+                {/* iPhone Slide to Call / Attend Option Slider */}
+                <div className="pt-3 border-t border-white/5">
+                  <SlideToOpenRepo
+                    url={repo.githubLink}
+                    label="slide to open repo"
+                  />
                 </div>
-              </motion.a>
+              </motion.div>
             );
           })}
         </div>
