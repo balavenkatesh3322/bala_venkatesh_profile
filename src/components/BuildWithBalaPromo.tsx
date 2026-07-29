@@ -16,7 +16,17 @@ interface FeaturedBlog {
 
 const FEATURED_BLOGS: FeaturedBlog[] = [
   {
-    slug: 'stop-asking-how-llms-work',
+    slug: 'building-something-people-trust',
+    title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
+    category: 'Software Strategy',
+    series: 'Engineering Mindset',
+    readTime: '5 min read',
+    excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, and trust are the real value differentiators.',
+    tags: ['AI Strategy', 'Product Engineering', 'System Design'],
+    emoji: '🤝'
+  },
+  {
+    slug: 'llm-right-tool',
     title: 'Stop Asking "How LLMs Work." Start Asking "When LLMs Are the Right Tool."',
     category: 'AI Strategy',
     series: 'How Bala Thinks',
@@ -26,24 +36,14 @@ const FEATURED_BLOGS: FeaturedBlog[] = [
     emoji: '🧠'
   },
   {
-    slug: 'why-enterprise-rag-fails',
-    title: 'Why Most Enterprise RAG Deployments Fail in Production (And How to Fix It)',
-    category: 'Architecture',
-    series: 'RAG & Vector Search',
-    readTime: '7 min read',
-    excerpt: 'Naive RAG breaks under noise. Learn how Hybrid Retrieval (BM25 + Dense Vectors) and Cross-Encoder Re-ranking prevent costly hallucination traps.',
-    tags: ['RAG', 'Vector DB', 'LangChain'],
-    emoji: '⚙️'
-  },
-  {
-    slug: 'on-device-tflite-offline-ai',
-    title: 'Building Offline-First AI: On-Device TFLite Models for Spotty Connectivity',
-    category: 'On-Device AI',
-    series: 'Edge & Mobile AI',
-    readTime: '6 min read',
-    excerpt: 'How we brought neural pathology models down to mobile runtimes for millions of farmers with zero network latency dependency.',
-    tags: ['TFLite', 'Computer Vision', 'Offline AI'],
-    emoji: '⚡'
+    slug: 'stopped-chasing-technologies',
+    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
+    category: 'Career & Mindset',
+    series: 'Engineering Mindset',
+    readTime: '5 min read',
+    excerpt: 'Every new framework felt like progress. But learning technology is not the same as creating value. Here is the realization that changed how I build.',
+    tags: ['Career Growth', 'Problem Solving', 'Engineering'],
+    emoji: '💡'
   }
 ];
 
@@ -101,7 +101,7 @@ export default function BuildWithBalaPromo() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.12 }}
-              onClick={(e) => handleNavigateToLessons(e, '#lessons')}
+              onClick={(e) => handleNavigateToLessons(e, `#lessons/post/${blog.slug}`)}
               className="group p-6 sm:p-7 rounded-3xl glass-panel glass-panel-hover flex flex-col justify-between gap-6 cursor-pointer border border-white/5 hover:border-cyan-500/30 transition-all duration-300 relative overflow-hidden"
             >
               {/* Corner ambient glow */}

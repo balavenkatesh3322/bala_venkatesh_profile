@@ -249,6 +249,18 @@ const BLOG_POSTS: BlogPost[] = [
   
   // Series 3: Engineering Mindset
   {
+    slug: 'building-something-people-trust',
+    title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
+    seriesId: 'engineering-mindset',
+    category: 'Software Strategy',
+    readTime: '5 min read',
+    date: 'July 29, 2026',
+    excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, business judgment, and trust are the real value differentiators for engineers.',
+    author: 'Bala Venkatesh',
+    tags: ['AI Products', 'Product Engineering', 'System Design', 'Software Strategy'],
+    comingSoon: false
+  },
+  {
     slug: 'stopped-chasing-technologies',
     title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
     seriesId: 'engineering-mindset',
@@ -626,7 +638,7 @@ export default function BalaLessons() {
                             {series.id === 'how-bala-thinks' 
                               ? '5 Chapters • 1 Live' 
                               : series.id === 'engineering-mindset' 
-                                ? '3 Chapters • 1 Live' 
+                                ? '4 Chapters • 2 Live' 
                                 : '9 Chapters • Coming Soon'}
                           </span>
                           <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1">
@@ -945,7 +957,334 @@ export default function BalaLessons() {
                   <div className={`text-left transition-colors duration-300 ${fontClass} ${sizeClass} ${widthClass} ${
                     readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
                   }`}>
-                    {selectedPost === 'stopped-chasing-technologies' ? (
+                    {selectedPost === 'building-something-people-trust' ? (
+                      <div className="space-y-6">
+                        <p className={`text-base sm:text-lg font-semibold italic border-l-4 pl-4 py-1.5 transition-all duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'text-slate-900 border-cyan-500 bg-cyan-50/25 rounded-r-xl pr-3' 
+                            : 'text-slate-200 border-cyan-400 bg-white/5 rounded-r-xl pr-3'
+                        }`}>
+                          "A few years ago, building software was the biggest challenge. Today, it isn't. With AI, technology has dramatically reduced the cost of building — but it hasn't reduced the cost of understanding. That's where the real opportunity is."
+                        </p>
+
+                        <p>
+                          A few years ago, building software was the biggest challenge.
+                        </p>
+
+                        <p>
+                          Today, it isn't.
+                        </p>
+
+                        <p>
+                          With AI, you can describe an idea in plain English and generate a working application in minutes. You can create a website, a chatbot, an API, or even an MVP without writing every line of code yourself.
+                        </p>
+
+                        <p>
+                          Technology has dramatically reduced the cost of building.
+                        </p>
+
+                        <p className="font-bold">
+                          But it hasn't reduced the cost of understanding.
+                        </p>
+
+                        <p className={`text-lg font-black ${currentStyles.textAccent}`}>
+                          That's where the real opportunity is.
+                        </p>
+
+                        <div className={`my-8 p-6 border-l-4 transition-all duration-300 rounded-r-2xl ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-cyan-50/45 border-cyan-500 text-stone-900 font-serif text-lg italic' 
+                            : 'bg-white/5 border-cyan-400 text-slate-100 font-serif text-lg italic'
+                        }`}>
+                          "Most products don't fail because the code is bad. They fail because they solve the wrong problem."
+                        </div>
+
+                        {/* Section 1 */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-8 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          If everyone can build, what becomes valuable?
+                        </h2>
+
+                        <p>
+                          The bottleneck is no longer coding.
+                        </p>
+
+                        <p className="font-semibold text-lg">
+                          The bottleneck is making good decisions.
+                        </p>
+
+                        <p>
+                          Questions like these matter far more than choosing the latest framework:
+                        </p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-6">
+                          {[
+                            'Should we build this product at all?',
+                            'Who is the customer?',
+                            'What problem are we solving?',
+                            'Will anyone pay for it?',
+                            'Can it scale?',
+                            'How do we measure success?'
+                          ].map((q, idx) => (
+                            <div key={idx} className={`p-4 rounded-xl border transition-colors flex items-center gap-3 ${
+                              readerTheme !== 'dark' ? 'bg-[#FCF9F2] border-stone-200/60' : 'bg-white/[0.02] border-white/5'
+                            }`}>
+                              <span className="text-cyan-500 font-mono font-bold text-sm">0{idx + 1}.</span>
+                              <span className="text-sm font-semibold">{q}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <p>
+                          Most products don't fail because the code is bad.
+                        </p>
+
+                        <p className={`font-black text-lg ${
+                          readerTheme !== 'dark' ? 'text-rose-700' : 'text-rose-400'
+                        }`}>
+                          They fail because they solve the wrong problem.
+                        </p>
+
+                        {/* Section 2 */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          The hardest part isn't development.
+                        </h2>
+
+                        <p className="font-bold text-lg">
+                          It's discovery.
+                        </p>
+
+                        <div className={`p-6 rounded-2xl border transition-colors my-6 ${
+                          readerTheme !== 'dark' ? 'bg-amber-50/40 border-amber-200' : 'bg-amber-500/5 border-amber-500/20'
+                        }`}>
+                          <div className="text-xs font-mono font-bold uppercase text-amber-600 mb-3">Core Elements of Discovery</div>
+                          <ul className="space-y-2.5 text-sm font-medium">
+                            <li className="flex items-center gap-2.5">
+                              <span className="text-amber-500">🔍</span> <span>Understanding customers</span>
+                            </li>
+                            <li className="flex items-center gap-2.5">
+                              <span className="text-amber-500">⚙️</span> <span>Understanding workflows</span>
+                            </li>
+                            <li className="flex items-center gap-2.5">
+                              <span className="text-amber-500">🎯</span> <span>Understanding pain points</span>
+                            </li>
+                            <li className="flex items-center gap-2.5">
+                              <span className="text-amber-500">🧠</span> <span>Understanding why people behave the way they do</span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <p className="italic font-semibold text-base">
+                          A perfect solution to the wrong problem is still a failed product.
+                        </p>
+
+                        {/* Section 3 */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          What should engineers focus on now?
+                        </h2>
+
+                        {/* Sub 1 */}
+                        <div className="space-y-4 pt-2">
+                          <h3 className={`text-lg font-bold transition-colors ${currentStyles.textTitle}`}>
+                            1. Learn to identify problems.
+                          </h3>
+                          <p>Instead of asking,</p>
+                          <blockquote className={`p-4 rounded-xl border font-mono text-xs sm:text-sm transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-100 border-stone-250 text-stone-700' : 'bg-white/5 border-white/10 text-slate-400'
+                          }`}>
+                            "What can I build?"
+                          </blockquote>
+                          <p>Ask,</p>
+                          <blockquote className={`p-4 rounded-xl border font-mono text-xs sm:text-sm font-bold transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-cyan-50 border-cyan-200 text-cyan-800' : 'bg-cyan-500/10 border-cyan-500/30 text-cyan-300'
+                          }`}>
+                            "What is frustrating enough that someone would pay to solve it?"
+                          </blockquote>
+                          <p className="font-medium">
+                            The second question leads to better products.
+                          </p>
+                        </div>
+
+                        {/* Sub 2 */}
+                        <div className="space-y-4 pt-6">
+                          <h3 className={`text-lg font-bold transition-colors ${currentStyles.textTitle}`}>
+                            2. Learn business before technology.
+                          </h3>
+                          <p>
+                            Technology is only one part of a successful product. You also need to understand:
+                          </p>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                            {[
+                              'Who will use it?',
+                              'How will they discover it?',
+                              'Why will they trust it?',
+                              'How will it make or save money?',
+                              'How will you support it after launch?'
+                            ].map((q, idx) => (
+                              <div key={idx} className={`p-3.5 rounded-xl border text-xs sm:text-sm font-medium ${
+                                readerTheme !== 'dark' ? 'bg-white border-stone-200' : 'bg-slate-900 border-white/5'
+                              }`}>
+                                • {q}
+                              </div>
+                            ))}
+                          </div>
+                          <p className="font-semibold">
+                            The best engineers think like product builders. The best product builders think like business owners.
+                          </p>
+                        </div>
+
+                        {/* Sub 3 */}
+                        <div className="space-y-4 pt-6">
+                          <h3 className={`text-lg font-bold transition-colors ${currentStyles.textTitle}`}>
+                            3. Learn system design.
+                          </h3>
+                          <p>
+                            Building a demo is easy. Building a system that serves thousands of users reliably is much harder.
+                          </p>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                            {[
+                              'Can it handle failures?',
+                              'Can it scale?',
+                              'Is it secure?',
+                              'Can another engineer maintain it six months from now?'
+                            ].map((q, idx) => (
+                              <div key={idx} className={`p-3.5 rounded-xl border text-xs sm:text-sm font-medium ${
+                                readerTheme !== 'dark' ? 'bg-[#FCF9F2] border-stone-200' : 'bg-white/[0.02] border-white/5'
+                              }`}>
+                                ⚡ {q}
+                              </div>
+                            ))}
+                          </div>
+                          <p className="text-sm italic font-semibold">
+                            These questions separate prototypes from production systems.
+                          </p>
+                        </div>
+
+                        {/* Sub 4 */}
+                        <div className="space-y-4 pt-6">
+                          <h3 className={`text-lg font-bold transition-colors ${currentStyles.textTitle}`}>
+                            4. Learn communication.
+                          </h3>
+                          <p>
+                            A brilliant solution has little impact if nobody understands it.
+                          </p>
+                          <ul className="space-y-2 text-sm font-medium pl-2">
+                            <li>• Can you explain a complex architecture to a CTO?</li>
+                            <li>• Can you explain the same idea to a non-technical founder?</li>
+                            <li>• Can you help stakeholders make better decisions?</li>
+                          </ul>
+                          <p className={`font-extrabold text-base ${currentStyles.textAccent}`}>
+                            Communication is becoming a competitive advantage.
+                          </p>
+                        </div>
+
+                        {/* Sub 5 */}
+                        <div className="space-y-4 pt-6">
+                          <h3 className={`text-lg font-bold transition-colors ${currentStyles.textTitle}`}>
+                            5. Learn judgment.
+                          </h3>
+                          <p>
+                            AI can generate code. It cannot fully replace experience. It doesn't know your business priorities. It doesn't know your constraints. It doesn't know your customers.
+                          </p>
+                          <div className={`p-5 rounded-2xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-cyan-50/50 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/20'
+                          }`}>
+                            <p className="font-bold text-sm sm:text-base text-cyan-800 dark:text-cyan-300 mb-0">
+                              Your value comes from choosing the right solution, not generating the fastest one.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Section 4 */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          The engineers who will thrive
+                        </h2>
+                        <p>
+                          I believe the next generation of successful engineers won't be known for writing the most code.
+                        </p>
+                        <p className="font-bold text-lg">
+                          They'll be known for asking the best questions.
+                        </p>
+                        <p>
+                          They'll understand technology, business, users, and trade-offs. They'll know when AI is the right answer. More importantly, they'll know when it isn't.
+                        </p>
+
+                        {/* Section 5 */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          My focus has changed
+                        </h2>
+                        <p>
+                          Earlier in my career, I measured progress by the technologies I learned. Today, I measure progress differently:
+                        </p>
+                        <div className="space-y-2.5 my-4">
+                          {[
+                            'Did I solve a meaningful problem?',
+                            'Did I help a business make a better decision?',
+                            'Did I save someone\'s time?',
+                            'Did I create something people actually use?'
+                          ].map((check, idx) => (
+                            <div key={idx} className={`p-3.5 rounded-xl border flex items-center gap-3 text-sm font-medium ${
+                              readerTheme !== 'dark' ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-emerald-950/20 border-emerald-500/20 text-emerald-300'
+                            }`}>
+                              <span className="text-emerald-500 font-bold">✓</span>
+                              <span>{check}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="font-semibold">
+                          Those questions matter far more than the number of frameworks on my résumé.
+                        </p>
+
+                        {/* Final Thoughts */}
+                        <div className={`mt-10 p-6 rounded-2xl border transition-colors ${
+                          readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                        }`}>
+                          <h3 className={`text-lg font-black mb-3 transition-colors ${currentStyles.textTitle}`}>
+                            Final Thoughts
+                          </h3>
+                          <p className="text-sm sm:text-base leading-relaxed mb-4">
+                            AI has changed the economics of software development. <strong>Building is becoming a commodity. Thinking is not.</strong>
+                          </p>
+                          <p className="text-sm sm:text-base leading-relaxed mb-4">
+                            In the years ahead, I don't think the most valuable engineers will be those who can build an app the fastest. They'll be the ones who can identify the right problem, design the right solution, and deliver measurable business value.
+                          </p>
+                          <p className="text-sm sm:text-base font-bold text-cyan-600 dark:text-cyan-400">
+                            That's where I'm choosing to focus.
+                          </p>
+                        </div>
+
+                        <p className="pt-4 font-medium">
+                          If you're building AI products or thinking about the future of software engineering, I'd love to hear your perspective.
+                        </p>
+
+                        {/* LinkedIn CTA */}
+                        <div className="pt-4">
+                          <a
+                            href="https://www.linkedin.com/in/balavenkatesh22"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 font-bold text-sm cursor-pointer ${
+                              readerTheme !== 'dark' 
+                                ? 'bg-[#0077b5] hover:bg-[#006294] text-white border-transparent shadow-md' 
+                                : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'
+                            }`}
+                          >
+                            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            Connect on LinkedIn
+                          </a>
+                        </div>
+
+                        {/* Author's Note */}
+                        <div className={`mt-8 p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed italic text-left transition-colors duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-cyan-50/50 border-cyan-100 text-cyan-900 font-semibold' 
+                            : 'bg-cyan-950/10 border-cyan-500/10 text-slate-400'
+                        }`}>
+                          💡 <strong>Author's Note:</strong> This article is part of the "Engineering Mindset" series by Bala Venkatesh. I write about product discovery, technical decision frameworks, and building resilient AI systems.
+                        </div>
+                      </div>
+                    ) : selectedPost === 'stopped-chasing-technologies' ? (
                       <div className="space-y-6">
                         <p className={`text-base sm:text-lg font-semibold italic border-l-4 pl-4 py-1.5 transition-all duration-300 ${
                           readerTheme !== 'dark' 
