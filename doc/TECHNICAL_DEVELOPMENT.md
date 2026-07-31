@@ -78,6 +78,36 @@ This document tracks all technical implementations, architectural decisions, com
 
 ---
 
+### 2.5 Open LLM Registry Integration
+
+- **Showcase Grid (`src/components/OpenSource.tsx`)**:
+  - Added "Open LLM Registry" (`https://balavenkatesh3322.github.io/open-llm-registry/`) as a prominent featured showcase card with an emerald/teal gradient theme, CPU icon, and glowing badge.
+  - Expanded featured showcase grid to a 3-column layout (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`).
+- **Data Model (`src/data.ts`)**:
+  - Registered `oss-llm-registry` entry in `ossReposData`.
+- **Footer Navigation (`src/components/Footer.tsx`)**:
+  - Included a direct link for `Open LLM Registry` in the footer link index.
+
+---
+
+### 2.6 Open Source Slide-to-Open Repositories Filter
+
+- **Refined Repository List (`src/data.ts`)**:
+  - Curated the open source slide-to-open repository grid to display strictly the 3 requested projects:
+    1. **Face Unlock System** (`https://github.com/balavenkatesh3322/face_unlock`)
+    2. **E-commerce Analytics** (`https://github.com/balavenkatesh3322/ecommerce-analytics`)
+    3. **AI Experiment Hub** (`https://github.com/balavenkatesh3322/AIExperimentHub`)
+  - Removed all other non-target repositories from the slide-to-open grid section.
+
+---
+
+### 2.7 Footer Quote Section Cleanup
+
+- **Footer Component (`src/components/Footer.tsx`)**:
+  - Removed the quote block (`"Technology becomes valuable only when solving a business problem"`) above the copyright and link row to streamline the footer visual footprint.
+
+---
+
 ## 3. Verification & Compilation
 
 - Code linting and TypeScript compilation verified via `compile_applet`.

@@ -12,13 +12,6 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.06),transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-10 relative z-10">
-        {/* Quote Section at bottom page */}
-        <div className="flex flex-col items-center text-center pb-8 border-b border-white/5">
-          <p className="text-sm sm:text-base font-mono text-cyan-400/90 italic tracking-wide max-w-2xl px-4">
-            "Technology becomes valuable only when solving a business problem"
-          </p>
-        </div>
-
         {/* Bottom Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2 text-xs font-mono text-slate-500">
           {/* Copyright */}
@@ -33,6 +26,7 @@ export default function Footer() {
             <a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a>
             <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
             <a href="https://balavenkatesh3322.github.io/bala-ai-studio/" target="_blank" rel="noreferrer" className="text-cyan-400 font-bold hover:underline flex items-center gap-1">All Projects (AI Studio)</a>
+            <a href="https://balavenkatesh3322.github.io/open-llm-registry/" target="_blank" rel="noreferrer" className="text-emerald-400 font-bold hover:underline flex items-center gap-1">Open LLM Registry</a>
             <a href="https://balavenkatesh3322.github.io/awesome-developer-porfolio/" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1">Awesome Portfolios (2000+)</a>
             <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
           </div>

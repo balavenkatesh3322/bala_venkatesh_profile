@@ -178,22 +178,13 @@ export const projectsData: ProjectItem[] = [
 
 export const ossReposData: OSSRepo[] = [
   {
-    id: 'oss-portfolio',
-    name: 'Awesome Developer Portfolio',
-    desc: 'Curated collection of 2000+ world-class developer portfolio designs to inspire engineers and showcase your portfolio to the world.',
-    tech: 'Web · Inspiration · Portfolio Showcase',
-    iconName: 'Globe',
-    bgHex: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400',
-    githubLink: 'https://balavenkatesh3322.github.io/awesome-developer-porfolio/'
-  },
-  {
-    id: 'oss-1',
-    name: 'Technical Knowledge Assistant',
-    desc: 'AI assistant for technical knowledge retrieval and QA powered by NLP and custom vector models.',
-    tech: 'Python · AI · NLP',
-    iconName: 'Bot',
-    bgHex: 'bg-blue-500/10 border-blue-500/20 text-blue-400',
-    githubLink: 'https://github.com/balavenkatesh3322/Technical-Knowledge-Assistant'
+    id: 'oss-4',
+    name: 'Face Unlock System',
+    desc: 'Lightweight on-device face verification authentication system using state-of-the-art computer vision facial embeddings.',
+    tech: 'Python · CV · PyTorch',
+    iconName: 'ScanFace',
+    bgHex: 'bg-rose-500/10 border-rose-500/20 text-rose-400',
+    githubLink: 'https://github.com/balavenkatesh3322/face_unlock'
   },
   {
     id: 'oss-2',
@@ -205,15 +196,6 @@ export const ossReposData: OSSRepo[] = [
     githubLink: 'https://github.com/balavenkatesh3322/ecommerce-analytics'
   },
   {
-    id: 'oss-4',
-    name: 'Face Unlock System',
-    desc: 'Lightweight on-device face verification authentication system using state-of-the-art computer vision facial embeddings.',
-    tech: 'Python · CV · PyTorch',
-    iconName: 'ScanFace',
-    bgHex: 'bg-rose-500/10 border-rose-500/20 text-rose-400',
-    githubLink: 'https://github.com/balavenkatesh3322/face_unlock'
-  },
-  {
     id: 'oss-5',
     name: 'AI Experiment Hub',
     desc: 'A developer-centric local registry designed to seamlessly benchmark, log, and register machine learning models.',
@@ -221,15 +203,6 @@ export const ossReposData: OSSRepo[] = [
     iconName: 'FlaskConical',
     bgHex: 'bg-orange-500/10 border-orange-500/20 text-orange-400',
     githubLink: 'https://github.com/balavenkatesh3322/AIExperimentHub'
-  },
-  {
-    id: 'oss-6',
-    name: 'Document RAG',
-    desc: 'Complete production pipeline utilizing state-of-the-art vector embedding stores for highly accurate document Q&A.',
-    tech: 'GenAI · RAG · LangChain',
-    iconName: 'FileText',
-    bgHex: 'bg-purple-500/10 border-purple-500/20 text-purple-400',
-    githubLink: 'https://github.com/balavenkatesh3322/Document-RAG'
   }
 ];
 
