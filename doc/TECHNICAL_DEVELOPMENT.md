@@ -65,6 +65,19 @@ This document tracks all technical implementations, architectural decisions, com
 
 ---
 
+### 2.4 Navigation Update & AI Studio Showcase Hub Integration
+
+- **Nav Bar Restructuring (`src/components/Header.tsx`)**:
+  - **Removed**: "AI Playbook" and "Education" links from top navbar menu and mobile drawer.
+  - **Added & Highlighted**: "All Projects" link pointing to `https://balavenkatesh3322.github.io/bala-ai-studio/`.
+  - **Visual Styling**: Styled with a cyan/indigo gradient background pill, glowing border, sparkling `AI STUDIO` badge, and hover scale effects on desktop and mobile.
+- **Showcase Gallery Banners (`src/components/OpenSource.tsx`)**:
+  - Integrated "Bala AI Studio Project Hub" primary featured banner linking to `https://balavenkatesh3322.github.io/bala-ai-studio/` alongside the 2000+ Awesome Developer Portfolios showcase.
+- **Footer Updates (`src/components/Footer.tsx`)**:
+  - Added direct highlighted link for `All Projects (AI Studio)` in the footer link index.
+
+---
+
 ## 3. Verification & Compilation
 
 - Code linting and TypeScript compilation verified via `compile_applet`.

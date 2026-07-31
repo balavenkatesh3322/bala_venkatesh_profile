@@ -39,46 +39,90 @@ export default function OpenSource() {
           </p>
         </div>
 
-        {/* Featured Showcase Banner: Awesome Developer Portfolio */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="p-6 sm:p-8 rounded-3xl glass-panel bg-gradient-to-r from-cyan-950/50 via-slate-900/80 to-indigo-950/50 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6 text-left shadow-2xl relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="flex items-start gap-4 relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shrink-0 shadow-lg">
-              <Globe className="w-6 h-6 text-cyan-300 animate-pulse" />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-[10px] font-mono font-bold uppercase tracking-wider">
-                  <Sparkles className="w-3 h-3 text-cyan-400" /> Featured Showcase
-                </span>
-                <span className="text-slate-400 text-xs font-mono">2,000+ Portfolios</span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-black text-white">
-                Awesome Developer Portfolio
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-                Browse 2,000+ world-class developer portfolio designs curated to inspire engineers. Add your own portfolio to showcase your work to the world!
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="https://balavenkatesh3322.github.io/awesome-developer-porfolio/"
-            target="_blank"
-            rel="noreferrer"
-            className="px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-slate-950 font-black rounded-2xl text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-cyan-500/25 flex items-center gap-2.5 shrink-0 group cursor-pointer hover:scale-[1.02] relative z-10"
+        {/* Featured Showcase Banners Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Featured Showcase Banner 1: Bala AI Studio Projects */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-6 sm:p-7 rounded-3xl glass-panel bg-gradient-to-br from-cyan-950/70 via-slate-900/90 to-indigo-950/70 border border-cyan-400/50 flex flex-col justify-between gap-6 text-left shadow-2xl relative overflow-hidden group hover:border-cyan-300 transition-all"
           >
-            <span>Browse 2000+ Portfolios</span>
-            <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
-        </motion.div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-400 to-indigo-500 text-slate-950 flex items-center justify-center shrink-0 shadow-lg shadow-cyan-500/30">
+                <Sparkles className="w-6 h-6 text-slate-950 animate-pulse" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono font-bold uppercase tracking-wider">
+                    <Sparkles className="w-3 h-3 text-cyan-400" /> Featured Showcase
+                  </span>
+                  <span className="text-cyan-400 text-xs font-mono font-bold">ALL PROJECTS</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-white">
+                  Bala AI Studio Project Hub
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Explore Bala's full suite of interactive AI applications, generative agents, RAG implementations, and web products live in one place.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://balavenkatesh3322.github.io/bala-ai-studio/"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full sm:w-auto self-start px-6 py-3 bg-gradient-to-r from-cyan-400 via-indigo-400 to-cyan-300 hover:from-cyan-300 hover:to-indigo-300 text-slate-950 font-black rounded-2xl text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-2.5 shrink-0 group/btn cursor-pointer hover:scale-[1.02] relative z-10"
+            >
+              <span>Check All AI Studio Projects</span>
+              <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+            </a>
+          </motion.div>
+
+          {/* Featured Showcase Banner 2: Awesome Developer Portfolio */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="p-6 sm:p-7 rounded-3xl glass-panel bg-gradient-to-br from-indigo-950/50 via-slate-900/80 to-purple-950/50 border border-indigo-500/30 flex flex-col justify-between gap-6 text-left shadow-2xl relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500/15 border border-indigo-500/40 text-indigo-400 flex items-center justify-center shrink-0 shadow-lg">
+                <Globe className="w-6 h-6 text-indigo-300 animate-pulse" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-[10px] font-mono font-bold uppercase tracking-wider">
+                    <Sparkles className="w-3 h-3 text-indigo-400" /> Featured Showcase
+                  </span>
+                  <span className="text-slate-400 text-xs font-mono">2,000+ Portfolios</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-white">
+                  Awesome Developer Portfolio
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Browse 2,000+ world-class developer portfolio designs curated to inspire engineers. Add your own portfolio to showcase your work to the world!
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://balavenkatesh3322.github.io/awesome-developer-porfolio/"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full sm:w-auto self-start px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-400 hover:to-purple-400 text-white font-black rounded-2xl text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2.5 shrink-0 group/btn cursor-pointer hover:scale-[1.02] relative z-10"
+            >
+              <span>Browse 2000+ Portfolios</span>
+              <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
 
         {/* OSS Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
