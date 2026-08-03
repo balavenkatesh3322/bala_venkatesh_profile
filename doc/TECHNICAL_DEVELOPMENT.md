@@ -108,6 +108,44 @@ This document tracks all technical implementations, architectural decisions, com
 
 ---
 
+### 2.8 Neural Decode (3D AI Architectures) Showcase Integration
+
+- **Featured Showcase Banner (`src/components/OpenSource.tsx`)**:
+  - Added "Neural Decode — 3D AI Architectures" (`https://neuraldecode.vercel.app/`) as a featured showcase card with a purple/indigo glassmorphic theme, 3D boxes icon (`Boxes`), glowing `3D AI VISUALIZER` badge, and direct external action CTA.
+  - Updated showcase grid responsiveness to `grid-cols-1 md:grid-cols-2 xl:grid-cols-4` to present all 4 featured showcases (Bala AI Studio Projects, Neural Decode 3D AI, Open LLM Registry, and Awesome Developer Portfolio).
+- **Footer Navigation (`src/components/Footer.tsx`)**:
+  - Added direct link `Neural Decode (3D AI)` pointing to `https://neuraldecode.vercel.app/`.
+
+---
+
+### 2.9 Header Quick Navigation Dropdown
+
+- **Header Component (`src/components/Header.tsx`)**:
+  - Implemented an interactive "Quick Links" dropdown button in the header navbar featuring a `Compass` icon and animated `ChevronDown`.
+  - Built a 2-column glassmorphic popover with Framer Motion animations (`AnimatePresence`, spring transitions) and click-outside dismissal:
+    - **Column 1 (Featured Hubs & Apps)**: Bala AI Studio, Neural Decode 3D AI, Open LLM Registry, and Awesome Developer Portfolios (2000+).
+    - **Column 2 (Page Navigation)**: About Bala, Services & Capabilities, Build with Bala, Open Source Repos, Work Experience, and Contact & Inquiries.
+  - Integrated quick links directly into the mobile menu drawer for mobile users.
+
+---
+
+### 2.10 Bala App Store Branding & Header Dropdown Refactoring
+
+- **Header Component (`src/components/Header.tsx`)**:
+  - Positioned the **Bala App Store** dropdown trigger directly after **Services** in the primary desktop navigation bar (`About` -> `Services` -> `Bala App Store` -> `Build with Bala` -> `Experience`).
+  - Added the main hub URL (`https://balavenkatesh3322.github.io/bala-ai-studio/`) as **Bala App Store Hub** with `MAIN HUB` badge at the top of the App Store dropdown menu and mobile App Store links grid.
+  - Formatted direct app links in the dropdown popover:
+    - **Bala App Store Hub** (`https://balavenkatesh3322.github.io/bala-ai-studio/`)
+    - **Neural Decode 3D** (`https://neuraldecode.vercel.app/`)
+    - **Open LLM Registry** (`https://balavenkatesh3322.github.io/open-llm-registry/`)
+    - **Awesome Portfolios** (`https://balavenkatesh3322.github.io/awesome-developer-porfolio/`)
+- **Showcase Grid (`src/components/OpenSource.tsx`)**:
+  - Updated primary featured showcase card branding to **Bala App Store** with `BALA APP STORE` tag and action button *"Explore Bala App Store"*.
+- **Footer Navigation (`src/components/Footer.tsx`)**:
+  - Updated footer navigation link label to **Bala App Store** (`https://balavenkatesh3322.github.io/bala-ai-studio/`).
+
+---
+
 ## 3. Verification & Compilation
 
 - Code linting and TypeScript compilation verified via `compile_applet`.

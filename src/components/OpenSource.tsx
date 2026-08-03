@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, LineChart, Award, ScanFace, FlaskConical, FileText, Github, ArrowUpRight, Globe, Sparkles, ExternalLink, Cpu } from 'lucide-react';
+import { Bot, LineChart, Award, ScanFace, FlaskConical, FileText, Github, ArrowUpRight, Globe, Sparkles, ExternalLink, Cpu, Boxes } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ossReposData } from '../data';
 import WaterWaveEffect from './WaterWaveEffect';
@@ -40,7 +40,7 @@ export default function OpenSource() {
         </div>
 
         {/* Featured Showcase Banners Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {/* Featured Showcase Banner 1: Bala AI Studio Projects */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -60,10 +60,10 @@ export default function OpenSource() {
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono font-bold uppercase tracking-wider">
                     <Sparkles className="w-3 h-3 text-cyan-400" /> Featured Showcase
                   </span>
-                  <span className="text-cyan-400 text-xs font-mono font-bold">ALL PROJECTS</span>
+                  <span className="text-cyan-400 text-xs font-mono font-bold">BALA APP STORE</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white">
-                  Bala AI Studio Project Hub
+                  Bala App Store
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Explore Bala's full suite of interactive AI applications, generative agents, RAG implementations, and web products live in one place.
@@ -77,17 +77,58 @@ export default function OpenSource() {
               rel="noreferrer"
               className="w-full sm:w-auto self-start px-6 py-3 bg-gradient-to-r from-cyan-400 via-indigo-400 to-cyan-300 hover:from-cyan-300 hover:to-indigo-300 text-slate-950 font-black rounded-2xl text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-2.5 shrink-0 group/btn cursor-pointer hover:scale-[1.02] relative z-10"
             >
-              <span>Check All AI Studio Projects</span>
+              <span>Explore Bala App Store</span>
               <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
             </a>
           </motion.div>
 
-          {/* Featured Showcase Banner 2: Open LLM Registry */}
+          {/* Featured Showcase Banner 2: Neural Decode (3D AI Architectures) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.08 }}
+            className="p-6 sm:p-7 rounded-3xl glass-panel bg-gradient-to-br from-purple-950/70 via-slate-900/90 to-indigo-950/70 border border-purple-400/50 flex flex-col justify-between gap-6 text-left shadow-2xl relative overflow-hidden group hover:border-purple-300 transition-all"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400/15 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-400 to-indigo-400 text-slate-950 flex items-center justify-center shrink-0 shadow-lg shadow-purple-500/30">
+                <Boxes className="w-6 h-6 text-slate-950 animate-pulse" />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-400/20 border border-purple-400/40 text-purple-300 text-[10px] font-mono font-bold uppercase tracking-wider">
+                    <Sparkles className="w-3 h-3 text-purple-400" /> Featured Showcase
+                  </span>
+                  <span className="text-purple-300 text-xs font-mono font-bold">3D AI VISUALIZER</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-white">
+                  Neural Decode — 3D AI Architectures
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Interactive 3D spatial visualizer built by Bala to decode complex neural network architectures, layer mechanics, and deep learning models in 3D.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="https://neuraldecode.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full sm:w-auto self-start px-6 py-3 bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-300 hover:from-purple-300 hover:to-indigo-300 text-slate-950 font-black rounded-2xl text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-xl shadow-purple-500/25 flex items-center justify-center gap-2.5 shrink-0 group/btn cursor-pointer hover:scale-[1.02] relative z-10"
+            >
+              <span>Explore 3D AI Architectures</span>
+              <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+            </a>
+          </motion.div>
+
+          {/* Featured Showcase Banner 3: Open LLM Registry */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.12 }}
             className="p-6 sm:p-7 rounded-3xl glass-panel bg-gradient-to-br from-emerald-950/60 via-slate-900/90 to-teal-950/60 border border-emerald-400/40 flex flex-col justify-between gap-6 text-left shadow-2xl relative overflow-hidden group hover:border-emerald-300 transition-all"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
@@ -123,12 +164,12 @@ export default function OpenSource() {
             </a>
           </motion.div>
 
-          {/* Featured Showcase Banner 3: Awesome Developer Portfolio */}
+          {/* Featured Showcase Banner 4: Awesome Developer Portfolio */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.16 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
             className="p-6 sm:p-7 rounded-3xl glass-panel bg-gradient-to-br from-indigo-950/50 via-slate-900/80 to-purple-950/50 border border-indigo-500/30 flex flex-col justify-between gap-6 text-left shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />

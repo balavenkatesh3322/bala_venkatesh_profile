@@ -25,7 +25,8 @@ export default function Footer() {
             <a href="#services" className="hover:text-cyan-400 transition-colors">Services</a>
             <a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a>
             <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
-            <a href="https://balavenkatesh3322.github.io/bala-ai-studio/" target="_blank" rel="noreferrer" className="text-cyan-400 font-bold hover:underline flex items-center gap-1">All Projects (AI Studio)</a>
+            <a href="https://balavenkatesh3322.github.io/bala-ai-studio/" target="_blank" rel="noreferrer" className="text-cyan-400 font-bold hover:underline flex items-center gap-1">Bala App Store</a>
+            <a href="https://neuraldecode.vercel.app/" target="_blank" rel="noreferrer" className="text-purple-400 font-bold hover:underline flex items-center gap-1">Neural Decode (3D AI)</a>
             <a href="https://balavenkatesh3322.github.io/open-llm-registry/" target="_blank" rel="noreferrer" className="text-emerald-400 font-bold hover:underline flex items-center gap-1">Open LLM Registry</a>
             <a href="https://balavenkatesh3322.github.io/awesome-developer-porfolio/" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1">Awesome Portfolios (2000+)</a>
             <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
