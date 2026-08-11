@@ -23,7 +23,7 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      if (window.location.hash === '#lessons') {
+      if (window.location.hash.startsWith('#lessons')) {
         setActiveSection('lessons');
         return;
       }
@@ -70,11 +70,11 @@ export default function Header() {
     };
   }, []);
 
-  const menuItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Build with Bala', href: '#lessons', isNew: true },
-    { label: 'Experience', href: '#experience' },
+  const menuItems: Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }> = [
+    { label: 'About', href: '#about', isExternal: false },
+    { label: 'Services', href: '#services', isExternal: false },
+    { label: 'Build with Bala', href: '#lessons', isNew: true, isExternal: false },
+    { label: 'Experience', href: '#experience', isExternal: false },
   ];
 
   const appStoreLinks = [
@@ -116,14 +116,19 @@ export default function Header() {
     }
   ];
 
+  const isBlogView = activeSection === 'lessons' || (typeof window !== 'undefined' && window.location.hash.startsWith('#lessons'));
+  const isNavHidden = isBlogView && isScrolled;
+
   return (
     <>
       <motion.nav
         id="navbar"
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        animate={{ y: isNavHidden ? -100 : 0, opacity: isNavHidden ? 0 : 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
         className={`fixed z-50 transition-all duration-500 ${
+          isNavHidden ? 'pointer-events-none' : ''
+        } ${
           isScrolled
             ? 'top-3 left-3 right-3 h-16 px-5 md:px-8 glass-panel rounded-2xl max-w-7xl mx-auto shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]'
             : 'top-0 left-0 right-0 h-20 px-6 md:px-12 bg-transparent border-b border-transparent'

@@ -178,7 +178,74 @@ This document tracks all technical implementations, architectural decisions, com
 
 ---
 
+### 2.13 Reader Theme Contrast & Visibility Audit Across All Blog Articles
+
+- **Location**: `src/components/BalaLessons.tsx` & `src/components/Header.tsx`
+- **Root Cause Fixed**:
+  - The blog reader supports dynamic reader themes (`Paper`, `White`, `Dark`).
+  - Previously, several cards, quote boxes, lists, mindset shifts, and framework steps used Tailwind's system-level `dark:` overrides (e.g., `dark:text-slate-300`, `dark:text-rose-400`, `dark:text-cyan-400`).
+  - When the user's OS/browser dark mode was active while viewing in `Paper` or `White` theme mode, Tailwind applied light/white text onto light cream or white backgrounds, rendering text unreadable.
+- **Key Enhancements**:
+  1. **Dynamic Theme Styling (`readerTheme !== 'dark'`)**:
+     - Refactored all text elements, card backgrounds, list items, quotes, badges, and dividers across all blog posts (including "I Thought I Was Leading. I Was Just Assigning Tasks." and "Building Something People Trust") to explicitly check `readerTheme !== 'dark'`.
+     - Light/Paper themes now strictly enforce high-contrast dark text (`text-slate-800`, `text-slate-900`, `text-stone-900`, `text-rose-900`, `text-emerald-900`, `text-cyan-950`).
+     - Dark theme strictly enforces high-contrast light text (`text-slate-200`, `text-slate-300`, `text-rose-300`, `text-emerald-300`, `text-cyan-200`).
+  2. **Framework Section Styling**:
+     - Standardized the 5-stage Leadership Framework cards (`Context`, `Outcome`, `Ownership`, `Autonomy`, `Accountability`) with explicit light-paper and dark container backgrounds, high-contrast headings, and crisp cyan example badges.
+  3. **Linter & Type Cleanups**:
+     - Added explicit `Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }>` type definition to `menuItems` in `Header.tsx`.
+
+---
+
+### 2.14 Multi-Platform Social Media Sharing & Viral Hook Suite
+
+- **Location**: `src/components/BalaLessons.tsx`
+- **Key Enhancements**:
+  1. **Social Share Metadata Model (`POST_SHARE_DATA`)**:
+     - Configured viral post copy, quote excerpts, platform hashtags, and customized sharing text for all 4 blog articles:
+       - `thought-i-was-leading-assigning-tasks`
+       - `building-something-people-trust`
+       - `stopped-chasing-technologies`
+       - `how-i-choose-an-llm`
+  2. **End-of-Blog Curation Card (`BlogShareFooter`)**:
+     - Embedded a high-converting end-of-article social callout at the conclusion of every post.
+     - Features 1-tap sharing buttons for **LinkedIn**, **Twitter/X**, **WhatsApp**, **Telegram**, and direct link copy with live counter badge.
+     - Includes quick triggers for *"Copy Post Hook"* and *"Generate Quote Card Image"*.
+  3. **Floating Share Action Pill**:
+     - Positioned a fixed bottom-right floating glassmorphic button (`Share Article 🔥 [Count]`) that stays accessible while scrolling through long essays.
+  4. **Multi-Tab Social Share Modal (`isShareModalOpen`)**:
+     - **Tab 1: 1-Tap Platforms**: Direct integration with LinkedIn, X (Twitter), WhatsApp, Telegram, Reddit, Native Web Share API, and URL copy.
+     - **Tab 2: Viral Post Hooks**: Copyable pre-formatted post templates with engagement hooks designed for LinkedIn and X feeds.
+     - **Tab 3: Dynamic Visual Quote Card Generator**:
+       - Built Canvas PNG export helper (`exportQuoteCardAsPNG`) that renders custom graphic quote cards with selected themes (*Midnight*, *Emerald*, *Amber*, *Ivory*) and author attribution.
+  5. **Top Reader Control Integration**:
+     - Added a top-bar `Share` button next to the Kindle Settings toggle for rapid access at any scroll position.
+  6. **Interactive Feedback**:
+     - Integrated animated toast notifications (`Check` badge) confirming link copy, hook copy, or quote card downloads.
+
+---
+
+### 2.15 Blog Social Sharing URL Standardization, Floating Button Centering & Navbar Auto-Hide
+
+- **Location**: `src/components/BalaLessons.tsx`, `src/components/Header.tsx`, `src/App.tsx`
+- **Key Enhancements**:
+  1. **Standardized Profile Link Sharing**:
+     - Configured `BASE_PROFILE_URL` (`https://balavenkatesh3322.github.io/bala_venkatesh_profile`).
+     - Added `getShareUrl(slug)` helper appending `#lessons/post/[slug]` across all social sharing platforms (LinkedIn, X, WhatsApp, Telegram, Reddit, Native Web Share, viral hooks, and direct copy links).
+     - Updated canvas PNG Quote Card exporter to render `balavenkatesh3322.github.io/bala_venkatesh_profile` branding.
+  2. **Floating Share Button Repositioning**:
+     - Moved the floating "Share Article 🔥" action pill from the bottom-right corner to bottom-center (`fixed bottom-6 left-1/2 -translate-x-1/2 z-40`).
+     - Resolved z-index and visual overlap issues with the floating WhatsApp chat widget in the bottom-right.
+  3. **Blog Article Footer Cleanup**:
+     - Removed redundant "Connect on LinkedIn" buttons from all blog post endings to keep the focus on article content and knowledge sharing.
+  4. **Smart Auto-Hiding Navbar on Blog Scroll**:
+     - Updated `Header.tsx` to detect active blog section (`activeSection === 'lessons'` or `#lessons` route hash).
+     - Configured `motion.nav` to smoothly slide upward (`y: -100`, `opacity: 0`, `pointer-events-none`) when scrolling down a blog post (`isScrolled === true`).
+     - Navbar smoothly slides back into view when scrolling back to the top of the page (`window.scrollY <= 20`).
+
+---
+
 ## 3. Verification & Compilation
 
-- Code linting and TypeScript compilation verified via `compile_applet`.
-- Build status: Clean, 0 errors.
+- Code linting verified via `lint_applet`: 0 errors.
+- Production TypeScript compilation verified via `compile_applet`: Build succeeded.

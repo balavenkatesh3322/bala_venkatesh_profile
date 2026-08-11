@@ -26,7 +26,16 @@ import {
   Sliders,
   ChevronDown,
   Check,
-  Heart
+  Heart,
+  Share2,
+  Copy,
+  Send,
+  MessageSquare,
+  ExternalLink,
+  X,
+  Download,
+  Quote,
+  Image as ImageIcon
 } from 'lucide-react';
 
 interface Series {
@@ -331,6 +340,279 @@ const BLOG_POSTS: BlogPost[] = [
   }
 ];
 
+interface ShareMeta {
+  slug: string;
+  title: string;
+  quote: string;
+  linkedInText: string;
+  twitterText: string;
+  whatsappText: string;
+  hashtags: string[];
+}
+
+const BASE_PROFILE_URL = 'https://balavenkatesh3322.github.io/bala_venkatesh_profile';
+
+const getShareUrl = (slug?: string) => {
+  if (!slug) return `${BASE_PROFILE_URL}/#lessons`;
+  return `${BASE_PROFILE_URL}/?post=${encodeURIComponent(slug)}#lessons`;
+};
+
+const POST_SHARE_DATA: Record<string, ShareMeta> = {
+  'thought-i-was-leading-assigning-tasks': {
+    slug: 'thought-i-was-leading-assigning-tasks',
+    title: 'I Thought I Was Leading. I Was Just Assigning Tasks.',
+    quote: 'Task assignment creates dependencies. True leadership creates autonomy. The moment you shift from execution steps to context ownership, your team evolves from order-executors to problem-solvers.',
+    linkedInText: `💡 "I thought I was leading. I was just assigning tasks."\n\nFor a long time, I measured my effectiveness by how fast my team executed MY specs. Then a wake-up call incident changed everything.\n\nHere is the 5-stage framework I use to build autonomous engineering teams:\n\n1️⃣ Context over Instructions\n2️⃣ Outcome over Execution\n3️⃣ Ownership over Oversight\n4️⃣ Autonomy over Approval\n5️⃣ Accountability over Compliance\n\nRead the full engineering leadership essay by Bala Venkatesh:\n`,
+    twitterText: `I thought I was leading. I was just assigning tasks. Here is the 5-step framework that transformed my engineering leadership 👇`,
+    whatsappText: `*I Thought I Was Leading. I Was Just Assigning Tasks.*\n\nHow shifting from execution steps to outcome ownership transforms engineering teams.\n\nRead essay by Bala Venkatesh:\n`,
+    hashtags: ['EngineeringLeadership', 'TechLead', 'SoftwareEngineering', 'Management', 'Ownership']
+  },
+  'building-something-people-trust': {
+    slug: 'building-something-people-trust',
+    title: 'Building Something People Trust When Anyone Can Code',
+    quote: 'AI has reduced the cost of building code to near zero. But it hasn\'t reduced the cost of understanding. Code is no longer the moat—trust, system resilience, and domain judgment are.',
+    linkedInText: `🚀 In an era where anyone can generate code in seconds, where does true engineering value come from?\n\nCode is no longer the moat. Trust, system resilience, and deep domain understanding are.\n\nKey Takeaways:\n• System Architecture > Speed of Code Generation\n• Problem Discovery > Feature Volume\n• Customer Trust > Shipping Speed\n\nRead the full essay by Bala Venkatesh:\n`,
+    twitterText: `AI made building cheap, but understanding is still rare. Here's why trust is the ultimate moat in software engineering 🧵👇`,
+    whatsappText: `*Building Something People Trust When Anyone Can Code*\n\nWhy domain judgment & trust matter more than code generation speed in the AI era.\n\nRead essay by Bala Venkatesh:\n`,
+    hashtags: ['AIProducts', 'SoftwareArchitecture', 'ProductEngineering', 'TechLeadership', 'Trust']
+  },
+  'stopped-chasing-technologies': {
+    slug: 'stopped-chasing-technologies',
+    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
+    quote: 'Technology is temporary. The ability to solve meaningful human & business problems is timeless. Users and companies don\'t buy tech stacks—they buy solved problems.',
+    linkedInText: `🎯 I spent my early career trying to learn every new framework and library. Then I realized: technology is temporary, but problem solving is timeless.\n\nHere's how shifting focus from tool-mastery to problem-mastery transformed my tech career:\n\n• Tech Chaser: Knows all frameworks, builds things nobody needs.\n• Problem Solver: Uses core tools deeply, delivers millions in business value.\n\nRead full essay by Bala Venkatesh:\n`,
+    twitterText: `I stopped chasing technologies. I started chasing problems. Here's how that single mindset shift changed my software career 🧵👇`,
+    whatsappText: `*I Stopped Chasing Technologies. I Started Chasing Problems.*\n\nThe realization that transformed how I build software products.\n\nRead essay by Bala Venkatesh:\n`,
+    hashtags: ['SoftwareEngineering', 'CareerGrowth', 'ProblemSolving', 'DeveloperMindset']
+  },
+  'how-i-choose-an-llm': {
+    slug: 'how-i-choose-an-llm',
+    title: 'How I Choose an LLM for Production Apps',
+    quote: 'Stop asking "Which LLM should I use?" Start asking "What system architecture should I build around the LLM so it consistently delivers deterministic, enterprise-grade safety?"',
+    linkedInText: `🤖 How do you evaluate and choose LLMs for production enterprise apps?\n\nStop relying on synthetic benchmarks that don't reflect real-world latency, cost, or privacy bounds.\n\nHere is my complete decision matrix & architectural strategy for enterprise LLMs:\n\n1️⃣ Deterministic task evaluation\n2️⃣ Latency & token cost profiling\n3️⃣ RAG & fallback architecture\n\nRead the full technical framework & use the interactive calculator by Bala Venkatesh:\n`,
+    twitterText: `How do you choose the right LLM for production? Benchmarks lie. Here's the pragmatic decision matrix I use for enterprise AI apps 👇`,
+    whatsappText: `*How I Choose an LLM for Production Apps*\n\nA pragmatic system engineering decision matrix for Accuracy, Cost, and Privacy.\n\nRead essay & try interactive calculator by Bala Venkatesh:\n`,
+    hashtags: ['AI', 'LLM', 'GenerativeAI', 'SystemDesign', 'MachineLearning', 'EnterpriseAI']
+  }
+};
+
+const exportQuoteCardAsPNG = (meta: ShareMeta, theme: 'midnight' | 'emerald' | 'amber' | 'minimal') => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const grad = ctx.createLinearGradient(0, 0, 1200, 630);
+  if (theme === 'emerald') {
+    grad.addColorStop(0, '#022c22');
+    grad.addColorStop(1, '#064e3b');
+  } else if (theme === 'amber') {
+    grad.addColorStop(0, '#451a03');
+    grad.addColorStop(1, '#78350f');
+  } else if (theme === 'minimal') {
+    grad.addColorStop(0, '#ffffff');
+    grad.addColorStop(1, '#f1f5f9');
+  } else {
+    grad.addColorStop(0, '#090d16');
+    grad.addColorStop(1, '#0e1726');
+  }
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 1200, 630);
+
+  ctx.strokeStyle = theme === 'minimal' ? '#cbd5e1' : 'rgba(255, 255, 255, 0.12)';
+  ctx.lineWidth = 12;
+  ctx.strokeRect(20, 20, 1160, 590);
+
+  ctx.fillStyle = theme === 'minimal' ? 'rgba(2, 132, 199, 0.08)' : 'rgba(56, 189, 248, 0.08)';
+  ctx.font = 'bold 220px Georgia, serif';
+  ctx.fillText('“', 70, 220);
+
+  const accentColor = theme === 'minimal' ? '#0284c7' : '#38bdf8';
+  const textColor = theme === 'minimal' ? '#0f172a' : '#ffffff';
+  const mutedColor = theme === 'minimal' ? '#475569' : '#94a3b8';
+
+  ctx.font = 'bold 18px monospace';
+  ctx.fillStyle = accentColor;
+  ctx.fillText(`BALA VENKATESH • ESSAYS & LESSONS`, 110, 95);
+
+  ctx.font = 'bold 30px Georgia, serif';
+  ctx.fillStyle = textColor;
+  const words = `"${meta.quote}"`.split(' ');
+  let line = '';
+  let y = 185;
+  const maxWidth = 980;
+  const lineHeight = 46;
+
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' ';
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > maxWidth && n > 0) {
+      ctx.fillText(line, 110, y);
+      line = words[n] + ' ';
+      y += lineHeight;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, 110, y);
+
+  y += 40;
+  ctx.strokeStyle = accentColor;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(110, y);
+  ctx.lineTo(240, y);
+  ctx.stroke();
+
+  y += 45;
+  ctx.font = 'bold 24px sans-serif';
+  ctx.fillStyle = textColor;
+  ctx.fillText('Bala Venkatesh', 110, y);
+
+  ctx.font = '16px sans-serif';
+  ctx.fillStyle = mutedColor;
+  ctx.fillText(`Article: "${meta.title}"`, 110, y + 28);
+
+  ctx.font = 'bold 18px monospace';
+  ctx.fillStyle = accentColor;
+  ctx.fillText('balavenkatesh3322.github.io/bala_venkatesh_profile', 110, 560);
+
+  const link = document.createElement('a');
+  link.download = `bala-venkatesh-quote-${meta.slug}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+};
+
+function BlogShareFooter({
+  postSlug,
+  readerTheme,
+  onOpenShareModal,
+  sharedCount
+}: {
+  postSlug: string;
+  readerTheme: 'paper' | 'white' | 'dark';
+  onOpenShareModal: (tab?: 'platforms' | 'hooks' | 'card') => void;
+  sharedCount: number;
+}) {
+  const meta = POST_SHARE_DATA[postSlug] || POST_SHARE_DATA['how-i-choose-an-llm'];
+  const [copied, setCopied] = useState(false);
+  const shareUrl = getShareUrl(postSlug);
+
+  const handleQuickCopy = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(`${meta.linkedInText}\n\n👉 Read full essay: ${shareUrl}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  return (
+    <div className={`mt-12 p-6 sm:p-8 rounded-3xl border transition-all duration-300 text-left relative overflow-hidden ${
+      readerTheme !== 'dark' 
+        ? 'bg-gradient-to-br from-cyan-50/80 via-white to-stone-50 border-cyan-200/80 shadow-lg shadow-cyan-950/5' 
+        : 'bg-gradient-to-br from-slate-900 via-slate-950 to-cyan-950/40 border-cyan-500/20 shadow-xl'
+    }`}>
+      <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+
+      <div className="relative z-10 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-5 border-cyan-200/50 dark:border-white/10">
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-500 animate-pulse" />
+              <span>Inspire Your Network</span>
+            </div>
+            <h3 className={`text-xl sm:text-2xl font-black ${readerTheme !== 'dark' ? 'text-slate-900' : 'text-white'}`}>
+              Pass the Knowledge Forward 🚀
+            </h3>
+            <p className={`text-xs sm:text-sm font-medium ${readerTheme !== 'dark' ? 'text-slate-600' : 'text-slate-400'}`}>
+              Great engineering culture is built by sharing perspective. Share this essay with your team, leads, or community!
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <span className={`text-xs font-mono font-bold px-3 py-1.5 rounded-xl border ${
+              readerTheme !== 'dark' ? 'bg-white border-slate-200 text-slate-700' : 'bg-white/5 border-white/10 text-cyan-300'
+            }`}>
+              🔥 {sharedCount} Shares
+            </span>
+          </div>
+        </div>
+
+        <div className={`p-4 sm:p-5 rounded-2xl border text-xs sm:text-sm italic relative transition-colors ${
+          readerTheme !== 'dark' 
+            ? 'bg-white/80 border-cyan-200 text-slate-800 shadow-xs' 
+            : 'bg-white/5 border-white/10 text-slate-200'
+        }`}>
+          <Quote className="w-5 h-5 text-cyan-500 opacity-40 absolute top-3 left-3 -scale-x-100" />
+          <p className="pl-6 font-serif leading-relaxed">
+            "{meta.quote}"
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-xs bg-[#0077b5] hover:bg-[#005885] text-white shadow-md transition-all cursor-pointer"
+          >
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+            <span>Share on LinkedIn</span>
+          </a>
+
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(meta.twitterText)}&url=${encodeURIComponent(shareUrl)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-xs bg-black hover:bg-slate-800 text-white shadow-md transition-all cursor-pointer border border-white/10"
+          >
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>Post on X</span>
+          </a>
+
+          <button
+            onClick={handleQuickCopy}
+            className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-xs border transition-all cursor-pointer ${
+              copied
+                ? 'bg-emerald-500 text-white border-emerald-500'
+                : readerTheme !== 'dark'
+                  ? 'bg-white hover:bg-slate-50 border-slate-300 text-slate-800 shadow-xs'
+                  : 'bg-white/10 hover:bg-white/15 border-white/10 text-white'
+            }`}
+          >
+            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4 text-cyan-500" />}
+            <span>{copied ? 'Hook Copied!' : 'Copy Viral Post Hook'}</span>
+          </button>
+
+          <button
+            onClick={() => onOpenShareModal('card')}
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-xs bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white shadow-md transition-all cursor-pointer"
+          >
+            <ImageIcon className="w-4 h-4" />
+            <span>Generate Quote Card</span>
+          </button>
+        </div>
+
+        <div className="pt-2 text-center">
+          <button
+            onClick={() => onOpenShareModal('platforms')}
+            className={`text-xs font-mono font-bold inline-flex items-center gap-1.5 hover:underline cursor-pointer ${
+              readerTheme !== 'dark' ? 'text-cyan-700' : 'text-cyan-400'
+            }`}
+          >
+            <Share2 className="w-3.5 h-3.5" />
+            <span>More Sharing Options (WhatsApp, Telegram, Reddit, Copy Link) →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BalaLessons() {
   const [currentSeries, setCurrentSeries] = useState<string | null>(null);
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
@@ -342,6 +624,35 @@ export default function BalaLessons() {
   const [claps, setClaps] = useState<number>(48);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showSettings, setShowSettings] = useState<boolean>(false);
+
+  // Social Share states
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [shareModalTab, setShareModalTab] = useState<'platforms' | 'hooks' | 'card'>('platforms');
+  const [quoteCardTheme, setQuoteCardTheme] = useState<'midnight' | 'emerald' | 'amber' | 'minimal'>('midnight');
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [sharedCounts, setSharedCounts] = useState<Record<string, number>>({
+    'thought-i-was-leading-assigning-tasks': 142,
+    'building-something-people-trust': 98,
+    'stopped-chasing-technologies': 115,
+    'how-i-choose-an-llm': 210
+  });
+
+  const triggerToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const handleOpenShareModal = (tab: 'platforms' | 'hooks' | 'card' = 'platforms') => {
+    setShareModalTab(tab);
+    setIsShareModalOpen(true);
+  };
+
+  const incrementShareCount = (slug: string) => {
+    setSharedCounts(prev => ({
+      ...prev,
+      [slug]: (prev[slug] || 100) + 1
+    }));
+  };
 
   const themeStyles = {
     paper: {
@@ -879,6 +1190,20 @@ export default function BalaLessons() {
                         <span>AA Kindle Settings</span>
                         <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${showSettings ? 'rotate-180' : ''}`} />
                       </button>
+
+                      {/* Social Share Trigger */}
+                      <button 
+                        onClick={() => handleOpenShareModal('platforms')}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono font-bold transition-all cursor-pointer ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-cyan-50 border-cyan-200 text-cyan-700 hover:bg-cyan-100' 
+                            : 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20'
+                        }`}
+                        title="Share this essay on social media"
+                      >
+                        <Share2 className="w-3.5 h-3.5 text-cyan-500" />
+                        <span>Share</span>
+                      </button>
                     </div>
                   </div>
 
@@ -1058,13 +1383,19 @@ export default function BalaLessons() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
                           <div className={`p-5 rounded-2xl border transition-colors ${
-                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/5'
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-250' : 'bg-white/5 border-white/5'
                           }`}>
-                            <div className="text-xs font-mono font-bold uppercase text-rose-500 mb-2">Task Assignment</div>
-                            <p className="font-mono text-sm font-bold mb-3 text-rose-600 dark:text-rose-400">
+                            <div className={`text-xs font-mono font-bold uppercase mb-2 ${
+                              readerTheme !== 'dark' ? 'text-rose-700' : 'text-rose-400'
+                            }`}>Task Assignment</div>
+                            <p className={`font-mono text-sm font-bold mb-3 ${
+                              readerTheme !== 'dark' ? 'text-rose-900' : 'text-rose-300'
+                            }`}>
                               "Raju, finish this by Friday."
                             </p>
-                            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                            <ul className={`space-y-2 text-xs sm:text-sm font-medium ${
+                              readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
+                            }`}>
                               <li>• Dictates execution steps and exact specifications</li>
                               <li>• Creates dependency on the manager for edge cases</li>
                               <li>• Measures success by compliance and hours spent</li>
@@ -1073,13 +1404,19 @@ export default function BalaLessons() {
                           </div>
 
                           <div className={`p-5 rounded-2xl border transition-colors ${
-                            readerTheme !== 'dark' ? 'bg-emerald-50/50 border-emerald-200' : 'bg-emerald-950/20 border-emerald-500/20'
+                            readerTheme !== 'dark' ? 'bg-emerald-50/60 border-emerald-200' : 'bg-emerald-950/20 border-emerald-500/20'
                           }`}>
-                            <div className="text-xs font-mono font-bold uppercase text-emerald-600 mb-2">True Leadership</div>
-                            <p className="font-mono text-sm font-bold mb-3 text-emerald-700 dark:text-emerald-300">
+                            <div className={`text-xs font-mono font-bold uppercase mb-2 ${
+                              readerTheme !== 'dark' ? 'text-emerald-800' : 'text-emerald-400'
+                            }`}>True Leadership</div>
+                            <p className={`font-mono text-sm font-bold mb-3 ${
+                              readerTheme !== 'dark' ? 'text-emerald-900' : 'text-emerald-300'
+                            }`}>
                               "Raju, this is the outcome we need. How would you approach it?"
                             </p>
-                            <ul className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                            <ul className={`space-y-2 text-xs sm:text-sm font-medium ${
+                              readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
+                            }`}>
                               <li>• Defines the problem context and business target</li>
                               <li>• Empowers the engineer to design the solution</li>
                               <li>• Measures success by value delivered and system resiliency</li>
@@ -1098,18 +1435,28 @@ export default function BalaLessons() {
                         </p>
 
                         <div className={`p-6 rounded-2xl border transition-all my-6 ${
-                          readerTheme !== 'dark' ? 'bg-cyan-50/50 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/20'
+                          readerTheme !== 'dark' ? 'bg-cyan-50/60 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/20'
                         }`}>
                           <div className="space-y-4">
                             <div>
-                              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider block mb-1">Earlier Mindset</span>
-                              <p className="text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300">
+                              <span className={`text-xs font-mono font-bold uppercase tracking-wider block mb-1 ${
+                                readerTheme !== 'dark' ? 'text-slate-600' : 'text-slate-400'
+                              }`}>Earlier Mindset</span>
+                              <p className={`text-sm sm:text-base font-semibold ${
+                                readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
+                              }`}>
                                 Earlier, I measured my effectiveness by how much work I could personally get done, organize, or directly control.
                               </p>
                             </div>
-                            <div className="border-t border-cyan-200/50 dark:border-cyan-500/20 pt-4">
-                              <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block mb-1">New Mindset</span>
-                              <p className="text-sm sm:text-base font-bold text-cyan-900 dark:text-cyan-200">
+                            <div className={`pt-4 border-t ${
+                              readerTheme !== 'dark' ? 'border-cyan-200' : 'border-cyan-500/20'
+                            }`}>
+                              <span className={`text-xs font-mono font-bold uppercase tracking-wider block mb-1 ${
+                                readerTheme !== 'dark' ? 'text-cyan-800' : 'text-cyan-400'
+                              }`}>New Mindset</span>
+                              <p className={`text-sm sm:text-base font-bold ${
+                                readerTheme !== 'dark' ? 'text-cyan-950' : 'text-cyan-200'
+                              }`}>
                                 Now, I am learning to measure my effectiveness by how effectively I can help others take ownership and make decisions independently.
                               </p>
                             </div>
@@ -1127,7 +1474,7 @@ export default function BalaLessons() {
 
                         <div className={`p-4 sm:p-5 rounded-2xl border font-mono text-center text-xs sm:text-sm font-bold my-6 tracking-wide ${
                           readerTheme !== 'dark' 
-                            ? 'bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 border-teal-200 text-teal-900' 
+                            ? 'bg-gradient-to-r from-emerald-100/90 via-teal-100/90 to-cyan-100/90 border-teal-300 text-teal-950 shadow-xs' 
                             : 'bg-white/5 border-white/10 text-cyan-300'
                         }`}>
                           Context → Outcome → Ownership → Autonomy → Accountability
@@ -1161,16 +1508,20 @@ export default function BalaLessons() {
                               example: 'Example: Measuring post-launch latency metrics together and discussing what edge cases were uncovered.'
                             }
                           ].map((item, idx) => (
-                            <div key={idx} className={`p-4 rounded-xl border text-left transition-colors ${
-                              readerTheme !== 'dark' ? 'bg-[#FCF9F2] border-stone-200' : 'bg-white/[0.02] border-white/5'
+                            <div key={idx} className={`p-4 sm:p-5 rounded-xl border text-left transition-colors ${
+                              readerTheme !== 'dark' ? 'bg-[#FCF9F2] border-stone-300 shadow-xs' : 'bg-white/[0.02] border-white/5'
                             }`}>
-                              <h4 className={`text-base font-black mb-1 transition-colors ${currentStyles.textTitle}`}>
+                              <h4 className={`text-base font-black mb-1.5 transition-colors ${currentStyles.textTitle}`}>
                                 {item.step}
                               </h4>
-                              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-2 font-medium">
+                              <p className={`text-xs sm:text-sm mb-2 font-medium leading-relaxed ${
+                                readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
+                              }`}>
                                 {item.desc}
                               </p>
-                              <p className="text-xs font-mono italic text-cyan-700 dark:text-cyan-400">
+                              <p className={`text-xs font-mono italic font-semibold ${
+                                readerTheme !== 'dark' ? 'text-cyan-800' : 'text-cyan-400'
+                              }`}>
                                 {item.example}
                               </p>
                             </div>
@@ -1188,18 +1539,22 @@ export default function BalaLessons() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
                           <div className={`p-4 rounded-xl border text-left ${
-                            readerTheme !== 'dark' ? 'bg-amber-50/50 border-amber-200 text-amber-900' : 'bg-amber-950/20 border-amber-500/20 text-amber-300'
+                            readerTheme !== 'dark' ? 'bg-amber-50/70 border-amber-200 text-amber-950' : 'bg-amber-950/20 border-amber-500/20 text-amber-300'
                           }`}>
-                            <span className="text-xs font-mono font-bold uppercase block mb-1 text-amber-700 dark:text-amber-400">As an Individual Engineer</span>
+                            <span className={`text-xs font-mono font-bold uppercase block mb-1 ${
+                              readerTheme !== 'dark' ? 'text-amber-800' : 'text-amber-400'
+                            }`}>As an Individual Engineer</span>
                             <p className="text-sm font-semibold">
                               I was rewarded for solving complex problems myself through code and technical execution.
                             </p>
                           </div>
 
                           <div className={`p-4 rounded-xl border text-left ${
-                            readerTheme !== 'dark' ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-emerald-950/20 border-emerald-500/20 text-emerald-300'
+                            readerTheme !== 'dark' ? 'bg-emerald-50/70 border-emerald-200 text-emerald-950' : 'bg-emerald-950/20 border-emerald-500/20 text-emerald-300'
                           }`}>
-                            <span className="text-xs font-mono font-bold uppercase block mb-1 text-emerald-700 dark:text-emerald-400">As a Leader</span>
+                            <span className={`text-xs font-mono font-bold uppercase block mb-1 ${
+                              readerTheme !== 'dark' ? 'text-emerald-800' : 'text-emerald-400'
+                            }`}>As a Leader</span>
                             <p className="text-sm font-semibold">
                               I need to create people who can solve problems without depending on me.
                             </p>
@@ -1212,7 +1567,7 @@ export default function BalaLessons() {
 
                         {/* Reflection Ending */}
                         <div className={`mt-10 p-6 rounded-2xl border transition-colors ${
-                          readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                          readerTheme !== 'dark' ? 'bg-stone-50 border-stone-250 text-stone-900' : 'bg-white/5 border-white/10 text-slate-200'
                         }`}>
                           <h3 className={`text-lg font-black mb-3 transition-colors ${currentStyles.textTitle}`}>
                             Honest Reflection
@@ -1226,44 +1581,39 @@ export default function BalaLessons() {
                             Maybe leadership isn't about becoming the person everyone comes to for answers.
                           </p>
 
-                          <p className="text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-400 mb-6">
+                          <p className={`text-sm sm:text-base font-bold mb-6 ${
+                            readerTheme !== 'dark' ? 'text-emerald-800' : 'text-emerald-400'
+                          }`}>
                             Maybe it's about becoming the person who helps others find their own answers.
                           </p>
 
-                          <div className="pt-4 border-t border-slate-200 dark:border-white/10">
-                            <p className="text-sm font-black text-slate-900 dark:text-white">
+                          <div className={`pt-4 border-t ${
+                            readerTheme !== 'dark' ? 'border-stone-300' : 'border-white/10'
+                          }`}>
+                            <p className={`text-sm font-black ${
+                              readerTheme !== 'dark' ? 'text-slate-950' : 'text-white'
+                            }`}>
                               What changed the way you think about leadership?
                             </p>
                           </div>
                         </div>
 
-                        {/* LinkedIn Link */}
-                        <div className="pt-6">
-                          <a
-                            href="https://www.linkedin.com/in/balavenkatesh22"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 font-bold text-sm cursor-pointer ${
-                              readerTheme !== 'dark' 
-                                ? 'bg-[#0077b5] hover:bg-[#006294] text-white border-transparent shadow-md' 
-                                : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'
-                            }`}
-                          >
-                            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                            Connect on LinkedIn
-                          </a>
-                        </div>
-
                         {/* Author's Note */}
                         <div className={`mt-8 p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed italic text-left transition-colors duration-300 ${
                           readerTheme !== 'dark' 
-                            ? 'bg-emerald-50/50 border-emerald-100 text-emerald-900 font-semibold' 
-                            : 'bg-emerald-950/10 border-emerald-500/10 text-slate-400'
+                            ? 'bg-emerald-50/60 border-emerald-200 text-emerald-950 font-semibold' 
+                            : 'bg-emerald-950/10 border-emerald-500/10 text-slate-300'
                         }`}>
                           💡 <strong>Author's Note:</strong> This post is part of the "Leadership & Ownership" series by Bala Venkatesh. I write about transitioning from individual contributor to empowering leader, building autonomous teams, and mastering engineering culture.
                         </div>
+
+                        {/* End of Blog Social Share Card */}
+                        <BlogShareFooter 
+                          postSlug="thought-i-was-leading-assigning-tasks" 
+                          readerTheme={readerTheme} 
+                          onOpenShareModal={handleOpenShareModal} 
+                          sharedCount={sharedCounts['thought-i-was-leading-assigning-tasks'] || 142} 
+                        />
                       </div>
                     ) : selectedPost === 'building-something-people-trust' ? (
                       <div className="space-y-6">
@@ -1494,9 +1844,11 @@ export default function BalaLessons() {
                             AI can generate code. It cannot fully replace experience. It doesn't know your business priorities. It doesn't know your constraints. It doesn't know your customers.
                           </p>
                           <div className={`p-5 rounded-2xl border transition-colors ${
-                            readerTheme !== 'dark' ? 'bg-cyan-50/50 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/20'
+                            readerTheme !== 'dark' ? 'bg-cyan-50/60 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/20'
                           }`}>
-                            <p className="font-bold text-sm sm:text-base text-cyan-800 dark:text-cyan-300 mb-0">
+                            <p className={`font-bold text-sm sm:text-base mb-0 ${
+                              readerTheme !== 'dark' ? 'text-cyan-950' : 'text-cyan-300'
+                            }`}>
                               Your value comes from choosing the right solution, not generating the fastest one.
                             </p>
                           </div>
@@ -1555,32 +1907,11 @@ export default function BalaLessons() {
                           <p className="text-sm sm:text-base leading-relaxed mb-4">
                             In the years ahead, I don't think the most valuable engineers will be those who can build an app the fastest. They'll be the ones who can identify the right problem, design the right solution, and deliver measurable business value.
                           </p>
-                          <p className="text-sm sm:text-base font-bold text-cyan-600 dark:text-cyan-400">
+                          <p className={`text-sm sm:text-base font-bold ${
+                            readerTheme !== 'dark' ? 'text-cyan-700' : 'text-cyan-400'
+                          }`}>
                             That's where I'm choosing to focus.
                           </p>
-                        </div>
-
-                        <p className="pt-4 font-medium">
-                          If you're building AI products or thinking about the future of software engineering, I'd love to hear your perspective.
-                        </p>
-
-                        {/* LinkedIn CTA */}
-                        <div className="pt-4">
-                          <a
-                            href="https://www.linkedin.com/in/balavenkatesh22"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 font-bold text-sm cursor-pointer ${
-                              readerTheme !== 'dark' 
-                                ? 'bg-[#0077b5] hover:bg-[#006294] text-white border-transparent shadow-md' 
-                                : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'
-                            }`}
-                          >
-                            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                            Connect on LinkedIn
-                          </a>
                         </div>
 
                         {/* Author's Note */}
@@ -1591,6 +1922,14 @@ export default function BalaLessons() {
                         }`}>
                           💡 <strong>Author's Note:</strong> This article is part of the "Engineering Mindset" series by Bala Venkatesh. I write about product discovery, technical decision frameworks, and building resilient AI systems.
                         </div>
+
+                        {/* End of Blog Social Share Card */}
+                        <BlogShareFooter 
+                          postSlug="building-something-people-trust" 
+                          readerTheme={readerTheme} 
+                          onOpenShareModal={handleOpenShareModal} 
+                          sharedCount={sharedCounts['building-something-people-trust'] || 98} 
+                        />
                       </div>
                     ) : selectedPost === 'stopped-chasing-technologies' ? (
                       <div className="space-y-6">
@@ -1767,29 +2106,6 @@ export default function BalaLessons() {
                           That is the engineer I'm striving to become every day.
                         </p>
 
-                        <p className="pt-4">
-                          If this story resonates with you, I'd love to connect and learn from your journey as well. Feel free to reach out to me!
-                        </p>
-
-                        {/* LinkedIn Link */}
-                        <div className="pt-6">
-                          <a
-                            href="https://www.linkedin.com/in/bala-venkatesh-67964247/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 font-bold text-sm cursor-pointer ${
-                              readerTheme !== 'dark' 
-                                ? 'bg-[#0077b5] hover:bg-[#006294] text-white border-transparent shadow-md' 
-                                : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'
-                            }`}
-                          >
-                            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                            Connect on LinkedIn
-                          </a>
-                        </div>
-
                         {/* Distinctions Footer */}
                         <div className={`mt-10 p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed italic text-left transition-colors duration-300 ${
                           readerTheme !== 'dark' 
@@ -1798,6 +2114,14 @@ export default function BalaLessons() {
                         }`}>
                           💡 <strong>Author's Note:</strong> This post marks the start of the "Engineering Mindset" series. My hope is to spark deeper conversations about pragmatism, technical trade-offs, and product-focused engineering. Thanks for reading!
                         </div>
+
+                        {/* End of Blog Social Share Card */}
+                        <BlogShareFooter 
+                          postSlug="stopped-chasing-technologies" 
+                          readerTheme={readerTheme} 
+                          onOpenShareModal={handleOpenShareModal} 
+                          sharedCount={sharedCounts['stopped-chasing-technologies'] || 115} 
+                        />
                       </div>
                     ) : (
                       <>
@@ -2590,11 +2914,399 @@ export default function BalaLessons() {
                     }`}>
                       📚 <strong>Author's Note:</strong> This blog doesn't end with "Now you know how LLMs work." It ends with "Now you have a framework to decide whether an LLM is the right solution for your business." That distinction is what positions you as a strategic consultant that companies trust.
                     </div>
+
+                    {/* End of Blog Social Share Card */}
+                    <BlogShareFooter 
+                      postSlug="how-i-choose-an-llm" 
+                      readerTheme={readerTheme} 
+                      onOpenShareModal={handleOpenShareModal} 
+                      sharedCount={sharedCounts['how-i-choose-an-llm'] || 210} 
+                    />
                       </>
                     )}
 
                   </div>
                 </motion.article>
+              )}
+            </AnimatePresence>
+
+            {/* Floating Social Share Action Button */}
+            {selectedPost && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2"
+              >
+                <button
+                  onClick={() => handleOpenShareModal('platforms')}
+                  className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-cyan-600 via-indigo-600 to-cyan-700 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold text-xs shadow-xl shadow-cyan-950/40 hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 active:scale-95 border border-cyan-400/30 cursor-pointer"
+                  title="Share this article on social media"
+                >
+                  <Share2 className="w-4 h-4 text-cyan-200 group-hover:rotate-12 transition-transform duration-300" />
+                  <span className="hidden sm:inline">Share Article</span>
+                  <span className="bg-white/20 px-2 py-0.5 rounded-full text-[10px] font-mono text-cyan-100">
+                    🔥 {sharedCounts[selectedPost] || 120}
+                  </span>
+                </button>
+              </motion.div>
+            )}
+
+            {/* Social Share Modal */}
+            <AnimatePresence>
+              {isShareModalOpen && selectedPost && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                    className="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden text-left my-8"
+                  >
+                    {/* Modal Header */}
+                    <div className="p-6 bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 border-b border-slate-800 flex items-start justify-between">
+                      <div>
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-2">
+                          <Share2 className="w-3 h-3" />
+                          <span>Share Knowledge & Growth</span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-black text-white">
+                          Share Essay with Your Network
+                        </h3>
+                        <p className="text-xs text-slate-400 line-clamp-1 mt-1">
+                          "{POST_SHARE_DATA[selectedPost]?.title || 'Blog Essay'}"
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => setIsShareModalOpen(false)}
+                        className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+
+                    {/* Modal Navigation Tabs */}
+                    <div className="flex border-b border-slate-800 bg-slate-950/50 p-2 gap-2 text-xs font-bold">
+                      <button
+                        onClick={() => setShareModalTab('platforms')}
+                        className={`flex-1 py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                          shareModalTab === 'platforms'
+                            ? 'bg-cyan-500 text-slate-950 font-black shadow-md'
+                            : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <Send className="w-3.5 h-3.5" />
+                        <span>1-Tap Platforms</span>
+                      </button>
+
+                      <button
+                        onClick={() => setShareModalTab('hooks')}
+                        className={`flex-1 py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                          shareModalTab === 'hooks'
+                            ? 'bg-cyan-500 text-slate-950 font-black shadow-md'
+                            : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <Quote className="w-3.5 h-3.5" />
+                        <span>Viral Post Hooks</span>
+                      </button>
+
+                      <button
+                        onClick={() => setShareModalTab('card')}
+                        className={`flex-1 py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                          shareModalTab === 'card'
+                            ? 'bg-cyan-500 text-slate-950 font-black shadow-md'
+                            : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <ImageIcon className="w-3.5 h-3.5" />
+                        <span>Visual Quote Card</span>
+                      </button>
+                    </div>
+
+                    {/* Tab 1: Platforms */}
+                    {shareModalTab === 'platforms' && (
+                      <div className="p-6 space-y-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                          {/* LinkedIn */}
+                          <a
+                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(getShareUrl(selectedPost))}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => incrementShareCount(selectedPost)}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#0077b5]/15 hover:bg-[#0077b5]/30 border border-[#0077b5]/30 text-white font-bold text-xs transition-all cursor-pointer group"
+                          >
+                            <div className="p-2 rounded-xl bg-[#0077b5] text-white group-hover:scale-110 transition-transform">
+                              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="font-extrabold text-white">LinkedIn</div>
+                              <div className="text-[10px] text-cyan-300">Professional Post</div>
+                            </div>
+                          </a>
+
+                          {/* Twitter / X */}
+                          <a
+                            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(POST_SHARE_DATA[selectedPost]?.twitterText || '')}&url=${encodeURIComponent(getShareUrl(selectedPost))}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => incrementShareCount(selectedPost)}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold text-xs transition-all cursor-pointer group"
+                          >
+                            <div className="p-2 rounded-xl bg-black border border-white/20 text-white group-hover:scale-110 transition-transform">
+                              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="font-extrabold text-white">X / Twitter</div>
+                              <div className="text-[10px] text-slate-400">Tweet Thread</div>
+                            </div>
+                          </a>
+
+                          {/* WhatsApp */}
+                          <a
+                            href={`https://api.whatsapp.com/send?text=${encodeURIComponent((POST_SHARE_DATA[selectedPost]?.whatsappText || '') + ' ' + getShareUrl(selectedPost))}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => incrementShareCount(selectedPost)}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-white font-bold text-xs transition-all cursor-pointer group"
+                          >
+                            <div className="p-2 rounded-xl bg-emerald-600 text-white group-hover:scale-110 transition-transform">
+                              <MessageSquare className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <div className="font-extrabold text-white">WhatsApp</div>
+                              <div className="text-[10px] text-emerald-400">Team Chat</div>
+                            </div>
+                          </a>
+
+                          {/* Telegram */}
+                          <a
+                            href={`https://t.me/share/url?url=${encodeURIComponent(getShareUrl(selectedPost))}&text=${encodeURIComponent(POST_SHARE_DATA[selectedPost]?.title || '')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => incrementShareCount(selectedPost)}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-white font-bold text-xs transition-all cursor-pointer group"
+                          >
+                            <div className="p-2 rounded-xl bg-sky-500 text-white group-hover:scale-110 transition-transform">
+                              <Send className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <div className="font-extrabold text-white">Telegram</div>
+                              <div className="text-[10px] text-sky-400">Group Channel</div>
+                            </div>
+                          </a>
+
+                          {/* Reddit */}
+                          <a
+                            href={`https://www.reddit.com/submit?url=${encodeURIComponent(getShareUrl(selectedPost))}&title=${encodeURIComponent(POST_SHARE_DATA[selectedPost]?.title || '')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => incrementShareCount(selectedPost)}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 text-white font-bold text-xs transition-all cursor-pointer group"
+                          >
+                            <div className="p-2 rounded-xl bg-orange-600 text-white group-hover:scale-110 transition-transform">
+                              <ExternalLink className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <div className="font-extrabold text-white">Reddit</div>
+                              <div className="text-[10px] text-orange-400">r/programming</div>
+                            </div>
+                          </a>
+
+                          {/* Web Share Native */}
+                          {typeof navigator !== 'undefined' && 'share' in navigator && (
+                            <button
+                              onClick={() => {
+                                navigator.share({
+                                  title: POST_SHARE_DATA[selectedPost]?.title,
+                                  text: POST_SHARE_DATA[selectedPost]?.quote,
+                                  url: getShareUrl(selectedPost)
+                                });
+                                incrementShareCount(selectedPost);
+                              }}
+                              className="flex items-center gap-3 p-3.5 rounded-2xl bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-white font-bold text-xs transition-all cursor-pointer group"
+                            >
+                              <div className="p-2 rounded-xl bg-indigo-600 text-white group-hover:scale-110 transition-transform">
+                                <Share2 className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <div className="font-extrabold text-white">Native Share</div>
+                                <div className="text-[10px] text-indigo-300">Device Sheet</div>
+                              </div>
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Direct Copy Link Bar */}
+                        <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3">
+                          <div className="truncate text-xs font-mono text-slate-400">
+                            {getShareUrl(selectedPost)}
+                          </div>
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(getShareUrl(selectedPost));
+                              triggerToast('Article direct link copied to clipboard!');
+                              incrementShareCount(selectedPost);
+                            }}
+                            className="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
+                          >
+                            <Copy className="w-3.5 h-3.5" />
+                            <span>Copy Link</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Tab 2: Viral Post Hooks */}
+                    {shareModalTab === 'hooks' && (
+                      <div className="p-6 space-y-5">
+                        <p className="text-xs text-slate-300 leading-relaxed">
+                          Copy this pre-formatted social post hook directly to LinkedIn or X to maximize reader engagement:
+                        </p>
+
+                        <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300 whitespace-pre-wrap leading-relaxed max-h-60 overflow-y-auto relative">
+                          {POST_SHARE_DATA[selectedPost]?.linkedInText}
+                          {'\n\n👉 Read full essay: ' + getShareUrl(selectedPost)}
+                        </div>
+
+                        <div className="flex gap-3">
+                          <button
+                            onClick={() => {
+                              const fullText = (POST_SHARE_DATA[selectedPost]?.linkedInText || '') + '\n\n👉 Read full essay: ' + getShareUrl(selectedPost);
+                              navigator.clipboard.writeText(fullText);
+                              triggerToast('Viral post hook copied to clipboard!');
+                              incrementShareCount(selectedPost);
+                            }}
+                            className="flex-1 py-3 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                          >
+                            <Copy className="w-4 h-4" />
+                            <span>Copy LinkedIn Hook Text</span>
+                          </button>
+
+                          <a
+                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(getShareUrl(selectedPost))}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => incrementShareCount(selectedPost)}
+                            className="py-3 px-4 rounded-xl bg-[#0077b5] hover:bg-[#005885] text-white font-bold text-xs flex items-center gap-2 transition-colors cursor-pointer"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            <span>Open LinkedIn</span>
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Tab 3: Visual Quote Card */}
+                    {shareModalTab === 'card' && (
+                      <div className="p-6 space-y-6">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider">
+                            Select Card Style Theme:
+                          </span>
+                          <div className="flex gap-2">
+                            {[
+                              { id: 'midnight', name: 'Midnight', bg: 'bg-slate-900 border-cyan-500' },
+                              { id: 'emerald', name: 'Emerald', bg: 'bg-emerald-950 border-emerald-500' },
+                              { id: 'amber', name: 'Amber', bg: 'bg-amber-950 border-amber-500' },
+                              { id: 'minimal', name: 'Ivory', bg: 'bg-slate-100 border-slate-400 text-slate-900' },
+                            ].map(t => (
+                              <button
+                                key={t.id}
+                                onClick={() => setQuoteCardTheme(t.id as any)}
+                                className={`px-3 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${
+                                  quoteCardTheme === t.id
+                                    ? 'border-cyan-400 text-cyan-400 bg-cyan-500/10'
+                                    : 'border-slate-800 text-slate-400 hover:text-white'
+                                }`}
+                              >
+                                {t.name}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Live Visual Card Preview */}
+                        <div className={`p-6 sm:p-8 rounded-2xl border relative text-left overflow-hidden shadow-2xl transition-all duration-300 ${
+                          quoteCardTheme === 'emerald'
+                            ? 'bg-gradient-to-br from-emerald-950 via-slate-950 to-emerald-900 border-emerald-500/30 text-emerald-100'
+                            : quoteCardTheme === 'amber'
+                              ? 'bg-gradient-to-br from-amber-950 via-slate-950 to-amber-900 border-amber-500/30 text-amber-100'
+                              : quoteCardTheme === 'minimal'
+                                ? 'bg-gradient-to-br from-white via-slate-50 to-slate-100 border-slate-300 text-slate-900 shadow-xl'
+                                : 'bg-gradient-to-br from-slate-900 via-slate-950 to-cyan-950/60 border-cyan-500/30 text-white'
+                        }`}>
+                          <Quote className="w-10 h-10 text-cyan-500/20 absolute top-4 right-4" />
+                          <div className="text-[10px] font-mono font-bold tracking-widest uppercase text-cyan-500 mb-3">
+                            BALA VENKATESH • ESSAYS & LESSONS
+                          </div>
+                          <p className="font-serif text-sm sm:text-base italic leading-relaxed mb-6 font-semibold">
+                            "{POST_SHARE_DATA[selectedPost]?.quote}"
+                          </p>
+                          <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                            <div>
+                              <div className="font-extrabold">Bala Venkatesh</div>
+                              <div className={`text-[10px] ${quoteCardTheme === 'minimal' ? 'text-slate-500' : 'text-slate-400'}`}>
+                                Author of "{POST_SHARE_DATA[selectedPost]?.title}"
+                              </div>
+                            </div>
+                            <div className="font-mono text-[10px] text-cyan-500 font-bold">
+                              balavenkatesh3322.github.io/bala_venkatesh_profile
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <button
+                            onClick={() => {
+                              if (selectedPost && POST_SHARE_DATA[selectedPost]) {
+                                exportQuoteCardAsPNG(POST_SHARE_DATA[selectedPost], quoteCardTheme);
+                                triggerToast('Quote Card PNG downloaded!');
+                                incrementShareCount(selectedPost);
+                              }
+                            }}
+                            className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-black text-xs flex items-center justify-center gap-2 shadow-lg transition-colors cursor-pointer"
+                          >
+                            <Download className="w-4 h-4" />
+                            <span>Download Quote Card PNG</span>
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              const quoteText = `"${POST_SHARE_DATA[selectedPost]?.quote}"\n\n— Bala Venkatesh, "${POST_SHARE_DATA[selectedPost]?.title}"\n${getShareUrl(selectedPost)}`;
+                              navigator.clipboard.writeText(quoteText);
+                              triggerToast('Quote text copied to clipboard!');
+                              incrementShareCount(selectedPost);
+                            }}
+                            className="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition-colors cursor-pointer"
+                          >
+                            <Copy className="w-4 h-4 text-cyan-400" />
+                            <span>Copy Quote Text</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
+
+            {/* Toast Banner */}
+            <AnimatePresence>
+              {toastMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-cyan-500 text-slate-950 font-black text-xs shadow-2xl flex items-center gap-2 border border-cyan-300"
+                >
+                  <Check className="w-4 h-4" />
+                  <span>{toastMessage}</span>
+                </motion.div>
               )}
             </AnimatePresence>
 
