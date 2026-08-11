@@ -71,6 +71,13 @@ const SERIES_LIST: Series[] = [
     emoji: '💡',
     description: 'Personal reflections, career milestones, and the mental shifts required to build software that creates real impact.',
     color: 'from-amber-500/20 to-orange-500/10 border-amber-500/20 hover:border-amber-500/45 text-amber-400'
+  },
+  {
+    id: 'leadership-ownership',
+    title: 'Leadership & Ownership',
+    emoji: '👑',
+    description: 'Transitioning from task delegation to outcome ownership, building autonomous teams, and mentoring engineers to solve problems independently.',
+    color: 'from-emerald-500/20 to-teal-500/10 border-emerald-500/20 hover:border-emerald-500/45 text-emerald-400'
   }
 ];
 
@@ -294,6 +301,32 @@ const BLOG_POSTS: BlogPost[] = [
     excerpt: 'A guide to early validation, customer interviews, and creating real, measurable user outcomes.',
     author: 'Bala Venkatesh',
     tags: ['Validation', 'Product Management', 'Impact'],
+    comingSoon: true
+  },
+
+  // Series 4: Leadership & Ownership
+  {
+    slug: 'thought-i-was-leading-assigning-tasks',
+    title: 'I Thought I Was Leading. I Was Just Assigning Tasks.',
+    seriesId: 'leadership-ownership',
+    category: 'Leadership',
+    readTime: '6 min read',
+    date: 'August 11, 2026',
+    excerpt: 'A conversation with an engineer named Raju triggered a wake-up call about leadership vs task assignment. How shifting from execution steps to outcome ownership transforms teams.',
+    author: 'Bala Venkatesh',
+    tags: ['Leadership', 'Team Management', 'Engineering Culture', 'Ownership'],
+    comingSoon: false
+  },
+  {
+    slug: 'building-autonomous-teams',
+    title: 'How to Build Teams That Don\'t Need You',
+    seriesId: 'leadership-ownership',
+    category: 'Management',
+    readTime: '5 min read',
+    date: 'Coming Soon',
+    excerpt: 'Creating self-healing, decision-making engineering units that thrive when leaders step back.',
+    author: 'Bala Venkatesh',
+    tags: ['Team Building', 'Autonomy', 'Culture'],
     comingSoon: true
   }
 ];
@@ -639,7 +672,9 @@ export default function BalaLessons() {
                               ? '5 Chapters • 1 Live' 
                               : series.id === 'engineering-mindset' 
                                 ? '4 Chapters • 2 Live' 
-                                : '9 Chapters • Coming Soon'}
+                                : series.id === 'leadership-ownership'
+                                  ? '2 Chapters • 1 Live'
+                                  : '9 Chapters • Coming Soon'}
                           </span>
                           <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1">
                             Explore Series <ArrowRight className="w-3.5 h-3.5" />
@@ -957,7 +992,280 @@ export default function BalaLessons() {
                   <div className={`text-left transition-colors duration-300 ${fontClass} ${sizeClass} ${widthClass} ${
                     readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
                   }`}>
-                    {selectedPost === 'building-something-people-trust' ? (
+                    {selectedPost === 'thought-i-was-leading-assigning-tasks' ? (
+                      <div className="space-y-6">
+                        <p className={`text-base sm:text-lg font-semibold italic border-l-4 pl-4 py-1.5 transition-all duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'text-slate-900 border-emerald-500 bg-emerald-50/25 rounded-r-xl pr-3' 
+                            : 'text-slate-200 border-emerald-400 bg-white/5 rounded-r-xl pr-3'
+                        }`}>
+                          "I thought I was leading. I was breaking down tasks, setting deadlines, and keeping the team moving. Then a conversation with an engineer named Raju made me realize a hard truth: I wasn't leading at all. I was just assigning tasks."
+                        </p>
+
+                        {/* Section: The Story */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-8 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          The Raju Conversation
+                        </h2>
+
+                        <p>
+                          It started on a typical Tuesday afternoon. We were rushing to ship a critical system integration before the sprint review. A talented software engineer on my team, Raju, was handling one of the core modules.
+                        </p>
+
+                        <p>
+                          I walked up to his desk, laid out the step-by-step implementation details, and gave him explicit directions:
+                        </p>
+
+                        <blockquote className={`p-4 rounded-xl border font-mono text-xs sm:text-sm font-bold my-4 transition-colors ${
+                          readerTheme !== 'dark' ? 'bg-stone-100 border-stone-250 text-stone-800' : 'bg-white/5 border-white/10 text-slate-200'
+                        }`}>
+                          "Raju, finish this by Friday."
+                        </blockquote>
+
+                        <p>
+                          Friday came. Raju worked hard, followed every instruction I gave him to the letter, and marked the ticket as complete. I felt like a successful manager—the task was delivered on time.
+                        </p>
+
+                        <p>
+                          Then came Monday morning.
+                        </p>
+
+                        <p>
+                          An unhandled edge case surfaced in production under high concurrency load. Raju immediately pinged me on Slack:
+                        </p>
+
+                        <blockquote className={`p-4 rounded-xl border font-mono text-xs sm:text-sm italic my-4 transition-colors ${
+                          readerTheme !== 'dark' ? 'bg-amber-50 border-amber-200 text-amber-900' : 'bg-amber-500/10 border-amber-500/20 text-amber-300'
+                        }`}>
+                          "Bala, the edge case broke. What should I do next?"
+                        </blockquote>
+
+                        <p>
+                          That message hit me hard. Raju hadn't failed—he had done <em>exactly</em> what I instructed. The failure was mine.
+                        </p>
+
+                        <p className="font-bold text-lg">
+                          By giving Raju a set of execution instructions instead of ownership of the outcome, I had turned a talented engineer into a task processor who needed my permission to solve problems.
+                        </p>
+
+                        {/* Section: The Realization */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          The Realization: Task Assignment vs. Leadership
+                        </h2>
+
+                        <p>
+                          That incident forced me to analyze the fundamental difference between assigning tasks and leading people:
+                        </p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+                          <div className={`p-5 rounded-2xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/5'
+                          }`}>
+                            <div className="text-xs font-mono font-bold uppercase text-rose-500 mb-2">Task Assignment</div>
+                            <p className="font-mono text-sm font-bold mb-3 text-rose-600 dark:text-rose-400">
+                              "Raju, finish this by Friday."
+                            </p>
+                            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                              <li>• Dictates execution steps and exact specifications</li>
+                              <li>• Creates dependency on the manager for edge cases</li>
+                              <li>• Measures success by compliance and hours spent</li>
+                              <li>• Result: Team stops thinking when the spec ends</li>
+                            </ul>
+                          </div>
+
+                          <div className={`p-5 rounded-2xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-emerald-50/50 border-emerald-200' : 'bg-emerald-950/20 border-emerald-500/20'
+                          }`}>
+                            <div className="text-xs font-mono font-bold uppercase text-emerald-600 mb-2">True Leadership</div>
+                            <p className="font-mono text-sm font-bold mb-3 text-emerald-700 dark:text-emerald-300">
+                              "Raju, this is the outcome we need. How would you approach it?"
+                            </p>
+                            <ul className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                              <li>• Defines the problem context and business target</li>
+                              <li>• Empowers the engineer to design the solution</li>
+                              <li>• Measures success by value delivered and system resiliency</li>
+                              <li>• Result: Team anticipates edge cases and grows autonomously</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* Section: What Changed in My Thinking */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          What Changed in My Thinking
+                        </h2>
+
+                        <p>
+                          I had to undergo a fundamental mindset shift in how I viewed my own role and effectiveness:
+                        </p>
+
+                        <div className={`p-6 rounded-2xl border transition-all my-6 ${
+                          readerTheme !== 'dark' ? 'bg-cyan-50/50 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/20'
+                        }`}>
+                          <div className="space-y-4">
+                            <div>
+                              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider block mb-1">Earlier Mindset</span>
+                              <p className="text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300">
+                                Earlier, I measured my effectiveness by how much work I could personally get done, organize, or directly control.
+                              </p>
+                            </div>
+                            <div className="border-t border-cyan-200/50 dark:border-cyan-500/20 pt-4">
+                              <span className="text-xs font-mono font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block mb-1">New Mindset</span>
+                              <p className="text-sm sm:text-base font-bold text-cyan-900 dark:text-cyan-200">
+                                Now, I am learning to measure my effectiveness by how effectively I can help others take ownership and make decisions independently.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Section: Leadership Framework */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          My Leadership Framework
+                        </h2>
+
+                        <p className="mb-4">
+                          To operationalize this shift, I built a simple 5-stage framework that I use whenever delegating initiatives:
+                        </p>
+
+                        <div className={`p-4 sm:p-5 rounded-2xl border font-mono text-center text-xs sm:text-sm font-bold my-6 tracking-wide ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 border-teal-200 text-teal-900' 
+                            : 'bg-white/5 border-white/10 text-cyan-300'
+                        }`}>
+                          Context → Outcome → Ownership → Autonomy → Accountability
+                        </div>
+
+                        <div className="space-y-4 my-6">
+                          {[
+                            {
+                              step: '1. Context',
+                              desc: 'Provide the full background on why the problem exists, who the customer is, and what business impact is at stake—not just technical specs.',
+                              example: 'Example: "Our transaction processing latency spikes during peak hours, causing 12% of cart abandonments."'
+                            },
+                            {
+                              step: '2. Outcome',
+                              desc: 'Define what clear success looks like without prescribing the exact implementation or code structure.',
+                              example: 'Example: "We need transaction processing under 200ms with 99.9% reliability during high concurrency."'
+                            },
+                            {
+                              step: '3. Ownership',
+                              desc: 'Explicitly transfer the responsibility of solving the problem to the engineer, making them the primary decision-maker.',
+                              example: 'Example: "Raju, you own this pipeline end-to-end. You decide how we get there."'
+                            },
+                            {
+                              step: '4. Autonomy',
+                              desc: 'Give the engineer freedom to explore architectural trade-offs, test ideas, and make decisions without needing approval for every detail.',
+                              example: 'Example: Allowing Raju to evaluate between Redis caching vs connection pooling without micromanagement.'
+                            },
+                            {
+                              step: '5. Accountability',
+                              desc: 'Review the actual results together against the original outcome, celebrating impact and using failures as learning loops.',
+                              example: 'Example: Measuring post-launch latency metrics together and discussing what edge cases were uncovered.'
+                            }
+                          ].map((item, idx) => (
+                            <div key={idx} className={`p-4 rounded-xl border text-left transition-colors ${
+                              readerTheme !== 'dark' ? 'bg-[#FCF9F2] border-stone-200' : 'bg-white/[0.02] border-white/5'
+                            }`}>
+                              <h4 className={`text-base font-black mb-1 transition-colors ${currentStyles.textTitle}`}>
+                                {item.step}
+                              </h4>
+                              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-2 font-medium">
+                                {item.desc}
+                              </p>
+                              <p className="text-xs font-mono italic text-cyan-700 dark:text-cyan-400">
+                                {item.example}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Section: The Deeper Lesson */}
+                        <h2 className={`text-xl sm:text-2xl font-black mt-10 mb-4 transition-colors ${currentStyles.textTitle}`}>
+                          The Deeper Lesson
+                        </h2>
+
+                        <p>
+                          Connecting this back to my own career journey:
+                        </p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+                          <div className={`p-4 rounded-xl border text-left ${
+                            readerTheme !== 'dark' ? 'bg-amber-50/50 border-amber-200 text-amber-900' : 'bg-amber-950/20 border-amber-500/20 text-amber-300'
+                          }`}>
+                            <span className="text-xs font-mono font-bold uppercase block mb-1 text-amber-700 dark:text-amber-400">As an Individual Engineer</span>
+                            <p className="text-sm font-semibold">
+                              I was rewarded for solving complex problems myself through code and technical execution.
+                            </p>
+                          </div>
+
+                          <div className={`p-4 rounded-xl border text-left ${
+                            readerTheme !== 'dark' ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-emerald-950/20 border-emerald-500/20 text-emerald-300'
+                          }`}>
+                            <span className="text-xs font-mono font-bold uppercase block mb-1 text-emerald-700 dark:text-emerald-400">As a Leader</span>
+                            <p className="text-sm font-semibold">
+                              I need to create people who can solve problems without depending on me.
+                            </p>
+                          </div>
+                        </div>
+
+                        <p>
+                          This transition is powerful because it demonstrates real operational experience rather than claiming theoretical leadership expertise. True leadership isn't a title you claim—it's the capability and confidence you build in others.
+                        </p>
+
+                        {/* Reflection Ending */}
+                        <div className={`mt-10 p-6 rounded-2xl border transition-colors ${
+                          readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                        }`}>
+                          <h3 className={`text-lg font-black mb-3 transition-colors ${currentStyles.textTitle}`}>
+                            Honest Reflection
+                          </h3>
+
+                          <p className="text-sm sm:text-base leading-relaxed mb-4">
+                            I'm still learning this.
+                          </p>
+
+                          <p className="text-sm sm:text-base font-semibold leading-relaxed mb-4">
+                            Maybe leadership isn't about becoming the person everyone comes to for answers.
+                          </p>
+
+                          <p className="text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-400 mb-6">
+                            Maybe it's about becoming the person who helps others find their own answers.
+                          </p>
+
+                          <div className="pt-4 border-t border-slate-200 dark:border-white/10">
+                            <p className="text-sm font-black text-slate-900 dark:text-white">
+                              What changed the way you think about leadership?
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* LinkedIn Link */}
+                        <div className="pt-6">
+                          <a
+                            href="https://www.linkedin.com/in/balavenkatesh22"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 font-bold text-sm cursor-pointer ${
+                              readerTheme !== 'dark' 
+                                ? 'bg-[#0077b5] hover:bg-[#006294] text-white border-transparent shadow-md' 
+                                : 'bg-white/5 border-white/10 hover:bg-white/10 text-white'
+                            }`}
+                          >
+                            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            Connect on LinkedIn
+                          </a>
+                        </div>
+
+                        {/* Author's Note */}
+                        <div className={`mt-8 p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed italic text-left transition-colors duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-emerald-50/50 border-emerald-100 text-emerald-900 font-semibold' 
+                            : 'bg-emerald-950/10 border-emerald-500/10 text-slate-400'
+                        }`}>
+                          💡 <strong>Author's Note:</strong> This post is part of the "Leadership & Ownership" series by Bala Venkatesh. I write about transitioning from individual contributor to empowering leader, building autonomous teams, and mastering engineering culture.
+                        </div>
+                      </div>
+                    ) : selectedPost === 'building-something-people-trust' ? (
                       <div className="space-y-6">
                         <p className={`text-base sm:text-lg font-semibold italic border-l-4 pl-4 py-1.5 transition-all duration-300 ${
                           readerTheme !== 'dark' 

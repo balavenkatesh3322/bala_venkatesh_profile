@@ -146,6 +146,38 @@ This document tracks all technical implementations, architectural decisions, com
 
 ---
 
+### 2.11 New Leadership Series & Blog Article: "I Thought I Was Leading. I Was Just Assigning Tasks."
+
+- **Location**: `src/components/BalaLessons.tsx` & `src/components/BuildWithBalaPromo.tsx`
+- **Slug**: `thought-i-was-leading-assigning-tasks`
+- **New Series**: `leadership-ownership` ("Leadership & Ownership" 👑)
+- **Key Enhancements**:
+  1. **New Series Registration**:
+     - Added `leadership-ownership` series to `SERIES_LIST` with emerald/teal theme (`from-emerald-500/20 to-teal-500/10 text-emerald-400`).
+     - Added series chapter stats counter (`2 Chapters • 1 Live`).
+  2. **Data Model**:
+     - Added metadata entry to `BLOG_POSTS` in `BalaLessons.tsx` with tags `['Leadership', 'Team Management', 'Engineering Culture', 'Ownership']`.
+  3. **Structured Article Implementation**:
+     - **The Raju Conversation**: Realistic story about delegating tasks with "finish this by Friday" vs encountering production edge cases on Monday and receiving "what should I do next?"
+     - **Task Assignment vs Leadership**: Comparison table contrasting task dictation with outcome empowerment.
+     - **Shift in Thinking**: Explicit transition from measuring personal output to measuring team autonomy and decision-making capability.
+     - **Leadership Framework**: 5-stage framework (`Context → Outcome → Ownership → Autonomy → Accountability`) with practical software engineering examples.
+     - **Deeper Career Lesson**: Shifting from individual problem-solver to creating engineers who solve problems without depending on leaders.
+     - **Honest Reflection & Call-to-Action**: Reflection ending with LinkedIn connection CTA.
+  4. **Promo & Card Integration**:
+     - Updated `FEATURED_BLOGS` in `BuildWithBalaPromo.tsx` to highlight this new leadership post on the homepage promo card grid.
+
+---
+
+### 2.12 Removal of 3D Underwater Ocean & Flocking Fish Canvas
+
+- **Changes**:
+  1. Completely removed `UnderwaterBackground.tsx` component and references from `src/App.tsx`.
+  2. Restored default clean solid section backdrops (`bg-slate-950`) across `Hero.tsx`, `About.tsx`, and `Services.tsx`.
+  3. Ensured clean build without background canvas performance overhead.
+
+---
+
 ## 3. Verification & Compilation
 
 - Code linting and TypeScript compilation verified via `compile_applet`.

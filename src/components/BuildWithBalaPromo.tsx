@@ -16,6 +16,16 @@ interface FeaturedBlog {
 
 const FEATURED_BLOGS: FeaturedBlog[] = [
   {
+    slug: 'thought-i-was-leading-assigning-tasks',
+    title: 'I Thought I Was Leading. I Was Just Assigning Tasks.',
+    category: 'Leadership',
+    series: 'Leadership & Ownership',
+    readTime: '6 min read',
+    excerpt: 'A conversation with an engineer named Raju triggered a wake-up call about leadership vs task assignment. How shifting from execution steps to outcome ownership transforms teams.',
+    tags: ['Leadership', 'Team Management', 'Ownership'],
+    emoji: '👑'
+  },
+  {
     slug: 'building-something-people-trust',
     title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
     category: 'Software Strategy',
@@ -24,16 +34,6 @@ const FEATURED_BLOGS: FeaturedBlog[] = [
     excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, and trust are the real value differentiators.',
     tags: ['AI Strategy', 'Product Engineering', 'System Design'],
     emoji: '🤝'
-  },
-  {
-    slug: 'llm-right-tool',
-    title: 'Stop Asking "How LLMs Work." Start Asking "When LLMs Are the Right Tool."',
-    category: 'AI Strategy',
-    series: 'How Bala Thinks',
-    readTime: '5 min read',
-    excerpt: 'Practical parameters to evaluate before selecting a commercial model, why fine-tuning is over-prescribed, and how systems design dictates SLA success.',
-    tags: ['AI Strategy', 'LLM Architecture', 'SLA Design'],
-    emoji: '🧠'
   },
   {
     slug: 'stopped-chasing-technologies',
