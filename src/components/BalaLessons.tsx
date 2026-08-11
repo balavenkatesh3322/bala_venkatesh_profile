@@ -1096,7 +1096,7 @@ export default function BalaLessons() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   layout="position"
-                  className={`rounded-3xl p-6 sm:p-10 lg:p-12 border relative overflow-hidden transition-all duration-500 ${currentStyles.articleBg}`}
+                  className={`rounded-3xl p-4 sm:p-8 md:p-12 border relative overflow-hidden transition-all duration-500 ${currentStyles.articleBg}`}
                 >
                   {/* Sticky Reading Progress Bar (Kindle/Medium Style) */}
                   <div className="fixed top-0 left-0 right-0 h-1 bg-slate-200/20 z-50 pointer-events-none">
@@ -1110,93 +1110,139 @@ export default function BalaLessons() {
                   <div className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none transition-opacity duration-500 ${
                     readerTheme === 'dark' ? 'bg-cyan-500/5 opacity-100' : 'bg-cyan-500/5 opacity-40'
                   }`} />
+
+                  {/* Centered Reader Container (Medium Style Alignment) */}
+                  <div className={widthClass}>
                   
                   {/* Premium Reading Theme Header & Controls */}
-                  <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-6 mb-8 transition-colors duration-300 ${currentStyles.headerBorder}`}>
+                  <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-5 mb-6 transition-colors duration-300 ${currentStyles.headerBorder}`}>
                     {/* Back button */}
                     <button
                       onClick={() => {
                         window.location.hash = currentSeries ? `#lessons/series/${currentSeries}` : '#lessons';
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className={`flex items-center gap-2 text-sm font-mono transition-colors group cursor-pointer ${
-                        readerTheme !== 'dark' ? 'text-slate-500 hover:text-cyan-600' : 'text-slate-400 hover:text-cyan-400'
+                      className={`flex items-center gap-2 text-xs sm:text-sm font-mono transition-colors group cursor-pointer ${
+                        readerTheme !== 'dark' ? 'text-slate-600 hover:text-cyan-600 font-semibold' : 'text-slate-400 hover:text-cyan-400'
                       }`}
                     >
                       <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                      Back to Series Details
+                      Back to Series
                     </button>
+
+                    {/* Quick Reading Theme Toggle */}
+                    <div className="flex items-center gap-1.5 self-end sm:self-auto">
+                      {(['paper', 'white', 'dark'] as const).map((thm) => (
+                        <button
+                          key={thm}
+                          onClick={() => setReaderTheme(thm)}
+                          className={`px-2.5 py-1 rounded-md text-[11px] font-mono capitalize transition-all cursor-pointer ${
+                            readerTheme === thm
+                              ? 'bg-cyan-500 text-white font-bold shadow-xs'
+                              : readerTheme !== 'dark'
+                                ? 'bg-slate-200/60 text-slate-700 hover:bg-slate-200'
+                                : 'bg-white/5 text-slate-400 hover:bg-white/10'
+                          }`}
+                        >
+                          {thm}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Kindle/Medium Floating preferences and social reactions deck */}
-                  <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-dashed transition-all duration-300 ${currentStyles.metaDivider}`}>
-                    <div className={`flex flex-wrap items-center gap-4 text-xs font-mono ${currentStyles.textMuted}`}>
-                      <span className={`px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wide border transition-all duration-300 ${currentStyles.badgeBg}`}>
+                  {/* Title */}
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-6 text-left transition-colors duration-300 ${currentStyles.textTitle}`}>
+                    <span className={`text-transparent bg-clip-text bg-gradient-to-r transition-all duration-300 ${
+                      readerTheme !== 'dark' ? 'from-cyan-700 via-slate-900 to-indigo-800' : 'from-cyan-400 to-indigo-400'
+                    }`}>
+                      {BLOG_POSTS.find(p => p.slug === selectedPost)?.title || "How I Choose an LLM"}
+                    </span>
+                  </h1>
+
+                  {/* Medium-style Author & Article Info Banner */}
+                  <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b transition-all duration-300 ${currentStyles.metaDivider}`}>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-600 p-0.5 shrink-0 shadow-sm">
+                        <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-cyan-400 font-black text-xs font-mono">
+                          BV
+                        </div>
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className={`text-xs sm:text-sm font-bold transition-colors ${readerTheme !== 'dark' ? 'text-slate-900' : 'text-white'}`}>
+                          Bala Venkatesh
+                        </span>
+                        <span className={`text-[11px] font-mono ${currentStyles.textMuted}`}>
+                          Lead AI Engineer & Enterprise Architect
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={`flex flex-wrap items-center gap-3 text-xs font-mono ${currentStyles.textMuted}`}>
+                      <span className={`px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wide border text-[10px] transition-all duration-300 ${currentStyles.badgeBg}`}>
                         AI Architecture
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" /> 5 min read
-                        {scrollProgress > 5 && (
-                          <span className="font-semibold text-cyan-600">
-                            &nbsp;•&nbsp;{Math.max(1, Math.ceil(5 * (1 - scrollProgress / 100)))} min left
-                          </span>
-                        )}
+                        <Clock className="w-3.5 h-3.5 text-cyan-500" /> 5 min read
                       </span>
-                      <span>July 6, 2026</span>
+                      <span>July 2026</span>
                     </div>
+                  </div>
 
-                    {/* Kindle Preferences, Claps, and Bookmark Actions */}
-                    <div className="flex items-center gap-2 self-end sm:self-auto">
+                  {/* Kindle/Medium Floating preferences and social reactions deck */}
+                  <div className={`flex flex-wrap items-center justify-between gap-3 mb-8 p-3 rounded-2xl border transition-all duration-300 ${currentStyles.interactiveBg}`}>
+                    <div className="flex items-center gap-2">
                       {/* Medium Claps Counter */}
                       <button 
                         onClick={() => setClaps(prev => prev + 1)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all hover:scale-105 cursor-pointer ${
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all hover:scale-105 cursor-pointer ${
                           readerTheme !== 'dark' 
-                            ? 'bg-rose-50 border-rose-100 text-rose-600 hover:bg-rose-100/50 animate-none' 
-                            : 'bg-rose-950/20 border-rose-900/30 text-rose-400 hover:bg-rose-900/30 animate-none'
+                            ? 'bg-rose-50 border-rose-200 text-rose-700 hover:bg-rose-100/80 shadow-xs' 
+                            : 'bg-rose-950/20 border-rose-900/30 text-rose-400 hover:bg-rose-900/30'
                         }`}
                       >
-                        <Heart className={`w-3.5 h-3.5 fill-current text-rose-500 animate-pulse`} />
+                        <Heart className="w-3.5 h-3.5 fill-current text-rose-500 animate-pulse" />
                         <span>{claps} claps</span>
                       </button>
 
                       {/* Bookmark Button */}
                       <button 
                         onClick={() => setIsBookmarked(!isBookmarked)}
-                        className={`p-2 rounded-lg border transition-all cursor-pointer ${
+                        className={`p-2 rounded-xl border transition-all cursor-pointer ${
                           isBookmarked 
                             ? 'bg-amber-500/10 border-amber-500/30 text-amber-500' 
                             : readerTheme !== 'dark'
-                              ? 'bg-slate-100 border-slate-200 text-slate-500 hover:text-slate-700'
+                              ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-800 shadow-xs'
                               : 'bg-white/5 border-white/10 text-slate-400 hover:text-slate-200'
                         }`}
                         title="Save to reading list"
                       >
                         <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current' : ''}`} />
                       </button>
+                    </div>
 
+                    <div className="flex items-center gap-2">
                       {/* Kindle Settings Trigger Toggle */}
                       <button 
                         onClick={() => setShowSettings(!showSettings)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all cursor-pointer ${
                           showSettings 
-                            ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-500 font-bold' 
+                            ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-600 font-bold' 
                             : readerTheme !== 'dark'
-                              ? 'bg-slate-100 border-slate-200 text-slate-600 hover:border-slate-300'
+                              ? 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 shadow-xs'
                               : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/20'
                         }`}
                       >
                         <Sliders className="w-3.5 h-3.5 text-cyan-500" />
-                        <span>AA Kindle Settings</span>
+                        <span>Aa Kindle Preferences</span>
                         <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${showSettings ? 'rotate-180' : ''}`} />
                       </button>
 
                       {/* Social Share Trigger */}
                       <button 
                         onClick={() => handleOpenShareModal('platforms')}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono font-bold transition-all cursor-pointer ${
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all cursor-pointer ${
                           readerTheme !== 'dark' 
-                            ? 'bg-cyan-50 border-cyan-200 text-cyan-700 hover:bg-cyan-100' 
+                            ? 'bg-cyan-50 border-cyan-200 text-cyan-800 hover:bg-cyan-100 shadow-xs' 
                             : 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20'
                         }`}
                         title="Share this essay on social media"
@@ -1216,7 +1262,7 @@ export default function BalaLessons() {
                         exit={{ height: 0, opacity: 0 }}
                         className={`overflow-hidden mb-8 rounded-2xl border transition-all ${currentStyles.interactiveBg}`}
                       >
-                        <div className="p-5 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                        <div className="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
                           {/* 1. Font Selector */}
                           <div className="flex flex-col gap-2">
                             <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${currentStyles.textMuted} flex items-center gap-1`}>
@@ -1277,7 +1323,7 @@ export default function BalaLessons() {
                           {/* 3. Margins width */}
                           <div className="flex flex-col gap-2">
                             <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${currentStyles.textMuted}`}>
-                              ↔️ Screen Page Margins
+                              ↔️ Page Reading Width
                             </span>
                             <div className="grid grid-cols-3 gap-1.5">
                               {['narrow', 'normal', 'wide'].map((w) => (
@@ -1302,19 +1348,8 @@ export default function BalaLessons() {
                     )}
                   </AnimatePresence>
 
-                  {/* Title */}
-                  <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-8 text-left transition-colors duration-300 ${currentStyles.textTitle}`}>
-                    <span className={`text-transparent bg-clip-text bg-gradient-to-r transition-all duration-300 ${
-                      readerTheme !== 'dark' ? 'from-cyan-600 to-indigo-600' : 'from-cyan-400 to-indigo-400'
-                    }`}>
-                      {BLOG_POSTS.find(p => p.slug === selectedPost)?.title || "How I Choose an LLM"}
-                    </span>
-                  </h1>
-
-
-
                   {/* Blog Body Content */}
-                  <div className={`text-left transition-colors duration-300 ${fontClass} ${sizeClass} ${widthClass} ${
+                  <div className={`text-left transition-colors duration-300 ${fontClass} ${sizeClass} ${
                     readerTheme !== 'dark' ? 'text-slate-800' : 'text-slate-300'
                   }`}>
                     {selectedPost === 'thought-i-was-leading-assigning-tasks' ? (
@@ -2925,6 +2960,7 @@ export default function BalaLessons() {
                       </>
                     )}
 
+                  </div>
                   </div>
                 </motion.article>
               )}

@@ -92,26 +92,33 @@ export default function AIBalaBot() {
   const triggerBotSequence = () => {
     setIsActive(true);
     setCountdown(4);
-    setTypedMessage('');
     
     // Clear any active typing intervals first
     if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
 
-    // Typewriter emulation
-    let index = 0;
-    typeIntervalRef.current = setInterval(() => {
-      if (index < welcomeText.length) {
-        setTypedMessage(() => welcomeText.slice(0, index + 1));
-        index++;
-      } else {
-        if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
-      }
-    }, 18);
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window);
 
-    // Speak voice greeting
-    setTimeout(() => {
-      speakGreeting();
-    }, 300);
+    if (isMobile) {
+      // On mobile devices, set message immediately to prevent 50+ React re-renders/sec
+      setTypedMessage(welcomeText);
+    } else {
+      // On desktop, type smoothly at 40ms interval (25 FPS) to protect CPU/main thread
+      setTypedMessage('');
+      let index = 0;
+      typeIntervalRef.current = setInterval(() => {
+        if (index < welcomeText.length) {
+          setTypedMessage(() => welcomeText.slice(0, index + 1));
+          index++;
+        } else {
+          if (typeIntervalRef.current) clearInterval(typeIntervalRef.current);
+        }
+      }, 40);
+
+      // Speak voice greeting on desktop only
+      setTimeout(() => {
+        speakGreeting();
+      }, 300);
+    }
 
     // Auto-dismiss countdown
     if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
@@ -164,26 +171,23 @@ export default function AIBalaBot() {
         {isActive && (
           <div className="fixed inset-x-0 bottom-6 md:bottom-12 md:left-12 z-50 flex justify-center md:justify-start pointer-events-none p-4">
             <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.9, rotate: -2 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={{ 
                 opacity: 1, 
                 y: 0, 
-                scale: 1, 
-                rotate: 0 
+                scale: 1
               }}
               exit={{ 
                 opacity: 0, 
-                y: 50, 
-                scale: 0.9, 
-                rotate: 2,
-                transition: { duration: 0.35, ease: 'easeInOut' } 
+                y: 30, 
+                scale: 0.95,
+                transition: { duration: 0.25, ease: 'easeInOut' } 
               }}
               transition={{ 
-                type: 'spring', 
-                damping: 20, 
-                stiffness: 140 
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1]
               }}
-              className="w-full max-w-sm sm:max-w-md rounded-2xl glass-panel border-cyan-500/30 shadow-[0_25px_60px_rgba(6,182,212,0.35)] pointer-events-auto overflow-hidden p-5 relative"
+              className="w-full max-w-sm sm:max-w-md rounded-2xl glass-panel border-cyan-500/30 shadow-[0_15px_40px_rgba(6,182,212,0.25)] pointer-events-auto overflow-hidden p-4 sm:p-5 relative transform-gpu will-change-transform"
             >
               {/* Futuristic scanline & screen noise matrix */}
               <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.3)_50%),linear-gradient(90deg,rgba(6,182,212,0.05),transparent,rgba(244,63,94,0.03))] bg-[size:100%_4px,4px_100%] pointer-events-none" />
