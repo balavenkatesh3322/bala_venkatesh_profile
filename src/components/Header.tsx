@@ -29,7 +29,7 @@ export default function Header() {
       }
 
       // Smooth navigation link tracking based on current viewport
-      const sections = ['about', 'services', 'experience'];
+      const sections = ['about', 'services', 'case-studies', 'experience'];
       let currentActive = 'about';
 
       for (const sectionId of sections) {
@@ -73,8 +73,8 @@ export default function Header() {
   const menuItems: Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }> = [
     { label: 'About', href: '#about', isExternal: false },
     { label: 'Services', href: '#services', isExternal: false },
+    { label: 'Case Studies', href: '#case-studies', isExternal: false },
     { label: 'Build with Bala', href: '#lessons', isNew: true, isExternal: false },
-    { label: 'Experience', href: '#experience', isExternal: false },
   ];
 
   const appStoreLinks = [

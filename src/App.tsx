@@ -9,6 +9,7 @@ import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import About from './components/About';
 import Services from './components/Services';
+import CaseStudies from './components/CaseStudies';
 import Experience from './components/Experience';
 // import Projects from './components/Projects';
 import AIWorkflowAcademy from './components/AIWorkflowAcademy';
@@ -175,6 +176,7 @@ export default function App() {
             <Marquee />
             <About />
             <Services />
+            <CaseStudies />
             <AIWorkflowAcademy />
             <Experience />
             {/* <BusinessImprover /> */}
