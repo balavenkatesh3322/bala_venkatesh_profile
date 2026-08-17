@@ -70,6 +70,11 @@ export interface TestimonialItem {
   quote: string;
   name: string;
   role: string;
+  organization: string;
+  domainBadge: string;
+  domainCategory: 'banking' | 'healthcare' | 'agritech';
+  highlightMetric: string;
+  verified: boolean;
   avatarUrl: string;
   avatarPlaceholder: string;
 }

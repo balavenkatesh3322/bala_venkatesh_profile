@@ -71,9 +71,9 @@ export default function Header() {
   }, []);
 
   const menuItems: Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }> = [
-    { label: 'About', href: '#about', isExternal: false },
+    { label: 'Live AI & Cases', href: '#ai-case-animation', isExternal: false },
+    { label: 'Endorsements', href: '#testimonials', isExternal: false },
     { label: 'Services', href: '#services', isExternal: false },
-    { label: 'Case Studies', href: '#case-studies', isExternal: false },
     { label: 'Build with Bala', href: '#lessons', isNew: true, isExternal: false },
   ];
 

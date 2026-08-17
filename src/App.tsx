@@ -9,7 +9,6 @@ import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import About from './components/About';
 import Services from './components/Services';
-import CaseStudies from './components/CaseStudies';
 import Experience from './components/Experience';
 // import Projects from './components/Projects';
 import AIWorkflowAcademy from './components/AIWorkflowAcademy';
@@ -174,19 +173,15 @@ export default function App() {
           <>
             <Hero />
             <Marquee />
+            <AIWorkflowAcademy />
+            <Testimonials />
             <About />
             <Services />
-            <CaseStudies />
-            <AIWorkflowAcademy />
             <Experience />
-            {/* <BusinessImprover /> */}
-            <BuildWithBalaPromo />
-            {/* <AIDemoSandbox /> */}
-            <OpenSource />
-            {/* <Skills /> */}
-            <Education />
             <Recognition />
-            <Testimonials />
+            <BuildWithBalaPromo />
+            <OpenSource />
+            <Education />
             <Book />
             <Philosophy />
             <Contact />

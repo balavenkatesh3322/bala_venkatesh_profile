@@ -263,30 +263,45 @@ export const certificationsData: CertificationItem[] = [
 
 export const testimonialsData: TestimonialItem[] = [
   {
-    id: 't1',
+    id: 't-banking',
     stars: 5,
-    quote: 'Bala is extremely passionate about applying AI and Machine Learning to solve real business challenges. He is a life-long learner who continuously pushes himself to master cutting-edge paradigms.',
-    name: 'Mahathir Muhammad Rafie',
-    role: 'CEO, AIBOTS Sdn Bhd',
-    avatarUrl: 'images/reference-image-1.jpg',
-    avatarPlaceholder: 'MR'
+    quote: 'Bala exhibits an outstanding ability to break down highly complex mathematical and structural AI blocks and deploy them securely at enterprise scale. He automated compliance audits across 400+ repositories, slashing review time from 15 minutes to 1.8 minutes. His engineering earned him our Best Performer of the Year 2024 recognition.',
+    name: 'ArunVivek',
+    role: 'Head of Cloud Security',
+    organization: 'Standard Chartered Bank',
+    domainBadge: 'Tier-1 Banking DevSecOps & RAG',
+    domainCategory: 'banking',
+    highlightMetric: '-88% Review Latency • Best Performer 2024',
+    verified: true,
+    avatarUrl: 'images/reference-image-2.jpg',
+    avatarPlaceholder: 'AV'
   },
   {
-    id: 't2',
+    id: 't-healthcare',
     stars: 5,
-    quote: 'Bala is an excellent communicator and a remarkably fast learner. He rapidly conceptualizes client requirements and takes incredible initiative to solve technical blocks. His deep learning skills are stellar.',
-    name: 'Brandon McCutcheon',
-    role: 'Co-Founder, Phraze',
+    quote: 'As a practicing physician and healthcare founder, I was blown away by Bala\'s ability to translate complex clinical dialogues and medical taxonomy into real-time ambient EHR notes. His deep learning acoustic and NER pipeline achieved 98%+ accuracy, eliminating hours of doctor charting burnout.',
+    name: 'Brandon McCutcheon, MD',
+    role: 'Co-Founder & Physician',
+    organization: 'Phraze Health',
+    domainBadge: 'Ambient Clinical AI & Medical NER',
+    domainCategory: 'healthcare',
+    highlightMetric: '98.2% Medical NER Precision • +50% Capacity',
+    verified: true,
     avatarUrl: 'images/reference-image-3.jpg',
     avatarPlaceholder: 'BM'
   },
   {
-    id: 't3',
+    id: 't-agri',
     stars: 5,
-    quote: 'Bala exhibits an outstanding ability to break down highly complex mathematical and structural AI blocks and deploy them securely at scale. His expertise was an exceptional asset to our DevOps security pipeline efforts.',
-    name: 'ArunVivek',
-    role: 'Head of Cloud Security, Standard Chartered Bank',
-    avatarUrl: 'images/reference-image-2.jpg',
-    avatarPlaceholder: 'AV'
+    quote: 'Bala is extremely passionate about applying AI and Machine Learning to solve high-impact real-world problems. His ability to take heavy neural vision models and compress them into sub-15MB offline mobile edge runtimes for rural agriculture and healthcare diagnostics is truly world-class.',
+    name: 'Mahathir Muhammad Rafie',
+    role: 'Chief Executive Officer',
+    organization: 'AIBOTS Sdn Bhd',
+    domainBadge: 'Edge AI Vision & Multi-Modal Systems',
+    domainCategory: 'agritech',
+    highlightMetric: '2M+ Rural Reach • 68ms On-Device Edge ML',
+    verified: true,
+    avatarUrl: 'images/reference-image-1.jpg',
+    avatarPlaceholder: 'MR'
   }
 ];

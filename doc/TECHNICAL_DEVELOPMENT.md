@@ -99,6 +99,51 @@ The application is a high-performance, responsive portfolio and blog platform bu
 #### 2.9 Header Navigation Refinement (`Header.tsx`)
 - Removed 'Experience' item from the top navigation bar per UI simplification requirements, streamlining the header menu focus to **About**, **Services**, **Case Studies**, and **Build with Bala**, while retaining the full career journey section in the main page flow.
 
+#### 2.10 Executive Endorsements & Peer Validation Engine (`Testimonials.tsx` & `data.ts`)
+- **Direct Executive Testimonials Added**:
+  1. **Brandon McCutcheon, MD** (Co-Founder & Physician, Phraze Health): Clinical healthcare testimonial highlighting ambient acoustic diarization and 98%+ NER precision eliminating doctor charting burnout.
+  2. **ArunVivek** (Head of Cloud Security, Standard Chartered Bank): Tier-1 banking DevSecOps testimonial highlighting automated compliance across 400+ repositories, -88% review latency, and Bala's *Best Performer of the Year 2024* award.
+  3. **Mahathir Muhammad Rafie** (CEO, AIBOTS Sdn Bhd): Edge AI & Computer Vision testimonial highlighting sub-15MB offline mobile edge runtimes for rural agritech and healthcare diagnostics across 2,000,000+ users.
+- **Visual Design Architecture**:
+  - Distinct domain accent theming (Emerald for Banking, Cyan for Healthcare, Violet for Edge AI/Agritech).
+  - Verified Collaborator badges (`✓ Verified`).
+  - Quantified impact highlight metric pills on every endorsement card.
+  - Bottom Trust Banner with exact geography credentials (Standard Chartered India, Phraze Health Silicon Valley, AIBOTS Malaysia, Teesside University London) and direct link to Bala's verified LinkedIn profile recommendations (`https://www.linkedin.com/in/bala-venkatesh-67964247/`).
+
+#### 2.11 Storytelling Flow & High-Conversion Reordering (`App.tsx` & `Hero.tsx`)
+- **Optimized Visual Story Arc**:
+  1. **Hero + Marquee**: Instant identity, live counters, dual CTA (*Get AI Solution Now* / *Test-Drive Live Simulators*), and direct scroll target to live simulators.
+  2. **Live AI Simulators (`AIWorkflowAcademy.tsx`)**: Promoted to prime position right after the Marquee so visitors test-drive live interactive simulations (Banking CI/CD, Edge Agritech Camera, Healthcare SOAP notes) within 10 seconds of landing.
+  3. **Executive Testimonials (`Testimonials.tsx`)**: Immediate third-party validation by banking VP, physician co-founder, and CEO.
+  4. **About & Core Services (`Services.tsx`)**: Multi-Agent systems, On-Device Edge ML, DevSecOps RAG, Clinical NLP.
+  5. **Experience, Recognition, Knowledge Hub & Contact**: Comprehensive career timeline, Best Performer 2024 recognition, "Build with Bala" lessons, 1:1 Calendar booking, and instant WhatsApp chat triggers.
+
+#### 2.12 Visual Unification & Redundancy Removal (`AIWorkflowAcademy.tsx` & `CaseStudies.tsx`)
+- **Eliminated Repetitive Text Section**: Merged the static `CaseStudies` content directly into the dynamic, interactive `AIWorkflowAcademy.tsx` component, eliminating duplicate walls of text and cutting redundant reading overhead by >50%.
+- **High-Impact Visual Metrics & Tech Stack Strips**:
+  - Embedded an at-a-glance **Before vs After Visual Comparison Grid** (e.g. 15.0 min $\rightarrow$ 1.8 min; 18.4% false alarms $\rightarrow$ 4.2% noise; 62% cloud failure $\rightarrow$ 0MB offline run; 14 pts $\rightarrow$ 21 pts capacity).
+  - Added modern **Tech Stack Chips** (Azure DevOps, Terraform AST, FAISS, PyTorch, INT8 TFLite, Android NDK, Whisper, HL7/FHIR).
+  - Retained backward-compatible hash anchors (`#ai-case-animation` and `#case-studies`).
+  - Streamlined Header menu to: **Live AI & Cases**, **Endorsements**, **Services**, and **Build with Bala**.
+
+#### 2.13 Collapsible Production AI Live Action Cards (`AIWorkflowAcademy.tsx`)
+- **Collapsed by Default**: All 3 production domain cards (Banking, Agritech, Healthcare) are in a clean, compact overview state on initial page load, preventing visual clutter.
+- **Animated Click-to-Expand Interaction**:
+  - Each card features a pulsing status indicator beacon, interactive hover effects, and a dynamic button toggle (`▶ Test-Drive ▾` when collapsed, `Close ▴` when expanded).
+  - Clicking any card expands the live interactive simulator drawer with smooth height, opacity, and spring transitions via Framer Motion `AnimatePresence`.
+  - Prompts and guide banners dynamically adjust based on expansion state.
+  - Includes a top simulator control drawer with 1-click domain switching and a "Collapse Simulator" action for seamless user control.
+
+#### 2.14 Punchy, High-Conversion Copy Refinements & CTA Simplification
+- **Landing Hero Section**:
+  - Removed redundant "Test-Drive Live Simulators" button from the top hero landing area to focus the primary call-to-action solely on **"Get AI Solution Now"** (direct WhatsApp conversion), while users can still navigate to the interactive simulators via the navbar ("Live AI & Cases"), the scroll cue, or direct in-section card interactions.
+- **Bala's Production AI In Live Action**:
+  - Pill: `Interactive AI Simulators`
+  - Subtitle: `Click any card to test-drive real-time AI in Banking, Agritech, and Healthcare.`
+- **Validated by Enterprise Leaders, Founders & Physicians**:
+  - Pill: `Verified Endorsements`
+  - Subtitle: `Real outcomes and testimonials from leaders who deployed AI systems built by Bala.`
+
 ---
 
 *Log Updated: August 2026*

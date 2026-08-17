@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, ShieldCheck, Zap, Terminal, ChevronDown } from 'lucide-react';
+import { ShieldCheck, Zap, Terminal, ChevronDown } from 'lucide-react';
 import { motion } from 'motion/react';
 import { statsData } from '../data';
 import AIProfileScanner from './AIProfileScanner';
@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row flex-wrap gap-4 mt-2 w-full"
+            className="flex flex-col sm:flex-row flex-wrap gap-3.5 mt-2 w-full"
           >
             <a
               href="https://wa.me/919003812808?text=Hi%20Bala%2C%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20business%20AI%20solution%20with%20you!"
@@ -77,8 +77,8 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 hover:scale-102 transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
             >
-              <span className="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
-              Get AI Solution Now
+              <span className="w-2 h-2 rounded-full bg-slate-950 animate-ping" />
+              <span>Get AI Solution Now</span>
             </a>
           </motion.div>
 
@@ -122,7 +122,7 @@ export default function Hero() {
       <div 
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 cursor-pointer group select-none"
         onClick={() => {
-          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('ai-case-animation')?.scrollIntoView({ behavior: 'smooth' });
         }}
       >
         <motion.span 
@@ -130,7 +130,7 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="text-[10px] font-mono tracking-[0.3em] text-slate-400 group-hover:text-cyan-400 group-hover:tracking-[0.35em] transition-all duration-300 uppercase font-bold"
         >
-          Scroll to Explore Systems
+          Scroll to Explore Live AI
         </motion.span>
         
         <div className="w-[20px] h-[34px] rounded-full border border-slate-700 group-hover:border-cyan-400/80 flex justify-center p-1.5 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.5)] backdrop-blur-sm bg-slate-950/25">
