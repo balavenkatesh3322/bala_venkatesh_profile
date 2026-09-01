@@ -79,6 +79,7 @@ const categories: ToolkitCategory[] = [
     subtitle: 'Deploying high-throughput model endpoints with robust microservices',
     businessImpact: '⚡ Implements highly secure, containerized cloud and on-prem architectures running 24/7.',
     skills: [
+      { name: 'Databricks', desc: 'Unified lakehouse analytics, distributed data processing, and large-scale model orchestration.', icon: Database, colorClass: 'text-amber-400', glowClass: 'group-hover:border-amber-500/30 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.15)]' },
       { name: 'Azure Cloud', desc: 'Architecting secure model hosting, policy rules, and automated cloud pipelines.', icon: Cloud, colorClass: 'text-sky-400', glowClass: 'group-hover:border-sky-500/30 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.15)]' },
       { name: 'Docker', desc: 'Workload isolation and containerized environments to ensure reliable runtime.', icon: Box, colorClass: 'text-cyan-400', glowClass: 'group-hover:border-cyan-500/30 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]' },
       { name: 'FastAPI', desc: 'Ultra-fast, asynchronous REST APIs tailored for model hosting and pipeline triggers.', icon: Zap, colorClass: 'text-emerald-400', glowClass: 'group-hover:border-emerald-500/30 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]' },

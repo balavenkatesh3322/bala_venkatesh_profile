@@ -94,11 +94,16 @@ export default function Experience() {
                         __html: hl
                           .replace(/80%/g, '<span class="text-rose-400 font-bold font-mono">80%</span>')
                           .replace(/60%/g, '<span class="text-rose-400 font-bold font-mono">~60%</span>')
+                          .replace(/100%/g, '<span class="text-emerald-400 font-bold font-mono">100%</span>')
                           .replace(/15 minutes to under 2 minutes/g, '<span class="text-rose-400 font-bold">15 minutes to under 2 minutes</span>')
                           .replace(/Best Performer of the Year 2024/g, '<span class="text-amber-400 font-bold">Best Performer of the Year 2024</span>')
                           .replace(/Crop Doctor/g, '<span class="text-cyan-400 font-semibold">Crop Doctor</span>')
                           .replace(/TFLite/g, '<span class="text-cyan-400 font-mono text-xs px-1.5 py-0.5 rounded glass-panel">TFLite</span>')
                           .replace(/RAG-based system/g, '<span class="text-cyan-400 font-semibold">RAG-based system</span>')
+                          .replace(/GenAI platform/g, '<span class="text-cyan-400 font-semibold">GenAI platform</span>')
+                          .replace(/LLM-powered extraction engine/g, '<span class="text-cyan-400 font-semibold">LLM-powered extraction engine</span>')
+                          .replace(/AI-powered risk detection layer/g, '<span class="text-indigo-300 font-semibold">AI-powered risk detection layer</span>')
+                          .replace(/vendor concentration risk dashboard/g, '<span class="text-amber-300 font-semibold">vendor concentration risk dashboard</span>')
                       }} />
                     </li>
                   ))}

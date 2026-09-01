@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, BookOpen, Landmark, HeartPulse, Leaf, ShoppingCart, ShieldCheck } from 'lucide-react';
+import { BookOpen, Landmark, HeartPulse, Leaf, ShoppingCart, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import WaterWaveEffect from './WaterWaveEffect';
 
@@ -78,7 +78,7 @@ export default function About() {
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
             Over <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">10 years</span>, I've built AI systems across <span className="text-slate-200 font-medium">banking</span>, <span className="text-slate-200 font-medium">healthcare</span>, <span className="text-slate-200 font-medium">agriculture</span>, and <span className="text-slate-200 font-medium">e-commerce</span>, always focused on what actually moves the needle.
-            Currently at <strong className="text-slate-100 font-bold">Standard Chartered Bank</strong> as an AI Engineer, pioneering <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">RAG-based security automation</span>. Also a technical author and open-source contributor.
+            Currently at <strong className="text-slate-100 font-bold">Standard Chartered Bank</strong> as a <span className="text-slate-200 font-semibold">Lead AI Engineer</span>, pioneering <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">Legal Contract GenAI platforms</span> and <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">RAG-based security automation</span>. Also a technical author and open-source contributor.
           </p>
 
           {/* Core Domains */}
@@ -102,15 +102,6 @@ export default function About() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 mt-4">
-            <a
-              href="https://balavenkatesh3322.github.io/bala_venkatesh_profile/Bala%20Venkatesh%20Resume.pdf"
-              download="Bala_Venkatesh_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="px-5 py-3 glass-panel glass-panel-hover rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-xs text-slate-200"
-            >
-              <Download className="w-4 h-4 text-cyan-400" /> Download Resume
-            </a>
             <a
               href="https://balavenkatesh.medium.com/"
               target="_blank"

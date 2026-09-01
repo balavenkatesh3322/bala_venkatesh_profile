@@ -144,6 +144,28 @@ The application is a high-performance, responsive portfolio and blog platform bu
   - Pill: `Verified Endorsements`
   - Subtitle: `Real outcomes and testimonials from leaders who deployed AI systems built by Bala.`
 
+#### 2.15 CTA Streamlining: Resume Download Removal
+- **About Section (`About.tsx`)**:
+  - Removed the "Download Resume" button and associated download action.
+  - Retained "Read My Blog" action directing visitors to Bala's published technical articles on Medium.
+
+#### 2.16 Enterprise Project & Role Update: Lead AI Engineer & Databricks Stack
+- **10 Years of Impact Timeline (`Experience.tsx` & `data.ts`)**:
+  - Set role title to **Lead AI Engineer** at Standard Chartered Bank (India · Hybrid).
+  - Highlights:
+    - End-to-end GenAI platform for SCB's legal contract portfolio (automated metadata extraction, classification, clause analysis, and pipeline orchestration).
+    - LLM-powered extraction engine eliminating manual tagging across thousands of high-value legal contracts.
+    - AI-powered risk detection layer scanning 100% of contracts for clause deviations, missing liability caps, and regulatory policy breaches.
+    - Vendor concentration risk dashboard surfacing portfolio-level exposure across active agreements to preempt single-vendor dependency risks.
+  - Added styled keyword metrics formatting (`100%`, `GenAI platform`, `LLM-powered extraction engine`, `risk detection layer`, `vendor concentration risk dashboard`).
+- **Tech Stack & Toolkit Updates (`data.ts` & `Skills.tsx`)**:
+  - Integrated **Databricks** across experience tags, project showcase tags, and global skills list (`skillsData`).
+  - Added **Databricks** (Unified lakehouse analytics & distributed model orchestration) to the **Enterprise MLOps & Architecture** interactive capability matrix in `Skills.tsx`.
+- **Projects Showcase (`Projects.tsx` & `data.ts`)**:
+  - Added dedicated project card for **Legal Contract GenAI Platform — Standard Chartered Bank** with `Databricks` in the tech tags.
+- **About Bio Synchronization (`About.tsx`)**:
+  - Updated current position to reflect **Lead AI Engineer** at Standard Chartered Bank.
+
 ---
 
-*Log Updated: August 2026*
+*Log Updated: September 2026*

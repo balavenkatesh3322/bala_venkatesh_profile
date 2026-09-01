@@ -49,10 +49,23 @@ export const servicesData: ServiceItem[] = [
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: 'scb',
+    id: 'scb-genai',
     company: 'Standard Chartered Bank',
+    role: 'Lead AI Engineer',
+    date: '2024 – Present · India (Hybrid)',
+    highlights: [
+      "Architected end-to-end GenAI platform for SCB's legal contract portfolio — automated metadata extraction, classification, clause analysis, and pipeline orchestration.",
+      'Built LLM-powered extraction engine eliminating manual tagging across thousands of high-value legal contracts.',
+      'Engineered an AI-powered risk detection layer scanning 100% of contracts for clause deviations, missing liability caps, and regulatory policy breaches, replacing error-prone manual sampling with full-coverage automated legal risk screening.',
+      'Built a vendor concentration risk dashboard surfacing portfolio-level exposure across all active agreements, enabling compliance and legal teams to identify single-vendor dependency risks before they become contractual liabilities.'
+    ],
+    tags: ['Databricks', 'GenAI Architecture', 'LLMs', 'Legal Tech', 'Risk Analytics', 'Enterprise NLP', 'Vector RAG']
+  },
+  {
+    id: 'scb-devsecops',
+    company: 'Standard Chartered Bank — DevSecOps',
     role: 'AI Engineer',
-    date: 'Sep 2023 – Present',
+    date: 'Sep 2023 – 2024',
     highlights: [
       'Pioneered an enterprise-grade RAG-based system to automate misconfiguration detection and remediation in Azure DevOps cloud environments, significantly strengthening security posture.',
       'Developed tailored LLM-powered pipelines that replaced tedious manual compliance audits, reducing continuous pipeline security review times by over 80%.',
@@ -125,6 +138,14 @@ export const experienceData: ExperienceItem[] = [
 ];
 
 export const projectsData: ProjectItem[] = [
+  {
+    id: 'p0',
+    name: 'Legal Contract GenAI Platform — Standard Chartered Bank',
+    desc: 'End-to-end GenAI legal contract intelligence platform. Automated metadata extraction, 100% automated clause risk screening (deviations & missing liability caps), and vendor concentration risk analytics across thousands of agreements.',
+    tags: ['Databricks', 'Legal Tech', 'Risk Analytics', 'LLM Pipelines'],
+    icon: '⚖️',
+    bgGradient: 'from-cyan-600/20 via-blue-600/10 to-transparent'
+  },
   {
     id: 'p1',
     name: 'TIP Automation — Standard Chartered Bank',
@@ -208,6 +229,7 @@ export const ossReposData: OSSRepo[] = [
 
 export const skillsData: string[] = [
   'Python',
+  'Databricks',
   'Java',
   'Generative AI',
   'LangChain',
