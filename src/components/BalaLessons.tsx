@@ -43,7 +43,12 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Flame,
-  Wrench
+  Wrench,
+  ShieldCheck,
+  Activity,
+  Zap,
+  Workflow,
+  Gauge
 } from 'lucide-react';
 
 interface Series {
@@ -69,18 +74,18 @@ interface BlogPost {
 
 const SERIES_LIST: Series[] = [
   {
-    id: 'engineering-mindset',
-    title: 'Engineering Mindset',
-    emoji: '💡',
-    description: 'Personal reflections, career milestones, and the mental shifts required to build software that creates real impact.',
-    color: 'from-amber-500/20 to-orange-500/10 border-amber-500/20 hover:border-amber-500/45 text-amber-400'
-  },
-  {
     id: 'how-bala-thinks',
     title: 'How Bala Thinks',
     emoji: '🧠',
     description: 'Mental models, evaluation structures, and architectural trade-offs behind enterprise AI solutions.',
     color: 'from-cyan-500/20 to-blue-500/10 border-cyan-500/20 hover:border-cyan-500/45 text-cyan-400'
+  },
+  {
+    id: 'engineering-mindset',
+    title: 'Engineering Mindset',
+    emoji: '💡',
+    description: 'Personal reflections, career milestones, and the mental shifts required to build software that creates real impact.',
+    color: 'from-amber-500/20 to-orange-500/10 border-amber-500/20 hover:border-amber-500/45 text-amber-400'
   },
   {
     id: 'leadership-ownership',
@@ -99,57 +104,19 @@ const SERIES_LIST: Series[] = [
 ];
 
 const BLOG_POSTS: BlogPost[] = [
-  // Series 1: Engineering Mindset (Featured Top Series)
+  // Series 1: How Bala Thinks (Top Series)
   {
-    slug: 'avoid-building-products-nobody-wants',
-    title: 'How I Try to Avoid Building Products Nobody Wants',
-    seriesId: 'engineering-mindset',
-    category: 'Engineering Mindset',
-    readTime: '6 min read',
+    slug: 'how-bala-thinks-lessons-from-production',
+    title: 'How Bala Thinks: Lessons from Production',
+    seriesId: 'how-bala-thinks',
+    category: 'Production AI Architecture',
+    readTime: '7 min read',
     date: 'September 2026',
-    excerpt: 'Building something that works does not mean building something people need. How shifting from "What can I build?" to "What problem is worth solving?" changes engineering outcomes.',
+    excerpt: 'I have deployed GenAI systems inside a Tier-1 bank, a clinical documentation platform, and an offline edge device for rural farmers. Every single one failed on the first try. Here is what production taught me.',
     author: 'Bala Venkatesh',
-    tags: ['Product Thinking', 'Engineering Mindset', 'Validation', 'Problem Discovery'],
+    tags: ['System Architecture', 'Production AI', 'RAG', 'AI Agents', 'LLMOps', 'Evaluation'],
     comingSoon: false
   },
-  {
-    slug: 'building-something-people-trust',
-    title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
-    seriesId: 'engineering-mindset',
-    category: 'Software Strategy',
-    readTime: '5 min read',
-    date: 'July 29, 2026',
-    excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, business judgment, and trust are the real value differentiators for engineers.',
-    author: 'Bala Venkatesh',
-    tags: ['AI Products', 'Product Engineering', 'System Design', 'Software Strategy'],
-    comingSoon: false
-  },
-  {
-    slug: 'stopped-chasing-technologies',
-    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
-    seriesId: 'engineering-mindset',
-    category: 'Career & Mindset',
-    readTime: '5 min read',
-    date: 'July 19, 2026',
-    excerpt: 'When I started my career, I believed learning more technologies would make me a better engineer. I was wrong. Here is the realization that changed how I build products.',
-    author: 'Bala Venkatesh',
-    tags: ['Career Growth', 'Software Engineering', 'Problem Solving'],
-    comingSoon: false
-  },
-  {
-    slug: 'the-power-of-saying-no',
-    title: 'The Power of Saying No to Tech Specs',
-    seriesId: 'engineering-mindset',
-    category: 'Architecture',
-    readTime: '4 min read',
-    date: 'Coming Soon',
-    excerpt: 'Why saying "no" to early architectural details keeps your product development fast, nimble, and highly aligned to business needs.',
-    author: 'Bala Venkatesh',
-    tags: ['Productivity', 'Decision Making', 'Pragmatism'],
-    comingSoon: true
-  },
-
-  // Series 2: How Bala Thinks
   {
     slug: 'llm-right-tool',
     title: 'How I Choose an LLM',
@@ -199,15 +166,65 @@ const BLOG_POSTS: BlogPost[] = [
     comingSoon: true
   },
   {
-    slug: 'production-lessons',
-    title: 'Lessons from Production',
+    slug: 'vector-databases-evaluation',
+    title: 'Vector Databases in Production',
     seriesId: 'how-bala-thinks',
-    category: 'Operations',
-    readTime: '8 min read',
+    category: 'Vector Search',
+    readTime: '7 min read',
     date: 'Coming Soon',
-    excerpt: 'The true costs of running models in production. Guardrails, scaling limitations, and real-world failure modes.',
+    excerpt: 'Comparing pgvector, Pinecone, Qdrant, and Milvus based on latency, scaling limits, and operational maintenance overhead.',
     author: 'Bala Venkatesh',
-    tags: ['Ops', 'Failure Modes', 'Scaling'],
+    tags: ['Vector DB', 'Embeddings', 'Scaling'],
+    comingSoon: true
+  },
+
+  // Series 2: Engineering Mindset
+  {
+    slug: 'avoid-building-products-nobody-wants',
+    title: 'How I Try to Avoid Building Products Nobody Wants',
+    seriesId: 'engineering-mindset',
+    category: 'Engineering Mindset',
+    readTime: '6 min read',
+    date: 'September 2026',
+    excerpt: 'Building something that works does not mean building something people need. How shifting from "What can I build?" to "What problem is worth solving?" changes engineering outcomes.',
+    author: 'Bala Venkatesh',
+    tags: ['Product Thinking', 'Engineering Mindset', 'Validation', 'Problem Discovery'],
+    comingSoon: false
+  },
+  {
+    slug: 'building-something-people-trust',
+    title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
+    seriesId: 'engineering-mindset',
+    category: 'Software Strategy',
+    readTime: '5 min read',
+    date: 'July 29, 2026',
+    excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, business judgment, and trust are the real value differentiators for engineers.',
+    author: 'Bala Venkatesh',
+    tags: ['AI Products', 'Product Engineering', 'System Design', 'Software Strategy'],
+    comingSoon: false
+  },
+  {
+    slug: 'stopped-chasing-technologies',
+    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
+    seriesId: 'engineering-mindset',
+    category: 'Career & Mindset',
+    readTime: '5 min read',
+    date: 'July 19, 2026',
+    excerpt: 'When I started my career, I believed learning more technologies would make me a better engineer. I was wrong. Here is the realization that changed how I build products.',
+    author: 'Bala Venkatesh',
+    tags: ['Career Growth', 'Software Engineering', 'Problem Solving'],
+    comingSoon: false
+  },
+  {
+    slug: 'the-power-of-saying-no',
+    title: 'The Power of Saying No to Tech Specs',
+    seriesId: 'engineering-mindset',
+    category: 'Architecture',
+    readTime: '4 min read',
+    date: 'Coming Soon',
+    excerpt: 'Why saying "no" to early architectural details keeps your product development fast, nimble, and highly aligned to business needs.',
+    author: 'Bala Venkatesh',
+    tags: ['Productivity', 'Decision Making', 'Pragmatism'],
     comingSoon: true
   },
 
@@ -401,6 +418,15 @@ const POST_SHARE_DATA: Record<string, ShareMeta> = {
     twitterText: `Building something that works does not mean building something people need. Here is how I try to avoid building products nobody wants 👇`,
     whatsappText: `*How I Try to Avoid Building Products Nobody Wants*\n\nOne of the biggest lessons in engineering: building the right thing matters more than building the thing right.\n\nRead essay by Bala Venkatesh:\n`,
     hashtags: ['EngineeringMindset', 'ProductEngineering', 'SoftwareEngineering', 'BuildInPublic', 'Startups']
+  },
+  'how-bala-thinks-lessons-from-production': {
+    slug: 'how-bala-thinks-lessons-from-production',
+    title: 'How Bala Thinks: Lessons from Production',
+    quote: 'The best model does not win. The best system wins. The model is 10% of the work—systems thinking is what separates people who demo AI from people who deploy it.',
+    linkedInText: `🧠 "How Bala Thinks: Lessons from Production"\n\nI have deployed GenAI systems inside a Tier-1 bank, a clinical documentation platform, and an offline edge device for rural farmers.\n\nEvery single one of them failed on the first try. Not the model. The thinking behind it.\n\nHere are the 7 Lessons from Production:\n1️⃣ A RAG system is not a search engine (the model is never the bottleneck—retrieval, chunking & reranking are)\n2️⃣ Agents are not autonomous. They are orchestrated.\n3️⃣ Latency is a product decision, not an engineering detail\n4️⃣ Cost curve is a feature\n5️⃣ Evaluation is the real engineering\n6️⃣ Trust is engineered, not claimed\n7️⃣ The model is 10% of the work\n\nRead the full technical tutorial by Bala Venkatesh:\n`,
+    twitterText: `I deployed GenAI in a Tier-1 bank, a hospital platform, and an offline edge device for farmers. Every one failed on the first try. Here is what production taught me 🧵👇`,
+    whatsappText: `*How Bala Thinks: Lessons from Production*\n\n7 hard-won lessons from deploying GenAI across banking, healthcare, and agriculture.\n\nRead tutorial by Bala Venkatesh:\n`,
+    hashtags: ['ProductionAI', 'SystemDesign', 'RAG', 'AIAgents', 'LLMOps', 'MachineLearning']
   },
   'how-i-choose-an-llm': {
     slug: 'how-i-choose-an-llm',
@@ -648,6 +674,7 @@ export default function BalaLessons() {
   const [quoteCardTheme, setQuoteCardTheme] = useState<'midnight' | 'emerald' | 'amber' | 'minimal'>('midnight');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [sharedCounts, setSharedCounts] = useState<Record<string, number>>({
+    'how-bala-thinks-lessons-from-production': 184,
     'thought-i-was-leading-assigning-tasks': 142,
     'building-something-people-trust': 98,
     'stopped-chasing-technologies': 115,
@@ -2179,6 +2206,662 @@ export default function BalaLessons() {
                           readerTheme={readerTheme} 
                           onOpenShareModal={handleOpenShareModal} 
                           sharedCount={sharedCounts['stopped-chasing-technologies'] || 115} 
+                        />
+                      </div>
+                    ) : selectedPost === 'how-bala-thinks-lessons-from-production' ? (
+                      <div className="space-y-8">
+                        {/* Series & Intro Banner */}
+                        <div className={`p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-cyan-50/70 border-cyan-200 text-cyan-950' 
+                            : 'bg-cyan-950/20 border-cyan-500/30 text-cyan-300'
+                        }`}>
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-xl">🧠</span>
+                            <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider">
+                              Series 1 of "How Bala Thinks" • Architecture & Lessons from the Trenches
+                            </span>
+                          </div>
+                          <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 font-semibold shrink-0">
+                            7 Real Production Deployments
+                          </span>
+                        </div>
+
+                        {/* Core Opening Punchline */}
+                        <p className={`text-base sm:text-lg font-semibold italic border-l-4 pl-4 py-2 transition-all duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'text-slate-900 border-cyan-500 bg-cyan-50/30 rounded-r-xl pr-3' 
+                            : 'text-slate-200 border-cyan-400 bg-white/5 rounded-r-xl pr-3'
+                        }`}>
+                          "I have deployed GenAI systems inside a Tier-1 bank, a clinical documentation platform, and an offline edge device for rural farmers. Every single one of them failed on the first try. Not the model. The thinking behind it. Here is what production taught me that no course ever did 🧵"
+                        </p>
+
+                        {/* The 3 Production Deployments Highlights */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+                          <div className={`p-4 rounded-xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-800' : 'bg-white/5 border-white/10 text-slate-300'
+                          }`}>
+                            <div className="flex items-center gap-2 text-xs font-mono text-cyan-500 font-bold mb-1.5">
+                              <span>🏦</span> Tier-1 Global Bank
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              Compliance review dropped from <strong>15 mins to 1.8 mins</strong>. 100% auditable contract risk detection.
+                            </p>
+                          </div>
+
+                          <div className={`p-4 rounded-xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-800' : 'bg-white/5 border-white/10 text-slate-300'
+                          }`}>
+                            <div className="flex items-center gap-2 text-xs font-mono text-blue-500 font-bold mb-1.5">
+                              <span>🏥</span> Clinical Documentation
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              Physician chart entry cut from <strong>15.5 mins to 1.8 mins</strong> with de-identified SNOMED CT & RxNorm extraction.
+                            </p>
+                          </div>
+
+                          <div className={`p-4 rounded-xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-800' : 'bg-white/5 border-white/10 text-slate-300'
+                          }`}>
+                            <div className="flex items-center gap-2 text-xs font-mono text-emerald-500 font-bold mb-1.5">
+                              <span>🌾</span> Rural Farmers Edge Device
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              Sub-<strong>68ms offline inference</strong> running directly on low-cost Android phones with zero cloud dependencies.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* The Gap Nobody Warns You About */}
+                        <div className="pt-4">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <AlertCircle className="w-5 h-5 text-cyan-400" />
+                            The Gap Nobody Warns You About
+                          </h2>
+
+                          <p className="mb-4 text-base sm:text-lg leading-relaxed">
+                            There is a version of AI engineering that lives in notebooks.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            Clean datasets. Tuned hyperparameters. Accuracy curves that climb beautifully. You close the laptop feeling like a genius.
+                          </p>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-4 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-rose-50 border-rose-500 text-rose-950' 
+                              : 'bg-rose-950/20 border-rose-500/50 text-rose-300'
+                          }`}>
+                            Then you deploy. And everything you believed falls apart.
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            Latency spikes. Costs explode. Users ignore it. Edge cases you never imagined appear on day one. The model that scored 94% on your test set gives a wrong answer to a real customer.
+                          </p>
+
+                          <p className="font-semibold mb-4 leading-relaxed">
+                            Production is not a harder version of the notebook. It is a completely different sport.
+                          </p>
+
+                          <p className="leading-relaxed">
+                            Let me walk you through what it actually looks like.
+                          </p>
+                        </div>
+
+                        {/* Lesson 1: RAG is not a search engine */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                            Lesson 01
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Database className="w-5 h-5 text-cyan-400" />
+                            A RAG System Is Not a Search Engine
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            When I built my first Retrieval Augmented Generation pipeline, I thought the hard part was the model.
+                          </p>
+
+                          <p className="mb-4 font-semibold leading-relaxed">
+                            It was not. The hard part was retrieval.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            Here is what nobody tells you. A RAG system fails in <strong>six distinct ways</strong>, and only one of them is the LLM:
+                          </p>
+
+                          {/* 6 Failure Modes Grid */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-4">
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="text-xs font-mono font-bold text-rose-500 block mb-1">Failure 1: Chunking Strategy</span>
+                              <p className="text-xs sm:text-sm text-slate-400">The chunking was wrong—context was sliced right through critical clauses or split across boundaries.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="text-xs font-mono font-bold text-rose-500 block mb-1">Failure 2: Embedding Vocabulary</span>
+                              <p className="text-xs sm:text-sm text-slate-400">The embeddings did not capture domain-specific terminology, acronyms, or regulatory phrasing.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="text-xs font-mono font-bold text-rose-500 block mb-1">Failure 3: Functional Uselessness</span>
+                              <p className="text-xs sm:text-sm text-slate-400">Vector search returned semantically similar sentences that were functionally completely useless to the task.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="text-xs font-mono font-bold text-rose-500 block mb-1">Failure 4: Missing Reranker</span>
+                              <p className="text-xs sm:text-sm text-slate-400">The reranker was absent; cosine similarity put irrelevant passages at the top of the context window.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="text-xs font-mono font-bold text-rose-500 block mb-1">Failure 5: Context Blind Spots</span>
+                              <p className="text-xs sm:text-sm text-slate-400">The prompt assumed prior background knowledge or schema definitions that the model never received.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="text-xs font-mono font-bold text-rose-500 block mb-1">Failure 6: Empty Context Hallucination</span>
+                              <p className="text-xs sm:text-sm text-slate-400">When retrieved context was empty, the model fabricated answers instead of gracefully answering "I do not know."</p>
+                            </div>
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            We had built a beautiful pipeline with a brilliant model on top of a broken foundation.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            The fix was not a better LLM. It was rebuilding ingestion, chunking strategy, hybrid search (BM25 + Dense Vectors), and cross-encoder reranking.
+                          </p>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-amber-50 border-amber-500 text-amber-950' 
+                              : 'bg-amber-950/20 border-amber-500/50 text-amber-300'
+                          }`}>
+                            "The model was never the bottleneck. Everything around it was."
+                          </div>
+
+                          {/* RAG Doctor Callout */}
+                          <div className={`p-4 sm:p-5 rounded-2xl border my-4 transition-colors ${
+                            readerTheme !== 'dark'
+                              ? 'bg-gradient-to-br from-cyan-50 to-blue-50 border-cyan-200 text-slate-800'
+                              : 'bg-gradient-to-br from-cyan-950/30 to-blue-950/20 border-cyan-500/30 text-slate-300'
+                          }`}>
+                            <div className="flex items-center gap-2 text-cyan-400 font-mono font-black text-xs uppercase tracking-wider mb-2">
+                              <Sparkles className="w-4 h-4" /> Built from Experience: RAG Doctor
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              This is why I built <strong>RAG Doctor</strong>—a diagnostic tool engineered specifically to detect and isolate these six failure categories before engineering teams waste weeks blaming their model.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Lesson 2: Agents are not autonomous. They are orchestrated */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                            Lesson 02
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Workflow className="w-5 h-5 text-indigo-400" />
+                            Agents Are Not Autonomous. They Are Orchestrated.
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            The word "autonomous agent" sells well. It also creates unrealistic expectations.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            In production, I have never seen a truly autonomous agent work reliably. What works is <strong>orchestration</strong>.
+                          </p>
+
+                          {/* Orchestration Pipeline */}
+                          <div className={`p-4 rounded-xl border my-4 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                          }`}>
+                            <div className="text-xs font-mono text-indigo-400 font-bold mb-3 uppercase tracking-wider">
+                              The 5-Node Constrained Orchestration Chain
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 text-center text-xs font-mono">
+                              <div className="p-2.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
+                                <div className="font-bold text-indigo-400">1. Planner</div>
+                                <div className="text-[10px] text-slate-400 mt-1">Breaks the task into steps</div>
+                              </div>
+                              <div className="p-2.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+                                <div className="font-bold text-cyan-400">2. Retriever</div>
+                                <div className="text-[10px] text-slate-400 mt-1">Gathers facts deterministically</div>
+                              </div>
+                              <div className="p-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                                <div className="font-bold text-blue-400">3. Reasoner</div>
+                                <div className="text-[10px] text-slate-400 mt-1">Synthesizes and decides</div>
+                              </div>
+                              <div className="p-2.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                                <div className="font-bold text-purple-400">4. Tool Caller</div>
+                                <div className="text-[10px] text-slate-400 mt-1">Executes schema actions</div>
+                              </div>
+                              <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                                <div className="font-bold text-emerald-400">5. Validator</div>
+                                <div className="text-[10px] text-slate-400 mt-1">Audits before human delivery</div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            Every one of those steps needs a fallback. Every one needs a timeout. Every one needs to fail gracefully.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            When I architected a legal contract analysis platform at <strong>Standard Chartered</strong>, the GenAI layer was not a single model making decisions. It was a pipeline of specialized steps, each one constrained, each one auditable.
+                          </p>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-rose-50 border-rose-500 text-rose-950' 
+                              : 'bg-rose-950/20 border-rose-500/50 text-rose-300'
+                          }`}>
+                            "If you cannot explain what your agent will do when step four fails, you do not have an agent. You have a liability."
+                          </div>
+                        </div>
+
+                        {/* Lesson 3: Latency is a product decision */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                            Lesson 03
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Clock className="w-5 h-5 text-amber-400" />
+                            Latency Is a Product Decision, Not an Engineering Detail
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            The bank did not care that my model was state of the art. They cared that a compliance review that used to take 15 minutes now took <strong>1.8 minutes</strong>.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            A clinician does not care which transformer architecture I used. They care that documentation dropped from <strong>15.5 minutes to 1.8 minutes</strong> so they can look at their patient instead of their screen.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            A farmer does not care about my ResNet50 accuracy. He cares that the answer comes in <strong>68 milliseconds</strong>, offline, on a phone he already owns.
+                          </p>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-cyan-50 border-cyan-500 text-cyan-950' 
+                              : 'bg-cyan-950/20 border-cyan-500/50 text-cyan-300'
+                          }`}>
+                            "Latency is not a metric. It is the difference between a tool people use and a tool people abandon."
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            I learned this the hard way. A 94% accurate model that takes 12 seconds to respond is worse than a 90% accurate model that responds in 200ms.
+                          </p>
+
+                          <p className="font-semibold leading-relaxed">
+                            Because the second one actually gets used.
+                          </p>
+                        </div>
+
+                        {/* Lesson 4: Cost curve is a feature */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            Lesson 04
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Coins className="w-5 h-5 text-emerald-400" />
+                            Cost Curve Is a Feature
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            Nobody talks about this enough.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            A GenAI system that works beautifully in a demo can quietly bankrupt a company in production.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            Token costs scale with usage. Vector database costs scale with documents. Inference costs scale with concurrency. Every retrieval, every rerun, every retry adds up.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            I have watched teams celebrate a successful prototype and then panic when the monthly bill arrived.
+                          </p>
+
+                          <p className="font-semibold mb-4 leading-relaxed">
+                            The fix is not cheaper models. It is architectural discipline:
+                          </p>
+
+                          {/* 5 FinOps Pillars */}
+                          <div className="space-y-2 my-4">
+                            <div className={`p-3 rounded-lg border flex items-start gap-3 ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="font-mono font-bold text-emerald-500 text-xs">1</span>
+                              <p className="text-xs sm:text-sm"><strong>Cache aggressively:</strong> Use semantic caching and exact hash matching for repeated queries.</p>
+                            </div>
+                            <div className={`p-3 rounded-lg border flex items-start gap-3 ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="font-mono font-bold text-emerald-500 text-xs">2</span>
+                              <p className="text-xs sm:text-sm"><strong>Route intelligently:</strong> Send simple queries to lightweight small models and reserve frontier models for complex multi-step reasoning.</p>
+                            </div>
+                            <div className={`p-3 rounded-lg border flex items-start gap-3 ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="font-mono font-bold text-emerald-500 text-xs">3</span>
+                              <p className="text-xs sm:text-sm"><strong>Precompute what you can:</strong> Do not re-evaluate static document embeddings or repeated analytical calculations at runtime.</p>
+                            </div>
+                            <div className={`p-3 rounded-lg border flex items-start gap-3 ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="font-mono font-bold text-emerald-500 text-xs">4</span>
+                              <p className="text-xs sm:text-sm"><strong>Compress what you must:</strong> Strip conversational fluff and eliminate redundant system prompt tokens.</p>
+                            </div>
+                            <div className={`p-3 rounded-lg border flex items-start gap-3 ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <span className="font-mono font-bold text-emerald-500 text-xs">5</span>
+                              <p className="text-xs sm:text-sm"><strong>Measure cost per successful outcome:</strong> Never measure cost per raw token or request. Optimize for business ROI.</p>
+                            </div>
+                          </div>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-rose-50 border-rose-500 text-rose-950' 
+                              : 'bg-rose-950/20 border-rose-500/50 text-rose-300'
+                          }`}>
+                            "A feature that costs more than it saves is not a feature. It is a leak."
+                          </div>
+                        </div>
+
+                        {/* Lesson 5: Evaluation is the real engineering */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                            Lesson 05
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Gauge className="w-5 h-5 text-blue-400" />
+                            Evaluation Is the Real Engineering
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            Everyone wants to build. Almost nobody wants to measure.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            But here is the truth I have learned across every production system. The teams that win are the ones who built <strong>evaluation first</strong>.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            Before I ship anything now, I define what success looks like in numbers:
+                          </p>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <div className="text-xs font-mono font-bold text-cyan-400 mb-1">RAG Systems</div>
+                              <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
+                                <li>Retrieval precision</li>
+                                <li>Answer faithfulness</li>
+                                <li>Hallucination rate</li>
+                              </ul>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <div className="text-xs font-mono font-bold text-blue-400 mb-1">Clinical NLP</div>
+                              <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
+                                <li>SNOMED CT / RxNorm accuracy</li>
+                                <li>Real de-identified charts</li>
+                                <li>Zero benchmark hallucinations</li>
+                              </ul>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <div className="text-xs font-mono font-bold text-emerald-400 mb-1">Edge Vision</div>
+                              <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
+                                <li>On-device quantized accuracy</li>
+                                <li>Real field lighting variations</li>
+                                <li>Low-power silicon profiling</li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-blue-50 border-blue-500 text-blue-950' 
+                              : 'bg-blue-950/20 border-blue-500/50 text-blue-300'
+                          }`}>
+                            "A model without evaluation is a guess wearing a lab coat."
+                          </div>
+                        </div>
+
+                        {/* Lesson 6: Trust is engineered, not claimed */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                            Lesson 06
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <ShieldCheck className="w-5 h-5 text-purple-400" />
+                            Trust Is Engineered, Not Claimed
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            This is the lesson that took me the longest to learn.
+                          </p>
+
+                          <div className="space-y-2 mb-4 text-sm sm:text-base leading-relaxed">
+                            <p>• You cannot tell a bank their AI is secure. <strong>You have to prove it.</strong></p>
+                            <p>• You cannot tell a doctor your extraction is accurate. <strong>You have to show the audit trail.</strong></p>
+                            <p>• You cannot tell a farmer your app works offline. <strong>You have to ship it and let him test it in his field.</strong></p>
+                          </div>
+
+                          <p className="mb-4 leading-relaxed font-semibold">
+                            Trust is built through guardrails, not promises:
+                          </p>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                            <div className={`p-3 rounded-lg border text-xs sm:text-sm ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              🛡️ <strong>Prompt Injection Shields:</strong> Pre-evaluating inbound inputs for jailbreaks.
+                            </div>
+                            <div className={`p-3 rounded-lg border text-xs sm:text-sm ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              🔒 <strong>PII Redaction:</strong> Scrubbing confidential identifiers before vectorization.
+                            </div>
+                            <div className={`p-3 rounded-lg border text-xs sm:text-sm ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              📋 <strong>Deterministic Output Validation:</strong> Schema enforcement via Pydantic/Zod.
+                            </div>
+                            <div className={`p-3 rounded-lg border text-xs sm:text-sm ${
+                              readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              👤 <strong>Human in the Loop:</strong> Gating high-stakes liability actions.
+                            </div>
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            Complete logging that lets you reconstruct exactly <em>why</em> a decision was made.
+                          </p>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-purple-50 border-purple-500 text-purple-950' 
+                              : 'bg-purple-950/20 border-purple-500/50 text-purple-300'
+                          }`}>
+                            "The systems that survived production in my career were not the smartest ones. They were the most trustworthy ones."
+                          </div>
+                        </div>
+
+                        {/* Lesson 7: The model is 10% of the work */}
+                        <div className="pt-6 border-t border-white/10">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase mb-2 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                            Lesson 07
+                          </div>
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Cpu className="w-5 h-5 text-cyan-400" />
+                            The Model Is 10% of the Work
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            This is the one that humbles every AI engineer eventually.
+                          </p>
+
+                          <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-amber-50 border-amber-500 text-amber-950' 
+                              : 'bg-amber-950/20 border-amber-500/50 text-amber-300'
+                          }`}>
+                            "The model is a component. Production is a system."
+                          </div>
+
+                          {/* 90% vs 10% Visual Iceberg */}
+                          <div className={`p-5 rounded-2xl border my-5 ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                          }`}>
+                            <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+                              <span className="text-xs font-mono font-bold uppercase text-cyan-400">The 90% Systems Iceberg</span>
+                              <span className="text-xs font-mono text-slate-500">Architecture & Ops</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2 text-xs font-mono">
+                              {[
+                                'Data Pipelines',
+                                'Ingestion',
+                                'Chunking Strategy',
+                                'Domain Embeddings',
+                                'Vector Stores',
+                                'Reranking',
+                                'Prompt Management',
+                                'Caching Layers',
+                                'Fallbacks & Timeouts',
+                                'Telemetry & Monitoring',
+                                'Cost Controls (FinOps)',
+                                'Guardrails & PII',
+                                'Continuous Evaluation',
+                                'Zero-Downtime Deployment',
+                                'Rollback Mechanisms'
+                              ].map((item, idx) => (
+                                <span key={idx} className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300">
+                                  {item}
+                                </span>
+                              ))}
+                              <span className="px-3 py-1 rounded-md bg-cyan-500 text-slate-950 font-black border border-cyan-400">
+                                ⭐ The Model (~10%)
+                              </span>
+                            </div>
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            The model sits in the middle of all of that, doing maybe 10% of the actual work.
+                          </p>
+
+                          <p className="leading-relaxed">
+                            The engineers who understand this become architects. The ones who do not stay stuck in notebooks wondering why their brilliant model is not changing anything.
+                          </p>
+                        </div>
+
+                        {/* What production actually taught me */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Target className="w-5 h-5 text-cyan-400" />
+                            What Production Actually Taught Me
+                          </h2>
+
+                          <p className="mb-4 leading-relaxed">
+                            After <strong>52+ projects</strong> across banking, healthcare, agriculture, and e-commerce, here is what I know for certain:
+                          </p>
+
+                          <div className="space-y-3 my-4">
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-cyan-50/50 border-cyan-200' : 'bg-cyan-950/20 border-cyan-500/30'
+                            }`}>
+                              <span className="font-mono text-cyan-400 font-bold text-xs">Principle 1</span>
+                              <p className="text-sm font-semibold mt-1">The best model does not win. The best system wins.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-blue-50/50 border-blue-200' : 'bg-blue-950/20 border-blue-500/30'
+                            }`}>
+                              <span className="font-mono text-blue-400 font-bold text-xs">Principle 2</span>
+                              <p className="text-sm font-semibold mt-1">The most accurate pipeline does not win. The one people actually trust and use wins.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-emerald-50/50 border-emerald-200' : 'bg-emerald-950/20 border-emerald-500/30'
+                            }`}>
+                              <span className="font-mono text-emerald-400 font-bold text-xs">Principle 3</span>
+                              <p className="text-sm font-semibold mt-1">The cleverest architecture does not win. The one that survives cost, latency, failure, and scale wins.</p>
+                            </div>
+                            <div className={`p-4 rounded-xl border ${
+                              readerTheme !== 'dark' ? 'bg-purple-50/50 border-purple-200' : 'bg-purple-950/20 border-purple-500/30'
+                            }`}>
+                              <span className="font-mono text-purple-400 font-bold text-xs">Principle 4</span>
+                              <p className="text-sm font-semibold mt-1">AI is not a model problem. It is a systems problem.</p>
+                            </div>
+                          </div>
+
+                          <p className="mb-4 leading-relaxed">
+                            And systems thinking is the skill that separates people who demo AI from people who deploy it.
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            This is the first piece in a series I am calling <strong>"How Bala Thinks."</strong>
+                          </p>
+
+                          <p className="mb-4 leading-relaxed">
+                            Each one will pull a real lesson from production GenAI, multi-agent architecture, RAG systems, edge AI, or clinical NLP. No theory. No hype. Just what actually happened when the notebook closed and the real world began.
+                          </p>
+
+                          <p className="font-bold text-cyan-400">
+                            If that sounds useful, follow along.
+                          </p>
+                        </div>
+
+                        {/* Author Profile CTA with LinkedIn */}
+                        <div className={`mt-10 p-6 rounded-2xl border transition-colors ${
+                          readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200' : 'bg-white/5 border-white/10'
+                        }`}>
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                              <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">Author & Architect</span>
+                              <h4 className="text-lg font-black text-white mt-0.5">Bala Venkatesh</h4>
+                              <span className="text-xs text-slate-400">Building production AI systems, RAG pipelines, and multi-agent platforms.</span>
+                            </div>
+                            <a
+                              href="https://www.linkedin.com/in/bala-venkatesh-67964247/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs font-mono uppercase tracking-wider transition-all flex items-center gap-2 shrink-0 shadow-md shadow-cyan-500/20"
+                            >
+                              <span>Follow on LinkedIn</span>
+                              <ArrowUpRight className="w-4 h-4" />
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* Series Note */}
+                        <div className={`mt-6 p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed italic text-left transition-colors duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-cyan-50/50 border-cyan-200 text-cyan-900 font-semibold' 
+                            : 'bg-white/5 border-white/10 text-slate-400'
+                        }`}>
+                          🧠 <strong>Author's Note:</strong> This tutorial is Series 1 of "How Bala Thinks". If you found this systems thinking framework useful, share it with fellow architects, engineers, and product teams building production AI!
+                        </div>
+
+                        {/* End of Blog Social Share Card */}
+                        <BlogShareFooter 
+                          postSlug="how-bala-thinks-lessons-from-production" 
+                          readerTheme={readerTheme} 
+                          onOpenShareModal={handleOpenShareModal} 
+                          sharedCount={sharedCounts['how-bala-thinks-lessons-from-production'] || 184} 
                         />
                       </div>
                     ) : selectedPost === 'avoid-building-products-nobody-wants' ? (
