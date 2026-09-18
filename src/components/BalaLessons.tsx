@@ -50,6 +50,7 @@ import {
   Workflow,
   Gauge
 } from 'lucide-react';
+import LLMFundamentalsTutorial from './tutorials/LLMFundamentalsTutorial';
 
 interface Series {
   id: string;
@@ -254,18 +255,18 @@ const BLOG_POSTS: BlogPost[] = [
     comingSoon: true
   },
 
-  // Series 4: Production AI (Coming Soon at the Bottom)
+  // Series 4: Production AI
   {
     slug: 'llm-fundamentals',
-    title: 'LLM Fundamentals',
+    title: 'LLM Fundamentals for Engineers Who Ship',
     seriesId: 'production-ai',
-    category: 'Foundations',
-    readTime: '6 min read',
-    date: 'Coming Soon',
-    excerpt: 'Under the hood of modern transformer architectures. Context windows, tokenization, and temperature settings.',
+    category: 'Production AI Foundations',
+    readTime: '8 min read',
+    date: 'September 2026',
+    excerpt: 'What an LLM actually is, stripped of the hype. Tokens, transformers without the math, TTFT vs TPS, context window economics, temperature dynamics, and why hallucination is an architectural constraint.',
     author: 'Bala Venkatesh',
-    tags: ['LLMs', 'Transformer', 'Tokenization'],
-    comingSoon: true
+    tags: ['Production AI', 'LLMs', 'Transformers', 'Tokenization', 'Inference', 'System Design'],
+    comingSoon: false
   },
   {
     slug: 'rag-deep-dive',
@@ -436,6 +437,15 @@ const POST_SHARE_DATA: Record<string, ShareMeta> = {
     twitterText: `How do you choose the right LLM for production? Benchmarks lie. Here's the pragmatic decision matrix I use for enterprise AI apps 👇`,
     whatsappText: `*How I Choose an LLM for Production Apps*\n\nA pragmatic system engineering decision matrix for Accuracy, Cost, and Privacy.\n\nRead essay & try interactive calculator by Bala Venkatesh:\n`,
     hashtags: ['AI', 'LLM', 'GenerativeAI', 'SystemDesign', 'MachineLearning', 'EnterpriseAI']
+  },
+  'llm-fundamentals': {
+    slug: 'llm-fundamentals',
+    title: 'LLM Fundamentals for Engineers Who Ship',
+    quote: 'An LLM is a function: tokens in, next-token probabilities out. Everything else—chat, RAG, agents—is engineering. You do not fix hallucination with a better prompt; you fix it with architecture.',
+    linkedInText: `🏗️ LLM Fundamentals for Engineers Who Ship (Part 1: What an LLM actually is, stripped of the hype 🧵)\n\nMost content falls into two camps: empty hype ("AI will change everything") or academic papers that don't help the engineer shipping on Friday.\n\nStrip away the branding: An LLM is a function.\nYou give it tokens. It returns a probability distribution over the next token. That is it.\n\nKey takeaways from production:\n1️⃣ Tokens are the currency: Cost, latency, and context window limits\n2️⃣ Attention has no memory: "Lost in the middle" is real\n3️⃣ Inference has 2 phases: Prefill (TTFT) vs Decode (TPS)\n4️⃣ Context window economics: Bigger context didn't kill RAG; it made retrieval quality essential\n5️⃣ Hallucination is not a bug: It is the natural output when lacking context. Fix it with architecture, not prompts.\n\nRead the full interactive guide with animated simulators by Bala Venkatesh:\n`,
+    twitterText: `What an LLM actually is, stripped of the hype. Tokens, transformers without the math, TTFT vs TPS, context window economics, and why hallucination is an architectural constraint. Thread 🧵👇`,
+    whatsappText: `*LLM Fundamentals for Engineers Who Ship*\n\nPure technical breakdown of tokens, attention, inference latency (TTFT vs TPS), context windows, and grounding architecture.\n\nRead interactive tutorial by Bala Venkatesh:\n`,
+    hashtags: ['ProductionAI', 'LLMs', 'Transformer', 'SystemDesign', 'MachineLearning', 'AIArchitecture']
   }
 };
 
@@ -679,7 +689,8 @@ export default function BalaLessons() {
     'building-something-people-trust': 98,
     'stopped-chasing-technologies': 115,
     'avoid-building-products-nobody-wants': 136,
-    'how-i-choose-an-llm': 210
+    'how-i-choose-an-llm': 210,
+    'llm-fundamentals': 168
   });
 
   const triggerToast = (msg: string) => {
@@ -2864,6 +2875,21 @@ export default function BalaLessons() {
                           sharedCount={sharedCounts['how-bala-thinks-lessons-from-production'] || 184} 
                         />
                       </div>
+                    ) : selectedPost === 'llm-fundamentals' ? (
+                      <LLMFundamentalsTutorial
+                        readerTheme={readerTheme}
+                        currentStyles={currentStyles}
+                        onOpenShareModal={handleOpenShareModal}
+                        sharedCount={sharedCounts['llm-fundamentals'] || 168}
+                        renderShareFooter={() => (
+                          <BlogShareFooter 
+                            postSlug="llm-fundamentals" 
+                            readerTheme={readerTheme} 
+                            onOpenShareModal={handleOpenShareModal} 
+                            sharedCount={sharedCounts['llm-fundamentals'] || 168} 
+                          />
+                        )}
+                      />
                     ) : selectedPost === 'avoid-building-products-nobody-wants' ? (
                       <div className="space-y-8">
                         {/* Core Author Quote Lead */}

@@ -264,6 +264,36 @@ The application is a high-performance, responsive portfolio and blog platform bu
   - Multi-platform social share footer (`LinkedIn`, `X / Twitter`, `WhatsApp`) with pre-crafted viral post hooks and custom quote card generator.
   - Direct connection CTA to Bala Venkatesh's official LinkedIn profile: `https://www.linkedin.com/in/bala-venkatesh-67964247/`.
 
+#### 2.20 Publication: "LLM Fundamentals for Engineers Who Ship" (Production AI • Part 1)
+- **Publication Details & Architectural Integration**:
+  - **Component**: Modularized in `/src/components/tutorials/LLMFundamentalsTutorial.tsx` and mounted in `BalaLessons.tsx`.
+  - **Slug**: `llm-fundamentals`
+  - **Series**: `Production AI` (`production-ai`) - Promoted to the active first published chapter of Series 4.
+  - **Category**: `Production AI Foundations`
+  - **Reading Time**: `8 min read`
+  - **Date**: `September 2026`
+  - **Tags**: `['Production AI', 'LLMs', 'Transformers', 'Tokenization', 'Inference', 'System Design']`
+- **Core Engineering Concepts**:
+  - **The Function Definition**: Strips away branding and marketing hype: an LLM is a deterministic function taking a sequence of tokens and returning a probability distribution over the vocabulary: $f([t_1, \dots, t_n]) \to P(t_{n+1} \mid t_1, \dots, t_n)$.
+  - **Tokens as Production Currency**: The 3 reasons tokens dictate architecture: linear cost scaling, FLOP/latency overhead, and hard context window boundaries.
+  - **Transformer & Attention**: Attention over context without internal persistent memory. The dual production consequences: "Lost in the Middle" failure modes and the hazard of noise-diluted attention.
+  - **Three-Stage Training Pipeline**: Pretraining (unsupervised next-token predicting, millions in compute) $\to$ Supervised Fine-Tuning (SFT, instruction following) $\to$ Preference Tuning (RLHF/DPO, safety & alignment). Production engineering leverage is purely in prompting, fine-tuning, and system architecture.
+  - **Inference Dual-Phase Mechanics**:
+    - *Phase 1 (Prefill)*: Parallel compute over prompt tokens; dictates Time to First Token (TTFT). Optimized via prompt caching and compression.
+    - *Phase 2 (Decode)*: Strictly sequential autoregressive loop; dictates Tokens Per Second (TPS). Optimized via smaller distilled models and speculative decoding.
+  - **Context Window Economics & RAG Necessity**: Large context windows (128K–1M) do not eliminate RAG; passing huge context multiplies cost 100x, spikes TTFT, and degrades attention recall. RAG retrieves exact relevant chunks, slashing cost by 95%+ and maintaining peak accuracy.
+  - **Temperature & Sampling Dynamics**: Temperature ($T$) flattens or sharpens the softmax curve. Low temperature ($T \le 0.2$) for deterministic extraction and code; high temperature ($T \ge 0.7$) for creative divergence. Top-$p$ nucleus mass filtering.
+  - **Hallucination as an Architectural Reality**: The model has no internal truth verification mechanism, only statistical plausibility. Hallucination is not fixed by prompt tweaks; it is solved via grounding architectures (RAG, exact citations, tool execution, Pydantic/Zod schema enforcement).
+- **Interactive & Animated Simulators**:
+  1. *Interactive Next-Token Probability & Temperature Simulator*: Real-time softmax probability distribution with animated bars reacting to Temperature ($0.05 \to 1.5$) and Top-$p$ sliders, plus an autoregressive token sampling trigger.
+  2. *Interactive "Lost in the Middle" Attention Simulator*: Dynamic U-shaped attention curve with draggable fact placement slider calculating factual recall probability across context positions ($0\% \to 100\%$).
+  3. *Inference TTFT vs. TPS Visualizer*: Step-by-step parallel prefill progress bar followed by sequential autoregressive token counter simulating live emission.
+  4. *Context Window Economics Calculator*: Sliders for prompt token size and daily volume calculating monthly cloud bills and RAG savings percentage.
+  5. *Grounding Architecture Switcher*: Interactive comparison between pure ungrounded hallucination vs grounded verified retrieval with audit citations.
+- **Social Sharing & Follow**:
+  - Integrated `BlogShareFooter` with pre-crafted LinkedIn, Twitter, and WhatsApp viral copy hooks.
+  - Author CTA directing readers to Bala's official LinkedIn profile.
+
 ---
 
 *Log Updated: September 2026*
