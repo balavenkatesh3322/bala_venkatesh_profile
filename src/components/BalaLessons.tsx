@@ -35,7 +35,15 @@ import {
   X,
   Download,
   Quote,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Target,
+  Users,
+  Lightbulb,
+  AlertTriangle,
+  ArrowUpRight,
+  CheckCircle2,
+  Flame,
+  Wrench
 } from 'lucide-react';
 
 interface Series {
@@ -61,20 +69,6 @@ interface BlogPost {
 
 const SERIES_LIST: Series[] = [
   {
-    id: 'how-bala-thinks',
-    title: 'How Bala Thinks',
-    emoji: '🧠',
-    description: 'Mental models, evaluation structures, and architectural trade-offs behind enterprise AI solutions.',
-    color: 'from-cyan-500/20 to-blue-500/10 border-cyan-500/20 hover:border-cyan-500/45 text-cyan-400'
-  },
-  {
-    id: 'production-ai',
-    title: 'Production AI',
-    emoji: '🏗️',
-    description: 'Deep dives into engineering scalable, secure, and cost-optimized pipelines in production environments.',
-    color: 'from-indigo-500/20 to-purple-500/10 border-indigo-500/20 hover:border-indigo-500/45 text-indigo-400'
-  },
-  {
     id: 'engineering-mindset',
     title: 'Engineering Mindset',
     emoji: '💡',
@@ -82,16 +76,80 @@ const SERIES_LIST: Series[] = [
     color: 'from-amber-500/20 to-orange-500/10 border-amber-500/20 hover:border-amber-500/45 text-amber-400'
   },
   {
+    id: 'how-bala-thinks',
+    title: 'How Bala Thinks',
+    emoji: '🧠',
+    description: 'Mental models, evaluation structures, and architectural trade-offs behind enterprise AI solutions.',
+    color: 'from-cyan-500/20 to-blue-500/10 border-cyan-500/20 hover:border-cyan-500/45 text-cyan-400'
+  },
+  {
     id: 'leadership-ownership',
     title: 'Leadership & Ownership',
     emoji: '👑',
     description: 'Transitioning from task delegation to outcome ownership, building autonomous teams, and mentoring engineers to solve problems independently.',
     color: 'from-emerald-500/20 to-teal-500/10 border-emerald-500/20 hover:border-emerald-500/45 text-emerald-400'
+  },
+  {
+    id: 'production-ai',
+    title: 'Production AI',
+    emoji: '🏗️',
+    description: 'Deep dives into engineering scalable, secure, and cost-optimized pipelines in production environments.',
+    color: 'from-indigo-500/20 to-purple-500/10 border-indigo-500/20 hover:border-indigo-500/45 text-indigo-400'
   }
 ];
 
 const BLOG_POSTS: BlogPost[] = [
-  // Series 1: How Bala Thinks
+  // Series 1: Engineering Mindset (Featured Top Series)
+  {
+    slug: 'avoid-building-products-nobody-wants',
+    title: 'How I Try to Avoid Building Products Nobody Wants',
+    seriesId: 'engineering-mindset',
+    category: 'Engineering Mindset',
+    readTime: '6 min read',
+    date: 'September 2026',
+    excerpt: 'Building something that works does not mean building something people need. How shifting from "What can I build?" to "What problem is worth solving?" changes engineering outcomes.',
+    author: 'Bala Venkatesh',
+    tags: ['Product Thinking', 'Engineering Mindset', 'Validation', 'Problem Discovery'],
+    comingSoon: false
+  },
+  {
+    slug: 'building-something-people-trust',
+    title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
+    seriesId: 'engineering-mindset',
+    category: 'Software Strategy',
+    readTime: '5 min read',
+    date: 'July 29, 2026',
+    excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, business judgment, and trust are the real value differentiators for engineers.',
+    author: 'Bala Venkatesh',
+    tags: ['AI Products', 'Product Engineering', 'System Design', 'Software Strategy'],
+    comingSoon: false
+  },
+  {
+    slug: 'stopped-chasing-technologies',
+    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
+    seriesId: 'engineering-mindset',
+    category: 'Career & Mindset',
+    readTime: '5 min read',
+    date: 'July 19, 2026',
+    excerpt: 'When I started my career, I believed learning more technologies would make me a better engineer. I was wrong. Here is the realization that changed how I build products.',
+    author: 'Bala Venkatesh',
+    tags: ['Career Growth', 'Software Engineering', 'Problem Solving'],
+    comingSoon: false
+  },
+  {
+    slug: 'the-power-of-saying-no',
+    title: 'The Power of Saying No to Tech Specs',
+    seriesId: 'engineering-mindset',
+    category: 'Architecture',
+    readTime: '4 min read',
+    date: 'Coming Soon',
+    excerpt: 'Why saying "no" to early architectural details keeps your product development fast, nimble, and highly aligned to business needs.',
+    author: 'Bala Venkatesh',
+    tags: ['Productivity', 'Decision Making', 'Pragmatism'],
+    comingSoon: true
+  },
+
+  // Series 2: How Bala Thinks
   {
     slug: 'llm-right-tool',
     title: 'How I Choose an LLM',
@@ -153,7 +211,33 @@ const BLOG_POSTS: BlogPost[] = [
     comingSoon: true
   },
 
-  // Series 2: Production AI
+  // Series 3: Leadership & Ownership
+  {
+    slug: 'thought-i-was-leading-assigning-tasks',
+    title: 'I Thought I Was Leading. I Was Just Assigning Tasks.',
+    seriesId: 'leadership-ownership',
+    category: 'Leadership',
+    readTime: '6 min read',
+    date: 'August 11, 2026',
+    excerpt: 'A conversation with an engineer named Raju triggered a wake-up call about leadership vs task assignment. How shifting from execution steps to outcome ownership transforms teams.',
+    author: 'Bala Venkatesh',
+    tags: ['Leadership', 'Team Management', 'Engineering Culture', 'Ownership'],
+    comingSoon: false
+  },
+  {
+    slug: 'building-autonomous-teams',
+    title: 'How to Build Teams That Don\'t Need You',
+    seriesId: 'leadership-ownership',
+    category: 'Management',
+    readTime: '5 min read',
+    date: 'Coming Soon',
+    excerpt: 'Creating self-healing, decision-making engineering units that thrive when leaders step back.',
+    author: 'Bala Venkatesh',
+    tags: ['Team Building', 'Autonomy', 'Culture'],
+    comingSoon: true
+  },
+
+  // Series 4: Production AI (Coming Soon at the Bottom)
   {
     slug: 'llm-fundamentals',
     title: 'LLM Fundamentals',
@@ -261,82 +345,6 @@ const BLOG_POSTS: BlogPost[] = [
     author: 'Bala Venkatesh',
     tags: ['Scaling', 'High Throughput', 'Infrastructure'],
     comingSoon: true
-  },
-  
-  // Series 3: Engineering Mindset
-  {
-    slug: 'building-something-people-trust',
-    title: 'Building an App Is Easy Now. Building Something People Trust Is Hard.',
-    seriesId: 'engineering-mindset',
-    category: 'Software Strategy',
-    readTime: '5 min read',
-    date: 'July 29, 2026',
-    excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, business judgment, and trust are the real value differentiators for engineers.',
-    author: 'Bala Venkatesh',
-    tags: ['AI Products', 'Product Engineering', 'System Design', 'Software Strategy'],
-    comingSoon: false
-  },
-  {
-    slug: 'stopped-chasing-technologies',
-    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
-    seriesId: 'engineering-mindset',
-    category: 'Career & Mindset',
-    readTime: '5 min read',
-    date: 'July 19, 2026',
-    excerpt: 'When I started my career, I believed learning more technologies would make me a better engineer. I was wrong. Here is the realization that changed how I build products.',
-    author: 'Bala Venkatesh',
-    tags: ['Career Growth', 'Software Engineering', 'Problem Solving'],
-    comingSoon: false
-  },
-  {
-    slug: 'the-power-of-saying-no',
-    title: 'The Power of Saying No to Tech Specs',
-    seriesId: 'engineering-mindset',
-    category: 'Architecture',
-    readTime: '4 min read',
-    date: 'Coming Soon',
-    excerpt: 'Why saying "no" to early architectural details keeps your product development fast, nimble, and highly aligned to business needs.',
-    author: 'Bala Venkatesh',
-    tags: ['Productivity', 'Decision Making', 'Pragmatism'],
-    comingSoon: true
-  },
-  {
-    slug: 'building-what-matters',
-    title: 'How to Avoid Building Products Nobody Wants',
-    seriesId: 'engineering-mindset',
-    category: 'Product Design',
-    readTime: '6 min read',
-    date: 'Coming Soon',
-    excerpt: 'A guide to early validation, customer interviews, and creating real, measurable user outcomes.',
-    author: 'Bala Venkatesh',
-    tags: ['Validation', 'Product Management', 'Impact'],
-    comingSoon: true
-  },
-
-  // Series 4: Leadership & Ownership
-  {
-    slug: 'thought-i-was-leading-assigning-tasks',
-    title: 'I Thought I Was Leading. I Was Just Assigning Tasks.',
-    seriesId: 'leadership-ownership',
-    category: 'Leadership',
-    readTime: '6 min read',
-    date: 'August 11, 2026',
-    excerpt: 'A conversation with an engineer named Raju triggered a wake-up call about leadership vs task assignment. How shifting from execution steps to outcome ownership transforms teams.',
-    author: 'Bala Venkatesh',
-    tags: ['Leadership', 'Team Management', 'Engineering Culture', 'Ownership'],
-    comingSoon: false
-  },
-  {
-    slug: 'building-autonomous-teams',
-    title: 'How to Build Teams That Don\'t Need You',
-    seriesId: 'leadership-ownership',
-    category: 'Management',
-    readTime: '5 min read',
-    date: 'Coming Soon',
-    excerpt: 'Creating self-healing, decision-making engineering units that thrive when leaders step back.',
-    author: 'Bala Venkatesh',
-    tags: ['Team Building', 'Autonomy', 'Culture'],
-    comingSoon: true
   }
 ];
 
@@ -384,6 +392,15 @@ const POST_SHARE_DATA: Record<string, ShareMeta> = {
     twitterText: `I stopped chasing technologies. I started chasing problems. Here's how that single mindset shift changed my software career 🧵👇`,
     whatsappText: `*I Stopped Chasing Technologies. I Started Chasing Problems.*\n\nThe realization that transformed how I build software products.\n\nRead essay by Bala Venkatesh:\n`,
     hashtags: ['SoftwareEngineering', 'CareerGrowth', 'ProblemSolving', 'DeveloperMindset']
+  },
+  'avoid-building-products-nobody-wants': {
+    slug: 'avoid-building-products-nobody-wants',
+    title: 'How I Try to Avoid Building Products Nobody Wants',
+    quote: 'Building something that works does not mean building something people need. Don\'t fall in love with your solution before you understand the problem.',
+    linkedInText: `💡 "Building something that works does not mean building something people need."\n\nEarlier in my engineering career, my thinking was: "What can I build with this technology?"\n\nToday, I start somewhere completely different: "What problem is worth solving?"\n\nHere is how I try to avoid building products nobody wants:\n1️⃣ Start with the problem, not the solution\n2️⃣ Talk to people who have the problem (ask about current behavior, not opinions)\n3️⃣ Look for existing behavior (Excel, WhatsApp, manual spreadsheets)\n4️⃣ Don't build the complete product first\n5️⃣ Measure behavior, not compliments\n6️⃣ Be willing to kill your idea\n\nRead the full essay by Bala Venkatesh:\n`,
+    twitterText: `Building something that works does not mean building something people need. Here is how I try to avoid building products nobody wants 👇`,
+    whatsappText: `*How I Try to Avoid Building Products Nobody Wants*\n\nOne of the biggest lessons in engineering: building the right thing matters more than building the thing right.\n\nRead essay by Bala Venkatesh:\n`,
+    hashtags: ['EngineeringMindset', 'ProductEngineering', 'SoftwareEngineering', 'BuildInPublic', 'Startups']
   },
   'how-i-choose-an-llm': {
     slug: 'how-i-choose-an-llm',
@@ -634,6 +651,7 @@ export default function BalaLessons() {
     'thought-i-was-leading-assigning-tasks': 142,
     'building-something-people-trust': 98,
     'stopped-chasing-technologies': 115,
+    'avoid-building-products-nobody-wants': 136,
     'how-i-choose-an-llm': 210
   });
 
@@ -979,13 +997,11 @@ export default function BalaLessons() {
 
                         <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-2">
                           <span className="text-xs font-mono font-bold text-slate-500">
-                            {series.id === 'how-bala-thinks' 
-                              ? '5 Chapters • 1 Live' 
-                              : series.id === 'engineering-mindset' 
-                                ? '4 Chapters • 2 Live' 
-                                : series.id === 'leadership-ownership'
-                                  ? '2 Chapters • 1 Live'
-                                  : '9 Chapters • Coming Soon'}
+                            {(() => {
+                              const total = BLOG_POSTS.filter(p => p.seriesId === series.id).length;
+                              const live = BLOG_POSTS.filter(p => p.seriesId === series.id && !p.comingSoon).length;
+                              return live > 0 ? `${total} Chapters • ${live} Live` : `${total} Chapters • Coming Soon`;
+                            })()}
                           </span>
                           <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1">
                             Explore Series <ArrowRight className="w-3.5 h-3.5" />
@@ -1033,7 +1049,14 @@ export default function BalaLessons() {
 
                     {/* Blog posts list */}
                     <div className="flex flex-col gap-4">
-                      {BLOG_POSTS.filter(p => p.seriesId === currentSeries).map((post) => {
+                      {BLOG_POSTS
+                        .filter(p => p.seriesId === currentSeries)
+                        .sort((a, b) => {
+                          if (a.comingSoon && !b.comingSoon) return 1;
+                          if (!a.comingSoon && b.comingSoon) return -1;
+                          return 0;
+                        })
+                        .map((post) => {
                         if (post.comingSoon) {
                           return (
                             <div
@@ -1179,12 +1202,12 @@ export default function BalaLessons() {
 
                     <div className={`flex flex-wrap items-center gap-3 text-xs font-mono ${currentStyles.textMuted}`}>
                       <span className={`px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wide border text-[10px] transition-all duration-300 ${currentStyles.badgeBg}`}>
-                        AI Architecture
+                        {BLOG_POSTS.find(p => p.slug === selectedPost)?.category || 'Engineering Mindset'}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-cyan-500" /> 5 min read
+                        <Clock className="w-3.5 h-3.5 text-cyan-500" /> {BLOG_POSTS.find(p => p.slug === selectedPost)?.readTime || '5 min read'}
                       </span>
-                      <span>July 2026</span>
+                      <span>{BLOG_POSTS.find(p => p.slug === selectedPost)?.date || 'September 2026'}</span>
                     </div>
                   </div>
 
@@ -2156,6 +2179,568 @@ export default function BalaLessons() {
                           readerTheme={readerTheme} 
                           onOpenShareModal={handleOpenShareModal} 
                           sharedCount={sharedCounts['stopped-chasing-technologies'] || 115} 
+                        />
+                      </div>
+                    ) : selectedPost === 'avoid-building-products-nobody-wants' ? (
+                      <div className="space-y-8">
+                        {/* Core Author Quote Lead */}
+                        <p className={`text-base sm:text-lg font-semibold italic border-l-4 pl-4 py-2 transition-all duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'text-slate-900 border-amber-500 bg-amber-50/30 rounded-r-xl pr-3' 
+                            : 'text-slate-200 border-amber-400 bg-white/5 rounded-r-xl pr-3'
+                        }`}>
+                          "One of the biggest lessons I've learned in engineering is that building something that works does not mean building something people need. Don't fall in love with your solution before you understand the problem."
+                        </p>
+
+                        <p className="text-base sm:text-lg leading-relaxed">
+                          Earlier in my career, I was fascinated by technology.
+                        </p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+                          <div className={`p-3.5 rounded-xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-800' : 'bg-white/5 border-white/10 text-slate-300'
+                          }`}>
+                            <div className="text-xs font-mono text-cyan-500 font-bold mb-1">Phase 1: Frameworks</div>
+                            <p className="text-xs sm:text-sm">If I learned a new framework, I wanted to build something with it immediately.</p>
+                          </div>
+                          <div className={`p-3.5 rounded-xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-800' : 'bg-white/5 border-white/10 text-slate-300'
+                          }`}>
+                            <div className="text-xs font-mono text-indigo-500 font-bold mb-1">Phase 2: Machine Learning</div>
+                            <p className="text-xs sm:text-sm">If I learned Machine Learning, I wanted to build an ML product around it.</p>
+                          </div>
+                          <div className={`p-3.5 rounded-xl border transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-800' : 'bg-white/5 border-white/10 text-slate-300'
+                          }`}>
+                            <div className="text-xs font-mono text-pink-500 font-bold mb-1">Phase 3: Deep Learning</div>
+                            <p className="text-xs sm:text-sm">If I learned Deep Learning, I wanted to hunt down a problem where I could apply it.</p>
+                          </div>
+                        </div>
+
+                        <p>
+                          My thinking almost always started with:
+                        </p>
+
+                        <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-rose-50 border-rose-500 text-rose-950' 
+                            : 'bg-rose-950/20 border-rose-500/50 text-rose-300'
+                        }`}>
+                          "What can I build with this technology?"
+                        </div>
+
+                        <p>
+                          Today, I try to start somewhere completely different:
+                        </p>
+
+                        <div className={`p-4 rounded-xl border-l-4 font-mono text-sm sm:text-base font-bold my-3 transition-colors ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-emerald-50 border-emerald-500 text-emerald-950' 
+                            : 'bg-emerald-950/20 border-emerald-500/50 text-emerald-300'
+                        }`}>
+                          "What problem is worth solving?"
+                        </div>
+
+                        <p className="font-medium">
+                          That change came from experience.
+                        </p>
+
+                        {/* Section 1: First Instinct */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Wrench className="w-5 h-5 text-amber-500" />
+                            My First Instinct Was Always to Build
+                          </h2>
+
+                          <p className="mb-4">
+                            As engineers, we are trained to solve problems.
+                          </p>
+
+                          <p className="mb-4">
+                            Give us a requirement, and our natural reaction is to start designing the solution immediately.
+                          </p>
+
+                          <div className={`p-5 rounded-2xl border my-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-amber-50/50 border-amber-200/80 text-amber-950' : 'bg-amber-500/10 border-amber-500/20 text-amber-200'
+                          }`}>
+                            <div className="flex items-center gap-2 font-bold text-sm mb-2">
+                              <AlertTriangle className="w-4 h-4 text-amber-500" />
+                              The Builder's Trap
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              We can spend weeks designing the architecture, choosing the technology, writing code, improving the UI, deploying the application, and finally realize that the original problem wasn't important enough.
+                            </p>
+                          </div>
+
+                          <div className="space-y-2 font-bold text-base sm:text-lg">
+                            <p className={readerTheme !== 'dark' ? 'text-slate-900' : 'text-slate-100'}>The product works.</p>
+                            <p className={readerTheme !== 'dark' ? 'text-rose-700' : 'text-rose-400'}>But nobody cares.</p>
+                          </div>
+
+                          <p className="mt-4 italic">
+                            That is a painful lesson.
+                          </p>
+                        </div>
+
+                        {/* Section 2: Pattern in Agriculture & Healthcare */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Target className="w-5 h-5 text-cyan-500" />
+                            I Started Noticing a Pattern
+                          </h2>
+
+                          <p className="mb-4">
+                            While working on products in agriculture and healthcare, I saw something that changed the way I think about product development.
+                          </p>
+
+                          <blockquote className={`p-5 rounded-2xl border-l-4 font-semibold text-base sm:text-lg my-6 transition-all duration-300 ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-slate-100/70 border-slate-700 text-slate-900' 
+                              : 'bg-white/5 border-cyan-400 text-slate-100'
+                          }`}>
+                            "Real users don't care about how elegant our architecture is. They care about whether we actually make their work easier."
+                          </blockquote>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+                            <div className={`p-5 rounded-2xl border transition-colors ${
+                              readerTheme !== 'dark' ? 'bg-emerald-50/40 border-emerald-200 text-emerald-950' : 'bg-emerald-950/20 border-emerald-500/20 text-emerald-200'
+                            }`}>
+                              <div className="text-xs font-mono font-bold uppercase tracking-wider mb-2 text-emerald-600">In Agriculture 🌾</div>
+                              <p className="text-xs sm:text-sm leading-relaxed">
+                                A farmer doesn't care whether the backend uses Python or Java. They care whether it helps them protect crops, predict yields, and reduce wasted resources.
+                              </p>
+                            </div>
+
+                            <div className={`p-5 rounded-2xl border transition-colors ${
+                              readerTheme !== 'dark' ? 'bg-sky-50/40 border-sky-200 text-sky-950' : 'bg-sky-950/20 border-sky-500/20 text-sky-200'
+                            }`}>
+                              <div className="text-xs font-mono font-bold uppercase tracking-wider mb-2 text-sky-600">In Healthcare 🏥</div>
+                              <p className="text-xs sm:text-sm leading-relaxed">
+                                A healthcare professional doesn't care whether we use the latest AI model. They care whether the tool helps them make a safer decision, saves critical minutes, and reduces cognitive load.
+                              </p>
+                            </div>
+                          </div>
+
+                          <p className="mb-4">
+                            They care about whether the product helps them make a better decision, saves time, reduces effort, or solves a problem they face every day.
+                          </p>
+
+                          <p className="italic">
+                            That sounds obvious. But it's easy to forget when you're deep in technology.
+                          </p>
+                        </div>
+
+                        {/* Section 3: The 6 Approaches */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-6 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Lightbulb className="w-5 h-5 text-amber-400" />
+                            So How Do I Approach a New Idea Now?
+                          </h2>
+
+                          <p className="text-base sm:text-lg font-bold mb-6">
+                            I try to slow down before I build.
+                          </p>
+
+                          {/* 1. Start with problem */}
+                          <div className={`p-6 rounded-2xl border mb-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-white border-slate-200 shadow-sm' : 'bg-white/[0.02] border-white/10'
+                          }`}>
+                            <h3 className="text-base sm:text-lg font-black text-cyan-500 mb-3 flex items-center gap-2">
+                              <span>1. Start with the problem, not the solution</span>
+                            </h3>
+
+                            <p className="text-sm mb-3">
+                              If someone says: <span className="font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400">"We should build an AI chatbot."</span>
+                            </p>
+
+                            <p className="text-sm mb-4">
+                              I don't immediately think about LLMs, RAG, vector databases, or autonomous agents. Instead, I ask:
+                            </p>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-3 text-xs sm:text-sm font-mono">
+                              {[
+                                'Why do we need a chatbot?',
+                                'Who has the problem?',
+                                'What are they doing today?',
+                                'How often does the problem happen?',
+                                'What does the current process cost?',
+                                'What happens if we don\'t solve it?'
+                              ].map((q, idx) => (
+                                <div key={idx} className={`p-3 rounded-xl border flex items-center gap-2 ${
+                                  readerTheme !== 'dark' ? 'bg-slate-50 border-slate-200 text-slate-800' : 'bg-slate-900 border-white/5 text-slate-300'
+                                }`}>
+                                  <span className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-bold shrink-0">{idx + 1}</span>
+                                  <span>{q}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-4">
+                              Sometimes the answer reveals that a chatbot isn't needed at all. That's a good outcome. Avoiding unnecessary development is also progress.
+                            </p>
+                          </div>
+
+                          {/* 2. Talk to people */}
+                          <div className={`p-6 rounded-2xl border mb-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-white border-slate-200 shadow-sm' : 'bg-white/[0.02] border-white/10'
+                          }`}>
+                            <h3 className="text-base sm:text-lg font-black text-indigo-500 mb-3 flex items-center gap-2">
+                              <span>2. Talk to the people who have the problem</span>
+                            </h3>
+
+                            <p className="text-sm mb-3">
+                              This is one of the biggest changes in my thinking.
+                            </p>
+
+                            <div className={`p-4 rounded-xl border my-3 text-xs sm:text-sm ${
+                              readerTheme !== 'dark' ? 'bg-rose-50/60 border-rose-200 text-rose-900' : 'bg-rose-950/20 border-rose-500/20 text-rose-300'
+                            }`}>
+                              <span className="font-bold">❌ What I avoid asking:</span> "Would you use this product?"
+                              <div className="text-xs opacity-80 mt-1">People are usually polite. They might say yes, even when they'll never open it again.</div>
+                            </div>
+
+                            <p className="text-sm my-3 font-semibold">
+                              Instead, I want to understand their current behavior. I ask:
+                            </p>
+
+                            <ul className="space-y-2 text-xs sm:text-sm pl-4 list-disc text-slate-700 dark:text-slate-300">
+                              <li><strong>How do you solve this today?</strong></li>
+                              <li><strong>When did this problem last happen?</strong></li>
+                              <li><strong>How much time does it take?</strong></li>
+                              <li><strong>What makes it frustrating?</strong></li>
+                              <li><strong>Have you already tried something else?</strong></li>
+                              <li><strong>Would you pay to solve it?</strong></li>
+                            </ul>
+
+                            <p className="text-xs sm:text-sm text-slate-500 mt-4 italic">
+                              The answers are much more useful than opinions about a product that doesn't exist yet.
+                            </p>
+                          </div>
+
+                          {/* 3. Existing behavior */}
+                          <div className={`p-6 rounded-2xl border mb-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-white border-slate-200 shadow-sm' : 'bg-white/[0.02] border-white/10'
+                          }`}>
+                            <h3 className="text-base sm:text-lg font-black text-amber-500 mb-3 flex items-center gap-2">
+                              <span>3. Look for existing behavior</span>
+                            </h3>
+
+                            <p className="text-sm mb-4">
+                              This is one of my favorite signals. If someone is already using:
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {['Excel', 'Email', 'WhatsApp', 'Manual reports', 'Spreadsheets', 'Copy and paste', 'Multiple disconnected systems'].map((tool) => (
+                                <span key={tool} className={`px-3 py-1.5 rounded-lg border text-xs font-mono font-bold ${
+                                  readerTheme !== 'dark' ? 'bg-amber-50 border-amber-200 text-amber-900' : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                                }`}>
+                                  ⚡ {tool}
+                                </span>
+                              ))}
+                            </div>
+
+                            <p className="text-sm mb-2 font-bold">
+                              to solve a problem, there may be an opportunity. Why?
+                            </p>
+
+                            <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                              Because they are already spending time or money on the problem. You don't have to convince them that the problem exists. You need to understand why their current solution isn't good enough.
+                            </p>
+                          </div>
+
+                          {/* 4. Don't build complete product */}
+                          <div className={`p-6 rounded-2xl border mb-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-white border-slate-200 shadow-sm' : 'bg-white/[0.02] border-white/10'
+                          }`}>
+                            <h3 className="text-base sm:text-lg font-black text-sky-500 mb-3 flex items-center gap-2">
+                              <span>4. Don't build the complete product first</span>
+                            </h3>
+
+                            <p className="text-sm mb-3">
+                              This is where engineers can struggle. We like completeness. We want:
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {['Beautiful UI', 'Perfect architecture', 'Authentication', 'Monitoring', 'Scalability', 'Automation'].map((item) => (
+                                <span key={item} className={`px-2.5 py-1 rounded-md text-xs font-mono ${
+                                  readerTheme !== 'dark' ? 'bg-slate-100 text-slate-700' : 'bg-white/5 text-slate-400'
+                                }`}>
+                                  • {item}
+                                </span>
+                              ))}
+                            </div>
+
+                            <p className="text-sm mb-3 font-medium">
+                              But customers don't need our complete system to tell us whether the problem is valuable.
+                            </p>
+
+                            <div className={`p-4 rounded-xl border-l-4 font-mono text-xs sm:text-sm font-bold my-3 ${
+                              readerTheme !== 'dark' ? 'bg-sky-50 border-sky-500 text-sky-950' : 'bg-sky-950/20 border-sky-500 text-sky-300'
+                            }`}>
+                              Build the smallest thing that can test your biggest assumption.
+                            </div>
+
+                            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                              Sometimes that's a prototype. Sometimes it's a spreadsheet. Sometimes it's a simple workflow. Sometimes it's even a conversation.
+                            </p>
+
+                            <p className="text-xs sm:text-sm font-bold mt-3 text-cyan-600 dark:text-cyan-400">
+                              The goal of the first version isn't to impress people. It's to learn.
+                            </p>
+                          </div>
+
+                          {/* 5. Measure behavior not compliments */}
+                          <div className={`p-6 rounded-2xl border mb-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-white border-slate-200 shadow-sm' : 'bg-white/[0.02] border-white/10'
+                          }`}>
+                            <h3 className="text-base sm:text-lg font-black text-rose-500 mb-3 flex items-center gap-2">
+                              <span>5. Measure behavior, not compliments</span>
+                            </h3>
+
+                            <p className="text-sm mb-2">
+                              Someone saying: <span className="font-bold italic">"That's a great idea!"</span> isn't product validation.
+                            </p>
+
+                            <p className="text-sm mb-4">
+                              Someone actually using it every week is much stronger evidence. Someone paying for it is stronger still.
+                            </p>
+
+                            {/* The Signal Hierarchy Ladder */}
+                            <div className="flex flex-col gap-2 my-4">
+                              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1">Validation Signal Strength Ladder</div>
+                              {[
+                                { label: 'Interest', desc: 'Compliments, smiles, "that looks cool"', strength: 'Weak Signal', color: 'bg-rose-500/10 text-rose-400 border-rose-500/20' },
+                                { label: 'Usage', desc: 'Logging in, testing a workflow once', strength: 'Mild Signal', color: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
+                                { label: 'Retention', desc: 'Returning every week without prompts', strength: 'Strong Signal', color: 'bg-sky-500/10 text-sky-400 border-sky-500/20' },
+                                { label: 'Payment', desc: 'Swiping a card or allocating budget', strength: 'Very Strong', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' },
+                                { label: 'Business Impact', desc: 'Measured hours saved, revenue gained, errors eliminated', strength: 'Ultimate Signal', color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' }
+                              ].map((tier, idx) => (
+                                <div key={tier.label} className={`p-3 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs sm:text-sm ${tier.color}`}>
+                                  <div className="flex items-center gap-2.5">
+                                    <span className="font-mono font-bold">#{idx + 1}</span>
+                                    <span className="font-bold">{tier.label}</span>
+                                    <span className="text-xs opacity-75">— {tier.desc}</span>
+                                  </div>
+                                  <span className="px-2 py-0.5 rounded-full font-mono text-[10px] uppercase font-bold border border-current self-start sm:self-auto">
+                                    {tier.strength}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* 6. Kill idea */}
+                          <div className={`p-6 rounded-2xl border mb-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-white border-slate-200 shadow-sm' : 'bg-white/[0.02] border-white/10'
+                          }`}>
+                            <h3 className="text-base sm:text-lg font-black text-purple-500 mb-3 flex items-center gap-2">
+                              <span>6. Be willing to kill your idea</span>
+                            </h3>
+
+                            <p className="text-sm mb-3">
+                              This is probably the hardest part.
+                            </p>
+
+                            <p className="text-sm mb-3 leading-relaxed">
+                              When you've spent weeks building something, it's emotionally difficult to accept that people don't need it.
+                            </p>
+
+                            <p className="text-sm mb-4 leading-relaxed">
+                              But continuing to build because you've already invested time is not a good reason. The time is already gone.
+                            </p>
+
+                            <div className={`p-4 rounded-xl border-l-4 font-mono text-xs sm:text-sm font-bold ${
+                              readerTheme !== 'dark' ? 'bg-purple-50 border-purple-500 text-purple-950' : 'bg-purple-950/20 border-purple-500 text-purple-300'
+                            }`}>
+                              "Is there enough evidence to invest the next month?"
+                            </div>
+
+                            <p className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 mt-3">
+                              Sometimes the best product decision is to stop.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Section 4: What AI Changes */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Cpu className="w-5 h-5 text-cyan-400" />
+                            What AI Changes
+                          </h2>
+
+                          <p className="mb-4">
+                            This matters even more today.
+                          </p>
+
+                          <p className="mb-4">
+                            AI has made building software dramatically faster. You can create an MVP in days or even hours.
+                          </p>
+
+                          <p className="mb-4">
+                            That sounds like only good news. But there is a hidden problem.
+                          </p>
+
+                          <div className={`p-5 rounded-2xl border my-6 transition-colors ${
+                            readerTheme !== 'dark' ? 'bg-rose-50 border-rose-200 text-rose-950' : 'bg-rose-950/20 border-rose-500/20 text-rose-200'
+                          }`}>
+                            <p className="font-bold text-base mb-2">The AI Code Surplus Dilemma</p>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              If building becomes cheaper, people will build more things nobody wants.
+                            </p>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+                            <div className={`p-4 rounded-xl border text-center ${
+                              readerTheme !== 'dark' ? 'bg-slate-100 border-slate-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <div className="text-xs font-mono text-slate-500 uppercase">Trend 1</div>
+                              <div className="text-base font-bold text-cyan-400 mt-1">Cost of writing code</div>
+                              <div className="text-xs text-slate-400 mt-1">Plummeting rapidly toward zero 📉</div>
+                            </div>
+                            <div className={`p-4 rounded-xl border text-center ${
+                              readerTheme !== 'dark' ? 'bg-slate-100 border-slate-200' : 'bg-white/5 border-white/10'
+                            }`}>
+                              <div className="text-xs font-mono text-slate-500 uppercase">Trend 2</div>
+                              <div className="text-base font-bold text-emerald-400 mt-1">Value of identifying the right problem</div>
+                              <div className="text-xs text-slate-400 mt-1">Skyrocketing exponentially 📈</div>
+                            </div>
+                          </div>
+
+                          <p className="font-bold text-base sm:text-lg">
+                            That is why I believe product thinking is becoming an increasingly important skill for engineers.
+                          </p>
+                        </div>
+
+                        {/* Section 5: The Diagnostic Scorecard */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                            The Questions I Ask Before Building
+                          </h2>
+
+                          <p className="mb-6">
+                            Today, I try to answer these questions first:
+                          </p>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-6">
+                            {[
+                              { label: 'Problem', q: 'What painful problem are we solving?', icon: '🎯' },
+                              { label: 'Customer', q: 'Who experiences it?', icon: '👥' },
+                              { label: 'Frequency', q: 'How often does it happen?', icon: '⏱️' },
+                              { label: 'Current solution', q: 'How do they solve it today?', icon: '🛠️' },
+                              { label: 'Value', q: 'What happens if we solve it?', icon: '💎' },
+                              { label: 'Evidence', q: 'What have users actually done, not just said?', icon: '📊' },
+                              { label: 'Smallest experiment', q: 'What is the cheapest way to test our assumption?', icon: '🧪' },
+                              { label: 'Success', q: 'What measurable outcome would tell us we\'re right?', icon: '🏆' }
+                            ].map((item) => (
+                              <div key={item.label} className={`p-4 rounded-xl border flex flex-col gap-1 transition-colors ${
+                                readerTheme !== 'dark' ? 'bg-stone-50 border-stone-200 text-stone-900' : 'bg-white/5 border-white/10 text-slate-200'
+                              }`}>
+                                <div className="flex items-center gap-2">
+                                  <span>{item.icon}</span>
+                                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400">{item.label}</span>
+                                </div>
+                                <p className="text-xs sm:text-sm font-semibold pl-6">{item.q}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          <p className="font-bold text-sm sm:text-base text-slate-700 dark:text-slate-300 mt-4">
+                            Only after these questions do I start thinking seriously about technology.
+                          </p>
+                        </div>
+
+                        {/* Section 6: The Biggest Lesson */}
+                        <div className="pt-6 border-t border-white/10">
+                          <h2 className={`text-xl sm:text-2xl font-black mb-4 flex items-center gap-2.5 transition-colors duration-300 ${currentStyles.textTitle}`}>
+                            <Flame className="w-5 h-5 text-amber-500" />
+                            The Biggest Lesson for Me
+                          </h2>
+
+                          <p className="mb-4">
+                            Earlier in my career, I thought being a good engineer meant becoming better at building.
+                          </p>
+
+                          <p className="mb-4">
+                            I still believe building matters.
+                          </p>
+
+                          <div className={`my-8 p-6 rounded-2xl border-l-4 transition-all duration-300 ${
+                            readerTheme !== 'dark' 
+                              ? 'bg-amber-50/70 border-amber-500 text-stone-900 font-serif text-lg sm:text-xl italic' 
+                              : 'bg-white/5 border-amber-400 text-slate-100 font-serif text-lg sm:text-xl italic'
+                          }`}>
+                            "Building the right thing matters more than building the thing right."
+                          </div>
+
+                          <p className="mb-4">
+                            A technically impressive product that nobody needs is still a failed product.
+                          </p>
+
+                          <p className="mb-4">
+                            A simple solution that solves a painful problem can create enormous value.
+                          </p>
+
+                          <p className="mb-4 font-semibold">
+                            So today, before I ask: <span className="font-mono text-cyan-400">"How should I build this?"</span>
+                          </p>
+
+                          <p className="mb-6 font-bold text-base sm:text-lg">
+                            I try to ask: <span className="font-mono text-emerald-400">"Should this be built at all?"</span>
+                          </p>
+
+                          <p className="mb-4 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                            That question has probably saved me more time than any framework I've learned.
+                          </p>
+
+                          <p className="mb-6 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                            And it's a question I want to keep asking throughout my journey as an engineer, product builder, and entrepreneur.
+                          </p>
+
+                          <div className={`p-5 rounded-2xl border text-center font-bold text-base sm:text-lg my-6 ${
+                            readerTheme !== 'dark' ? 'bg-cyan-50 border-cyan-200 text-cyan-950' : 'bg-cyan-500/10 border-cyan-500/30 text-cyan-300'
+                          }`}>
+                            Don't fall in love with your solution before you understand the problem.
+                          </div>
+
+                          <p className="text-sm leading-relaxed mt-4">
+                            If you're building products and thinking about the same challenges, I'd love to connect and learn from your experience.
+                          </p>
+
+                          {/* LinkedIn CTA */}
+                          <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-950/40 to-slate-900/60 text-left">
+                            <div className="flex flex-col gap-1">
+                              <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Connect & Discuss</span>
+                              <span className="text-sm sm:text-base font-black text-white">Let's connect on LinkedIn</span>
+                              <span className="text-xs text-slate-400">Building products, AI architecture, and engineering mindset reflections.</span>
+                            </div>
+                            <a
+                              href="https://www.linkedin.com/in/bala-venkatesh-67964247/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs font-mono uppercase tracking-wider transition-all flex items-center gap-2 shrink-0 shadow-md shadow-cyan-500/20"
+                            >
+                              <span>View Profile</span>
+                              <ArrowUpRight className="w-4 h-4" />
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* Author Note */}
+                        <div className={`mt-10 p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed italic text-left transition-colors duration-300 ${
+                          readerTheme !== 'dark' 
+                            ? 'bg-amber-50/50 border-amber-200 text-amber-900 font-semibold' 
+                            : 'bg-white/5 border-white/10 text-slate-400'
+                        }`}>
+                          💡 <strong>Author's Note:</strong> This essay is part of the "Engineering Mindset" series. If you found this framework useful, feel free to share it with fellow engineers and product teams!
+                        </div>
+
+                        {/* End of Blog Social Share Card */}
+                        <BlogShareFooter 
+                          postSlug="avoid-building-products-nobody-wants" 
+                          readerTheme={readerTheme} 
+                          onOpenShareModal={handleOpenShareModal} 
+                          sharedCount={sharedCounts['avoid-building-products-nobody-wants'] || 136} 
                         />
                       </div>
                     ) : (

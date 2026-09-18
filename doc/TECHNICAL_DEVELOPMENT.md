@@ -166,6 +166,57 @@ The application is a high-performance, responsive portfolio and blog platform bu
 - **About Bio Synchronization (`About.tsx`)**:
   - Updated current position to reflect **Lead AI Engineer** at Standard Chartered Bank.
 
+#### 2.17 Publication: "How I Try to Avoid Building Products Nobody Wants" (Engineering Mindset Series)
+- **Publication Details & Architectural Integration**:
+  - **Slug**: `avoid-building-products-nobody-wants`
+  - **Series**: `Engineering Mindset` (`engineering-mindset`)
+  - **Category**: `Engineering Mindset`
+  - **Reading Time**: `6 min read`
+  - **Date**: `September 2026`
+  - **Tags**: `['Product Thinking', 'Engineering Mindset', 'Validation', 'Problem Discovery']`
+- **Core Content & Interactive Artifacts**:
+  - **Lead Insight**: "Building something that works does not mean building something people need. Don't fall in love with your solution before you understand the problem."
+  - **Then vs. Now Visual Paradigm**: Contrasting the early-career tech-first mindset ("What can I build with this technology?") with the mature problem-first discipline ("What problem is worth solving?").
+  - **The Builder's Trap**: Diagnostic exploration of why engineers spend weeks writing code, tuning architecture, and polishing UI for products nobody cares about.
+  - **Real-World Patterns (Agriculture & Healthcare)**: Grounded domain lessons showing that farmers and clinicians care about solved daily friction, time savings, and decision clarity rather than tech stack vanity.
+  - **6-Step Pragmatic Approach**:
+    1. *Start with the problem, not the solution* (6-question diagnostic framework; avoiding unnecessary development is progress).
+    2. *Talk to people who have the problem* (observing actual behavior over polite opinions).
+    3. *Look for existing behavior* (interactive grid of high-value signal tools: Excel, WhatsApp, spreadsheets, copy-paste workflows).
+    4. *Don't build the complete product first* (smallest experiment to test the biggest assumption).
+    5. *Measure behavior, not compliments* (visual 5-tier Signal Hierarchy Ladder: Interest → Usage → Retention → Payment → Business Impact).
+    6. *Be willing to kill your idea* (overcoming sunk cost bias; "Is there enough evidence to invest the next month?").
+  - **The AI Dilemma**: Examining how AI code generation drastically reduces code creation costs while skyrocketing the value of identifying real problems.
+  - **Pre-Build Diagnostic Scorecard**: 8-question evaluation card across Problem, Customer, Frequency, Current Solution, Value, Evidence, Smallest Experiment, and Success Metric.
+  - **The Core Axiom**: "Building the right thing matters more than building the thing right."
+  - **Direct Engagement**: Direct LinkedIn connection CTA to Bala Venkatesh (`https://www.linkedin.com/in/balavenkatesh22`) and dynamic multi-platform social sharing dialog with branded quote card generator.
+- **Cross-Component Synchronization**:
+  - Updated `BLOG_POSTS` and `POST_SHARE_DATA` in `src/components/BalaLessons.tsx`.
+  - Dynamically bound article header category, read-time, and date chips in `BalaLessons.tsx`.
+  - Promoted the article into `FEATURED_BLOGS` on the homepage within `src/components/BuildWithBalaPromo.tsx`.
+
+#### 2.18 Blog Hierarchy Reordering, Coming Soon Demotion & LinkedIn Profile Synchronization
+- **Blog Prioritization & Top Placement**:
+  - Elevated **"How I Try to Avoid Building Products Nobody Wants"** to the `#1` top post position across the blog architecture and within the `Engineering Mindset` series.
+  - Promoted `Engineering Mindset` to the top position in `SERIES_LIST` in `BalaLessons.tsx` ahead of other series.
+- **Coming Soon Demotion**:
+  - Reordered `SERIES_LIST` so series with active, published content appear first (`Engineering Mindset`, `How Bala Thinks`, `Leadership & Ownership`), while `Production AI` (all 9 chapters upcoming) is positioned at the bottom.
+  - Reordered `BLOG_POSTS` to place all published articles (`comingSoon: false`) at the top and all upcoming chapters (`comingSoon: true`) at the bottom of their respective collections.
+  - Added programmatic sorting to the series detail renderer in `BalaLessons.tsx`:
+    ```typescript
+    .sort((a, b) => {
+      if (a.comingSoon && !b.comingSoon) return 1;
+      if (!a.comingSoon && b.comingSoon) return -1;
+      return 0;
+    })
+    ```
+    ensuring upcoming/unreleased chapters will never appear above or interspersed between live articles.
+- **Dynamic Series Chapter Counter**:
+  - Replaced hardcoded chapter status text on series cards with dynamic calculation:
+    `${total} Chapters • ${live} Live` (or `${total} Chapters • Coming Soon` when live count is 0).
+- **LinkedIn Profile Synchronization**:
+  - Updated all author profile CTAs to point to Bala's official LinkedIn profile: `https://www.linkedin.com/in/bala-venkatesh-67964247/` across `BalaLessons.tsx`, `Contact.tsx`, and `Testimonials.tsx`.
+
 ---
 
 *Log Updated: September 2026*

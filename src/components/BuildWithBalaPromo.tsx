@@ -16,6 +16,16 @@ interface FeaturedBlog {
 
 const FEATURED_BLOGS: FeaturedBlog[] = [
   {
+    slug: 'avoid-building-products-nobody-wants',
+    title: 'How I Try to Avoid Building Products Nobody Wants',
+    category: 'Engineering Mindset',
+    series: 'Engineering Mindset',
+    readTime: '6 min read',
+    excerpt: 'Building something that works does not mean building something people need. How shifting from "What can I build?" to "What problem is worth solving?" changes engineering outcomes.',
+    tags: ['Product Thinking', 'Engineering Mindset', 'Validation'],
+    emoji: '🎯'
+  },
+  {
     slug: 'thought-i-was-leading-assigning-tasks',
     title: 'I Thought I Was Leading. I Was Just Assigning Tasks.',
     category: 'Leadership',
@@ -34,16 +44,6 @@ const FEATURED_BLOGS: FeaturedBlog[] = [
     excerpt: 'AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, and trust are the real value differentiators.',
     tags: ['AI Strategy', 'Product Engineering', 'System Design'],
     emoji: '🤝'
-  },
-  {
-    slug: 'stopped-chasing-technologies',
-    title: 'I Stopped Chasing Technologies. I Started Chasing Problems.',
-    category: 'Career & Mindset',
-    series: 'Engineering Mindset',
-    readTime: '5 min read',
-    excerpt: 'Every new framework felt like progress. But learning technology is not the same as creating value. Here is the realization that changed how I build.',
-    tags: ['Career Growth', 'Problem Solving', 'Engineering'],
-    emoji: '💡'
   }
 ];
 
