@@ -67,6 +67,8 @@ export interface CertificationItem {
 export interface TestimonialItem {
   id: string;
   stars: number;
+  /** one sentence taken word-for-word from `quote`, shown first */
+  pull?: string;
   quote: string;
   name: string;
   role: string;

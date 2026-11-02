@@ -98,17 +98,6 @@ export default function AIProfileScanner() {
           transform: `perspective(1000px) rotateY(${mousePos.x * 18}deg) rotateX(${-mousePos.y * 18}deg) scale(${isHovered ? 1.02 : 1})`,
         }}
       >
-        {/* Ambient Outer Halo and Glow orbits */}
-        <div className="absolute inset-[-14px] bg-gradient-to-tr from-cyan-500/20 via-indigo-500/10 to-purple-500/20 rounded-[38px] blur-md -z-10 opacity-70"></div>
-        
-        {/* Orbital tech-circles circling behind */}
-        <div className="absolute inset-[-40px] border border-white/[0.03] rounded-full -z-20 pointer-events-none flex items-center justify-center">
-          <div className="w-full h-full rounded-full border border-dashed border-cyan-500/10 animate-[spin_55s_linear_infinite]"></div>
-        </div>
-        <div className="absolute inset-[-80px] border border-white/[0.015] rounded-full -z-20 pointer-events-none flex items-center justify-center">
-          <div className="w-full h-full rounded-full border border-dashed border-indigo-500/5 animate-[spin_110s_linear_infinite_reverse]"></div>
-        </div>
-
         {/* Outer Tech Corner Markers (HUD aesthetics) */}
         <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-cyan-400/50 rounded-tl-2xl pointer-events-none"></div>
         <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-cyan-400/50 rounded-tr-2xl pointer-events-none"></div>

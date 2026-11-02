@@ -77,13 +77,12 @@ export default function About() {
           </blockquote>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Over <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">10 years</span>, I've built AI systems across <span className="text-slate-200 font-medium">banking</span>, <span className="text-slate-200 font-medium">healthcare</span>, <span className="text-slate-200 font-medium">agriculture</span>, and <span className="text-slate-200 font-medium">e-commerce</span>, always focused on what actually moves the needle.
-            Currently at <strong className="text-slate-100 font-bold">Standard Chartered Bank</strong> as a <span className="text-slate-200 font-semibold">Lead AI Engineer</span>, pioneering <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">Legal Contract GenAI platforms</span> and <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-300 font-mono text-xs font-semibold">RAG-based security automation</span>. Also a technical author and open-source contributor.
+            Lead AI Engineer at <strong className="text-slate-100 font-bold">Standard Chartered Bank</strong> · 10+ years shipping AI that moves the needle.
           </p>
 
           {/* Core Domains */}
           <div className="flex flex-col gap-2 mt-2">
-            <span className="text-xs text-slate-500 font-mono uppercase tracking-wider">Target Domains:</span>
+            <span className="text-xs text-slate-500 font-mono uppercase tracking-wider">Domains</span>
             <div className="flex flex-wrap gap-2.5">
               {domains.map((dom) => {
                 const IconComponent = dom.icon;

@@ -49,6 +49,7 @@ export default function Services() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 key={srv.id}
+                data-tilt
                 className="group p-6 rounded-2.5xl glass-panel glass-panel-hover flex flex-col gap-5 text-left"
               >
                 <div className="flex justify-between items-center">

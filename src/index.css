@@ -451,3 +451,31 @@ html.light .glass-panel-hover:hover {
 
 
 
+
+/* ---- 3D tilt cards (driven by src/lib/tilt.ts) ---- */
+[data-tilt] {
+  position: relative;
+  transform-style: preserve-3d;
+}
+[data-tilt].is-tilting {
+  will-change: transform;
+}
+[data-tilt]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(circle at var(--tilt-x, 50%) var(--tilt-y, 50%), rgba(255, 255, 255, 0.12), transparent 55%);
+  z-index: 30;
+}
+[data-tilt].is-tilting::after {
+  opacity: 1;
+}
+
+/* in-page links stop below the fixed nav bar */
+section[id] {
+  scroll-margin-top: 84px;
+}

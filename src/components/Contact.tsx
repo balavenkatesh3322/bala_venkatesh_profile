@@ -86,7 +86,7 @@ export default function Contact() {
             </h2>
           </div>
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Have an challenging project in mind? Looking to integrate advanced AI pipelines, RAG frameworks, or agentic automation into your workflow? I'd love to chat.
+            Have an AI project in mind? Let's talk.
           </p>
 
           {/* Details list */}

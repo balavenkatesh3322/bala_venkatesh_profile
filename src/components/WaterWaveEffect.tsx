@@ -28,15 +28,6 @@ interface InteractiveRipple {
   speed: number;
 }
 
-interface ParticleBubble {
-  x: number;
-  y: number;
-  radius: number;
-  speedY: number;
-  speedX: number;
-  alpha: number;
-  maxAlpha: number;
-}
 
 export default function WaterWaveEffect({
   variant = 'bottom',
@@ -45,7 +36,6 @@ export default function WaterWaveEffect({
 }: WaterWaveEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ripplesRef = useRef<InteractiveRipple[]>([]);
-  const bubblesRef = useRef<ParticleBubble[]>([]);
 
   // Get color configuration based on theme prop
   const getColorRGBs = () => {
@@ -84,7 +74,7 @@ export default function WaterWaveEffect({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
+    let animationFrameId = 0;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -93,7 +83,6 @@ export default function WaterWaveEffect({
       if (!canvas.parentElement) return;
       width = canvas.width = canvas.parentElement.clientWidth;
       height = canvas.height = canvas.parentElement.clientHeight;
-      initBubbles();
     };
 
     const resizeObserver = new ResizeObserver(handleResize);
@@ -101,25 +90,15 @@ export default function WaterWaveEffect({
       resizeObserver.observe(canvas.parentElement);
     }
 
-    // Initialize floating sea foam / water bubbles
-    const initBubbles = () => {
-      const bubbleCount = Math.floor(width / 60);
-      const newBubbles: ParticleBubble[] = [];
-      for (let i = 0; i < bubbleCount; i++) {
-        newBubbles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: 1.5 + Math.random() * 3.5,
-          speedY: 0.3 + Math.random() * 0.7,
-          speedX: (Math.random() - 0.5) * 0.4,
-          alpha: Math.random() * 0.5 + 0.1,
-          maxAlpha: 0.4 + Math.random() * 0.4,
-        });
-      }
-      bubblesRef.current = newBubbles;
-    };
 
-    initBubbles();
+    // Only animate while the section is on screen: ~14 sections use this effect, and running
+    // them all every frame made the whole page lag (especially on phones)
+    let visible = true;
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible && !animationFrameId) animationFrameId = requestAnimationFrame(render);
+    });
+    io.observe(canvas);
 
     // Wave physics time parameter
     let step = 0;
@@ -266,32 +245,6 @@ export default function WaterWaveEffect({
         ctx.fill();
       }
 
-      // -------------------------------------------------------------
-      // 5. Floating Water Bubbles / Foam Drops
-      // -------------------------------------------------------------
-      bubblesRef.current.forEach((b) => {
-        b.y -= b.speedY;
-        b.x += Math.sin(step + b.y * 0.01) * b.speedX;
-
-        // Reset bubble when it floats off top
-        if (b.y < -10) {
-          b.y = height + 10;
-          b.x = Math.random() * width;
-        }
-
-        ctx.beginPath();
-        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
-        ctx.fillStyle = isLightTheme
-          ? `rgba(${colors.c3}, ${b.alpha * 0.85})`
-          : `rgba(${colors.c3}, ${b.alpha})`;
-        ctx.fill();
-
-        // Specular highlight dot on bubble
-        ctx.beginPath();
-        ctx.arc(b.x - b.radius * 0.3, b.y - b.radius * 0.3, b.radius * 0.3, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-        ctx.fill();
-      });
 
       // -------------------------------------------------------------
       // 6. Interactive Liquid Water Drop Ripples
@@ -327,13 +280,14 @@ export default function WaterWaveEffect({
         }
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      animationFrameId = visible ? requestAnimationFrame(render) : 0;
     };
 
     render();
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      io.disconnect();
       if (canvas.parentElement) {
         resizeObserver.unobserve(canvas.parentElement);
       }

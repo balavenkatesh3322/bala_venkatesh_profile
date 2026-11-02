@@ -3,7 +3,7 @@ import { ShieldCheck, Zap, Terminal, ChevronDown } from 'lucide-react';
 import { motion } from 'motion/react';
 import { statsData } from '../data';
 import AIProfileScanner from './AIProfileScanner';
-import WaterWaveEffect from './WaterWaveEffect';
+import HeroLamp from './HeroLamp';
 
 export default function Hero() {
   // Simple elegant counter effects using react hooks
@@ -38,18 +38,23 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-28 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden bg-slate-950 text-white">
-      {/* Round Ambient Water Wave Effect */}
-      <WaterWaveEffect variant="dual" color="cyan" />
-
-      {/* Background Decorative Blurs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-indigo-600/15 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none animate-pulse-glow"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-cyan-600/10 rounded-full blur-[120px] sm:blur-[140px] pointer-events-none animate-pulse-glow-delayed"></div>
-      <div className="absolute top-[30%] right-[10%] w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-purple-600/10 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none"></div>
+    <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-28 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden bg-[#050607] text-white">
+      {/* Near-black room with a faint grid: the only light in the hero comes from the lamps */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+          backgroundSize: '76px 76px',
+          backgroundPosition: 'center top',
+        }}
+      />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left: Text & Actions */}
-        <div className="lg:col-span-7 flex flex-col gap-6 text-left">
+        <div data-lamp-words className="lg:col-span-7 flex flex-col gap-6 text-left lg:pt-24">
+          {/* Headline + CTA share a width so the button can sit centred under the words */}
+          <div className="flex flex-col gap-6 lg:w-fit">
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,7 +74,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row flex-wrap gap-3.5 mt-2 w-full"
+            className="flex flex-col sm:flex-row flex-wrap gap-3.5 mt-2 w-full lg:justify-center"
           >
             <a
               href="https://wa.me/919003812808?text=Hi%20Bala%2C%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20business%20AI%20solution%20with%20you!"
@@ -81,6 +86,7 @@ export default function Hero() {
               <span>Get AI Solution Now</span>
             </a>
           </motion.div>
+          </div>
 
           {/* Stats Counters */}
           <motion.div
@@ -113,7 +119,7 @@ export default function Hero() {
         </div>
 
         {/* Right: Interactive AI Profile Scanner & Floating Visual Matrix */}
-        <div className="lg:col-span-5 relative flex items-center justify-center mt-8 lg:mt-0 w-full max-w-[340px] sm:max-w-[380px] aspect-[3/4] mx-auto lg:mx-0">
+        <div data-lamp-col className="order-first lg:order-none lg:col-span-5 relative flex items-center justify-center mt-44 mb-44 lg:my-0 w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[320px] aspect-[3/4] mx-auto lg:translate-y-10">
           <AIProfileScanner />
         </div>
       </div>
@@ -150,6 +156,9 @@ export default function Hero() {
         
         <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 transition-colors animate-bounce" />
       </div>
+
+      {/* Interactive hanging lamp: switch, slingshot, swinging shade */}
+      <HeroLamp />
     </section>
   );
 }

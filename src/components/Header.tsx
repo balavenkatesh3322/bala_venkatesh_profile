@@ -71,10 +71,11 @@ export default function Header() {
   }, []);
 
   const menuItems: Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }> = [
-    { label: 'Live AI & Cases', href: '#ai-case-animation', isExternal: false },
-    { label: 'Endorsements', href: '#testimonials', isExternal: false },
-    { label: 'Services', href: '#services', isExternal: false },
-    { label: 'Build with Bala', href: '#lessons', isNew: true, isExternal: false },
+    { label: 'Results', href: '#ai-case-animation', isExternal: false },
+    { label: 'Reels', href: '#reels', isExternal: false },
+    { label: 'Reviews', href: '#testimonials', isExternal: false },
+    { label: 'Experience', href: '#experience', isExternal: false },
+    { label: 'Learn AI', href: '#lessons', isNew: true, isExternal: false },
   ];
 
   const appStoreLinks = [
@@ -168,15 +169,16 @@ export default function Header() {
                   )}
                   {isActive && (
                     <motion.div
-                      layoutId="activeNavIndicator"
+                      initial={{ opacity: 0, scaleX: 0.4 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
                       className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]"
-                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                      transition={{ duration: 0.25 }}
                     />
                   )}
                 </a>
 
-                {/* Render Bala App Store Dropdown Trigger right after Services */}
-                {item.href === '#services' && (
+                {/* Apps dropdown sits at the end of the section links */}
+                {item.href === '#experience' && (
                   <div className="relative" ref={dropdownRef}>
                     <button
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -187,7 +189,7 @@ export default function Header() {
                       }`}
                     >
                       <Sparkles className="w-3.5 h-3.5 text-cyan-300 animate-pulse" />
-                      <span>Bala App Store</span>
+                      <span>Apps</span>
                       <span className="px-1.5 py-0.5 rounded text-[8px] font-mono font-black tracking-wide bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950">
                         APPS
                       </span>
@@ -272,7 +274,7 @@ export default function Header() {
             href="#contact"
             className="px-5 py-2.5 bg-white/5 hover:bg-cyan-500 hover:text-slate-950 border border-white/10 hover:border-cyan-400 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 group text-white shadow-inner"
           >
-            Speak with Me
+            Hire Bala
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
@@ -375,7 +377,7 @@ export default function Header() {
                   onClick={() => setIsOpen(false)}
                   className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 text-slate-950 hover:from-cyan-400 hover:to-indigo-400 rounded-xl font-bold transition-all duration-300 inline-flex items-center gap-1.5 text-sm"
                 >
-                  Speak with Me <ArrowUpRight className="w-4 h-4" />
+                  Hire Bala <ArrowUpRight className="w-4 h-4" />
                 </a>
               </motion.div>
             </div>

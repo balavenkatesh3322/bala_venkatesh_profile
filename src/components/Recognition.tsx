@@ -44,7 +44,7 @@ export default function Recognition() {
               Best Performer of the Year 2024
             </h3>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-              Recognized by <strong className="text-slate-100 font-bold">Standard Chartered Bank</strong> for pioneering advanced AI-driven DevSecOps security verification workflows. Automating continuous compliance evaluations transformed complex validation workloads into lightning-fast CI/CD stages.
+              AI-driven DevSecOps automation at <strong className="text-slate-100 font-bold">Standard Chartered Bank</strong>.
             </p>
             
             {/* Badge Tag */}

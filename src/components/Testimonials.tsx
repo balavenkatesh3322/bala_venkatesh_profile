@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Star, MessageSquareQuote, CheckCircle2, Building2, Stethoscope, Cpu, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { testimonialsData } from '../data';
 import WaterWaveEffect from './WaterWaveEffect';
 
 export default function Testimonials() {
+  const [openId, setOpenId] = useState<string | null>(null);
   const getCategoryTheme = (category: 'banking' | 'healthcare' | 'agritech') => {
     switch (category) {
       case 'banking':
@@ -56,15 +57,11 @@ export default function Testimonials() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-100 leading-tight">
-            Validated by Enterprise Leaders,{' '}
+            What{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400">
-              Founders & Physicians
+              Leaders Say
             </span>
           </h2>
-
-          <p className="text-sm sm:text-base text-slate-300 font-medium leading-relaxed max-w-xl">
-            Real outcomes and testimonials from leaders who deployed AI systems built by Bala.
-          </p>
         </div>
 
         {/* Testimonials 3-Column Grid */}
@@ -80,6 +77,7 @@ export default function Testimonials() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.12 }}
                 key={test.id}
+                data-tilt
                 className={`group p-6 sm:p-7 rounded-3xl bg-slate-900/60 hover:bg-slate-900/90 border ${theme.border} shadow-2xl ${theme.glow} flex flex-col justify-between gap-6 transition-all duration-300 hover:-translate-y-1.5 text-left relative overflow-hidden backdrop-blur-md`}
               >
                 {/* Subtle top indicator highlight */}
@@ -116,9 +114,19 @@ export default function Testimonials() {
 
                 {/* Main Quote */}
                 <div className="flex flex-col gap-3 relative z-10">
-                  <p className="text-xs sm:text-[13px] text-slate-200 leading-relaxed font-normal italic">
-                    "{test.quote}"
+                  {/* the pull quote is an exact sentence from their own words; the rest is one tap away */}
+                  <p className="text-base sm:text-lg text-slate-100 leading-snug font-semibold">
+                    "{openId === test.id || !test.pull ? test.quote : test.pull}"
                   </p>
+                  {test.pull && (
+                    <button
+                      type="button"
+                      onClick={() => setOpenId(openId === test.id ? null : test.id)}
+                      className="self-start text-[11px] font-mono text-slate-400 hover:text-cyan-300 transition-colors"
+                    >
+                      {openId === test.id ? 'Show less' : 'Read full'}
+                    </button>
+                  )}
 
                   {/* Quantified Highlight Metric */}
                   <div className="mt-1 p-2.5 rounded-xl bg-slate-950/80 border border-white/10 flex items-center gap-2">
@@ -168,13 +176,8 @@ export default function Testimonials() {
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <div>
-              <div className="text-xs sm:text-sm font-bold text-white">
-                100% Verified Track Record Across Regulated & Edge Environments
-              </div>
-              <div className="text-[11px] text-slate-400 font-mono">
-                Standard Chartered (India) • Phraze Health (Silicon Valley) • AIBOTS (Malaysia) • Teesside University (London)
-              </div>
+            <div className="text-[11px] sm:text-xs text-slate-300 font-mono">
+              Standard Chartered · Phraze Health · AIBOTS · Teesside University
             </div>
           </div>
 
@@ -184,7 +187,7 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-mono font-bold text-cyan-300 flex items-center gap-2 transition-all cursor-pointer shrink-0 hover:scale-[1.02]"
           >
-            <span>View All LinkedIn Recommendations</span>
+            <span>All recommendations</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>

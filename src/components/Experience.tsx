@@ -28,7 +28,7 @@ export default function Experience() {
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl">
-            From agile startup data labs to leading global banks — designing and deploying AI pipelines that matter.
+            Startups to global banks.
           </p>
         </div>
 
@@ -61,6 +61,7 @@ export default function Experience() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeExp.id}
+                data-tilt
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}

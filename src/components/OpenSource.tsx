@@ -35,14 +35,14 @@ export default function OpenSource() {
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl">
-            Open-source projects and developer resources shared freely with developers around the globe.
+            Free tools for developers worldwide.
           </p>
         </div>
 
         {/* Featured Showcase Banners Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {/* Featured Showcase Banner 1: Bala AI Studio Projects */}
-          <motion.div
+          <motion.div data-tilt
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -57,16 +57,13 @@ export default function OpenSource() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-400/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono font-bold uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3 text-cyan-400" /> Featured Showcase
-                  </span>
                   <span className="text-cyan-400 text-xs font-mono font-bold">BALA APP STORE</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white">
                   Bala App Store
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Explore Bala's full suite of interactive AI applications, generative agents, RAG implementations, and web products live in one place.
+                  All of Bala's live AI apps in one place.
                 </p>
               </div>
             </div>
@@ -83,7 +80,7 @@ export default function OpenSource() {
           </motion.div>
 
           {/* Featured Showcase Banner 2: Neural Decode (3D AI Architectures) */}
-          <motion.div
+          <motion.div data-tilt
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -98,16 +95,13 @@ export default function OpenSource() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-400/20 border border-purple-400/40 text-purple-300 text-[10px] font-mono font-bold uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3 text-purple-400" /> Featured Showcase
-                  </span>
                   <span className="text-purple-300 text-xs font-mono font-bold">3D AI VISUALIZER</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white">
                   Neural Decode — 3D AI Architectures
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Interactive 3D spatial visualizer built by Bala to decode complex neural network architectures, layer mechanics, and deep learning models in 3D.
+                  Explore neural network architectures in 3D.
                 </p>
               </div>
             </div>
@@ -124,7 +118,7 @@ export default function OpenSource() {
           </motion.div>
 
           {/* Featured Showcase Banner 3: Open LLM Registry */}
-          <motion.div
+          <motion.div data-tilt
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -139,16 +133,13 @@ export default function OpenSource() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-400/20 border border-emerald-400/40 text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3 text-emerald-400" /> Featured Showcase
-                  </span>
                   <span className="text-emerald-400 text-xs font-mono font-bold">LLM REGISTRY</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white">
                   Open LLM Registry
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Comprehensive open-source catalog & directory for open weights Large Language Models, architectures, and evaluation benchmarks.
+                  Open-weight LLMs, architectures and benchmarks.
                 </p>
               </div>
             </div>
@@ -165,7 +156,7 @@ export default function OpenSource() {
           </motion.div>
 
           {/* Featured Showcase Banner 4: Awesome Developer Portfolio */}
-          <motion.div
+          <motion.div data-tilt
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -180,16 +171,13 @@ export default function OpenSource() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-[10px] font-mono font-bold uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3 text-indigo-400" /> Featured Showcase
-                  </span>
                   <span className="text-slate-400 text-xs font-mono">2,000+ Portfolios</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white">
                   Awesome Developer Portfolio
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Browse 2,000+ world-class developer portfolio designs curated to inspire engineers. Add your own portfolio to showcase your work to the world!
+                  2,000+ developer portfolios. Add yours.
                 </p>
               </div>
             </div>
@@ -217,6 +205,7 @@ export default function OpenSource() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 key={repo.id}
+                data-tilt
                 className="group p-6 rounded-2.5xl bg-white/5 border border-white/10 hover:border-cyan-500/30 flex flex-col justify-between gap-5 shadow-xl hover:-translate-y-1.5 hover:shadow-black/60 transition-all duration-300 text-left"
               >
                 <div className="flex flex-col gap-4">

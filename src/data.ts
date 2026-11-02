@@ -21,28 +21,28 @@ export const servicesData: ServiceItem[] = [
     id: 's-1',
     num: '01',
     title: 'AI Strategy & Consulting',
-    desc: 'Identify high-impact AI opportunities, build implementation roadmaps, and align custom technology investments with your business goals.',
+    desc: 'Find the AI wins worth building, and a roadmap to ship them.',
     iconName: 'Lightbulb'
   },
   {
     id: 's-2',
     num: '02',
     title: 'Generative AI & RAG',
-    desc: 'Design and deploy state-of-the-art LLM-powered applications, robust RAG pipelines, and multi-agent systems using LangChain, LangGraph, and crewAI.',
+    desc: 'LLM apps, RAG pipelines and multi-agent systems, in production.',
     iconName: 'Brain'
   },
   {
     id: 's-3',
     num: '03',
     title: 'Custom Model Development',
-    desc: 'Build bespoke Natural Language Processing (NLP), Computer Vision (CV), and Deep Learning (DL) models fine-tuned to your specific domain datasets.',
+    desc: 'NLP, vision and deep learning models tuned to your data.',
     iconName: 'Code'
   },
   {
     id: 's-4',
     num: '04',
     title: 'AI Team Leadership',
-    desc: 'Guide technical engineering teams, lead agile model delivery, and bridge complex technical insights with high-level business stakeholder outcomes.',
+    desc: 'Lead AI teams from first model to business outcome.',
     iconName: 'Users'
   }
 ];
@@ -54,12 +54,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'Lead AI Engineer',
     date: '2024 – Present · India (Hybrid)',
     highlights: [
-      "Architected end-to-end GenAI platform for SCB's legal contract portfolio — automated metadata extraction, classification, clause analysis, and pipeline orchestration.",
-      'Built LLM-powered extraction engine eliminating manual tagging across thousands of high-value legal contracts.',
-      'Engineered an AI-powered risk detection layer scanning 100% of contracts for clause deviations, missing liability caps, and regulatory policy breaches, replacing error-prone manual sampling with full-coverage automated legal risk screening.',
-      'Built a vendor concentration risk dashboard surfacing portfolio-level exposure across all active agreements, enabling compliance and legal teams to identify single-vendor dependency risks before they become contractual liabilities.'
+      'Built the GenAI platform for the bank\'s legal contract portfolio.',
+      'AI risk screening now covers 100% of contracts, not samples.'
     ],
-    tags: ['Databricks', 'GenAI Architecture', 'LLMs', 'Legal Tech', 'Risk Analytics', 'Enterprise NLP', 'Vector RAG']
+    tags: ['GenAI', 'LLMs', 'Databricks', 'RAG']
   },
   {
     id: 'scb-devsecops',
@@ -67,12 +65,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'AI Engineer',
     date: 'Sep 2023 – 2024',
     highlights: [
-      'Pioneered an enterprise-grade RAG-based system to automate misconfiguration detection and remediation in Azure DevOps cloud environments, significantly strengthening security posture.',
-      'Developed tailored LLM-powered pipelines that replaced tedious manual compliance audits, reducing continuous pipeline security review times by over 80%.',
-      'Honored with the highly competitive "Best Performer of the Year 2024" award for exceptional milestones in DevSecOps automation.',
-      'Partnered closely with cloud infrastructure and security architects to seamlessly integrate predictive models into production CI/CD workflows.'
+      'RAG system that finds and fixes Azure DevOps misconfigurations.',
+      'Security review time cut by 80%+ · Best Performer of the Year 2024.'
     ],
-    tags: ['RAG', 'LLMs', 'Azure DevOps', 'Python', 'Security Automation']
+    tags: ['RAG', 'LLMs', 'Azure DevOps', 'Security']
   },
   {
     id: 'bighaat',
@@ -80,12 +76,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'Lead Data Scientist',
     date: 'Mar 2022 – Mar 2023',
     highlights: [
-      'Spearheaded the development of a production computer vision mobile application ("Crop Doctor") empowering millions of farmers to run plant pathology checks instantly.',
-      'Curated complex datasets and fine-tuned deep learning classifiers on agricultural images, achieving industry-leading model reliability under extreme real-world lighting variations.',
-      'Ported model weights to on-device neural runtimes via TensorFlow Lite (TFLite), facilitating fast offline diagnostics in areas with spotty connectivity.',
-      'Fostered collaborative workflows across engineers, field agronomists, and product managers to successfully ship a complete commercial-grade app.'
+      'Shipped "Crop Doctor": plant disease checks for millions of farmers.',
+      'Runs fully offline on the phone with TensorFlow Lite.'
     ],
-    tags: ['Computer Vision', 'Deep Learning', 'TensorFlow Lite', 'Mobile AI', 'Python']
+    tags: ['Computer Vision', 'TFLite', 'Mobile AI']
   },
   {
     id: 'aibots-medosys',
@@ -93,11 +87,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'Data Scientist',
     date: 'Oct 2020 – Jul 2021',
     highlights: [
-      'Pioneered an NLP-driven speech transcription and summarization module producing structured clinical charts directly from patient consultations, decreasing documentation work by ~60%.',
-      'Configured streaming acoustic interfaces and connected them with bespoke medical Named Entity Recognition (NER) models to extract medicines and symptoms.',
-      'Spearheaded developer sprints, aligned release pipelines, and managed regular deliverables for international medical healthcare clients.'
+      'Speech-to-chart AI for consultations: ~60% less documentation work.',
+      'Medical NER pulls medicines and symptoms from live speech.'
     ],
-    tags: ['NLP', 'Healthcare AI', 'Speech-to-Text', 'Medical NER']
+    tags: ['NLP', 'Healthcare AI', 'Medical NER']
   },
   {
     id: 'aibots-seismic',
@@ -105,11 +98,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'Data Scientist',
     date: 'Jan 2020 – Oct 2020',
     highlights: [
-      'Parsed multi-dimensional seismic sensor feeds to forecast structural anomalies for enterprise hydrocarbon oil and gas operators.',
-      'Devised and automated robust deep-learning anomaly trackers on spatial visual slices to flag geological movements in real-time.',
-      'Validated diagnostic heuristics alongside veteran oil and gas domain geologists to ensure model alignment with scientific standards.'
+      'Deep-learning anomaly detection on seismic data for oil & gas.',
+      'Flags geological movement in real time.'
     ],
-    tags: ['Computer Vision', 'Anomaly Detection', 'Spatiotemporal AI', 'Oil & Gas']
+    tags: ['Computer Vision', 'Anomaly Detection']
   },
   {
     id: 'spritle',
@@ -117,11 +109,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'Data Scientist',
     date: 'Dec 2018 – Jan 2020',
     highlights: [
-      'Designed a speech-to-text medical scribe using a secure hands-free voice interface to help physicians compile electronic health records effortlessly.',
-      'Optimized natural language processing steps to distill complex verbal discussions into clean, categorized medical chapters.',
-      'Empowered medical staff to cut down consultation record-drafting overhead from an average of 15 minutes to under 2 minutes.'
+      'Hands-free voice scribe for physicians.',
+      'Record drafting cut from 15 minutes to under 2.'
     ],
-    tags: ['NLP', 'Voice UI', 'Healthcare Systems', 'Python']
+    tags: ['NLP', 'Voice UI', 'Healthcare']
   },
   {
     id: 'solverminds',
@@ -129,11 +120,10 @@ export const experienceData: ExperienceItem[] = [
     role: 'Software Developer',
     date: 'Oct 2016 – Dec 2017',
     highlights: [
-      'Built and maintained highly responsive corporate systems handling extensive maritime data processing and safety check reviews.',
-      'Authored modules for "Mack Lite," an enterprise application tracking vessel reports and global safety logs.',
-      'Developed core components for "Time Transport," an enterprise vehicle routing platform highlighting real-time live map updates.'
+      'Enterprise maritime safety and vessel-reporting systems.',
+      'Live-map vehicle routing platform.'
     ],
-    tags: ['Web Development', 'Java EE', 'Maritime Logs', 'Live Tracking']
+    tags: ['Java EE', 'Web', 'Live Tracking']
   }
 ];
 
@@ -201,7 +191,7 @@ export const ossReposData: OSSRepo[] = [
   {
     id: 'oss-4',
     name: 'Face Unlock System',
-    desc: 'Lightweight on-device face verification authentication system using state-of-the-art computer vision facial embeddings.',
+    desc: 'On-device face verification with facial embeddings.',
     tech: 'Python · CV · PyTorch',
     iconName: 'ScanFace',
     bgHex: 'bg-rose-500/10 border-rose-500/20 text-rose-400',
@@ -210,7 +200,7 @@ export const ossReposData: OSSRepo[] = [
   {
     id: 'oss-2',
     name: 'E-commerce Analytics',
-    desc: 'In-depth cohort analysis, predictive customer valuation, and visualization pipelines for e-commerce transactional trends.',
+    desc: 'Cohorts, customer value and sales trend dashboards.',
     tech: 'Python · Data Viz · Analytics',
     iconName: 'LineChart',
     bgHex: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
@@ -219,7 +209,7 @@ export const ossReposData: OSSRepo[] = [
   {
     id: 'oss-5',
     name: 'AI Experiment Hub',
-    desc: 'A developer-centric local registry designed to seamlessly benchmark, log, and register machine learning models.',
+    desc: 'Benchmark, log and register ML models locally.',
     tech: 'MLOps · Python · FastAPI',
     iconName: 'FlaskConical',
     bgHex: 'bg-orange-500/10 border-orange-500/20 text-orange-400',
@@ -287,6 +277,7 @@ export const testimonialsData: TestimonialItem[] = [
   {
     id: 't-banking',
     stars: 5,
+    pull: 'He automated compliance audits across 400+ repositories, slashing review time from 15 minutes to 1.8 minutes.',
     quote: 'Bala exhibits an outstanding ability to break down highly complex mathematical and structural AI blocks and deploy them securely at enterprise scale. He automated compliance audits across 400+ repositories, slashing review time from 15 minutes to 1.8 minutes. His engineering earned him our Best Performer of the Year 2024 recognition.',
     name: 'ArunVivek',
     role: 'Head of Cloud Security',
@@ -301,6 +292,7 @@ export const testimonialsData: TestimonialItem[] = [
   {
     id: 't-healthcare',
     stars: 5,
+    pull: 'His deep learning acoustic and NER pipeline achieved 98%+ accuracy, eliminating hours of doctor charting burnout.',
     quote: 'As a practicing physician and healthcare founder, I was blown away by Bala\'s ability to translate complex clinical dialogues and medical taxonomy into real-time ambient EHR notes. His deep learning acoustic and NER pipeline achieved 98%+ accuracy, eliminating hours of doctor charting burnout.',
     name: 'Brandon McCutcheon, MD',
     role: 'Co-Founder & Physician',
@@ -315,6 +307,7 @@ export const testimonialsData: TestimonialItem[] = [
   {
     id: 't-agri',
     stars: 5,
+    pull: 'His ability to take heavy neural vision models and compress them into sub-15MB offline mobile edge runtimes for rural agriculture and healthcare diagnostics is truly world-class.',
     quote: 'Bala is extremely passionate about applying AI and Machine Learning to solve high-impact real-world problems. His ability to take heavy neural vision models and compress them into sub-15MB offline mobile edge runtimes for rural agriculture and healthcare diagnostics is truly world-class.',
     name: 'Mahathir Muhammad Rafie',
     role: 'Chief Executive Officer',

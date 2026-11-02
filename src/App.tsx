@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useRef } from 'react';
+import React, { Suspense, lazy, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
+import InstagramReels from './components/InstagramReels';
 import About from './components/About';
 import Services from './components/Services';
 import Experience from './components/Experience';
@@ -27,8 +28,11 @@ import Footer from './components/Footer';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import ScrollCelebration from './components/ScrollCelebration';
 import AIBalaBot from './components/AIBalaBot';
-import BalaLessons from './components/BalaLessons';
 import Analytics from './components/Analytics';
+import { initTilt } from './lib/tilt';
+
+// the lessons area is large and only opened via #lessons, so it loads on demand
+const BalaLessons = lazy(() => import('./components/BalaLessons'));
 
 function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -132,14 +136,32 @@ function CustomCursor() {
 }
 
 export default function App() {
+  // 3D tilt + light sheen on every [data-tilt] card
+  useEffect(() => initTilt(), []);
   const [currentPath, setCurrentPath] = React.useState<string>(window.location.hash || '#home');
 
   useEffect(() => {
     document.title = "Bala Venkatesh | Lead AI Engineer & Data Scientist";
 
+    // Only jump to the top when switching between the main page and the lessons view.
+    // Section links (#reels, #contact, ...) must keep the browser's own scroll to the section.
+    let lastPath = window.location.hash || '#home';
     const handleHashChange = () => {
-      setCurrentPath(window.location.hash || '#home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const hash = window.location.hash || '#home';
+      const wasLessons = lastPath.startsWith('#lessons');
+      const isLessons = hash.startsWith('#lessons');
+      lastPath = hash;
+      setCurrentPath(hash);
+      if (isLessons && !wasLessons) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (!isLessons && wasLessons) {
+        // the main page re-renders first, then we scroll to the requested section
+        setTimeout(() => {
+          const target = hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+          if (target) target.scrollIntoView();
+          else window.scrollTo({ top: 0 });
+        }, 60);
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -168,11 +190,14 @@ export default function App() {
       {/* Main Sections */}
       <main>
         {isLessonsView ? (
-          <BalaLessons />
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <BalaLessons />
+          </Suspense>
         ) : (
           <>
             <Hero />
             <Marquee />
+            <InstagramReels />
             <AIWorkflowAcademy />
             <Testimonials />
             <About />

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { Suspense, lazy, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   TrendingUp, 
@@ -22,9 +22,12 @@ import {
   ChevronUp
 } from 'lucide-react';
 import WaterWaveEffect from './WaterWaveEffect';
-import BankingDevSecOpsSimulator from './simulators/BankingDevSecOpsSimulator';
-import AgricultureEdgeVisionSimulator from './simulators/AgricultureEdgeVisionSimulator';
-import HealthcareClinicalScribeSimulator from './simulators/HealthcareClinicalScribeSimulator';
+// simulators only load when a case card is opened
+const BankingDevSecOpsSimulator = lazy(() => import('./simulators/BankingDevSecOpsSimulator'));
+const AgricultureEdgeVisionSimulator = lazy(() => import('./simulators/AgricultureEdgeVisionSimulator'));
+const HealthcareClinicalScribeSimulator = lazy(() => import('./simulators/HealthcareClinicalScribeSimulator'));
+const SimFallback = () => <div className="h-64 rounded-2xl bg-slate-900/60 animate-pulse" />;
+import LiveImpactRace from './LiveImpactRace';
 
 type GrowthPillar = 'business' | 'innovation' | 'problem_solving';
 
@@ -377,6 +380,7 @@ export default function AIWorkflowAcademy() {
   const [expandedPillar, setExpandedPillar] = useState<GrowthPillar | null>(null);
   const [activeStageIndex, setActiveStageIndex] = useState<number>(0);
   const simulatorRef = useRef<HTMLDivElement | null>(null);
+  const [raceDomain, setRaceDomain] = useState<GrowthPillar>('business');
 
   const activePillar = expandedPillar || 'business';
   const currentPillarData = PILLARS_DATA[activePillar];
@@ -387,6 +391,7 @@ export default function AIWorkflowAcademy() {
       setExpandedPillar(null);
     } else {
       setExpandedPillar(pillarId);
+      setRaceDomain(pillarId);
       setActiveStageIndex(0);
       setTimeout(() => {
         simulatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -432,11 +437,14 @@ export default function AIWorkflowAcademy() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
-            Click any card to test-drive real-time AI in <span className="text-emerald-400 font-bold">Banking</span>, <span className="text-violet-400 font-bold">Agritech</span>, and <span className="text-cyan-400 font-bold">Healthcare</span>.
+            Tap a card to try it live.
           </p>
         </div>
 
         {/* 3 EXPANDABLE DOMAIN CARDS */}
+        {/* Live value: manual vs AI racing on the same clock */}
+        <LiveImpactRace domain={raceDomain} onDomainChange={setRaceDomain} />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
           {(Object.keys(PILLARS_DATA) as GrowthPillar[]).map((pillarKey) => {
             const pillar = PILLARS_DATA[pillarKey];
@@ -446,6 +454,7 @@ export default function AIWorkflowAcademy() {
             return (
               <motion.div
                 key={pillar.id}
+                data-tilt
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2 }}
                 onClick={() => handleTogglePillar(pillarKey)}
@@ -524,9 +533,10 @@ export default function AIWorkflowAcademy() {
 
                 {isExpanded && (
                   <motion.div
-                    layoutId="activePillarCardGlow"
+                    initial={{ opacity: 0, scaleX: 0.4 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
                     className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400"
-                    transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                    transition={{ duration: 0.3 }}
                   />
                 )}
               </motion.div>
@@ -542,7 +552,7 @@ export default function AIWorkflowAcademy() {
             className="flex items-center justify-center gap-3 py-4 px-6 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-xs sm:text-sm font-mono text-cyan-300 shadow-[0_0_30px_rgba(6,182,212,0.15)] mx-auto max-w-2xl text-center"
           >
             <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 animate-spin" style={{ animationDuration: '4s' }} />
-            <span>Click any card above to expand & test-drive its real-time production AI simulator</span>
+            <span>Tap a card to try it</span>
           </motion.div>
         )}
 
@@ -670,7 +680,7 @@ export default function AIWorkflowAcademy() {
                         transition={{ duration: 0.25 }}
                         className="h-full"
                       >
-                        <BankingDevSecOpsSimulator />
+                        <Suspense fallback={<SimFallback />}><BankingDevSecOpsSimulator /></Suspense>
                       </motion.div>
                     )}
 
@@ -683,7 +693,7 @@ export default function AIWorkflowAcademy() {
                         transition={{ duration: 0.25 }}
                         className="h-full"
                       >
-                        <AgricultureEdgeVisionSimulator />
+                        <Suspense fallback={<SimFallback />}><AgricultureEdgeVisionSimulator /></Suspense>
                       </motion.div>
                     )}
 
@@ -696,7 +706,7 @@ export default function AIWorkflowAcademy() {
                         transition={{ duration: 0.25 }}
                         className="h-full"
                       >
-                        <HealthcareClinicalScribeSimulator />
+                        <Suspense fallback={<SimFallback />}><HealthcareClinicalScribeSimulator /></Suspense>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -864,10 +874,10 @@ export default function AIWorkflowAcademy() {
               <Sparkles className="w-3.5 h-3.5" /> Quantified Production Impact
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              Ready to Accelerate Your Enterprise AI Roadmap?
+              Want results like these?
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              From slashing manual engineering compliance in banking to deploying 0MB edge runtimes in rural agriculture, let's architect your solution together.
+              Let's build yours.
             </p>
           </div>
 

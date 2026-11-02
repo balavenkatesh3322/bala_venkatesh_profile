@@ -70,15 +70,14 @@ export default function Book() {
 
             {/* Book description */}
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Co-authored alongside <span className="text-cyan-400 font-semibold">23 global data science experts</span>.
-              Provides practical, actionable insights on how businesses can successfully leverage, monetize, and scale value from their raw data assets.
+              Co-authored with <span className="text-cyan-400 font-semibold">23 data science experts</span>: turning data into business value.
             </p>
 
             {/* Collaboration details */}
             <div className="inline-flex items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5 w-fit">
               <Award className="w-4 h-4 text-yellow-400 shrink-0" />
               <p className="text-[11px] sm:text-xs text-slate-400">
-                Co-authored with industry leaders from <strong className="text-slate-200">IBM, Siemens, and Hilton Hotels</strong>.
+                With leaders from <strong className="text-slate-200">IBM, Siemens, and Hilton Hotels</strong>.
               </p>
             </div>
 

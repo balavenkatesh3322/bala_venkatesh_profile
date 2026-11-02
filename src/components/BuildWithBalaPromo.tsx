@@ -75,7 +75,7 @@ export default function BuildWithBalaPromo() {
               Build with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-400">Bala</span>
             </h2>
             <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
-              In-depth articles, evaluation structures, architectural playbooks, and mental models written by Bala Venkatesh to help engineering teams and founders navigate complex AI systems.
+              Short reads on building AI people actually need.
             </p>
           </div>
 
@@ -97,6 +97,7 @@ export default function BuildWithBalaPromo() {
           {FEATURED_BLOGS.map((blog, idx) => (
             <motion.div
               key={blog.slug}
+              data-tilt
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -125,9 +126,6 @@ export default function BuildWithBalaPromo() {
                   <h3 className="text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">
                     {blog.title}
                   </h3>
-                  <p className="text-xs text-slate-400 font-normal leading-relaxed line-clamp-3">
-                    {blog.excerpt}
-                  </p>
                 </div>
               </div>
 
@@ -161,11 +159,8 @@ export default function BuildWithBalaPromo() {
             </div>
             <div className="flex flex-col gap-1">
               <h4 className="text-sm sm:text-base font-extrabold text-white">
-                Want to level up your AI system architecture?
+                More articles inside Build with Bala
               </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Dive into the complete collection of articles, interactive code snippets, and mental frameworks inside Build with Bala.
-              </p>
             </div>
           </div>
 

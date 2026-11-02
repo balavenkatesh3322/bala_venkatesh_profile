@@ -57,7 +57,8 @@ export default function ScrollCelebration() {
   useEffect(() => {
     if (scrollListenerRef.current) return;
 
-    // Use IntersectionObserver to trigger precisely when entering the Philosophy section
+    // Trigger only when the visitor reaches the footer, i.e. after they've passed the Contact section
+    // (it used to fire at Philosophy, and the modal then covered the contact form)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -70,12 +71,11 @@ export default function ScrollCelebration() {
         });
       },
       {
-        threshold: 0.1, // Trigger when 10% of the Philosophy section enters the viewport
-        rootMargin: "0px 0px -50px 0px" // Trigger slightly before it occupies full view
+        threshold: 0.6, // most of the footer is on screen
       }
     );
 
-    const target = document.getElementById('philosophy');
+    const target = document.querySelector('footer');
     if (target) {
       observer.observe(target);
     }
