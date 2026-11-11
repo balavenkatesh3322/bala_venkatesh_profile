@@ -85,6 +85,13 @@ export default function Hero() {
               <span className="w-2 h-2 rounded-full bg-slate-950 animate-ping" />
               <span>Get AI Solution Now</span>
             </a>
+            <a
+              href="#learn-3d"
+              className="w-full sm:w-auto px-6 py-3.5 border border-white/15 hover:border-amber-300/60 bg-white/5 hover:bg-white/10 text-slate-100 font-bold rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
+            >
+              <span>Learn AI in 3D</span>
+              <span className="px-1.5 py-0.5 rounded bg-amber-300 text-slate-950 text-[9px] font-mono font-black">FREE</span>
+            </a>
           </motion.div>
           </div>
 

@@ -7,7 +7,8 @@ import {
   ChevronDown, 
   Boxes, 
   Cpu, 
-  Globe 
+  Globe,
+  Bot
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
@@ -72,6 +73,7 @@ export default function Header() {
 
   const menuItems: Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }> = [
     { label: 'Results', href: '#ai-case-animation', isExternal: false },
+    { label: 'AI in 3D', href: '#learn-3d', isExternal: false },
     { label: 'Reels', href: '#reels', isExternal: false },
     { label: 'Reviews', href: '#testimonials', isExternal: false },
     { label: 'Experience', href: '#experience', isExternal: false },
@@ -96,6 +98,15 @@ export default function Header() {
       badge: '3D AI',
       badgeColor: 'from-purple-400 to-indigo-400 text-slate-950',
       iconColor: 'text-purple-400 bg-purple-400/10 border-purple-400/30'
+    },
+    {
+      title: 'AgentDecode 3D',
+      desc: 'Learn GenAI & agents in 3D: RAG, tool calling, MCP',
+      href: 'https://agentdecode.vercel.app/',
+      icon: Bot,
+      badge: 'AGENTS',
+      badgeColor: 'from-amber-300 to-orange-400 text-slate-950',
+      iconColor: 'text-amber-300 bg-amber-300/10 border-amber-300/30'
     },
     {
       title: 'Open LLM Registry',
@@ -274,7 +285,7 @@ export default function Header() {
             href="#contact"
             className="px-5 py-2.5 bg-white/5 hover:bg-cyan-500 hover:text-slate-950 border border-white/10 hover:border-cyan-400 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 group text-white shadow-inner"
           >
-            Hire Bala
+            Contact Bala
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
@@ -377,7 +388,7 @@ export default function Header() {
                   onClick={() => setIsOpen(false)}
                   className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 text-slate-950 hover:from-cyan-400 hover:to-indigo-400 rounded-xl font-bold transition-all duration-300 inline-flex items-center gap-1.5 text-sm"
                 >
-                  Hire Bala <ArrowUpRight className="w-4 h-4" />
+                  Contact Bala <ArrowUpRight className="w-4 h-4" />
                 </a>
               </motion.div>
             </div>

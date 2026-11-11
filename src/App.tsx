@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import InstagramReels from './components/InstagramReels';
+import LearnAI3D from './components/LearnAI3D';
 import About from './components/About';
 import Services from './components/Services';
 import Experience from './components/Experience';
@@ -197,8 +198,9 @@ export default function App() {
           <>
             <Hero />
             <Marquee />
-            <InstagramReels />
             <AIWorkflowAcademy />
+            <LearnAI3D />
+            <InstagramReels />
             <Testimonials />
             <About />
             <Services />
