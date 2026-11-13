@@ -8,7 +8,8 @@ import {
   Boxes, 
   Cpu, 
   Globe,
-  Bot
+  Bot,
+  FlaskConical
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
@@ -89,6 +90,15 @@ export default function Header() {
       badge: 'MAIN HUB',
       badgeColor: 'from-cyan-400 to-indigo-500 text-slate-950',
       iconColor: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30'
+    },
+    {
+      title: '3D Agent Lab',
+      desc: 'Build an AI agent team and watch it run a mission',
+      href: 'https://agentlab3d.vercel.app/',
+      icon: FlaskConical,
+      badge: 'NEW',
+      badgeColor: 'from-cyan-300 to-sky-400 text-slate-950',
+      iconColor: 'text-cyan-300 bg-cyan-300/10 border-cyan-300/30'
     },
     {
       title: 'Neural Decode 3D',

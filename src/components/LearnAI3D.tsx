@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight, Bot, Boxes } from 'lucide-react';
+import { ArrowUpRight, Bot, Boxes, FlaskConical } from 'lucide-react';
 import { motion } from 'motion/react';
 
 /**
- * "Learn AI in 3D": AgentDecode and NeuralDecode shown as browser windows playing a short
+ * "Learn AI in 3D": 3D Agent Lab (featured), AgentDecode and NeuralDecode shown as browser
+ * windows playing a short
  * recording of each home page. Videos only download and play while on screen, and stay on
  * the poster frame for visitors who prefer reduced motion.
  *
@@ -13,6 +14,21 @@ import { motion } from 'motion/react';
 const BASE = (import.meta as any).env?.BASE_URL ?? './';
 
 const APPS = [
+  {
+    key: 'agentlab',
+    name: '3D Agent Lab',
+    url: 'https://agentlab3d.vercel.app/',
+    host: 'agentlab3d.vercel.app',
+    pitch: 'Build a team of AI agent robots, give them a mission and watch them plan, delegate, use tools, remember and recover from mistakes.',
+    stats: ['Multi-agent', 'RAG · MCP · Skills', 'Guardrails', 'ChatGPT · Claude · DeepSeek'],
+    cta: 'Run a mission',
+    icon: FlaskConical,
+    accent: 'text-cyan-300',
+    ring: 'hover:border-cyan-300/60',
+    glow: 'bg-cyan-400/15',
+    button: 'from-cyan-300 via-sky-400 to-indigo-400',
+    featured: true,
+  },
   {
     key: 'agentdecode',
     name: 'AgentDecode 3D',
@@ -124,7 +140,7 @@ export default function LearnAI3D() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-pink-400 to-purple-400">in 3D</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl">
-            Two free apps Bala built. Watch how agents and models actually run.
+            Three free apps Bala built. Run an agent team, then see how agents and models work inside.
           </p>
         </motion.div>
 
@@ -142,12 +158,12 @@ export default function LearnAI3D() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={`group relative flex flex-col rounded-3xl border border-white/10 ${app.ring} bg-slate-900/70 overflow-hidden shadow-2xl transition-colors`}
+                className={`group relative flex flex-col ${app.featured ? 'lg:col-span-2 lg:flex-row lg:items-stretch' : ''} rounded-3xl border border-white/10 ${app.ring} bg-slate-900/70 overflow-hidden shadow-2xl transition-colors`}
               >
                 <div className={`absolute -top-20 -right-20 w-72 h-72 ${app.glow} rounded-full blur-3xl pointer-events-none`} />
 
                 {/* browser window */}
-                <div className="relative m-3 sm:m-4 mb-0 sm:mb-0 rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
+                <div className={`relative m-3 sm:m-4 mb-0 sm:mb-0 rounded-2xl overflow-hidden border border-white/10 bg-slate-950 ${app.featured ? 'lg:mb-4 lg:w-[62%] lg:shrink-0' : ''}`}>
                   <div className="flex items-center gap-2 px-3 h-8 bg-slate-800/80 border-b border-white/10">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-300/80" />
@@ -165,8 +181,11 @@ export default function LearnAI3D() {
                 </div>
 
                 {/* copy */}
-                <div className="relative flex flex-col sm:flex-row sm:items-end justify-between gap-5 p-5 sm:p-6">
+                <div className={`relative flex flex-col sm:flex-row sm:items-end justify-between gap-5 p-5 sm:p-6 ${app.featured ? 'lg:flex-col lg:items-start lg:justify-center lg:p-8' : ''}`}>
                   <div className="flex flex-col gap-2 min-w-0">
+                    {app.featured && (
+                      <span className="self-start px-2 py-0.5 rounded-md bg-cyan-300 text-slate-950 text-[10px] font-mono font-black tracking-wider">NEW · PLAY IT</span>
+                    )}
                     <div className="flex items-center gap-2">
                       <Icon className={`w-5 h-5 ${app.accent}`} />
                       <h3 className="text-xl sm:text-2xl font-black">{app.name}</h3>
