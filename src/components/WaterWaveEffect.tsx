@@ -316,7 +316,7 @@ export default function WaterWaveEffect({
   return (
     <div
       onPointerDown={handlePointerDown}
-      className="absolute inset-0 pointer-events-auto overflow-hidden z-0 select-none"
+      className="wave-layer absolute inset-0 pointer-events-auto overflow-hidden z-0 select-none"
       style={{ touchAction: 'pan-y' }}
     >
       <canvas

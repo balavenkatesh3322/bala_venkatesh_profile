@@ -124,10 +124,68 @@ html.light .bg-slate-950\/40,
 html.light .bg-slate-900\/80,
 html.light .bg-slate-900\/60,
 html.light .bg-slate-900\/50,
-html.light .bg-slate-900\/40 {
+html.light .bg-slate-900\/40,
+html.light .bg-slate-950\/95,
+html.light .bg-slate-950\/70,
+html.light .bg-slate-900\/95,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/70 {
   background-color: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(16px) !important;
   box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+}
+
+/* Panels nested inside a white card: a soft grey so they still read as separate tiles */
+html.light :is(.bg-slate-900\/70, .bg-slate-900\/90, .bg-white\/5) :is(.bg-slate-950\/70, .bg-slate-950\/80, .bg-slate-950\/60) {
+  background-color: #f1f5f9 !important;
+  box-shadow: none !important;
+}
+
+/* Progress tracks and browser-bar chrome */
+html.light .bg-slate-800,
+html.light .bg-slate-800\/80 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Selected segmented-control tab (white-on-white otherwise) */
+html.light [role='tab'][aria-selected='true'] {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* Water waves: soft tint on white instead of heavy coloured bands across headings */
+html.light .wave-layer {
+  opacity: 0.35;
+}
+
+/* Gradient text drawn with pale colours (philosophy quote, slide-to-open label) */
+html.light .bg-clip-text.from-slate-100,
+html.light .bg-clip-text.from-slate-400 {
+  --tw-gradient-from: #0f172a !important;
+}
+html.light .bg-clip-text.via-emerald-100 {
+  --tw-gradient-via: #047857 !important;
+}
+html.light .bg-clip-text.via-white {
+  --tw-gradient-via: #334155 !important;
+}
+html.light .bg-clip-text.to-cyan-300 {
+  --tw-gradient-to: #0891b2 !important;
+}
+
+/* Outline buttons (white-tinted fill) keep dark text even inside a gradient panel */
+html.light .bg-white\/10.bg-white\/10.text-white,
+html.light .bg-white\/5.bg-white\/5.text-white {
+  color: #0f172a !important;
+}
+
+/* Deeper accent text so amber / orange labels pass contrast on white */
+html.light .text-amber-300,
+html.light .text-amber-400 {
+  color: #b45309 !important;
+}
+html.light .text-pink-400 {
+  color: #db2777 !important;
 }
 
 html.light .from-slate-950,
@@ -183,15 +241,18 @@ html.light .text-slate-500 {
   color: #64748b !important;
 }
 
-/* Keep solid dark text on filled gradient / solid buttons */
+/* Keep white text on filled gradient / solid buttons (only the button itself and its direct
+   children, so headings inside a softly tinted gradient panel stay dark and readable) */
 html.light a.bg-gradient-to-r .text-white,
 html.light button.bg-gradient-to-r .text-white,
 html.light .bg-cyan-500 .text-white,
 html.light .bg-indigo-600 .text-white,
 html.light .bg-indigo-500 .text-white,
 html.light .bg-emerald-500 .text-white,
-html.light .bg-gradient-to-tr .text-white,
-html.light .bg-gradient-to-r .text-white {
+html.light .bg-gradient-to-tr > .text-white,
+html.light .bg-gradient-to-r > .text-white,
+html.light .bg-gradient-to-tr.text-white,
+html.light .bg-gradient-to-r.text-white {
   color: #ffffff !important;
 }
 
@@ -294,6 +355,46 @@ html.light .p-6.sm\:p-8.bg-slate-950\/45 {
 html.light .flex-1.bg-slate-950.border {
   background-color: #ffffff !important;
   border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Areas that stay dark in the light theme: the hero is a dark room lit by the lamp, and the
+   nav sits on top of it until the page scrolls. revert-layer drops the light overrides above
+   and falls back to the normal Tailwind utility, so these look exactly as in dark mode. */
+html.light [data-keep-dark].relative.min-h-screen,
+html.light [data-keep-dark] :is(
+  .text-white, .text-slate-100, .text-slate-200, .text-slate-300, .text-slate-400, .text-slate-500,
+  .text-cyan-300, .text-cyan-400, .text-indigo-300, .text-indigo-400, .text-emerald-300, .text-emerald-400,
+  .text-purple-300, .text-purple-400, .text-amber-300, .text-amber-400, .text-pink-400,
+  .bg-white\/5, .bg-white\/10, .bg-white\/\[0\.02\], .bg-white\/\[0\.03\], .bg-white\/\[0\.04\],
+  .bg-slate-950\/40, .bg-slate-950\/50, .bg-slate-950\/60, .bg-slate-950\/70, .bg-slate-950\/80,
+  .bg-slate-900\/40, .bg-slate-900\/50, .bg-slate-900\/60, .bg-slate-900\/70, .bg-slate-900\/80,
+  .bg-slate-800, .bg-slate-800\/80,
+  .border-white\/5, .border-white\/10, .border-white\/15, .border-white\/20, .border-white\/30,
+  .from-white, .to-slate-400, .from-slate-950, .from-slate-900, .to-slate-950, .to-slate-900,
+  .group.relative.p-6, .group.relative.p-5, .relative.inline-flex
+) {
+  color: revert-layer !important;
+  background-color: revert-layer !important;
+  background-image: revert-layer !important;
+  border-color: revert-layer !important;
+  box-shadow: revert-layer !important;
+  backdrop-filter: revert-layer !important;
+  --tw-gradient-from: revert-layer !important;
+  --tw-gradient-to: revert-layer !important;
+}
+html.light [data-keep-dark] .glass-panel {
+  background: rgba(10, 10, 16, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+}
+html.light [data-keep-dark].relative.min-h-screen {
+  background-size: revert-layer !important;
+}
+html.light nav#navbar[data-keep-dark] {
+  border-bottom-color: transparent !important;
+}
+html.light nav#navbar[data-keep-dark] :is(.text-white, .text-slate-200, .text-slate-300, .text-slate-300:hover, .text-slate-200:hover) {
+  color: revert-layer !important;
 }
 
 /* ==========================================

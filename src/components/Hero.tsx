@@ -38,7 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-28 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden bg-[#050607] text-white">
+    <section id="home" data-keep-dark className="relative min-h-screen flex items-center pt-24 lg:pt-28 pb-16 px-6 md:px-12 lg:px-24 overflow-hidden bg-[#050607] text-white">
       {/* Near-black room with a faint grid: the only light in the hero comes from the lamps */}
       <div
         className="absolute inset-0 pointer-events-none"

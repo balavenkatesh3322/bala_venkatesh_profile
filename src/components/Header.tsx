@@ -145,6 +145,7 @@ export default function Header() {
     <>
       <motion.nav
         id="navbar"
+        data-keep-dark={!isScrolled && !isBlogView ? '' : undefined}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: isNavHidden ? -100 : 0, opacity: isNavHidden ? 0 : 1 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
