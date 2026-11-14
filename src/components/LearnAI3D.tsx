@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight, Bot, Boxes, FlaskConical } from 'lucide-react';
+import { ArrowUpRight, Bot, Boxes, FlaskConical, Play, Swords } from 'lucide-react';
 import { motion } from 'motion/react';
 
 /**
@@ -60,6 +60,56 @@ const APPS = [
 ];
 
 const withRef = (url: string) => `${url}?ref=portfolio`;
+
+const GAME = {
+  key: 'throne3dchess',
+  url: 'https://throne3dchess.vercel.app/',
+  facts: ['3 armies', '6 battlegrounds', '5 character styles', '3 AI levels', '2-player', 'Mobile'],
+};
+
+/** Throne Chess 3D: a full-width, film-style card with the game's own intro playing behind it. */
+function GameShowcase() {
+  return (
+    <motion.a
+      href={withRef(GAME.url)}
+      target="_blank"
+      rel="noreferrer"
+      data-tilt
+      data-keep-dark
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="group relative block overflow-hidden rounded-3xl border border-amber-400/30 hover:border-amber-300/70 bg-[#120806] shadow-2xl transition-colors min-h-[600px] sm:min-h-0 sm:aspect-[16/9] lg:aspect-[2/1]"
+    >
+      <PreviewVideo name={GAME.key} />
+      {/* shade so the copy reads over the footage */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent sm:bg-gradient-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
+
+      <div className="relative z-10 min-h-[600px] sm:min-h-0 sm:h-full flex flex-col justify-end sm:justify-center gap-4 p-6 sm:p-10 lg:p-14 max-w-2xl">
+        <span className="self-start inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-400/15 border border-amber-300/40 text-amber-200 text-[10px] sm:text-[11px] font-mono font-bold tracking-widest uppercase">
+          <Swords className="w-3.5 h-3.5" /> BV Games · free in your browser
+        </span>
+        <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] text-amber-50">
+          Throne Chess <span className="text-amber-300">3D</span>
+        </h3>
+        <p className="text-sm sm:text-base text-amber-50/85 leading-relaxed">
+          Chess where every capture is a cinematic battle. Life-size medieval armies, crowned kings and queens, and a slow-motion kill cam.
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {GAME.facts.map((f) => (
+            <span key={f} className="px-2 py-0.5 rounded-md bg-black/40 border border-amber-200/20 text-[11px] font-mono text-amber-100/90 backdrop-blur-sm">
+              {f}
+            </span>
+          ))}
+        </div>
+        <span className="mt-1 self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 text-slate-950 font-black text-sm uppercase tracking-wide shadow-lg shadow-amber-500/30 group-hover:scale-[1.04] transition-transform">
+          <Play className="w-4 h-4 fill-current" /> Play free
+        </span>
+      </div>
+    </motion.a>
+  );
+}
 
 function PreviewVideo({ name }: { name: string }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -140,7 +190,7 @@ export default function LearnAI3D() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-pink-400 to-purple-400">in 3D</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl">
-            Three free apps Bala built. Run an agent team, then see how agents and models work inside.
+            Three free apps Bala built. Run an agent team, then see how agents and models work inside. Plus a 3D game.
           </p>
         </motion.div>
 
@@ -210,6 +260,13 @@ export default function LearnAI3D() {
             );
           })}
         </div>
+
+        {/* and one for fun */}
+        <div className="flex items-center gap-4 pt-4">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-300">Built for fun</span>
+          <span className="h-px flex-1 bg-gradient-to-r from-amber-300/40 to-transparent" />
+        </div>
+        <GameShowcase />
       </div>
     </section>
   );

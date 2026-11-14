@@ -9,7 +9,8 @@ import {
   Cpu, 
   Globe,
   Bot,
-  FlaskConical
+  FlaskConical,
+  Swords
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
@@ -99,6 +100,15 @@ export default function Header() {
       badge: 'NEW',
       badgeColor: 'from-cyan-300 to-sky-400 text-slate-950',
       iconColor: 'text-cyan-300 bg-cyan-300/10 border-cyan-300/30'
+    },
+    {
+      title: 'Throne Chess 3D',
+      desc: 'Battle chess game: every capture is a cinematic fight',
+      href: 'https://throne3dchess.vercel.app/',
+      icon: Swords,
+      badge: 'GAME',
+      badgeColor: 'from-amber-300 to-orange-500 text-slate-950',
+      iconColor: 'text-amber-300 bg-amber-300/10 border-amber-300/30'
     },
     {
       title: 'Neural Decode 3D',
