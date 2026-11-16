@@ -85,6 +85,7 @@ export default function Header() {
   const appStoreLinks = [
     {
       title: 'Bala App Store Hub',
+      category: 'Start here',
       desc: 'All interactive AI apps, agents & tools live showcase',
       href: 'https://balavenkatesh3322.github.io/bala-ai-studio/',
       icon: Sparkles,
@@ -93,7 +94,18 @@ export default function Header() {
       iconColor: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30'
     },
     {
+      title: 'Career Roadmap Galaxy',
+      category: 'Learn & explore',
+      desc: 'Explore an interactive career roadmap galaxy',
+      href: 'https://career-roadmap-galaxy.vercel.app',
+      icon: Globe,
+      badge: 'NEW',
+      badgeColor: 'from-violet-400 to-fuchsia-400 text-slate-950',
+      iconColor: 'text-violet-300 bg-violet-300/10 border-violet-300/30'
+    },
+    {
       title: '3D Agent Lab',
+      category: 'Build & play',
       desc: 'Build an AI agent team and watch it run a mission',
       href: 'https://agentlab3d.vercel.app/',
       icon: FlaskConical,
@@ -103,6 +115,7 @@ export default function Header() {
     },
     {
       title: 'Throne Chess 3D',
+      category: 'Build & play',
       desc: 'Battle chess game: every capture is a cinematic fight',
       href: 'https://throne3dchess.vercel.app/',
       icon: Swords,
@@ -112,6 +125,7 @@ export default function Header() {
     },
     {
       title: 'Neural Decode 3D',
+      category: 'Learn & explore',
       desc: 'Interactive 3D AI neural architectures visualizer',
       href: 'https://neuraldecode.vercel.app/',
       icon: Boxes,
@@ -121,6 +135,7 @@ export default function Header() {
     },
     {
       title: 'AgentDecode 3D',
+      category: 'Learn & explore',
       desc: 'Learn GenAI & agents in 3D: RAG, tool calling, MCP',
       href: 'https://agentdecode.vercel.app/',
       icon: Bot,
@@ -130,6 +145,7 @@ export default function Header() {
     },
     {
       title: 'Open LLM Registry',
+      category: 'Discover',
       desc: 'Catalog & benchmark directory for open LLMs',
       href: 'https://balavenkatesh3322.github.io/open-llm-registry/',
       icon: Cpu,
@@ -139,6 +155,7 @@ export default function Header() {
     },
     {
       title: 'Awesome Portfolios',
+      category: 'Discover',
       desc: '2,000+ curated developer portfolio designs',
       href: 'https://balavenkatesh3322.github.io/awesome-developer-porfolio/',
       icon: Globe,
@@ -147,6 +164,11 @@ export default function Header() {
       iconColor: 'text-blue-400 bg-blue-400/10 border-blue-400/30'
     }
   ];
+
+  const appCategories = ['Start here', 'Learn & explore', 'Build & play', 'Discover'];
+  const groupedAppLinks = appCategories
+    .map((category) => ({ category, items: appStoreLinks.filter((app) => app.category === category) }))
+    .filter((group) => group.items.length > 0);
 
   const isBlogView = activeSection === 'lessons' || (typeof window !== 'undefined' && window.location.hash.startsWith('#lessons'));
   const isNavHidden = isBlogView && isScrolled;
@@ -236,7 +258,7 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.96 }}
                           transition={{ duration: 0.2, ease: 'easeOut' }}
-                          className="absolute top-full right-0 mt-3 w-[320px] sm:w-[380px] p-4 sm:p-5 rounded-3xl border border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] z-50 overflow-hidden bg-slate-950/95 backdrop-blur-2xl"
+                          className="absolute top-full right-0 mt-3 w-[min(92vw,620px)] p-4 sm:p-5 rounded-3xl border border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] z-50 overflow-hidden bg-slate-950/95 backdrop-blur-2xl"
                         >
                           {/* Subtle background glow */}
                           <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -251,12 +273,16 @@ export default function Header() {
                                 </span>
                               </div>
                               <span className="text-[10px] font-mono text-slate-400">
-                                Direct Apps
+                                {appStoreLinks.length} tools
                               </span>
                             </div>
 
-                            <div className="flex flex-col gap-2">
-                              {appStoreLinks.map((item) => {
+                            <div className="max-h-[65vh] overflow-y-auto pr-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4">
+                              {groupedAppLinks.map(({ category, items }) => (
+                                <section key={category} className="min-w-0">
+                                  <h3 className="mb-2 px-1 text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-slate-500">{category}</h3>
+                                  <div className="flex flex-col gap-2">
+                              {items.map((item) => {
                                 const IconComp = item.icon;
                                 return (
                                   <a
@@ -287,6 +313,9 @@ export default function Header() {
                                   </a>
                                 );
                               })}
+                                  </div>
+                                </section>
+                              ))}
                             </div>
                           </div>
                         </motion.div>
@@ -372,8 +401,11 @@ export default function Header() {
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 px-1 flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-cyan-400" /> Bala App Store Apps
                 </span>
-                <div className="grid grid-cols-1 gap-2">
-                  {appStoreLinks.map((item) => {
+                <div className="max-h-[55vh] overflow-y-auto flex flex-col gap-4 pr-1">
+                  {groupedAppLinks.map(({ category, items }) => (
+                    <section key={category} className="flex flex-col gap-2">
+                      <h3 className="px-1 text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-slate-500">{category}</h3>
+                  {items.map((item) => {
                     const IconComp = item.icon;
                     return (
                       <a
@@ -395,6 +427,8 @@ export default function Header() {
                       </a>
                     );
                   })}
+                    </section>
+                  ))}
                 </div>
               </motion.div>
 
