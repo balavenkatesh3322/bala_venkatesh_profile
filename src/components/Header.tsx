@@ -15,6 +15,8 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
 
+const BUILD_WITH_BALA_URL = 'https://build-with-bala.vercel.app/';
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -83,16 +85,6 @@ export default function Header() {
   ];
 
   const appStoreLinks = [
-    {
-      title: 'Bala App Store Hub',
-      category: 'Start here',
-      desc: 'All interactive AI apps, agents & tools live showcase',
-      href: 'https://balavenkatesh3322.github.io/bala-ai-studio/',
-      icon: Sparkles,
-      badge: 'MAIN HUB',
-      badgeColor: 'from-cyan-400 to-indigo-500 text-slate-950',
-      iconColor: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30'
-    },
     {
       title: 'Career Roadmap Galaxy',
       category: 'Learn & explore',
@@ -165,10 +157,36 @@ export default function Header() {
     }
   ];
 
-  const appCategories = ['Start here', 'Learn & explore', 'Build & play', 'Discover'];
+  const appCategories = ['Learn & explore', 'Build & play', 'Discover'];
   const groupedAppLinks = appCategories
     .map((category) => ({ category, items: appStoreLinks.filter((app) => app.category === category) }))
     .filter((group) => group.items.length > 0);
+
+  // Build with Bala is the root of every app: shown as the featured card on top of the Apps menu
+  const StoreCard = ({ onPick, compact = false }: { onPick: () => void; compact?: boolean }) => (
+    <a
+      href={`${BUILD_WITH_BALA_URL}?ref=portfolio`}
+      target="_blank"
+      rel="noreferrer"
+      onClick={onPick}
+      className="group relative overflow-hidden rounded-2xl border border-pink-400/40 hover:border-pink-300 bg-gradient-to-br from-[#2a0f22] via-[#1a1022] to-[#120c1c] p-3.5 flex items-center gap-3.5 transition-colors"
+    >
+      <div className="absolute -top-10 -right-10 w-32 h-32 bg-pink-500/25 rounded-full blur-2xl pointer-events-none" />
+      <div className={`${compact ? 'w-9 h-9' : 'w-11 h-11'} relative shrink-0 rounded-xl bg-gradient-to-br from-pink-500 to-violet-500 flex items-center justify-center text-white font-mono font-black text-sm shadow-lg shadow-pink-500/30`}>
+        &lt;/&gt;
+      </div>
+      <div className="relative flex-1 min-w-0">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-black text-white">Build with Bala</span>
+          <span className="px-1.5 py-0.5 rounded text-[8px] font-mono font-black tracking-wider bg-pink-500 text-white">ALL APPS</span>
+        </div>
+        <p className="text-[11px] text-pink-100/80 leading-snug">The Bala App Store: 41 AI apps, each solving a real problem. Try any free.</p>
+      </div>
+      <span className="relative shrink-0 inline-flex items-center gap-1 text-[11px] font-bold text-pink-300 group-hover:text-white">
+        {compact ? <ArrowUpRight className="w-4 h-4" /> : <>View all <ArrowUpRight className="w-4 h-4" /></>}
+      </span>
+    </a>
+  );
 
   const isBlogView = activeSection === 'lessons' || (typeof window !== 'undefined' && window.location.hash.startsWith('#lessons'));
   const isNavHidden = isBlogView && isScrolled;
@@ -269,13 +287,15 @@ export default function Header() {
                               <div className="flex items-center gap-2">
                                 <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
                                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-300">
-                                  Bala App Store Apps
+                                  Bala App Store
                                 </span>
                               </div>
                               <span className="text-[10px] font-mono text-slate-400">
-                                {appStoreLinks.length} tools
+                                41 apps · featured below
                               </span>
                             </div>
+
+                            <StoreCard onPick={() => setIsDropdownOpen(false)} />
 
                             <div className="max-h-[65vh] overflow-y-auto pr-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4">
                               {groupedAppLinks.map(({ category, items }) => (
@@ -399,8 +419,9 @@ export default function Header() {
                 className="w-full max-w-sm mt-2 pt-4 border-t border-white/10 flex flex-col gap-2 text-left"
               >
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 px-1 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-cyan-400" /> Bala App Store Apps
+                  <Sparkles className="w-3 h-3 text-cyan-400" /> Bala App Store
                 </span>
+                <StoreCard compact onPick={() => setIsOpen(false)} />
                 <div className="max-h-[55vh] overflow-y-auto flex flex-col gap-4 pr-1">
                   {groupedAppLinks.map(({ category, items }) => (
                     <section key={category} className="flex flex-col gap-2">

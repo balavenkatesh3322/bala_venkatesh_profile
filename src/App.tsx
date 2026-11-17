@@ -9,6 +9,7 @@ import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import InstagramReels from './components/InstagramReels';
 import LearnAI3D from './components/LearnAI3D';
+import BalaAppStore from './components/BalaAppStore';
 import About from './components/About';
 import Services from './components/Services';
 import Experience from './components/Experience';
@@ -200,6 +201,7 @@ export default function App() {
           <>
             <Hero />
             <Marquee />
+            <BalaAppStore />
             <AIWorkflowAcademy />
             <LearnAI3D />
             <InstagramReels />

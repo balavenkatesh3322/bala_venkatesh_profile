@@ -38,16 +38,16 @@ export const PERSON = {
 export const APPS = [
   {
     slug: 'bala-app-store',
-    name: 'Bala App Store',
-    url: 'https://balavenkatesh3322.github.io/bala-ai-studio/',
-    kicker: 'Main hub',
-    pitch: "All of Bala's live AI apps, agents and repositories in one place.",
+    name: 'Build with Bala: the Bala App Store',
+    url: 'https://build-with-bala.vercel.app/',
+    kicker: 'All apps · one store',
+    pitch: '41 AI apps, each built to solve a real problem. Try any free, see how it was built.',
     description:
-      "The Bala App Store: one hub for Bala Venkatesh's production AI apps, agents, LLM pipelines and open-source repositories, each with a live demo.",
+      'Build with Bala is the Bala App Store: 41 interactive AI apps, 3D explainers, tools and games by Bala Venkatesh. Try any app free in seconds, see the problem it solves, and learn how it was built.',
     category: 'DeveloperApplication',
-    keywords: ['AI apps', 'AI portfolio', 'open source AI', 'LLM apps'],
-    preview: 'bala-app-store.jpg',
-    accent: '#22d3ee',
+    keywords: ['AI app store', 'AI apps', 'learn AI', '3D AI explainers', 'Build with Bala'],
+    preview: 'build-with-bala.jpg',
+    accent: '#ec4899',
   },
   {
     slug: 'agent-lab-3d',
