@@ -1,0 +1,28 @@
+{
+  "name": "Bala Venkatesh | Lead AI Engineer",
+  "short_name": "Bala V",
+  "description": "Lead AI Engineer at Standard Chartered Bank with 10+ years shipping production GenAI, RAG, multi-agent systems and on-device AI across banking, agritech and healthcare. Free 3D AI apps, lessons and reels.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

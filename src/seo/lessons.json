@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "how-bala-thinks-lessons-from-production",
+    "title": "How Bala Thinks: Lessons from Production",
+    "excerpt": "I have deployed GenAI systems inside a Tier-1 bank, a clinical documentation platform, and an offline edge device for rural farmers. Every single one failed on the first try. Here is what production taught me."
+  },
+  {
+    "slug": "llm-right-tool",
+    "title": "How I Choose an LLM",
+    "excerpt": "Every week a new flagship LLM drops, but model switching is usually the wrong debate. Shift your engineering mindset to system-level architecture."
+  },
+  {
+    "slug": "avoid-building-products-nobody-wants",
+    "title": "How I Try to Avoid Building Products Nobody Wants",
+    "excerpt": "Building something that works does not mean building something people need. How shifting from \"What can I build?\" to \"What problem is worth solving?\" changes engineering outcomes."
+  },
+  {
+    "slug": "building-something-people-trust",
+    "title": "Building an App Is Easy Now. Building Something People Trust Is Hard.",
+    "excerpt": "AI has dramatically reduced the cost of building, but not the cost of understanding. Discover why problem discovery, system design, business judgment, and trust are the real value differentiators for engineers."
+  },
+  {
+    "slug": "stopped-chasing-technologies",
+    "title": "I Stopped Chasing Technologies. I Started Chasing Problems.",
+    "excerpt": "When I started my career, I believed learning more technologies would make me a better engineer. I was wrong. Here is the realization that changed how I build products."
+  },
+  {
+    "slug": "thought-i-was-leading-assigning-tasks",
+    "title": "I Thought I Was Leading. I Was Just Assigning Tasks.",
+    "excerpt": "A conversation with an engineer named Raju triggered a wake-up call about leadership vs task assignment. How shifting from execution steps to outcome ownership transforms teams."
+  },
+  {
+    "slug": "llm-fundamentals",
+    "title": "LLM Fundamentals for Engineers Who Ship",
+    "excerpt": "What an LLM actually is, stripped of the hype. Tokens, transformers without the math, TTFT vs TPS, context window economics, temperature dynamics, and why hallucination is an architectural constraint."
+  }
+]

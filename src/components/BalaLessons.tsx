@@ -376,11 +376,13 @@ interface ShareMeta {
   hashtags: string[];
 }
 
-const BASE_PROFILE_URL = 'https://balavenkatesh3322.github.io/bala_venkatesh_profile';
+const BASE_PROFILE_URL = 'https://balavenkatesh.is-a.dev';
 
+// /lessons/<slug>/ is a generated page with its own preview card (scripts/generate-seo.mjs)
+// that forwards visitors to the lesson inside the app.
 const getShareUrl = (slug?: string) => {
-  if (!slug) return `${BASE_PROFILE_URL}/#lessons`;
-  return `${BASE_PROFILE_URL}/?post=${encodeURIComponent(slug)}#lessons`;
+  if (!slug) return `${BASE_PROFILE_URL}/lessons/`;
+  return `${BASE_PROFILE_URL}/lessons/${encodeURIComponent(slug)}/`;
 };
 
 const POST_SHARE_DATA: Record<string, ShareMeta> = {
@@ -529,7 +531,7 @@ const exportQuoteCardAsPNG = (meta: ShareMeta, theme: 'midnight' | 'emerald' | '
 
   ctx.font = 'bold 18px monospace';
   ctx.fillStyle = accentColor;
-  ctx.fillText('balavenkatesh3322.github.io/bala_venkatesh_profile', 110, 560);
+  ctx.fillText('balavenkatesh.is-a.dev', 110, 560);
 
   const link = document.createElement('a');
   link.download = `bala-venkatesh-quote-${meta.slug}.png`;
@@ -4584,7 +4586,7 @@ export default function BalaLessons() {
                               </div>
                             </div>
                             <div className="font-mono text-[10px] text-cyan-500 font-bold">
-                              balavenkatesh3322.github.io/bala_venkatesh_profile
+                              balavenkatesh.is-a.dev
                             </div>
                           </div>
                         </div>

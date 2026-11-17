@@ -31,6 +31,7 @@ import ScrollCelebration from './components/ScrollCelebration';
 import AIBalaBot from './components/AIBalaBot';
 import Analytics from './components/Analytics';
 import { initTilt } from './lib/tilt';
+import { applyMeta, metaForHash } from './lib/seo';
 
 // the lessons area is large and only opened via #lessons, so it loads on demand
 const BalaLessons = lazy(() => import('./components/BalaLessons'));
@@ -141,9 +142,10 @@ export default function App() {
   useEffect(() => initTilt(), []);
   const [currentPath, setCurrentPath] = React.useState<string>(window.location.hash || '#home');
 
-  useEffect(() => {
-    document.title = "Bala Venkatesh | Lead AI Engineer & Data Scientist";
+  // per-view title, description, canonical and share tags
+  useEffect(() => applyMeta(metaForHash(currentPath)), [currentPath]);
 
+  useEffect(() => {
     // Only jump to the top when switching between the main page and the lessons view.
     // Section links (#reels, #contact, ...) must keep the browser's own scroll to the section.
     let lastPath = window.location.hash || '#home';
