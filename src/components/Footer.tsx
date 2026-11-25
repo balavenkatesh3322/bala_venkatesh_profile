@@ -15,8 +15,17 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2 text-xs font-mono text-slate-500">
           {/* Copyright */}
-          <div className="text-center sm:text-left">
-            © 2026 <span className="text-slate-300 font-semibold">Bala Venkatesh</span>.
+          <div className="flex flex-col items-center sm:items-start gap-3 text-center sm:text-left">
+            <span className="whitespace-nowrap">© 2026 <span className="text-slate-300 font-semibold">Bala Venkatesh</span>.</span>
+            {/* Sprite Fusion "Destroy this website": turns this site into a playable pixel-art level */}
+            <a
+              href="https://destroy.spritefusion.com/?from=badge&url=https%3A%2F%2Fbalavenkatesh.is-a.dev%2F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:scale-105 transition-transform"
+            >
+              <img src="https://destroy.spritefusion.com/badge.svg" alt="Destroy this website" width={180} height={40} loading="lazy" />
+            </a>
           </div>
 
           {/* Nav footer */}
