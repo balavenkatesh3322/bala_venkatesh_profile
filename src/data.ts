@@ -20,29 +20,29 @@ export const servicesData: ServiceItem[] = [
   {
     id: 's-1',
     num: '01',
-    title: 'AI Strategy & Consulting',
-    desc: 'Find the AI wins worth building, and a roadmap to ship them.',
+    title: 'Strategy that ships',
+    desc: 'Find the problem worth solving, and the shortest path to production.',
     iconName: 'Lightbulb'
   },
   {
     id: 's-2',
     num: '02',
-    title: 'Generative AI & RAG',
-    desc: 'LLM apps, RAG pipelines and multi-agent systems, in production.',
+    title: 'LLM, RAG & agent systems',
+    desc: 'Retrieval, agents and guardrails that hold up with real users and real data.',
     iconName: 'Brain'
   },
   {
     id: 's-3',
     num: '03',
-    title: 'Custom Model Development',
-    desc: 'NLP, vision and deep learning models tuned to your data.',
+    title: 'Custom models',
+    desc: 'Vision, language and on-device models tuned to your data, not a demo set.',
     iconName: 'Code'
   },
   {
     id: 's-4',
     num: '04',
-    title: 'AI Team Leadership',
-    desc: 'Lead AI teams from first model to business outcome.',
+    title: 'Teams that deliver',
+    desc: 'Hiring, mentoring and leading engineers from first model to business outcome.',
     iconName: 'Users'
   }
 ];

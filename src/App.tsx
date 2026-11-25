@@ -10,11 +10,13 @@ import Marquee from './components/Marquee';
 import InstagramReels from './components/InstagramReels';
 import LearnAI3D from './components/LearnAI3D';
 import BalaAppStore from './components/BalaAppStore';
+import EndToEnd from './components/EndToEnd';
 import About from './components/About';
 import Services from './components/Services';
 import Experience from './components/Experience';
 // import Projects from './components/Projects';
-import AIWorkflowAcademy from './components/AIWorkflowAcademy';
+// archived: Production AI in Live Action (kept in the repo, not on the page)
+// import AIWorkflowAcademy from './components/AIWorkflowAcademy';
 // import BusinessImprover from './components/BusinessImprover';
 import BuildWithBalaPromo from './components/BuildWithBalaPromo';
 // import AIDemoSandbox from './components/AIDemoSandbox';
@@ -202,7 +204,8 @@ export default function App() {
             <Hero />
             <Marquee />
             <BalaAppStore />
-            <AIWorkflowAcademy />
+            <EndToEnd />
+            {/* <AIWorkflowAcademy /> archived */}
             <LearnAI3D />
             <InstagramReels />
             <Testimonials />

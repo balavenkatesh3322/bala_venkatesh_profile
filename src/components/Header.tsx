@@ -10,7 +10,8 @@ import {
   Globe,
   Bot,
   FlaskConical,
-  Swords
+  Swords,
+  GraduationCap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
@@ -76,7 +77,7 @@ export default function Header() {
   }, []);
 
   const menuItems: Array<{ label: string; href: string; isNew?: boolean; isExternal?: boolean }> = [
-    { label: 'Results', href: '#ai-case-animation', isExternal: false },
+    { label: 'How I Build', href: '#end-to-end', isExternal: false },
     { label: 'AI in 3D', href: '#learn-3d', isExternal: false },
     { label: 'Reels', href: '#reels', isExternal: false },
     { label: 'Reviews', href: '#testimonials', isExternal: false },
@@ -85,6 +86,16 @@ export default function Header() {
   ];
 
   const appStoreLinks = [
+    {
+      title: 'AI Zero to Hero',
+      category: 'Learn & explore',
+      desc: 'Free AI course: every lesson ends in a live app on real data',
+      href: 'https://ai-zerotohero.vercel.app/',
+      icon: GraduationCap,
+      badge: 'COURSE',
+      badgeColor: 'from-emerald-300 to-cyan-400 text-slate-950',
+      iconColor: 'text-emerald-300 bg-emerald-300/10 border-emerald-300/30'
+    },
     {
       title: 'Career Roadmap Galaxy',
       category: 'Learn & explore',

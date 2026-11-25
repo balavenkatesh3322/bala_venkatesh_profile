@@ -135,7 +135,7 @@ export default function Hero() {
       <div 
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 cursor-pointer group select-none"
         onClick={() => {
-          document.getElementById('ai-case-animation')?.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('app-store')?.scrollIntoView({ behavior: 'smooth' });
         }}
       >
         <motion.span 
