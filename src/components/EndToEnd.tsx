@@ -3,7 +3,7 @@ import { ArrowRight, Compass, PenTool, Code2, Rocket, Users } from 'lucide-react
 import { motion } from 'motion/react';
 
 /**
- * "I'm strongest at building products end to end": the quote is the headline, and its five
+ * "Bala is strongest at building products end to end": the quote is the headline, and its five
  * phrases become a pipeline. While on screen, the stages light up in turn and the matching
  * phrase in the quote lights up with them.
  */
@@ -91,7 +91,7 @@ export default function EndToEnd() {
         >
           <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-cyan-400">How Bala builds</span>
           <blockquote className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] max-w-5xl mx-auto">
-            I’m strongest at building products{' '}
+            Bala is strongest at building products{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-violet-400 to-amber-300">end to end</span>
             <span className="text-slate-300 font-semibold">
               : {phrase(0)}, {phrase(1)}, {phrase(2)}, {phrase(3)}, and {phrase(4)}.
